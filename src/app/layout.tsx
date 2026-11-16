@@ -4,8 +4,7 @@ import "./globals.css";
 import { siteConfig } from "@/config/site";
 import { Navbar } from "@/components/Navbar";
 import { Footer } from "@/components/Footer";
-import { FloatingWhatsApp } from "@/components/FloatingWhatsApp";
-import { LocalBusinessJsonLd } from "@/components/LocalBusinessJsonLd";
+import { ComprehensiveJsonLd } from "@/components/seo/JsonLd";
 
 const cormorant = Cormorant_Garamond({
   variable: "--font-cormorant",
@@ -35,15 +34,14 @@ export const metadata: Metadata = {
   },
   description: siteConfig.description,
   keywords: [
-    "Reiki healer Agra",
-    "Reiki in Agra",
+    "Reiki education Agra",
+    "Usui Reiki traditions",
     "Dr Shivie Gupta",
-    "Emotional counselor Agra",
-    "Chakra balancing Agra",
-    "Distance Reiki healing India",
-    "Holistic healing Dayalbagh Agra",
-    "Anxiety counseling Agra",
-    "Aura cleansing Uttar Pradesh"
+    "Mindfulness Agra",
+    "Chakra awareness Dayalbagh",
+    "Biofield energy education",
+    "Gokai principles",
+    "Non-commercial Reiki guide India"
   ],
   authors: [{ name: siteConfig.name, url: siteConfig.url }],
   creator: siteConfig.name,
@@ -72,13 +70,6 @@ export const metadata: Metadata = {
   robots: {
     index: true,
     follow: true,
-    googleBot: {
-      index: true,
-      follow: true,
-      "max-video-preview": -1,
-      "max-image-preview": "large",
-      "max-snippet": -1,
-    },
   },
   alternates: {
     canonical: siteConfig.url,
@@ -96,11 +87,10 @@ export default function RootLayout({
       className={`${cormorant.variable} ${jakarta.variable} scroll-smooth antialiased`}
     >
       <body className="min-h-screen flex flex-col bg-[#FAF8F5] text-[#1F2924] selection:bg-[#2D4A3E] selection:text-white">
-        <LocalBusinessJsonLd />
+        <ComprehensiveJsonLd />
         <Navbar />
         <main className="flex-1">{children}</main>
         <Footer />
-        <FloatingWhatsApp />
       </body>
     </html>
   );

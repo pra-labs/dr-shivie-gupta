@@ -1,6 +1,6 @@
 import Link from "next/link";
 import { siteConfig } from "@/config/site";
-import { MapPin, Phone, Mail, Clock } from "lucide-react";
+import { MapPin, Mail, Sparkles, BookOpen } from "lucide-react";
 
 export function Footer() {
   return (
@@ -9,26 +9,27 @@ export function Footer() {
         <div className="grid grid-cols-1 md:grid-cols-4 gap-10 pb-12 border-b border-[#2D4A3E]/70">
           {/* Brand Col */}
           <div className="space-y-4 md:col-span-1">
-            <h3 className="font-serif text-2xl font-bold text-white">
-              {siteConfig.name}
+            <h3 className="font-serif text-2xl font-bold text-white flex items-center gap-2">
+              <Sparkles className="w-5 h-5 text-[#C5A059]" />
+              <span>{siteConfig.name}</span>
             </h3>
             <p className="text-xs text-[#FAF8F5]/80 leading-relaxed">
-              Integrative Reiki Master, Biofield Healer, and Emotional Counselor providing non-dogmatic space for restoration in Agra & online worldwide.
+              An educational and contemplative knowledge space dedicated to Usui Reiki traditions, subtle biofield awareness, and emotional balance based in Dayalbagh, Agra.
             </p>
             <div className="pt-2 text-xs text-[#C5A059] font-medium">
-              Registered Practice • Dayalbagh, Agra (UP)
+              Purely Educational &amp; Non-Commercial
             </div>
           </div>
 
           {/* Quick Links */}
           <div className="space-y-3">
             <h4 className="text-sm font-semibold uppercase tracking-wider text-[#C5A059]">
-              Navigation
+              Educational Navigation
             </h4>
             <ul className="space-y-2 text-xs">
               <li>
                 <Link href="/" className="hover:text-white transition-colors">
-                  Home
+                  Home Overview
                 </Link>
               </li>
               <li>
@@ -37,8 +38,8 @@ export function Footer() {
                 </Link>
               </li>
               <li>
-                <Link href="/services" className="hover:text-white transition-colors">
-                  Therapy &amp; Sessions
+                <Link href="/practices" className="hover:text-white transition-colors">
+                  Reiki &amp; Energy Practices
                 </Link>
               </li>
               <li>
@@ -47,50 +48,48 @@ export function Footer() {
                 </Link>
               </li>
               <li>
-                <Link href="/contact" className="hover:text-white transition-colors">
-                  Clinic Location &amp; Booking
+                <Link href="/connect" className="hover:text-white transition-colors">
+                  Connect &amp; Share Reflections
                 </Link>
               </li>
             </ul>
           </div>
 
-          {/* Sessions Summary */}
+          {/* Practice Principles */}
           <div className="space-y-3">
             <h4 className="text-sm font-semibold uppercase tracking-wider text-[#C5A059]">
-              Modalities
+              Five Reiki Precepts (Gokai)
             </h4>
-            <ul className="space-y-2 text-xs text-[#FAF8F5]/80">
-              <li>• In-Person Usui Reiki (Agra Clinic)</li>
-              <li>• Global Distance Energy Projection</li>
-              <li>• Emotional Integrative Counseling</li>
-              <li>• Chakra Balancing &amp; Cord Cutting</li>
-              <li>• Nervous System Rest &amp; Burnout Recovery</li>
+            <ul className="space-y-2 text-xs text-[#FAF8F5]/80 italic">
+              <li>• Do not be angry</li>
+              <li>• Do not worry</li>
+              <li>• Be filled with gratitude</li>
+              <li>• Devote yourself to your work</li>
+              <li>• Be kind to all living beings</li>
             </ul>
           </div>
 
-          {/* Location & Hours */}
+          {/* Roots & Inquiries */}
           <div className="space-y-3">
             <h4 className="text-sm font-semibold uppercase tracking-wider text-[#C5A059]">
-              Agra Sanctuary
+              Personal Sanctuary
             </h4>
             <div className="space-y-2 text-xs text-[#FAF8F5]/80">
               <div className="flex items-start gap-2">
                 <MapPin className="w-4 h-4 text-[#B86B4B] shrink-0 mt-0.5" />
                 <span>
-                  {siteConfig.address.street}, {siteConfig.address.city}, UP {siteConfig.address.postalCode}
+                  {siteConfig.location.locality}, {siteConfig.location.city}, {siteConfig.location.state} ({siteConfig.location.country})
                 </span>
               </div>
               <div className="flex items-center gap-2">
-                <Clock className="w-4 h-4 text-[#C5A059] shrink-0" />
-                <span>Mon – Sat: 10:00 AM – 7:00 PM (By Appt)</span>
-              </div>
-              <div className="flex items-center gap-2">
-                <Phone className="w-4 h-4 text-[#C5A059] shrink-0" />
-                <span>{siteConfig.phone}</span>
-              </div>
-              <div className="flex items-center gap-2">
                 <Mail className="w-4 h-4 text-[#C5A059] shrink-0" />
-                <span>{siteConfig.email}</span>
+                <a href={`mailto:${siteConfig.email}`} className="hover:text-white transition-colors">
+                  {siteConfig.email}
+                </a>
+              </div>
+              <div className="flex items-center gap-2 pt-2">
+                <BookOpen className="w-4 h-4 text-[#C5A059] shrink-0" />
+                <span className="text-[11px] text-[#FAF8F5]/70">Open Access Educational Resource</span>
               </div>
             </div>
           </div>
@@ -98,11 +97,11 @@ export function Footer() {
 
         {/* Disclaimer & Bottom Bar */}
         <div className="pt-8 text-center md:flex md:justify-between items-center text-xs text-[#FAF8F5]/60 space-y-4 md:space-y-0">
-          <p className="max-w-xl text-left">
-            <span className="font-semibold text-[#FAF8F5]/80">Medical Disclaimer:</span> Reiki and emotional wellness counseling are complementary holistic modalities meant to support self-healing, relaxation, and inner balance. They do not substitute for licensed medical diagnosis, clinical psychiatric care, or prescribed medical treatment.
+          <p className="max-w-2xl text-left">
+            <span className="font-semibold text-[#FAF8F5]/80">Educational Disclaimer:</span> The information provided on this website is for educational and contemplative self-awareness purposes only. It does not constitute medical, psychological, or psychiatric advice, diagnosis, or clinical treatment.
           </p>
           <div className="flex items-center justify-center gap-1">
-            <span>© 2026 {siteConfig.name}. Crafted with care.</span>
+            <span>© 2026 {siteConfig.name}. Curated with care.</span>
           </div>
         </div>
       </div>

@@ -1,8 +1,7 @@
 import Link from "next/link";
 import Image from "next/image";
-import { Sparkles, ArrowRight, ShieldCheck, HeartHandshake, Compass, Sun, MapPin, Feather, Layers } from "lucide-react";
-import { servicesData, testimonialsData } from "@/data/site-content";
-import { getWhatsAppBookingUrl } from "@/config/site";
+import { Sparkles, ArrowRight, BookOpen, Sun, MapPin, Feather, Layers, Compass } from "lucide-react";
+import { practicesData, reflectionsData } from "@/data/site-content";
 
 export default function HomePage() {
   return (
@@ -19,61 +18,60 @@ export default function HomePage() {
             <div className="lg:col-span-7 space-y-6 text-center lg:text-left">
               <div className="inline-flex items-center gap-2 px-3.5 py-1.5 rounded-full bg-[#F2EDE4] border border-[#E8E0D2] text-[#2D4A3E] text-xs font-semibold tracking-wide uppercase">
                 <Sparkles className="w-3.5 h-3.5 text-[#C5A059]" />
-                <span>Sanctuary of Healing in Dayalbagh, Agra</span>
+                <span>Educational Wellness Resource • Dayalbagh, Agra</span>
               </div>
 
               <h1 className="font-serif text-4xl sm:text-5xl lg:text-6xl font-normal leading-[1.15] text-[#1F2924]">
-                Restore Inner Equilibrium Through{" "}
-                <span className="italic font-serif text-[#2D4A3E] font-medium">Reiki Healing</span> &amp;{" "}
-                <span className="italic font-serif text-[#B86B4B]">Emotional Counseling</span>
+                Understanding Subtle Energy &amp;{" "}
+                <span className="italic font-serif text-[#2D4A3E] font-medium">Reiki Traditions</span> for{" "}
+                <span className="italic font-serif text-[#B86B4B]">Inner Stillness</span>
               </h1>
 
+              {/* 40-word Declarative Opening Summary for RAG Chunking */}
               <p className="text-base sm:text-lg text-[#52635A] max-w-xl mx-auto lg:mx-0 leading-relaxed font-normal">
-                Dr. Shivie Gupta offers a calm, grounded space where Japanese biofield traditions meet compassionate emotional counseling. Reclaim serenity, resolve somatic fatigue, and release emotional burdens.
+                Curated by Dr. Shivie Gupta in Dayalbagh, Agra, this open educational resource explores Usui Reiki traditions, somatic relaxation, and emotional balance. We provide secular, grounded perspectives on biofield harmony—free from commercial sales, fees, or supernatural dogmas.
               </p>
 
-              {/* CTAs */}
+              {/* Action Buttons */}
               <div className="flex flex-col sm:flex-row items-center justify-center lg:justify-start gap-4 pt-2">
-                <a
-                  href={getWhatsAppBookingUrl("Hello Dr. Shivie, I would like to book a consultation in Agra.")}
-                  target="_blank"
-                  rel="noopener noreferrer"
+                <Link
+                  href="/guide"
                   className="w-full sm:w-auto inline-flex items-center justify-center gap-2 px-8 py-3.5 rounded-full bg-[#2D4A3E] text-white font-medium text-sm shadow-md hover:bg-[#1E332A] hover:shadow-lg transition-all"
                 >
-                  <span>Book a Consultation</span>
+                  <span>Start the Beginner&apos;s Guide</span>
                   <ArrowRight className="w-4 h-4" />
-                </a>
+                </Link>
                 <Link
-                  href="/services"
+                  href="/practices"
                   className="w-full sm:w-auto inline-flex items-center justify-center px-8 py-3.5 rounded-full bg-[#F2EDE4] text-[#1F2924] border border-[#E8E0D2] font-medium text-sm hover:bg-[#E8DFC8] transition-all"
                 >
-                  Explore Sessions
+                  Explore Reiki Practices
                 </Link>
               </div>
 
               {/* Badges / Micro Trust */}
               <div className="pt-6 grid grid-cols-3 gap-3 border-t border-[#E8E0D2]/80 max-w-lg mx-auto lg:mx-0">
                 <div className="text-center lg:text-left">
-                  <div className="text-xl font-serif font-bold text-[#2D4A3E]">12+</div>
-                  <div className="text-[11px] text-[#52635A]">Years Healing Experience</div>
-                </div>
-                <div className="text-center lg:text-left">
                   <div className="text-xl font-serif font-bold text-[#2D4A3E]">100%</div>
-                  <div className="text-[11px] text-[#52635A]">Non-Dogmatic Space</div>
+                  <div className="text-[11px] text-[#52635A]">Non-Commercial &amp; Open</div>
                 </div>
                 <div className="text-center lg:text-left">
-                  <div className="text-xl font-serif font-bold text-[#2D4A3E]">Agra &amp; Global</div>
-                  <div className="text-[11px] text-[#52635A]">In-Person &amp; Distance</div>
+                  <div className="text-xl font-serif font-bold text-[#2D4A3E]">Usui &amp; Karuna</div>
+                  <div className="text-[11px] text-[#52635A]">Authentic Lineages</div>
+                </div>
+                <div className="text-center lg:text-left">
+                  <div className="text-xl font-serif font-bold text-[#2D4A3E]">Dayalbagh, Agra</div>
+                  <div className="text-[11px] text-[#52635A]">Local Contemplation Roots</div>
                 </div>
               </div>
             </div>
 
             {/* Right Visual / Portrait */}
             <div className="lg:col-span-5 flex justify-center">
-              <div className="relative w-full max-w-sm sm:max-w-md aspect-[6/7] rounded-3xl overflow-hidden shadow-2xl border-4 border-white bg-[#F2EDE4] group">
+              <div className="relative w-full max-w-sm sm:max-w-md aspect-[6/7] rounded-3xl overflow-hidden shadow-xl border-4 border-white bg-[#F2EDE4] group">
                 <Image
                   src="/images/dr-shivie-portrait.svg"
-                  alt="Dr. Shivie Gupta, Reiki Master & Emotional Counselor in Agra"
+                  alt="Dr. Shivie Gupta, Reiki Master & Contemplative Educator in Agra"
                   fill
                   className="object-cover group-hover:scale-105 transition-transform duration-500"
                   priority
@@ -83,11 +81,11 @@ export default function HomePage() {
                     Dr. Shivie Gupta, PhD
                   </div>
                   <div className="text-xs text-[#52635A]">
-                    Usui &amp; Karuna Reiki Master • Biofield Counselor
+                    Usui &amp; Karuna Reiki Master • Wellness Educator
                   </div>
                   <div className="mt-1 flex items-center gap-1.5 text-[11px] text-[#B86B4B] font-medium">
                     <MapPin className="w-3 h-3" />
-                    <span>Dayalbagh Sanctuary, Agra</span>
+                    <span>Dayalbagh, Agra (UP)</span>
                   </div>
                 </div>
               </div>
@@ -96,18 +94,18 @@ export default function HomePage() {
         </div>
       </section>
 
-      {/* 2. The Bridge: Why Reiki & Counseling */}
+      {/* 2. Philosophy & Framework */}
       <section className="bg-[#F2EDE4]/60 py-20 border-y border-[#E8E0D2]/80">
         <div className="max-w-6xl mx-auto px-4 sm:px-6 lg:px-8">
           <div className="max-w-3xl mx-auto text-center space-y-4">
             <span className="text-xs font-semibold uppercase tracking-wider text-[#B86B4B]">
-              Integrated Mind-Body Synthesis
+              Contemplative Synthesis
             </span>
             <h2 className="font-serif text-3xl sm:text-4xl text-[#1F2924]">
-              The Bridge: Why Both Energy Healing &amp; Counseling?
+              Bridging Biofield Awareness &amp; Emotional Stillness
             </h2>
             <p className="text-sm sm:text-base text-[#52635A] leading-relaxed">
-              True emotional liberation rarely happens through cognitive analysis alone, nor through passive energetic resets alone. We unite both poles to nurture complete healing.
+              Energy traditions are often misunderstood as esoteric or supernatural. We explore Reiki as an intentional practice of quiet presence, somatic relaxation, and ethical mindfulness.
             </p>
           </div>
 
@@ -117,10 +115,10 @@ export default function HomePage() {
                 <Layers className="w-6 h-6 text-[#2D4A3E]" />
               </div>
               <h3 className="font-serif text-xl font-bold text-[#1F2924]">
-                1. Beyond Mere Talking
+                1. Beyond Mere Intellect
               </h3>
               <p className="text-sm text-[#52635A] leading-relaxed">
-                Conventional talk therapy can sometimes perpetuate mental looping. Biofield Reiki directly addresses where trauma and anxiety hide—in the fascia, breath, and autonomic nervous system.
+                Analyzing stress through thoughts alone can sometimes reinforce mental looping. Biofield awareness gently attends to where tension lives in the breath and body.
               </p>
             </div>
 
@@ -129,10 +127,10 @@ export default function HomePage() {
                 <Feather className="w-6 h-6 text-[#B86B4B]" />
               </div>
               <h3 className="font-serif text-xl font-bold text-[#1F2924]">
-                2. Non-Dogmatic &amp; Grounded
+                2. Secular &amp; Non-Dogmatic
               </h3>
               <p className="text-sm text-[#52635A] leading-relaxed">
-                No superstition, rigid dogmas, or occultism. Our work is grounded in respectful psychological ethics, physiological relaxation responses, and ancient biofield wisdom.
+                Zero fortune telling, astrology, or superstitious promises. Our discussions honor psychological dignity, scientific physiology, and traditional Japanese principles.
               </p>
             </div>
 
@@ -141,64 +139,60 @@ export default function HomePage() {
                 <Sun className="w-6 h-6 text-[#C5A059]" />
               </div>
               <h3 className="font-serif text-xl font-bold text-[#1F2924]">
-                3. Gentle Emotional Integration
+                3. Gentle Daily Integration
               </h3>
               <p className="text-sm text-[#52635A] leading-relaxed">
-                As stagnant emotional energy releases during Reiki, Dr. Shivie provides clear, grounded counseling guidance so you can make informed, courageous life choices.
+                Learn how the five historical Gokai precepts can transform ordinary moments of frustration, anxiety, and hurry into quiet opportunities for self-compassion.
               </p>
             </div>
           </div>
         </div>
       </section>
 
-      {/* 3. Core Modalities Preview */}
+      {/* 3. Core Practices Overview */}
       <section className="max-w-6xl mx-auto px-4 sm:px-6 lg:px-8">
         <div className="flex flex-col md:flex-row md:items-end justify-between gap-6 mb-12">
           <div>
             <span className="text-xs font-semibold uppercase tracking-wider text-[#B86B4B]">
-              Session Types
+              Educational Topics
             </span>
             <h2 className="font-serif text-3xl sm:text-4xl text-[#1F2924] mt-1">
-              Core Healing Modalities
+              Core Energy Disciplines
             </h2>
           </div>
           <Link
-            href="/services"
+            href="/practices"
             className="inline-flex items-center gap-1.5 text-sm font-semibold text-[#2D4A3E] hover:text-[#1E332A]"
           >
-            <span>View all details &amp; pricing</span>
+            <span>Read in-depth practice guides</span>
             <ArrowRight className="w-4 h-4" />
           </Link>
         </div>
 
         <div className="grid grid-cols-1 md:grid-cols-2 gap-8">
-          {servicesData.map((service) => (
+          {practicesData.map((practice) => (
             <div
-              key={service.id}
+              key={practice.id}
               className="p-8 rounded-3xl bg-white border border-[#E8E0D2] shadow-sm hover:shadow-md transition-all flex flex-col justify-between"
             >
               <div className="space-y-4">
-                <div className="flex items-center justify-between">
-                  <span className="px-3 py-1 rounded-full text-xs font-medium bg-[#F2EDE4] text-[#2D4A3E]">
-                    {service.format}
-                  </span>
-                  <span className="text-xs font-semibold text-[#B86B4B]">
-                    {service.duration}
-                  </span>
-                </div>
+                <span className="px-3 py-1 rounded-full text-xs font-medium bg-[#F2EDE4] text-[#2D4A3E] inline-block">
+                  {practice.tradition}
+                </span>
+
                 <h3 className="font-serif text-2xl font-bold text-[#1F2924]">
-                  {service.title}
+                  {practice.title}
                 </h3>
                 <p className="text-sm text-[#52635A] leading-relaxed">
-                  {service.tagline}
+                  {practice.tagline}
                 </p>
 
                 <div className="space-y-2 pt-2">
                   <span className="text-xs font-semibold text-[#1F2924] uppercase tracking-wider block">
-                    Ideal For:
+                    Core Themes:
                   </span>
                   <ul className="space-y-1 text-xs text-[#52635A]">
-                    {service.idealFor.slice(0, 3).map((item, idx) => (
+                    {practice.keyThemes.slice(0, 3).map((item, idx) => (
                       <li key={idx} className="flex items-center gap-2">
                         <span className="w-1.5 h-1.5 rounded-full bg-[#C5A059]" />
                         <span>{item}</span>
@@ -208,68 +202,60 @@ export default function HomePage() {
                 </div>
               </div>
 
-              <div className="pt-8 border-t border-[#E8E0D2] mt-6 flex items-center justify-between">
-                <div>
-                  <span className="text-[11px] text-[#52635A] uppercase block">Exchange</span>
-                  <span className="text-sm font-bold text-[#2D4A3E]">
-                    {service.pricingPlaceholder}
-                  </span>
-                </div>
-                <a
-                  href={getWhatsAppBookingUrl(`Hello Dr. Shivie, I am interested in ${service.title}.`)}
-                  target="_blank"
-                  rel="noopener noreferrer"
-                  className="px-4 py-2 rounded-full text-xs font-semibold bg-[#2D4A3E] text-white hover:bg-[#1E332A] transition-colors"
+              <div className="pt-6 border-t border-[#E8E0D2] mt-6 flex items-center justify-between">
+                <Link
+                  href={`/practices#${practice.slug}`}
+                  className="text-xs font-semibold text-[#2D4A3E] hover:underline flex items-center gap-1"
                 >
-                  Book Session
-                </a>
+                  <span>Explore principles &amp; self-care</span>
+                  <ArrowRight className="w-3.5 h-3.5" />
+                </Link>
+                <span className="text-[11px] text-[#B86B4B] font-medium">Educational</span>
               </div>
             </div>
           ))}
         </div>
       </section>
 
-      {/* 4. Agra Sanctuary Highlight */}
+      {/* 4. Agra Roots & Reflection Space */}
       <section className="max-w-6xl mx-auto px-4 sm:px-6 lg:px-8">
         <div className="p-8 sm:p-12 rounded-3xl bg-[#F2EDE4] border border-[#E8E0D2] grid grid-cols-1 lg:grid-cols-2 gap-8 items-center">
           <div className="space-y-6">
             <span className="text-xs font-semibold uppercase tracking-wider text-[#B86B4B]">
-              In-Person Sanctuary
+              Personal Roots
             </span>
             <h2 className="font-serif text-3xl sm:text-4xl text-[#1F2924]">
-              A Quiet Haven in the Heart of Agra
+              A Grounded Perspective from Agra
             </h2>
             <p className="text-sm sm:text-base text-[#52635A] leading-relaxed">
-              Located in Dayalbagh, our studio provides a fragrant, quiet retreat far removed from the bustle of the city. Soft lighting, botanical scents, natural acoustics, and clean energetic hygiene ensure your nervous system can truly let go.
+              Dr. Shivie Gupta resides and reflects in Dayalbagh, Agra—a peaceful community steeped in rich cultural heritage and quiet nature. This educational portal shares insights gathered over years of contemplative inquiry, offering readers practical pathways to reduce inner turmoil.
             </p>
             <div className="space-y-3 text-sm text-[#1F2924]">
               <div className="flex items-center gap-3">
-                <ShieldCheck className="w-5 h-5 text-[#2D4A3E]" />
-                <span>Strict 1-on-1 private appointments with zero overlap</span>
-              </div>
-              <div className="flex items-center gap-3">
-                <HeartHandshake className="w-5 h-5 text-[#2D4A3E]" />
-                <span>Complete confidentiality for personal counseling disclosures</span>
+                <BookOpen className="w-5 h-5 text-[#2D4A3E]" />
+                <span>Freely shared articles, self-care routines, and guides</span>
               </div>
               <div className="flex items-center gap-3">
                 <Compass className="w-5 h-5 text-[#2D4A3E]" />
-                <span>Easily accessible from Kamla Nagar, Sanjay Place, and Highway</span>
+                <span>Grounded bridge between traditional lineages and modern research</span>
               </div>
             </div>
+
             <div className="pt-2">
               <Link
-                href="/contact"
+                href="/about"
                 className="inline-flex items-center gap-2 text-sm font-semibold text-[#2D4A3E] hover:underline"
               >
-                <span>View location details &amp; clinic hours</span>
+                <span>Read Dr. Shivie&apos;s academic background &amp; lineage</span>
                 <ArrowRight className="w-4 h-4" />
               </Link>
             </div>
           </div>
+
           <div className="relative aspect-[4/3] rounded-2xl overflow-hidden border-2 border-white shadow-md">
             <Image
               src="/images/clinic-sanctuary.svg"
-              alt="Dr. Shivie Gupta Clinic Sanctuary Dayalbagh Agra"
+              alt="Contemplative Sanctuary Dayalbagh Agra"
               fill
               className="object-cover"
             />
@@ -277,28 +263,28 @@ export default function HomePage() {
         </div>
       </section>
 
-      {/* 5. Client Reflections / Testimonials */}
+      {/* 5. Reader Reflections */}
       <section className="max-w-6xl mx-auto px-4 sm:px-6 lg:px-8">
         <div className="text-center max-w-2xl mx-auto space-y-3 mb-14">
           <span className="text-xs font-semibold uppercase tracking-wider text-[#B86B4B]">
-            Client Experiences
+            Reader Notes
           </span>
           <h2 className="font-serif text-3xl sm:text-4xl text-[#1F2924]">
-            Reflections from the Path
+            Reflections &amp; Insights
           </h2>
           <p className="text-sm text-[#52635A]">
-            Real impressions from clients who have experienced in-person sessions in Agra and distance healing globally.
+            Thoughts from seekers and learners engaging with these educational resources.
           </p>
         </div>
 
         <div className="grid grid-cols-1 md:grid-cols-3 gap-8">
-          {testimonialsData.map((item, idx) => (
+          {reflectionsData.map((item, idx) => (
             <div
               key={idx}
               className="p-8 rounded-3xl bg-white border border-[#E8E0D2] shadow-sm flex flex-col justify-between"
             >
               <p className="text-sm text-[#52635A] italic leading-relaxed">
-                &ldquo;{item.quote}&rdquo;
+                &ldquo;{item.note}&rdquo;
               </p>
               <div className="pt-6 mt-6 border-t border-[#E8E0D2]">
                 <div className="font-serif text-base font-bold text-[#1F2924]">
@@ -306,7 +292,7 @@ export default function HomePage() {
                 </div>
                 <div className="text-xs text-[#52635A]">{item.location}</div>
                 <div className="text-[11px] font-semibold text-[#C5A059] mt-1">
-                  {item.service}
+                  Topic: {item.topic}
                 </div>
               </div>
             </div>

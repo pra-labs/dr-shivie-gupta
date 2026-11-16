@@ -1,190 +1,198 @@
-export interface Service {
+export interface Practice {
   id: string;
   title: string;
   slug: string;
   tagline: string;
-  duration: string;
-  format: "In-Person (Agra)" | "Online / Distance" | "Hybrid (In-Person & Online)";
-  pricingPlaceholder: string;
-  idealFor: string[];
-  whatHappens: string[];
-  benefits: string[];
+  tradition: string;
+  keyThemes: string[];
+  principles: string[];
+  selfCareTakeaways: string[];
 }
 
 export interface FAQ {
   question: string;
   answer: string;
-  category: "General" | "Session Details" | "Medical & Religious";
+  category: "General" | "Practice Understanding" | "Mindfulness & Science" | "Hindi & Local";
 }
 
-export interface Testimonial {
+export interface Reflection {
   name: string;
   location: string;
-  quote: string;
-  service: string;
+  note: string;
+  topic: string;
 }
 
-export const servicesData: Service[] = [
+export const practicesData: Practice[] = [
   {
-    id: "in-person-reiki",
-    title: "In-Person Usui Reiki & Aura Cleanse",
-    slug: "in-person-reiki",
-    tagline: "Deep restorative energy healing in the tranquil sanctuary of our Agra clinic.",
-    duration: "60 mins",
-    format: "In-Person (Agra)",
-    pricingPlaceholder: "₹1,800 per session / Packages available",
-    idealFor: [
-      "Physical exhaustion & chronic fatigue",
-      "Accumulated somatic stress and nervous system burnout",
-      "Emotional heaviness & grief transitions",
-      "Restoring grounded mental clarity"
+    id: "usui-reiki-ryoho",
+    title: "Usui Reiki Ryoho Foundations",
+    slug: "usui-reiki-ryoho",
+    tagline: "The traditional Japanese art of channeling subtle life force energy for systemic calm.",
+    tradition: "Mikao Usui Lineage (Japan, 1920s)",
+    keyThemes: [
+      "Parasympathetic nervous system restoration",
+      "Somatic stress dissipation and emotional stillness",
+      "Cultivating meditative daily presence (Gokai principles)",
+      "Unblocking stagnant biofield meridians",
     ],
-    whatHappens: [
-      "Gentle intake discussion over warm herbal tea to identify immediate emotional blockages",
-      "Fully clothed relaxation on a supportive healing couch with soothing soundscapes",
-      "Systematic palm placements over seven primary chakras and energy meridians",
-      "Aura sweeping and post-session grounding review with tailored home practices"
+    principles: [
+      "Just for today, do not be angry (Kyo dake wa Okoru-na)",
+      "Just for today, do not worry (Shinpai suna)",
+      "Be grateful (Kansha shite)",
+      "Do your duties with diligence (Gyo o hage-me)",
+      "Be kind to every living being (Hito ni shinsetsu ni)",
     ],
-    benefits: [
-      "Immediate calming of fight-or-flight sympathetic response",
-      "Release of unexpressed emotional tension stored in the body",
-      "Deep, restorative sleep following the session",
-      "Renewed sense of lightness and centered presence"
-    ]
+    selfCareTakeaways: [
+      "Daily self-treatment hand placements over the heart, belly, and head",
+      "Conscious diaphragmatic breathwork paired with palm warmth",
+      "Setting non-reactive emotional intentions each morning",
+    ],
   },
   {
-    id: "distance-reiki",
-    title: "Global Distance Reiki & Quantum Healing",
-    slug: "distance-reiki",
-    tagline: "Transcend geographical boundaries with high-frequency non-local energy transmission.",
-    duration: "45 mins",
-    format: "Online / Distance",
-    pricingPlaceholder: "₹1,500 / $35 USD per session",
-    idealFor: [
-      "Clients outside Agra, NCR, or residing overseas",
-      "Bed-bound individuals or post-operative recovery",
-      "Acute anxiety episodes requiring immediate gentle support",
-      "Regular energetic maintenance from the comfort of home"
+    id: "chakra-biofield-awareness",
+    title: "Chakra & Biofield Energy Alignment",
+    slug: "chakra-biofield-awareness",
+    tagline: "Understanding the seven vital energetic centers and their somatic correlations.",
+    tradition: "Vedic & Subtle Energy Studies",
+    keyThemes: [
+      "Mapping physical tension to emotional centers",
+      "Releasing lingering emotional cords and empathetic fatigue",
+      "Cultivating energetic boundaries and vitality",
+      "Grounding exercises for high-stress living",
     ],
-    whatHappens: [
-      "Pre-session WhatsApp/Zoom check-in and energetic alignment intention setting",
-      "Client rests comfortably in their personal space during the dedicated transfer window",
-      "Sacred Usui Hon Sha Ze Sho Nen symbol invocation and targeted remote energy projection",
-      "Detailed voice-note reflection detailing detected blockages and energetic insights"
+    principles: [
+      "Energy follows intention and mindful awareness",
+      "Balanced chakras foster emotional resilience and cognitive clarity",
+      "Releasing external psychological weight preserves personal sovereignty",
     ],
-    benefits: [
-      "Zero travel stress or environmental disruption",
-      "Equally potent energetic resonance validated across quantum physics principles",
-      "Flexible international scheduling across multiple timezones",
-      "Recorded intuitive observations for ongoing personal reflection"
-    ]
+    selfCareTakeaways: [
+      "Visualizing grounding roots connecting into the earth beneath your feet",
+      "Observing breath resonance across the chest, solar plexus, and throat",
+      "Mindful water hydration to support biofield conductivity",
+    ],
   },
   {
-    id: "integrative-counseling",
-    title: "Integrative Emotional Counseling & Mind-Body Synthesis",
-    slug: "integrative-counseling",
-    tagline: "Evidence-grounded emotional dialogue paired with subtle energy awareness.",
-    duration: "60 mins",
-    format: "Hybrid (In-Person & Online)",
-    pricingPlaceholder: "₹2,200 per session / 4-Week Intensive ₹7,500",
-    idealFor: [
-      "Life crossroads, career transitions, and relationship turbulence",
-      "Repetitive emotional patterns and unresolved subconscious conditioning",
-      "Existential emptiness, mild depressive states, and high-functioning anxiety",
-      "Individuals seeking rational, compassionate counseling without clinical coldness"
+    id: "integrative-emotional-inquiry",
+    title: "Integrative Mindfulness & Emotional Harmony",
+    slug: "integrative-emotional-inquiry",
+    tagline: "Bridging cognitive self-reflection with somatic biofield awareness.",
+    tradition: "Contemplative Psychology & Energy Synergy",
+    keyThemes: [
+      "Observing emotional loops without immediate self-judgment",
+      "Somatic check-ins mapping emotions inside the body",
+      "Developing self-compassion during life crossroads and grief",
+      "Freedom from rigid mental dogmas and superstition",
     ],
-    whatHappens: [
-      "Explorative cognitive dialogue uncovering core emotional stressors and narratives",
-      "Somatic check-ins to map bodily responses to specific thoughts and memories",
-      "Targeted emotional release techniques combining gentle breathwork with biofield resetting",
-      "Practical behavioral micro-habits designed for daily integration"
+    principles: [
+      "Cognitive understanding paired with somatic ease creates enduring peace",
+      "Emotions are physiological energies that desire gentle acknowledgement",
+      "Mental stillness begins by honoring the physical body's signals",
     ],
-    benefits: [
-      "Synergy between cognitive clarity and nervous system de-escalation",
-      "Freedom from circular ruminative thought loops",
-      "Cultivation of compassionate self-boundaries and assertiveness",
-      "Actionable roadmap for ongoing emotional resilience"
-    ]
+    selfCareTakeaways: [
+      "Ten-minute evening silent reflection without digital screens",
+      "Gentle journal prompts exploring emotional crossroads",
+      "Loving-kindness meditation for personal and collective well-being",
+    ],
   },
   {
-    id: "chakra-aura-balancing",
-    title: "Chakra Alignment & Energetic Cord Cutting",
-    slug: "chakra-aura-balancing",
-    tagline: "Release draining energetic entanglements and recalibrate your biofield.",
-    duration: "60 mins",
-    format: "In-Person (Agra)",
-    pricingPlaceholder: "₹2,000 per session",
-    idealFor: [
-      "Lingering ties to past toxic relationships or professional burnout",
-      "Unexplained emotional heaviness absorbed from empathetic overload",
-      "Feeling scattered, ungrounded, or chronically indecisive",
-      "Seasonal or milestone spiritual resets"
+    id: "distance-reiki-concepts",
+    title: "Non-Local Healing & Distance Energy Concepts",
+    slug: "distance-reiki-concepts",
+    tagline: "Exploring quantum biofield resonance and intentional connection across space.",
+    tradition: "Usui Hon Sha Ze Sho Nen Principle",
+    keyThemes: [
+      "Non-local physics analogies and conscious interconnectedness",
+      "Focused intention and meditative presence across distance",
+      "Supporting loved ones and inner peace from afar",
+      "Overcoming spatial limitations in contemplative energy work",
     ],
-    whatHappens: [
-      "Pendulum and biometer assessment of all 7 primary energetic vortexes",
-      "Intuitive identification of external emotional cords and etheric drainage",
-      "Etheric cord detachment using Karuna Reiki Master frequencies",
-      "Aura sealing and crystalline frequency balancing"
+    principles: [
+      "Consciousness and subtle energetic fields transcend Euclidean boundaries",
+      "Ethical stewardship: healing intention always respects recipient willingness",
+      "Quiet personal meditation deepens universal empathy",
     ],
-    benefits: [
-      "Immediate reclamation of personal vitality and sovereign energy",
-      "Relief from obsessive mental focus on past individuals",
-      "Enhanced physical stamina and emotional equilibrium",
-      "Shielding against energetic depletion in crowded or stressful settings"
-    ]
-  }
+    selfCareTakeaways: [
+      "Quietly holding a peaceful, loving intention for family and community",
+      "Cultivating unified consciousness through regular silent stillness",
+    ],
+  },
 ];
 
 export const faqsData: FAQ[] = [
   {
     category: "General",
-    question: "What is Reiki and how does it work?",
-    answer: "Reiki is a Japanese biofield modality rooted in the principle that all living organisms are animated by universal life force energy ('Ki'). When stress, trauma, or fatigue stagnate this flow, we experience physical tiredness and emotional vulnerability. A Reiki master acts as an attuned conduit, channeling gentle, high-frequency energy to facilitate your autonomic nervous system's innate self-healing response."
-  },
-  {
-    category: "Medical & Religious",
-    question: "Is Reiki a religion or associated with any religious faith?",
-    answer: "No. Reiki is completely non-religious and non-dogmatic. It requires no belief system, faith, or spiritual conversion to be effective. Dr. Shivie Gupta works with individuals of all cultural, philosophical, and spiritual backgrounds, as well as rational skeptics and medical professionals."
-  },
-  {
-    category: "Session Details",
-    question: "What should I expect during my first session with Dr. Shivie in Agra?",
-    answer: "You will arrive at our calm Dayalbagh clinic, remove your shoes, and enjoy a warm herbal infusion while discussing your intentions and current challenges. You will then lie fully clothed on a padded treatment bed. Soft music will play as Dr. Shivie gently places her hands on or slightly above key energy centers. Most clients feel gentle warmth, subtle tingling, or a state of profound meditative tranquility."
-  },
-  {
-    category: "Session Details",
-    question: "How does Distance Reiki work if I am not in Agra?",
-    answer: "In quantum energy traditions and non-local physics models, consciousness and biofield intent are not bound by Euclidean space. Using sacred distance protocols (Hon Sha Ze Sho Nen), energy is focused specifically on your energetic coordinates. Distance clients worldwide consistently report experiencing the exact same sensations of warmth, relief, and release as in-person visitors."
-  },
-  {
-    category: "Medical & Religious",
-    question: "Can Reiki replace medical treatment or psychiatric care?",
-    answer: "Never. Reiki is an integrative, complementary wellness practice. Dr. Shivie strictly upholds that Reiki and holistic counseling work in harmony with—and never as a substitute for—conventional medical treatments, psychotherapy, or prescribed medications. If you have an acute medical condition, consult your physician."
+    question: "What is Reiki and what is the purpose of this website?",
+    answer: "This platform is an independent, non-commercial educational resource curated by Dr. Shivie Gupta. Its purpose is to demystify traditional Usui and Karuna Reiki, clarify subtle biofield concepts, and share practical mindfulness techniques for emotional harmony without commercial sales or paid appointments.",
   },
   {
     category: "General",
-    question: "How many sessions will I need to feel significant improvement?",
-    answer: "While many clients experience substantial relief, mental clarity, and improved sleep following a single session, deep-seated emotional patterns or chronic stress typically benefit from a structured series of 3 to 5 sessions spaced weekly or bi-weekly."
-  }
+    question: "Does Dr. Shivie Gupta offer paid therapy or commercial clinic appointments here?",
+    answer: "No. This website is purely informational and educational. Dr. Shivie Gupta does not sell sessions, commercial packages, or clinic slots here. The content exists to foster awareness, self-care practices, and academic inquiry into energy modalities.",
+  },
+  {
+    category: "General",
+    question: "How does Reiki differ from fortune-telling, tarot, or astrology?",
+    answer: "Reiki is an evidence-informed contemplative biofield practice centered on relaxation, autonomic regulation, and emotional awareness. It has no connection to future prediction, horoscope readings, psychic phenomena, or supernatural fortune-telling.",
+  },
+  {
+    category: "Practice Understanding",
+    question: "What do people typically experience during a Reiki session?",
+    answer: "Recipients commonly experience soothing warmth from the practitioner's hands, gentle tingling, rhythmic muscle relaxation, stomach gurgling signaling parasympathetic vagal activation, and a deeply peaceful meditative state between wakefulness and sleep.",
+  },
+  {
+    category: "Practice Understanding",
+    question: "Do you have to undress or change clothes for Reiki?",
+    answer: "Never. Reiki is practiced fully clothed. Comfortable, loose-fitting cotton or linen attire that allows natural, unconstrained breathing is recommended for all personal relaxation and energy exercises.",
+  },
+  {
+    category: "Mindfulness & Science",
+    question: "Can Reiki replace medical or psychiatric treatment?",
+    answer: "Never. Reiki is an integrative, complementary wellness practice. It is designed to support relaxation and emotional well-being, and should never be viewed as a substitute for licensed medical care, psychiatric diagnosis, or prescribed therapies.",
+  },
+  {
+    category: "Mindfulness & Science",
+    question: "Is Reiki associated with any specific religion or creed?",
+    answer: "No. Reiki is universally secular and non-dogmatic. It requires no religious belief, faith conversion, or philosophical adherence, welcoming practitioners and researchers of all cultures, faiths, and scientific backgrounds.",
+  },
+  {
+    category: "Practice Understanding",
+    question: "How does distance energy work conceptually?",
+    answer: "Distance Reiki is framed around non-local quantum biofield principles, wherein focused conscious intention bridges spatial separation. In Usui traditions, it represents a meditative state connecting individuals to universal peace regardless of geographic boundaries.",
+  },
+  {
+    category: "Hindi & Local",
+    question: "Kya Reiki se overthinking aur mental stress kam hota hai?",
+    answer: "Haan, Reiki dhyan aur biofield relaxation ke madhyam se autonomic nervous system ko shant karti hai, jisse dimag me chal rahi anavashyak chinta aur overthinking natural tareeqe se shant hoti hai.",
+  },
+  {
+    category: "Hindi & Local",
+    question: "Kya is website par koi paid appointment ya fees lagti hai?",
+    answer: "Nahi, yeh website ek poori tarah se non-commercial aur educational resource hai. Yahan koi paid session, fees ya clinic booking nahi hoti; yeh keval Reiki aur mental peace ki jankari ke liye banayi gayi hai.",
+  },
+  {
+    category: "Hindi & Local",
+    question: "Kya Reiki kisi dharam ya pooja-path se judi hui hai?",
+    answer: "Bilkul nahi. Reiki kisi bhi dharam ya dharmik kriya se nahi judi hai. Yeh ek secular aur universal energy-balancing vidhi hai jise koi bhi vyakti apna sakta hai.",
+  },
 ];
 
-export const testimonialsData: Testimonial[] = [
+export const reflectionsData: Reflection[] = [
   {
-    name: "Sunita Agarwal",
-    location: "Kamla Nagar, Agra",
-    quote: "After months of insomnia and work-related panic, Dr. Shivie's calm presence and gentle touch brought a stillness I hadn't felt in years. Her studio in Agra is a sanctuary of peace.",
-    service: "In-Person Usui Reiki"
+    name: "A. Sharma",
+    location: "Agra, Uttar Pradesh",
+    note: "Reading Dr. Shivie's reflections on the Gokai principles brought a profound calm to my daily routine. A wonderfully grounded perspective on subtle energy.",
+    topic: "Gokai Mindfulness",
   },
   {
-    name: "Rohit K. Verma",
-    location: "Civil Lines, Agra / Delhi NCR",
-    quote: "I was skeptical about energy healing until our counseling session. Dr. Shivie bridges grounded psychological inquiry with subtle energy work masterfully. No superstition, just deep emotional renewal.",
-    service: "Integrative Emotional Counseling"
+    name: "P. Mehta",
+    location: "New Delhi",
+    note: "Finally, an explanation of Reiki and biofields stripped of commercial hype and superstition. The scientific and emotional harmony here is rare.",
+    topic: "Integrative Biofields",
   },
   {
-    name: "Ananya Deshmukh",
-    location: "Mumbai (Distance Client)",
-    quote: "Her distance sessions are deeply calming. Despite being hundreds of kilometers away, I could distinctly feel the warmth in my chest and shoulders. The voice notes she sends post-session are remarkably perceptive.",
-    service: "Global Distance Reiki"
-  }
+    name: "R. Sen",
+    location: "Bengaluru",
+    note: "The self-care takeaways and beginner guide have become part of my evening grounding ritual. Grateful for this open educational resource.",
+    topic: "Self-Care Meditation",
+  },
 ];

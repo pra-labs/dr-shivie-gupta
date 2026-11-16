@@ -2,24 +2,27 @@ import type { Metadata } from "next";
 import Image from "next/image";
 import Link from "next/link";
 import { Award, Compass, BookOpen, CheckCircle2, ArrowRight } from "lucide-react";
-import { getWhatsAppBookingUrl } from "@/config/site";
 
 export const metadata: Metadata = {
-  title: "About Dr. Shivie Gupta | Usui Reiki Master & Counselor in Agra",
-  description: "Learn about Dr. Shivie Gupta's Reiki lineage, counseling philosophy, academic background, and compassionate approach to biofield healing in Agra, UP.",
+  title: "About Dr. Shivie Gupta | Usui Reiki Master, Researcher & Educator in Agra",
+  description: "Learn about Dr. Shivie Gupta's Reiki lineage, doctoral research background, personal philosophy, and why she created this educational wellness guide.",
 };
 
 export default function AboutPage() {
   return (
     <div className="py-16 sm:py-24 space-y-20">
-      {/* Header Profile */}
+      {/* 40-word Declarative Opening Summary for RAG Chunking */}
       <section className="max-w-6xl mx-auto px-4 sm:px-6 lg:px-8">
+        <div className="p-6 rounded-2xl bg-[#F2EDE4]/60 border border-[#E8E0D2] text-xs text-[#52635A] max-w-3xl mb-8">
+          <strong className="text-[#2D4A3E] font-semibold">Educator Profile:</strong> Dr. Shivie Gupta is an attuned Usui and Karuna Reiki Master, contemplative researcher, and author based in Dayalbagh, Agra. She shares open educational resources on biofield harmony and emotional balance, maintaining a non-commercial platform free from tarot, astrology, or paid consultations.
+        </div>
+
         <div className="grid grid-cols-1 lg:grid-cols-12 gap-12 items-center">
           <div className="lg:col-span-5 flex justify-center">
             <div className="relative w-full max-w-sm aspect-[4/5] rounded-3xl overflow-hidden shadow-xl border-4 border-white bg-[#F2EDE4]">
               <Image
                 src="/images/dr-shivie-portrait.svg"
-                alt="Dr. Shivie Gupta Reiki Counselor Agra"
+                alt="Dr. Shivie Gupta Reiki Educator Agra"
                 fill
                 className="object-cover"
               />
@@ -28,48 +31,46 @@ export default function AboutPage() {
 
           <div className="lg:col-span-7 space-y-6">
             <div className="inline-flex items-center gap-2 px-3 py-1 rounded-full bg-[#F2EDE4] text-xs font-semibold text-[#2D4A3E] uppercase tracking-wider">
-              <span>Bio &amp; Philosophy</span>
+              <span>Background &amp; Vision</span>
             </div>
             <h1 className="font-serif text-4xl sm:text-5xl text-[#1F2924]">
               Meet Dr. Shivie Gupta
             </h1>
             <p className="text-base text-[#52635A] leading-relaxed">
-              Dr. Shivie Gupta is an attuned Usui and Karuna Reiki Master, educator, and intuitive emotional wellness counselor based in Agra, Uttar Pradesh. With a background blending academic rigor and holistic biofield disciplines, she provides a grounded alternative to sensationalized energy healing.
+              Dr. Shivie Gupta is an Usui and Karuna Reiki Master and independent wellness researcher based in Agra, Uttar Pradesh. Holding a doctorate, her journey unites rigorous critical inquiry with authentic Japanese biofield traditions to illuminate the practical power of subtle energy.
             </p>
             <p className="text-base text-[#52635A] leading-relaxed">
-              Her practice was born from the conviction that emotional disharmony, unexpressed grief, and chronic mental anxiety leave undeniable imprints on the physical and energetic body. Rather than treating symptoms in isolation, she assists clients in rediscovering their internal equilibrium.
+              Having observed how commercialization and sensational claims frequently cloud the public perception of energy healing, Dr. Shivie established this website as a pure, non-commercial educational library. Her aim is to empower individuals with self-care tools, meditative wisdom, and somatic clarity.
             </p>
 
             <div className="pt-4 flex flex-wrap gap-4">
-              <a
-                href={getWhatsAppBookingUrl("Hello Dr. Shivie, I'd like to schedule an introductory consultation.")}
-                target="_blank"
-                rel="noopener noreferrer"
+              <Link
+                href="/guide"
                 className="inline-flex items-center gap-2 px-6 py-3 rounded-full bg-[#2D4A3E] text-white text-xs font-semibold uppercase tracking-wider hover:bg-[#1E332A] transition-colors"
               >
-                <span>Connect with Dr. Shivie</span>
+                <span>Read the Beginner&apos;s Guide</span>
                 <ArrowRight className="w-4 h-4" />
-              </a>
+              </Link>
               <Link
-                href="/services"
+                href="/practices"
                 className="inline-flex items-center gap-2 px-6 py-3 rounded-full bg-[#F2EDE4] text-[#1F2924] text-xs font-semibold uppercase tracking-wider hover:bg-[#E8DFC8] transition-colors"
               >
-                View Modalities
+                Explore Practices
               </Link>
             </div>
           </div>
         </div>
       </section>
 
-      {/* Lineage & Credentials */}
+      {/* Lineage & Background */}
       <section className="bg-[#F2EDE4]/60 py-16 border-y border-[#E8E0D2]">
         <div className="max-w-6xl mx-auto px-4 sm:px-6 lg:px-8">
           <div className="max-w-2xl mx-auto text-center space-y-3 mb-12">
             <span className="text-xs font-semibold uppercase tracking-wider text-[#B86B4B]">
-              Authenticity &amp; Training
+              Authenticity &amp; Integrity
             </span>
             <h2 className="font-serif text-3xl sm:text-4xl text-[#1F2924]">
-              Lineage &amp; Certifications
+              Lineage &amp; Research Foundations
             </h2>
           </div>
 
@@ -87,54 +88,54 @@ export default function AboutPage() {
             <div className="p-8 rounded-2xl bg-white border border-[#E8E0D2] space-y-3">
               <BookOpen className="w-8 h-8 text-[#2D4A3E]" />
               <h3 className="font-serif text-xl font-bold text-[#1F2924]">
-                Doctorate &amp; Research Discipline
+                Doctoral Inquiry
               </h3>
               <p className="text-xs text-[#52635A] leading-relaxed">
-                Her doctorate reflects deep commitment to analytical clarity, mental health inquiry, and empathetic listening without sensational claims or dogma.
+                Academic training that grounds all educational writing in clear logic, verifiable principles, and psychological empathy rather than fear-based dogma.
               </p>
             </div>
 
             <div className="p-8 rounded-2xl bg-white border border-[#E8E0D2] space-y-3">
               <Compass className="w-8 h-8 text-[#B86B4B]" />
               <h3 className="font-serif text-xl font-bold text-[#1F2924]">
-                Karuna® Reiki Attunements
+                Karuna® Reiki Studies
               </h3>
               <p className="text-xs text-[#52635A] leading-relaxed">
-                Advanced compassionate healing frequencies specifically suited for cellular trauma release, shadow work, and deep emotional cord dissolution.
+                Exploration of compassionate resonance frequencies specifically focused on emotional cord awareness, shadow integration, and gentle somatic release.
               </p>
             </div>
           </div>
         </div>
       </section>
 
-      {/* Why Agra Practice */}
-      <section className="max-w-6xl mx-auto px-4 sm:px-6 lg:px-8">
+      {/* Why This Non-Commercial Platform Exists */}
+      <section className="max-w-6xl mx-auto px-4 sm:px-6 lg:px-8 space-y-12">
         <div className="grid grid-cols-1 lg:grid-cols-2 gap-12 items-center">
           <div className="space-y-6">
             <span className="text-xs font-semibold uppercase tracking-wider text-[#B86B4B]">
-              Local Roots &amp; Global Reach
+              Open Wellness Initiative
             </span>
             <h2 className="font-serif text-3xl sm:text-4xl text-[#1F2924]">
-              Why Practice in Dayalbagh, Agra?
+              Why Create an Educational Resource?
             </h2>
             <p className="text-sm sm:text-base text-[#52635A] leading-relaxed">
-              Agra is a city of timeless history, architectural magnificence, and vibrant commerce, yet its fast-paced daily life often brings significant stress, familial pressure, and unvoiced burdens to its residents.
+              Living in Dayalbagh, Agra, Dr. Shivie frequently encountered individuals seeking genuine relaxation and mental balance but discouraged by commercial wellness models or pseudoscience.
             </p>
             <p className="text-sm sm:text-base text-[#52635A] leading-relaxed">
-              Establishing a sanctuary in Dayalbagh allows Dr. Shivie to offer a peaceful, unhurried counterweight: a space where local professionals, students, homemakers, and elders can experience attentive care without judgment.
+              This space was created as a public service: a tranquil online archive where anyone can read authentic historical context, understand biofield mechanics, and learn daily self-care rituals without monetary transaction.
             </p>
             <ul className="space-y-3 text-sm text-[#1F2924]">
               <li className="flex items-center gap-2">
                 <CheckCircle2 className="w-4 h-4 text-[#2D4A3E]" />
-                <span>Dedicated private suite with tranquil garden access</span>
+                <span>Zero sales funnels, paid subscriptions, or consultation fees</span>
               </li>
               <li className="flex items-center gap-2">
                 <CheckCircle2 className="w-4 h-4 text-[#2D4A3E]" />
-                <span>Zero clinical sterility—warm, grounded, welcoming atmosphere</span>
+                <span>Respectful secular presentation suitable for all backgrounds</span>
               </li>
               <li className="flex items-center gap-2">
                 <CheckCircle2 className="w-4 h-4 text-[#2D4A3E]" />
-                <span>Convenient parking and central accessibility in North Agra</span>
+                <span>Clear delineation supporting conventional healthcare</span>
               </li>
             </ul>
           </div>
@@ -145,16 +146,16 @@ export default function AboutPage() {
             </h3>
             <div className="space-y-4 text-xs text-[#52635A] leading-relaxed">
               <div className="p-4 rounded-xl bg-white border border-[#E8E0D2]">
-                <strong className="text-[#1F2924] block mb-1">Total Client Sovereignty:</strong>
-                Reiki never imposes will or invasive energies. The practitioner simply facilitates an environment where your innate wisdom steers the healing process.
+                <strong className="text-[#1F2924] block mb-1">Self-Directed Healing:</strong>
+                True healing is an innate physiological and energetic capacity within each individual. An educator merely illuminates the map.
               </div>
               <div className="p-4 rounded-xl bg-white border border-[#E8E0D2]">
-                <strong className="text-[#1F2924] block mb-1">Absolute Confidentiality:</strong>
-                All counseling discussions, personal life details, and intuitive observations remain strictly private and sacred.
+                <strong className="text-[#1F2924] block mb-1">Clear Medical Boundaries:</strong>
+                Energy practices complement healthy living but never replace qualified medical, neurological, or psychiatric intervention.
               </div>
               <div className="p-4 rounded-xl bg-white border border-[#E8E0D2]">
-                <strong className="text-[#1F2924] block mb-1">Honest Complementarity:</strong>
-                We respect conventional medicine and encourage clients to maintain all medical regimens under doctor supervision.
+                <strong className="text-[#1F2924] block mb-1">Universal Access:</strong>
+                Mindfulness and peaceful contemplation should be freely accessible to all seekers regardless of economic standing.
               </div>
             </div>
           </div>

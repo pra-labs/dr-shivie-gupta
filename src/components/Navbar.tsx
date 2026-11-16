@@ -3,7 +3,7 @@
 import Link from "next/link";
 import { useState } from "react";
 import { Menu, X, Sparkles } from "lucide-react";
-import { siteConfig, getWhatsAppBookingUrl } from "@/config/site";
+import { siteConfig } from "@/config/site";
 
 export function Navbar() {
   const [isOpen, setIsOpen] = useState(false);
@@ -11,9 +11,9 @@ export function Navbar() {
   const navLinks = [
     { name: "Home", href: "/" },
     { name: "About", href: "/about" },
-    { name: "Services", href: "/services" },
+    { name: "Practices", href: "/practices" },
     { name: "Beginner's Guide", href: "/guide" },
-    { name: "Contact & Visit", href: "/contact" },
+    { name: "Connect", href: "/connect" },
   ];
 
   return (
@@ -28,7 +28,7 @@ export function Navbar() {
               {siteConfig.name}
             </span>
             <span className="text-[11px] font-medium tracking-wider uppercase text-[#B86B4B]">
-              Reiki Master • Agra
+              Reiki &amp; Wellness Education
             </span>
           </div>
         </Link>
@@ -44,14 +44,12 @@ export function Navbar() {
               {link.name}
             </Link>
           ))}
-          <a
-            href={getWhatsAppBookingUrl()}
-            target="_blank"
-            rel="noopener noreferrer"
-            className="inline-flex items-center justify-center px-4 py-2 rounded-full text-xs font-semibold uppercase tracking-wider bg-[#2D4A3E] text-white hover:bg-[#1E332A] transition-all shadow-sm hover:shadow"
+          <Link
+            href="/guide"
+            className="inline-flex items-center justify-center px-4 py-2 rounded-full text-xs font-semibold uppercase tracking-wider border border-[#2D4A3E] text-[#2D4A3E] hover:bg-[#2D4A3E] hover:text-white transition-all shadow-xs"
           >
-            Consultation
-          </a>
+            Start Guide
+          </Link>
         </nav>
 
         {/* Mobile Hamburger */}
@@ -82,14 +80,13 @@ export function Navbar() {
             ))}
           </nav>
           <div className="pt-4 border-t border-[#E8E0D2]">
-            <a
-              href={getWhatsAppBookingUrl()}
-              target="_blank"
-              rel="noopener noreferrer"
-              className="block w-full text-center py-3 px-4 rounded-full text-sm font-semibold uppercase tracking-wider bg-[#2D4A3E] text-white hover:bg-[#1E332A]"
+            <Link
+              href="/guide"
+              onClick={() => setIsOpen(false)}
+              className="block w-full text-center py-3 px-4 rounded-full text-sm font-semibold uppercase tracking-wider border border-[#2D4A3E] text-[#2D4A3E] hover:bg-[#2D4A3E] hover:text-white transition-colors"
             >
-              Book via WhatsApp
-            </a>
+              Explore Beginner&apos;s Guide
+            </Link>
           </div>
         </div>
       )}

@@ -1,5 +1,5 @@
 import type { Metadata } from "next";
-import { Sun, Heart, Coffee } from "lucide-react";
+import { Coffee, Sun, Heart } from "lucide-react";
 import { FaqAccordion } from "@/components/FaqAccordion";
 
 export const metadata: Metadata = {
@@ -10,7 +10,7 @@ export const metadata: Metadata = {
 export default function GuidePage() {
   return (
     <div className="py-16 sm:py-24 space-y-24">
-      {/* Header */}
+      {/* 40-word Declarative Opening Summary for RAG Chunking */}
       <section className="max-w-4xl mx-auto px-4 sm:px-6 lg:px-8 text-center space-y-4">
         <span className="text-xs font-semibold uppercase tracking-wider text-[#B86B4B]">
           Clarity &amp; Education
@@ -18,8 +18,8 @@ export default function GuidePage() {
         <h1 className="font-serif text-4xl sm:text-5xl text-[#1F2924]">
           Beginner’s Guide to Reiki Healing
         </h1>
-        <p className="text-base text-[#52635A] leading-relaxed">
-          It is natural to feel curious or hesitant when approaching energy healing for the first time. Here is a clear, transparent walkthrough of what to expect at every stage.
+        <p className="text-base text-[#52635A] leading-relaxed max-w-2xl mx-auto">
+          Reiki is a gentle Japanese biofield discipline that activates deep relaxation and emotional release through non-invasive palm placements. In Dr. Shivie Gupta’s Agra sanctuary, sessions require zero religious belief or undressing, offering a safe space to dissolve tension.
         </p>
       </section>
 
@@ -41,7 +41,7 @@ export default function GuidePage() {
               <li>• Wear comfortable, loose natural cotton or linen clothing.</li>
               <li>• Avoid heavy meals or excessive caffeine 2 hours prior.</li>
               <li>• Arrive 10 minutes early in Dayalbagh to decompress with water or tea.</li>
-              <li>• Bring an open mind; you do not need to &apos;believe&apos; for your nervous system to respond.</li>
+              <li>• Bring an open mind; you do not need to believe for your nervous system to respond.</li>
             </ul>
           </div>
 
@@ -85,17 +85,17 @@ export default function GuidePage() {
         </div>
       </section>
 
-      {/* FAQs Section */}
+      {/* 20 FAQs Section with Category Filter */}
       <section className="max-w-4xl mx-auto px-4 sm:px-6 lg:px-8 space-y-8">
         <div className="text-center space-y-3">
           <span className="text-xs font-semibold uppercase tracking-wider text-[#B86B4B]">
-            Have Questions?
+            Knowledge Base
           </span>
           <h2 className="font-serif text-3xl sm:text-4xl text-[#1F2924]">
             Frequently Asked Questions
           </h2>
           <p className="text-sm text-[#52635A]">
-            Answers to common questions regarding ethics, religion, physical sensations, and session mechanics.
+            Comprehensive answers addressing session mechanics, ethics, medical boundaries, pricing, and Hinglish queries.
           </p>
         </div>
 
