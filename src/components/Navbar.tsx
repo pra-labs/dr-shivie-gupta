@@ -52,40 +52,41 @@ export function Navbar() {
           </Link>
         </nav>
 
-        {/* Mobile Hamburger */}
+        {/* Mobile Hamburger with accessible 44px+ hit area */}
         <div className="md:hidden flex items-center">
           <button
             onClick={() => setIsOpen(!isOpen)}
-            className="p-2 rounded-lg text-[#1F2924] hover:bg-[#F2EDE4] transition-colors"
+            className="p-3 min-w-[44px] min-h-[44px] rounded-xl text-[#1F2924] hover:bg-[#F2EDE4] transition-colors flex items-center justify-center"
             aria-label="Toggle navigation menu"
+            aria-expanded={isOpen}
           >
             {isOpen ? <X className="w-6 h-6" /> : <Menu className="w-6 h-6" />}
           </button>
         </div>
       </div>
 
-      {/* Mobile Drawer */}
+      {/* Mobile Drawer Menu with generous touch targets (48px+) */}
       {isOpen && (
-        <div className="md:hidden bg-[#FAF8F5] border-b border-[#E8E0D2] px-6 py-6 space-y-4 animate-in fade-in slide-in-from-top-2 duration-200">
-          <nav className="flex flex-col space-y-3">
+        <div className="md:hidden bg-[#FAF8F5] border-b border-[#E8E0D2] px-6 py-6 space-y-4 shadow-lg animate-in fade-in slide-in-from-top-2 duration-200">
+          <nav className="flex flex-col space-y-2">
             {navLinks.map((link) => (
               <Link
                 key={link.name}
                 href={link.href}
                 onClick={() => setIsOpen(false)}
-                className="text-base font-medium text-[#1F2924] hover:text-[#2D4A3E] py-1"
+                className="text-base font-semibold text-[#1F2924] hover:text-[#2D4A3E] hover:bg-[#F2EDE4] rounded-xl px-4 py-3 min-h-[48px] flex items-center transition-colors"
               >
                 {link.name}
               </Link>
             ))}
           </nav>
-          <div className="pt-4 border-t border-[#E8E0D2]">
+          <div className="pt-3 border-t border-[#E8E0D2]">
             <Link
               href="/guide"
               onClick={() => setIsOpen(false)}
-              className="block w-full text-center py-3 px-4 rounded-full text-sm font-semibold uppercase tracking-wider border border-[#2D4A3E] text-[#2D4A3E] hover:bg-[#2D4A3E] hover:text-white transition-colors"
+              className="w-full flex items-center justify-center py-3.5 px-4 min-h-[48px] rounded-full text-sm font-semibold uppercase tracking-wider border-2 border-[#2D4A3E] text-[#2D4A3E] hover:bg-[#2D4A3E] hover:text-white transition-colors shadow-xs"
             >
-              Explore Beginner&apos;s Guide
+              Start Beginner&apos;s Guide
             </Link>
           </div>
         </div>
