@@ -58,29 +58,29 @@ export default function HomePage() {
               </div>
 
               {/* Responsive Metrics: Single Horizontal 3-Column Strip with Tabular & Lining Numerals */}
-              <div className="pt-4 sm:pt-5 border-t border-[#E8E0D2]/80 max-w-lg mx-auto lg:mx-0">
-                <div className="grid grid-cols-3 gap-2 sm:gap-4 text-center sm:text-left">
-                  <div className="p-2 sm:p-0 rounded-xl bg-white/60 sm:bg-transparent border border-[#E8E0D2]/50 sm:border-0">
-                    <div className="text-base sm:text-xl font-serif font-bold text-[#2D4A3E] tabular-nums lining-nums">
+              <div className="pt-3.5 sm:pt-5 border-t border-[#E8E0D2]/80 max-w-lg mx-auto lg:mx-0">
+                <div className="grid grid-cols-3 gap-1.5 sm:gap-4 text-center sm:text-left">
+                  <div className="px-1.5 py-2 sm:p-0 rounded-xl bg-white/60 sm:bg-transparent border border-[#E8E0D2]/50 sm:border-0">
+                    <div className="text-base sm:text-xl font-serif font-bold text-[#2D4A3E] [font-variant-numeric:lining-nums] tabular-nums">
                       100%
                     </div>
-                    <div className="text-[10px] sm:text-[11px] text-[#52635A] leading-tight">
-                      Non-Commercial &amp; Open
+                    <div className="text-[10px] sm:text-[11px] text-[#52635A] whitespace-nowrap overflow-hidden text-ellipsis">
+                      Open &amp; Free
                     </div>
                   </div>
-                  <div className="p-2 sm:p-0 rounded-xl bg-white/60 sm:bg-transparent border border-[#E8E0D2]/50 sm:border-0">
-                    <div className="text-base sm:text-xl font-serif font-bold text-[#2D4A3E] tabular-nums lining-nums leading-snug">
+                  <div className="px-1.5 py-2 sm:p-0 rounded-xl bg-white/60 sm:bg-transparent border border-[#E8E0D2]/50 sm:border-0">
+                    <div className="text-base sm:text-xl font-serif font-bold text-[#2D4A3E] [font-variant-numeric:lining-nums] tabular-nums">
                       Usui &amp; Karuna
                     </div>
-                    <div className="text-[10px] sm:text-[11px] text-[#52635A] leading-tight">
+                    <div className="text-[10px] sm:text-[11px] text-[#52635A] whitespace-nowrap overflow-hidden text-ellipsis">
                       Traditional Lineages
                     </div>
                   </div>
-                  <div className="p-2 sm:p-0 rounded-xl bg-white/60 sm:bg-transparent border border-[#E8E0D2]/50 sm:border-0">
-                    <div className="text-base sm:text-xl font-serif font-bold text-[#2D4A3E] tabular-nums lining-nums leading-snug">
+                  <div className="px-1.5 py-2 sm:p-0 rounded-xl bg-white/60 sm:bg-transparent border border-[#E8E0D2]/50 sm:border-0">
+                    <div className="text-base sm:text-xl font-serif font-bold text-[#2D4A3E] [font-variant-numeric:lining-nums] tabular-nums">
                       Dayalbagh, Agra
                     </div>
-                    <div className="text-[10px] sm:text-[11px] text-[#52635A] leading-tight">
+                    <div className="text-[10px] sm:text-[11px] text-[#52635A] whitespace-nowrap overflow-hidden text-ellipsis">
                       Contemplative Roots
                     </div>
                   </div>
