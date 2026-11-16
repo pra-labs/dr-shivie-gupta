@@ -2,6 +2,8 @@ import Link from "next/link";
 import Image from "next/image";
 import { Sparkles, ArrowRight, BookOpen, Sun, MapPin, Feather, Layers, Compass } from "lucide-react";
 import { practicesData, reflectionsData } from "@/data/site-content";
+import { DisciplineCarousel } from "@/components/DisciplineCarousel";
+import { GokaiReflectionWidget } from "@/components/GokaiReflectionWidget";
 
 export default function HomePage() {
   return (
@@ -27,45 +29,60 @@ export default function HomePage() {
               <h1 className="font-serif text-3xl sm:text-5xl lg:text-6xl font-normal leading-[1.15] text-[#1F2924] text-balance">
                 Understanding Subtle Energy &amp;{" "}
                 <span className="italic font-serif text-[#2D4A3E] font-medium">Reiki Traditions</span> for{" "}
-                <span className="italic font-serif text-[#B86B4B]">Inner Stillness</span>
+                <span className="italic font-serif text-[#9E4A2A]">Inner Stillness</span>
               </h1>
 
-              {/* 40-word Declarative Opening Summary for RAG Chunking */}
-              <p className="text-sm sm:text-base lg:text-lg text-[#52635A] max-w-xl mx-auto lg:mx-0 leading-relaxed font-normal">
-                Curated by Dr. Shivie Gupta in Dayalbagh, Agra, this open educational resource explores Usui Reiki traditions, somatic relaxation, and emotional balance. We provide secular, grounded perspectives on biofield harmony—free from commercial sales, fees, or supernatural dogmas.
+              {/* Tightened Declarative Opening Summary (2-3 lines max) */}
+              <p className="text-sm sm:text-base lg:text-lg text-[#52635A] max-w-xl mx-auto lg:mx-0 leading-relaxed font-normal text-balance">
+                An open educational initiative by Dr. Shivie Gupta in Dayalbagh, Agra—exploring traditional Usui Reiki, somatic relaxation, and biofield balance without commercial sales or dogma.
               </p>
 
-              {/* Action Buttons - Crisp Secondary Button Contrast on Mobile */}
-              <div className="flex flex-col sm:flex-row items-center justify-center lg:justify-start gap-3 sm:gap-4 pt-1 sm:pt-2">
+              {/* Action Buttons - Clear CTA Hierarchy: Primary Button + Under-link */}
+              <div className="flex flex-col sm:flex-row items-center justify-center lg:justify-start gap-3 sm:gap-6 pt-1 sm:pt-2">
                 <Link
                   href="/guide"
-                  className="w-full sm:w-auto inline-flex items-center justify-center gap-2 px-7 py-3 sm:px-8 sm:py-3.5 rounded-full bg-[#2D4A3E] text-white font-medium text-xs sm:text-sm shadow-md hover:bg-[#1E332A] hover:shadow-lg transition-all"
+                  className="w-full sm:w-auto inline-flex items-center justify-center gap-2 px-7 py-3.5 sm:px-8 rounded-full bg-[#2D4A3E] text-white font-medium text-xs sm:text-sm shadow-md hover:bg-[#1E332A] hover:shadow-lg transition-all"
                 >
                   <span>Start the Beginner&apos;s Guide</span>
                   <ArrowRight className="w-4 h-4" />
                 </Link>
                 <Link
                   href="/practices"
-                  className="w-full sm:w-auto inline-flex items-center justify-center px-7 py-3 sm:px-8 sm:py-3.5 rounded-full bg-white sm:bg-[#F2EDE4] text-[#1F2924] border-2 border-[#2D4A3E]/30 sm:border-[#E8E0D2] font-semibold sm:font-medium text-xs sm:text-sm hover:bg-[#E8DFC8] transition-all shadow-xs"
+                  className="inline-flex items-center gap-1.5 text-xs sm:text-sm font-semibold text-[#2D4A3E] hover:text-[#1E332A] py-1 transition-colors group"
                 >
-                  Explore Reiki Practices
+                  <span className="underline underline-offset-4 decoration-[#2D4A3E]/30 group-hover:decoration-[#2D4A3E]">
+                    Explore Reiki Practices
+                  </span>
+                  <ArrowRight className="w-4 h-4 group-hover:translate-x-0.5 transition-transform" />
                 </Link>
               </div>
 
-              {/* Responsive Metrics: 2-column mobile layout + 3rd item centered, 3-column desktop */}
-              <div className="pt-4 sm:pt-6 border-t border-[#E8E0D2]/80 max-w-lg mx-auto lg:mx-0">
-                <div className="grid grid-cols-2 sm:grid-cols-3 gap-3 sm:gap-4 text-center sm:text-left">
+              {/* Responsive Metrics: Single Horizontal 3-Column Strip with Tabular & Lining Numerals */}
+              <div className="pt-4 sm:pt-5 border-t border-[#E8E0D2]/80 max-w-lg mx-auto lg:mx-0">
+                <div className="grid grid-cols-3 gap-2 sm:gap-4 text-center sm:text-left">
                   <div className="p-2 sm:p-0 rounded-xl bg-white/60 sm:bg-transparent border border-[#E8E0D2]/50 sm:border-0">
-                    <div className="text-lg sm:text-xl font-serif font-bold text-[#2D4A3E]">100%</div>
-                    <div className="text-[10px] sm:text-[11px] text-[#52635A]">Non-Commercial &amp; Open</div>
+                    <div className="text-base sm:text-xl font-serif font-bold text-[#2D4A3E] tabular-nums lining-nums">
+                      100%
+                    </div>
+                    <div className="text-[10px] sm:text-[11px] text-[#52635A] leading-tight">
+                      Non-Commercial &amp; Open
+                    </div>
                   </div>
                   <div className="p-2 sm:p-0 rounded-xl bg-white/60 sm:bg-transparent border border-[#E8E0D2]/50 sm:border-0">
-                    <div className="text-lg sm:text-xl font-serif font-bold text-[#2D4A3E]">Usui &amp; Karuna</div>
-                    <div className="text-[10px] sm:text-[11px] text-[#52635A]">Traditional Lineages</div>
+                    <div className="text-base sm:text-xl font-serif font-bold text-[#2D4A3E] tabular-nums lining-nums leading-snug">
+                      Usui &amp; Karuna
+                    </div>
+                    <div className="text-[10px] sm:text-[11px] text-[#52635A] leading-tight">
+                      Traditional Lineages
+                    </div>
                   </div>
-                  <div className="col-span-2 sm:col-span-1 p-2 sm:p-0 rounded-xl bg-white/60 sm:bg-transparent border border-[#E8E0D2]/50 sm:border-0">
-                    <div className="text-lg sm:text-xl font-serif font-bold text-[#2D4A3E]">Dayalbagh, Agra</div>
-                    <div className="text-[10px] sm:text-[11px] text-[#52635A]">Contemplative Roots</div>
+                  <div className="p-2 sm:p-0 rounded-xl bg-white/60 sm:bg-transparent border border-[#E8E0D2]/50 sm:border-0">
+                    <div className="text-base sm:text-xl font-serif font-bold text-[#2D4A3E] tabular-nums lining-nums leading-snug">
+                      Dayalbagh, Agra
+                    </div>
+                    <div className="text-[10px] sm:text-[11px] text-[#52635A] leading-tight">
+                      Contemplative Roots
+                    </div>
                   </div>
                 </div>
               </div>
@@ -73,7 +90,7 @@ export default function HomePage() {
 
             {/* Right Visual / Portrait - Naturally Framed for Above the Fold */}
             <div className="lg:col-span-5 flex justify-center pt-2 sm:pt-0">
-              <div className="relative w-full max-w-[280px] sm:max-w-sm aspect-[5/6] sm:aspect-[6/7] rounded-3xl overflow-hidden shadow-xl border-4 border-white bg-[#F2EDE4] group">
+              <div className="relative w-full max-w-[260px] sm:max-w-sm aspect-[5/6] sm:aspect-[6/7] rounded-3xl overflow-hidden shadow-xl border-4 border-white bg-[#F2EDE4] group">
                 <Image
                   src="/images/dr-shivie-portrait.svg"
                   alt="Dr. Shivie Gupta, Reiki Master & Contemplative Educator in Agra"
@@ -81,14 +98,14 @@ export default function HomePage() {
                   className="object-cover group-hover:scale-105 transition-transform duration-500"
                   priority
                 />
-                <div className="absolute inset-x-3 bottom-3 sm:inset-x-4 sm:bottom-4 p-3 sm:p-4 rounded-2xl bg-white/95 backdrop-blur shadow-md border border-[#E8E0D2]/70 text-left">
-                  <div className="font-serif text-base sm:text-lg font-bold text-[#2D4A3E]">
+                <div className="absolute inset-x-2.5 bottom-2.5 sm:inset-x-4 sm:bottom-4 p-2.5 sm:p-4 rounded-2xl bg-white/95 backdrop-blur shadow-md border border-[#E8E0D2]/70 text-left">
+                  <div className="font-serif text-sm sm:text-lg font-bold text-[#2D4A3E]">
                     Dr. Shivie Gupta, PhD
                   </div>
-                  <div className="text-[11px] sm:text-xs text-[#52635A]">
+                  <div className="text-[10px] sm:text-xs text-[#52635A]">
                     Usui &amp; Karuna Reiki Master • Educator
                   </div>
-                  <div className="mt-1 flex items-center gap-1.5 text-[10px] sm:text-[11px] text-[#B86B4B] font-medium">
+                  <div className="mt-0.5 sm:mt-1 flex items-center gap-1.5 text-[9px] sm:text-[11px] text-[#9E4A2A] font-medium">
                     <MapPin className="w-3 h-3" />
                     <span>Dayalbagh, Agra (UP)</span>
                   </div>
@@ -103,7 +120,7 @@ export default function HomePage() {
       <section className="bg-[#F2EDE4]/60 py-14 sm:py-20 border-y border-[#E8E0D2]/80">
         <div className="max-w-6xl mx-auto px-4 sm:px-6 lg:px-8">
           <div className="max-w-3xl mx-auto text-center space-y-3 sm:space-y-4">
-            <span className="text-[10px] sm:text-xs font-semibold uppercase tracking-wider text-[#B86B4B]">
+            <span className="text-[10px] sm:text-xs font-semibold uppercase tracking-wider text-[#9E4A2A]">
               Contemplative Synthesis
             </span>
             <h2 className="font-serif text-2xl sm:text-3xl lg:text-4xl text-[#1F2924] text-balance">
@@ -128,8 +145,8 @@ export default function HomePage() {
             </div>
 
             <div className="p-6 sm:p-8 rounded-2xl bg-white border border-[#E8E0D2] shadow-sm hover:shadow-md transition-shadow space-y-3 sm:space-y-4">
-              <div className="w-10 h-10 sm:w-12 sm:h-12 rounded-xl bg-[#FAF8F5] text-[#B86B4B] flex items-center justify-center border border-[#E8E0D2]">
-                <Feather className="w-5 h-5 sm:w-6 sm:h-6 text-[#B86B4B]" />
+              <div className="w-10 h-10 sm:w-12 sm:h-12 rounded-xl bg-[#FAF8F5] text-[#9E4A2A] flex items-center justify-center border border-[#E8E0D2]">
+                <Feather className="w-5 h-5 sm:w-6 sm:h-6 text-[#9E4A2A]" />
               </div>
               <h3 className="font-serif text-lg sm:text-xl font-bold text-[#1F2924]">
                 2. Secular &amp; Non-Dogmatic
@@ -151,6 +168,9 @@ export default function HomePage() {
               </p>
             </div>
           </div>
+
+          {/* Gokai Daily Reflection Widget */}
+          <GokaiReflectionWidget />
         </div>
       </section>
 
@@ -158,7 +178,7 @@ export default function HomePage() {
       <section className="max-w-6xl mx-auto px-4 sm:px-6 lg:px-8">
         <div className="flex flex-col md:flex-row md:items-end justify-between gap-4 sm:gap-6 mb-8 sm:mb-12">
           <div>
-            <span className="text-[10px] sm:text-xs font-semibold uppercase tracking-wider text-[#B86B4B]">
+            <span className="text-[10px] sm:text-xs font-semibold uppercase tracking-wider text-[#9E4A2A]">
               Educational Topics
             </span>
             <h2 className="font-serif text-2xl sm:text-3xl lg:text-4xl text-[#1F2924] mt-1">
@@ -174,59 +194,14 @@ export default function HomePage() {
           </Link>
         </div>
 
-        <div className="grid grid-cols-1 md:grid-cols-2 gap-6 sm:gap-8">
-          {practicesData.map((practice) => (
-            <div
-              key={practice.id}
-              className="p-6 sm:p-8 rounded-3xl bg-white border border-[#E8E0D2] shadow-sm hover:shadow-md transition-all flex flex-col justify-between"
-            >
-              <div className="space-y-3 sm:space-y-4">
-                <span className="px-3 py-1 rounded-full text-[10px] sm:text-xs font-medium bg-[#F2EDE4] text-[#2D4A3E] inline-block">
-                  {practice.tradition}
-                </span>
-
-                <h3 className="font-serif text-xl sm:text-2xl font-bold text-[#1F2924]">
-                  {practice.title}
-                </h3>
-                <p className="text-xs sm:text-sm text-[#52635A] leading-relaxed">
-                  {practice.tagline}
-                </p>
-
-                <div className="space-y-1.5 pt-2">
-                  <span className="text-[11px] font-semibold text-[#1F2924] uppercase tracking-wider block">
-                    Core Themes:
-                  </span>
-                  <ul className="space-y-1 text-xs text-[#52635A]">
-                    {practice.keyThemes.slice(0, 3).map((item, idx) => (
-                      <li key={idx} className="flex items-center gap-2">
-                        <span className="w-1.5 h-1.5 rounded-full bg-[#C5A059] shrink-0" />
-                        <span>{item}</span>
-                      </li>
-                    ))}
-                  </ul>
-                </div>
-              </div>
-
-              <div className="pt-5 border-t border-[#E8E0D2] mt-5 flex items-center justify-between">
-                <Link
-                  href={`/practices#${practice.slug}`}
-                  className="text-xs font-semibold text-[#2D4A3E] hover:underline flex items-center gap-1"
-                >
-                  <span>Explore principles &amp; self-care</span>
-                  <ArrowRight className="w-3.5 h-3.5" />
-                </Link>
-                <span className="text-[10px] sm:text-[11px] text-[#B86B4B] font-medium">Educational</span>
-              </div>
-            </div>
-          ))}
-        </div>
+        <DisciplineCarousel practices={practicesData} />
       </section>
 
       {/* 4. Agra Roots & Reflection Space */}
       <section className="max-w-6xl mx-auto px-4 sm:px-6 lg:px-8">
         <div className="p-6 sm:p-10 lg:p-12 rounded-3xl bg-[#F2EDE4] border border-[#E8E0D2] grid grid-cols-1 lg:grid-cols-2 gap-8 items-center">
           <div className="space-y-4 sm:space-y-6">
-            <span className="text-[10px] sm:text-xs font-semibold uppercase tracking-wider text-[#B86B4B]">
+            <span className="text-[10px] sm:text-xs font-semibold uppercase tracking-wider text-[#9E4A2A]">
               Personal Roots
             </span>
             <h2 className="font-serif text-2xl sm:text-3xl lg:text-4xl text-[#1F2924]">
@@ -271,7 +246,7 @@ export default function HomePage() {
       {/* 5. Reader Reflections */}
       <section className="max-w-6xl mx-auto px-4 sm:px-6 lg:px-8">
         <div className="text-center max-w-2xl mx-auto space-y-2 sm:space-y-3 mb-8 sm:mb-12">
-          <span className="text-[10px] sm:text-xs font-semibold uppercase tracking-wider text-[#B86B4B]">
+          <span className="text-[10px] sm:text-xs font-semibold uppercase tracking-wider text-[#9E4A2A]">
             Reader Notes
           </span>
           <h2 className="font-serif text-2xl sm:text-3xl text-[#1F2924]">

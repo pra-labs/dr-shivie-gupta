@@ -7,7 +7,7 @@
   --color-sage: #2D4A3E;
   --color-sage-light: #3D6454;
   --color-sage-dark: #1E332A;
-  --color-terracotta: #B86B4B;
+  --color-terracotta: #9E4A2A;
   --color-terracotta-soft: #D9896A;
   --color-gold: #C5A059;
   --color-gold-light: #E0C17E;
@@ -67,7 +67,7 @@ h1, h2, h3, h4, .font-serif {
 }
 
 .text-terracotta {
-  color: #B86B4B;
+  color: #9E4A2A;
 }
 
 .border-sand {
