@@ -78,7 +78,7 @@ export function Footer() {
               <div className="flex items-start gap-2">
                 <MapPin className="w-4 h-4 text-[#B86B4B] shrink-0 mt-0.5" />
                 <span>
-                  {siteConfig.location.locality}, {siteConfig.location.city}, {siteConfig.location.state} ({siteConfig.location.country})
+                  {siteConfig.location.locality}, {siteConfig.location.city}, {siteConfig.location.state}, {siteConfig.location.country}
                 </span>
               </div>
               <div className="flex items-center gap-2">
