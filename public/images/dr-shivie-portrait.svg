@@ -1,0 +1,32 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 600 700" width="600" height="700">
+  <defs>
+    <linearGradient id="bgGrad" x1="0%" y1="0%" x2="100%" y2="100%">
+      <stop offset="0%" stop-color="#F2EDE4"/>
+      <stop offset="100%" stop-color="#E8DFC8"/>
+    </linearGradient>
+    <linearGradient id="auraGrad" x1="0%" y1="0%" x2="100%" y2="100%">
+      <stop offset="0%" stop-color="#C5A059" stop-opacity="0.25"/>
+      <stop offset="100%" stop-color="#2D4A3E" stop-opacity="0.15"/>
+    </linearGradient>
+  </defs>
+  <rect width="600" height="700" rx="24" fill="url(#bgGrad)"/>
+  <!-- Aura Halo -->
+  <circle cx="300" cy="270" r="190" fill="url(#auraGrad)"/>
+  <circle cx="300" cy="270" r="160" stroke="#C5A059" stroke-width="1.5" stroke-dasharray="6 6" fill="none" opacity="0.6"/>
+  <!-- Portrait Silhouette & Art Style -->
+  <g fill="#2D4A3E" opacity="0.88">
+    <ellipse cx="300" cy="250" rx="72" ry="90"/> <!-- Head -->
+    <path d="M 200 480 C 200 370, 240 340, 300 340 C 360 340, 400 370, 400 480 C 400 580, 200 580, 200 480 Z"/> <!-- Body/Shawl -->
+    <!-- Meditative Hands in Anjali / Healing mudra -->
+    <ellipse cx="300" cy="460" rx="35" ry="45" fill="#FAF8F5" stroke="#2D4A3E" stroke-width="3"/>
+  </g>
+  <!-- Lotus Motif at base -->
+  <g transform="translate(300, 580) scale(0.8)" stroke="#C5A059" stroke-width="2" fill="none">
+    <path d="M 0 0 C -40 -30, -50 -80, 0 -110 C 50 -80, 40 -30, 0 0 Z" fill="#FAF8F5"/>
+    <path d="M 0 0 C -70 -20, -100 -50, -80 -90 C -50 -85, -20 -60, 0 0 Z" fill="#F2EDE4"/>
+    <path d="M 0 0 C 70 -20, 100 -50, 80 -90 C 50 -85, 20 -60, 0 0 Z" fill="#F2EDE4"/>
+    <circle cx="0" cy="-60" r="8" fill="#C5A059"/>
+  </g>
+  <!-- Label -->
+  <text x="300" y="660" font-family="Georgia, serif" font-size="20" fill="#2D4A3E" font-weight="600" text-anchor="middle">Dr. Shivie Gupta, PhD</text>
+</svg>

@@ -1,0 +1,24 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 600 450" width="600" height="450">
+  <rect width="600" height="450" rx="16" fill="#F2EDE4"/>
+  <rect x="40" y="40" width="520" height="370" rx="12" fill="#FAF8F5" stroke="#E8E0D2" stroke-width="2"/>
+  <!-- Treatment Bed -->
+  <rect x="150" y="240" width="300" height="60" rx="10" fill="#2D4A3E" opacity="0.15"/>
+  <rect x="160" y="235" width="280" height="20" rx="6" fill="#C5A059" opacity="0.3"/>
+  <line x1="180" y1="300" x2="180" y2="360" stroke="#2D4A3E" stroke-width="6" stroke-linecap="round"/>
+  <line x1="420" y1="300" x2="420" y2="360" stroke="#2D4A3E" stroke-width="6" stroke-linecap="round"/>
+  <!-- Gentle plant / indoor greenery -->
+  <g transform="translate(90, 240)">
+    <path d="M 0 0 Q -20 -60 10 -110 Q 30 -60 0 0" fill="#2D4A3E" opacity="0.6"/>
+    <path d="M 0 0 Q 30 -40 50 -80 Q 20 -40 0 0" fill="#3D6454" opacity="0.5"/>
+    <rect x="-15" y="0" width="30" height="40" rx="4" fill="#B86B4B"/>
+  </g>
+  <!-- Singing bowl / Candle -->
+  <g transform="translate(480, 260)">
+    <ellipse cx="0" cy="0" rx="22" ry="12" fill="#C5A059"/>
+    <circle cx="0" cy="-20" r="4" fill="#B86B4B"/>
+    <path d="M 0 -20 Q -4 -32 0 -38 Q 4 -32 0 -20" fill="#E0C17E"/>
+  </g>
+  <!-- Atmospheric light -->
+  <circle cx="300" cy="120" r="70" fill="#F2EDE4" opacity="0.6"/>
+  <text x="300" y="395" font-family="Georgia, serif" font-size="16" fill="#52635A" text-anchor="middle">Serene Healing Sanctuary • Dayalbagh, Agra</text>
+</svg>
