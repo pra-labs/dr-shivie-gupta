@@ -10,33 +10,38 @@ export const metadata: Metadata = {
 
 export default function ConnectPage() {
   return (
-    <div className="py-16 sm:py-24 space-y-20">
-      {/* 40-word Declarative Opening Summary for RAG Chunking */}
-      <section className="max-w-4xl mx-auto px-4 sm:px-6 lg:px-8 text-center space-y-4">
-        <span className="text-xs font-semibold uppercase tracking-wider text-[#B86B4B]">
+    <div className="py-10 sm:py-16 lg:py-20 space-y-10 sm:space-y-16">
+      {/* 40-word Declarative Opening Summary for RAG Chunking - Tightened Spacing */}
+      <section className="max-w-4xl mx-auto px-4 sm:px-6 lg:px-8 text-center space-y-3 pb-2 sm:pb-4">
+        <span className="text-[10px] sm:text-xs font-semibold uppercase tracking-wider text-[#9E4A2A]">
           Correspondence &amp; Feedback
         </span>
-        <h1 className="font-serif text-4xl sm:text-5xl text-[#1F2924]">
+        <h1 className="font-serif text-3xl sm:text-4xl lg:text-5xl text-[#1F2924] text-balance">
           Connect &amp; Share Reflections
         </h1>
-        <p className="text-base text-[#52635A] leading-relaxed max-w-2xl mx-auto">
+        <p className="text-xs sm:text-sm lg:text-base text-[#52635A] leading-relaxed max-w-2xl mx-auto text-balance">
           We welcome thoughtful dialogue from readers, researchers, and individuals interested in mindfulness and subtle energy traditions. Use this form to share reflections, ask philosophical questions, or connect with Dr. Shivie Gupta in Dayalbagh, Agra.
         </p>
       </section>
 
-      {/* Main Grid */}
+      {/* Main Grid: On Mobile, the Form Renders First for Immediate Actionability */}
       <section className="max-w-6xl mx-auto px-4 sm:px-6 lg:px-8">
-        <div className="grid grid-cols-1 lg:grid-cols-12 gap-12 items-start">
-          {/* Left: Educational Context */}
-          <div className="lg:col-span-5 space-y-8">
-            <div className="bg-[#F2EDE4] p-8 rounded-3xl border border-[#E8E0D2] space-y-6">
-              <h2 className="font-serif text-2xl font-bold text-[#1F2924]">
+        <div className="grid grid-cols-1 lg:grid-cols-12 gap-8 lg:gap-12 items-start">
+          {/* Form Column - First on mobile, Right on desktop */}
+          <div className="order-1 lg:order-2 lg:col-span-7">
+            <ContactForm />
+          </div>
+
+          {/* Educational Context Column - Second on mobile, Left on desktop */}
+          <div className="order-2 lg:order-1 lg:col-span-5 space-y-6 sm:space-y-8">
+            <div className="bg-[#F2EDE4] p-6 sm:p-8 rounded-3xl border border-[#E8E0D2] space-y-5">
+              <h2 className="font-serif text-xl sm:text-2xl font-bold text-[#1F2924]">
                 Reader Dialogue &amp; Inquiries
               </h2>
 
-              <div className="space-y-4 text-xs text-[#52635A]">
+              <div className="space-y-4 text-xs sm:text-sm text-[#52635A]">
                 <div className="flex items-start gap-3">
-                  <MapPin className="w-5 h-5 text-[#B86B4B] shrink-0 mt-0.5" />
+                  <MapPin className="w-5 h-5 text-[#9E4A2A] shrink-0 mt-0.5" />
                   <div>
                     <strong className="text-[#1F2924] block">Location:</strong>
                     <span>{siteConfig.location.locality}, {siteConfig.location.city}, {siteConfig.location.state} ({siteConfig.location.country})</span>
@@ -47,7 +52,10 @@ export default function ConnectPage() {
                   <Mail className="w-5 h-5 text-[#2D4A3E] shrink-0" />
                   <div>
                     <strong className="text-[#1F2924] block">Direct Email:</strong>
-                    <a href={`mailto:${siteConfig.email}`} className="hover:text-[#2D4A3E]">
+                    <a
+                      href={`mailto:${siteConfig.email}`}
+                      className="text-[#9E4A2A] font-semibold underline underline-offset-2 hover:text-[#2D4A3E] transition-colors"
+                    >
                       {siteConfig.email}
                     </a>
                   </div>
@@ -82,11 +90,6 @@ export default function ConnectPage() {
                 — Dr. Shivie Gupta
               </div>
             </div>
-          </div>
-
-          {/* Right: Thought / Reflection Form */}
-          <div className="lg:col-span-7">
-            <ContactForm />
           </div>
         </div>
       </section>

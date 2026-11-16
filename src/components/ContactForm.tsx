@@ -13,11 +13,11 @@ export function ContactForm() {
   const [state, formAction, isPending] = useActionState(submitContactInquiry, initialState);
 
   return (
-    <div className="bg-white p-8 sm:p-10 rounded-3xl border border-[#E8E0D2] shadow-sm">
+    <div className="bg-white p-6 sm:p-10 rounded-3xl border border-[#E8E0D2] shadow-sm">
       <h2 className="font-serif text-2xl font-bold text-[#1F2924] mb-2">
         Share a Thought or Inquiry
       </h2>
-      <p className="text-xs text-[#52635A] mb-8">
+      <p className="text-xs text-[#52635A] mb-6">
         Have questions about the Gokai principles, biofield research, or personal mindfulness? Send a note to Dr. Shivie Gupta.
       </p>
 
@@ -32,7 +32,7 @@ export function ContactForm() {
           </p>
         </div>
       ) : (
-        <form action={formAction} className="space-y-5">
+        <form action={formAction} className="space-y-4 sm:space-y-5">
           {state.message && !state.success && (
             <div className="p-4 rounded-xl bg-red-50 border border-red-200 text-red-700 text-xs flex items-center gap-2">
               <AlertCircle className="w-4 h-4 shrink-0" />
@@ -49,8 +49,9 @@ export function ContactForm() {
               id="name"
               name="name"
               required
+              autoComplete="name"
               placeholder="e.g. Aarti Saxena"
-              className="w-full px-4 py-3 rounded-xl border border-[#E8E0D2] bg-[#FAF8F5] text-sm text-[#1F2924] focus:outline-none focus:ring-2 focus:ring-[#2D4A3E] focus:bg-white transition-all"
+              className="w-full px-4 py-3 rounded-xl border border-[#E8E0D2] bg-[#FAF8F5] text-base text-[#1F2924] focus:outline-none focus:ring-2 focus:ring-[#2D4A3E] focus:bg-white transition-all shadow-2xs"
             />
             {state.errors?.name && (
               <p className="text-[11px] text-red-600 mt-1">{state.errors.name[0]}</p>
@@ -66,8 +67,10 @@ export function ContactForm() {
               id="email"
               name="email"
               required
+              inputMode="email"
+              autoComplete="email"
               placeholder="your.email@example.com"
-              className="w-full px-4 py-3 rounded-xl border border-[#E8E0D2] bg-[#FAF8F5] text-sm text-[#1F2924] focus:outline-none focus:ring-2 focus:ring-[#2D4A3E] focus:bg-white transition-all"
+              className="w-full px-4 py-3 rounded-xl border border-[#E8E0D2] bg-[#FAF8F5] text-base text-[#1F2924] focus:outline-none focus:ring-2 focus:ring-[#2D4A3E] focus:bg-white transition-all shadow-2xs"
             />
             {state.errors?.email && (
               <p className="text-[11px] text-red-600 mt-1">{state.errors.email[0]}</p>
@@ -82,7 +85,7 @@ export function ContactForm() {
               id="topic"
               name="topic"
               defaultValue="Usui Reiki Philosophy"
-              className="w-full px-4 py-3 rounded-xl border border-[#E8E0D2] bg-[#FAF8F5] text-sm text-[#1F2924] focus:outline-none focus:ring-2 focus:ring-[#2D4A3E] focus:bg-white transition-all"
+              className="w-full px-4 py-3 rounded-xl border border-[#E8E0D2] bg-[#FAF8F5] text-base text-[#1F2924] focus:outline-none focus:ring-2 focus:ring-[#2D4A3E] focus:bg-white transition-all shadow-2xs"
             >
               <option value="Usui Reiki Philosophy">Usui Reiki History &amp; Principles</option>
               <option value="Chakra & Biofield Concepts">Chakra &amp; Biofield Research</option>
@@ -101,7 +104,7 @@ export function ContactForm() {
               rows={4}
               required
               placeholder="Share your thoughts, experiences with mindfulness, or questions..."
-              className="w-full px-4 py-3 rounded-xl border border-[#E8E0D2] bg-[#FAF8F5] text-sm text-[#1F2924] focus:outline-none focus:ring-2 focus:ring-[#2D4A3E] focus:bg-white transition-all"
+              className="w-full px-4 py-3 rounded-xl border border-[#E8E0D2] bg-[#FAF8F5] text-base text-[#1F2924] focus:outline-none focus:ring-2 focus:ring-[#2D4A3E] focus:bg-white transition-all shadow-2xs"
             />
             {state.errors?.reflection && (
               <p className="text-[11px] text-red-600 mt-1">{state.errors.reflection[0]}</p>
@@ -111,7 +114,7 @@ export function ContactForm() {
           <button
             type="submit"
             disabled={isPending}
-            className="w-full py-3.5 px-6 rounded-full bg-[#2D4A3E] text-white font-medium text-xs uppercase tracking-wider hover:bg-[#1E332A] transition-colors disabled:opacity-50 flex items-center justify-center gap-2 shadow-xs"
+            className="w-full h-12 py-3 px-6 rounded-full bg-[#2D4A3E] text-white font-medium text-xs sm:text-sm uppercase tracking-wider hover:bg-[#1E332A] transition-colors disabled:opacity-50 flex items-center justify-center gap-2 shadow-sm cursor-pointer active:scale-98"
           >
             {isPending ? (
               <>
