@@ -95,7 +95,7 @@ export default function HomePage() {
                   src="/images/dr-shivie-portrait.svg"
                   alt="Dr. Shivie Gupta, Reiki Master & Contemplative Educator in Agra"
                   fill
-                  className="object-cover group-hover:scale-105 transition-transform duration-500"
+                  className="object-cover object-top group-hover:scale-105 transition-transform duration-500"
                   priority
                 />
                 <div className="absolute inset-x-2.5 bottom-2.5 sm:inset-x-4 sm:bottom-4 p-2.5 sm:p-4 rounded-2xl bg-white/95 backdrop-blur shadow-md border border-[#E8E0D2]/70 text-left">

@@ -104,7 +104,7 @@ export function GokaiReflectionWidget() {
       <div
         role="tablist"
         aria-label="Gokai Precepts"
-        className="flex items-center gap-2 overflow-x-auto pb-2 pt-4 no-scrollbar -mx-1 px-1"
+        className="flex items-center gap-2 overflow-x-auto pb-2 pt-4 no-scrollbar -mx-1 px-1 touch-pan-x"
       >
         {GOKAI_PRECEPTS.map((precept) => {
           const isActive = precept.id === activeId;
@@ -114,9 +114,9 @@ export function GokaiReflectionWidget() {
               role="tab"
               aria-selected={isActive}
               onClick={() => setActiveId(precept.id)}
-              className={`shrink-0 px-3.5 py-1.5 sm:px-4 sm:py-2 rounded-full text-xs font-medium transition-all cursor-pointer ${
+              className={`shrink-0 px-3.5 py-2 min-h-[40px] rounded-full text-xs font-medium transition-all flex items-center justify-center whitespace-nowrap active:scale-95 cursor-pointer ${
                 isActive
-                  ? "bg-[#2D4A3E] text-white shadow-xs"
+                  ? "bg-[#2D4A3E] text-white shadow-xs font-semibold"
                   : "bg-[#F2EDE4]/80 text-[#52635A] hover:bg-[#E8E0D2] hover:text-[#1F2924]"
               }`}
             >
