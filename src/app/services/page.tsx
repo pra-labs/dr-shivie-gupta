@@ -28,11 +28,7 @@ export default function ServicesPage() {
       <section className="max-w-6xl mx-auto px-4 sm:px-6 lg:px-8">
         <div className="grid grid-cols-1 md:grid-cols-2 gap-6 sm:gap-8">
           {/* 1. Individual Counselling */}
-          <div className="p-6 sm:p-8 rounded-3xl bg-white border-2 border-[#2D4A3E]/30 shadow-sm space-y-5 flex flex-col justify-between relative overflow-hidden">
-            <div className="absolute top-4 right-4 px-3 py-1 rounded-full bg-[#2D4A3E] text-white text-[10px] uppercase font-bold tracking-wider">
-              Primary Service
-            </div>
-
+          <div className="p-6 sm:p-8 rounded-3xl bg-white border border-[#2D4A3E]/30 shadow-sm space-y-5 flex flex-col justify-between relative overflow-hidden">
             <div className="space-y-3">
               <span className="text-[11px] font-semibold uppercase tracking-wider text-[#9E4A2A]">
                 Voice / Phone Call Only • 50 Minutes
@@ -44,7 +40,7 @@ export default function ServicesPage() {
                 ₹1,200 <span className="text-xs font-sans font-normal text-[#52635A]">/ 50-minute session</span>
               </div>
               <p className="text-xs sm:text-sm text-[#52635A] leading-relaxed">
-                A private, comforting space over phone call to untangle anxiety loops, low self-esteem, sadness, and life dilemmas without screen fatigue.
+                A private, comforting space over phone call to reflect on anxiety loops, life dilemmas, emotional fatigue, and personal clarity.
               </p>
 
               <div className="pt-2 border-t border-[#E8E0D2] space-y-2">
@@ -76,8 +72,8 @@ export default function ServicesPage() {
                 <span className="text-[11px] font-semibold uppercase tracking-wider text-[#9E4A2A]">
                   Voice / Phone Call Only • 60 Minutes
                 </span>
-                <span className="px-2.5 py-0.5 rounded-full bg-[#FAF8F5] text-[#2D4A3E] border border-[#E8E0D2] text-[10px] uppercase font-bold tracking-wider">
-                  Primary Service
+                <span className="text-[10px] uppercase font-bold tracking-wider text-[#52635A]">
+                  Both Partners
                 </span>
               </div>
               <h2 className="font-serif text-2xl font-bold text-[#1F2924]">
@@ -119,8 +115,8 @@ export default function ServicesPage() {
                 <span className="text-[11px] font-semibold uppercase tracking-wider text-[#9E4A2A]">
                   Voice / Phone Call Only • 60 Minutes
                 </span>
-                <span className="px-2.5 py-0.5 rounded-full bg-[#FAF8F5] text-[#2D4A3E] border border-[#E8E0D2] text-[10px] uppercase font-bold tracking-wider">
-                  Primary Service
+                <span className="text-[10px] uppercase font-bold tracking-wider text-[#52635A]">
+                  Family Dialogue
                 </span>
               </div>
               <h2 className="font-serif text-2xl font-bold text-[#1F2924]">

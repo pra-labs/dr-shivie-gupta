@@ -48,7 +48,7 @@ export default function AboutPage() {
             className="w-full sm:w-auto inline-flex items-center justify-center gap-2 px-7 py-3.5 rounded-full bg-white text-[#2D4A3E] border-2 border-[#2D4A3E]/30 text-xs sm:text-sm font-semibold uppercase tracking-wider hover:bg-[#F2EDE4] transition-colors shadow-xs"
           >
             <PhoneCall className="w-4 h-4" />
-            <span>Direct Call: {siteConfig.phoneDisplay}</span>
+            <span>Call Practice Line</span>
           </a>
         </div>
       </section>

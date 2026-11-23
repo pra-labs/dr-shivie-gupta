@@ -64,7 +64,7 @@ export function Navbar() {
               className="inline-flex items-center gap-1.5 px-4 py-2 rounded-full bg-[#2D4A3E] text-white text-xs font-semibold tracking-wider hover:bg-[#1E332A] transition-all shadow-xs"
             >
               <PhoneCall className="w-3.5 h-3.5" />
-              <span>{siteConfig.phoneDisplay}</span>
+              <span>Direct Call</span>
             </a>
           </nav>
 
@@ -134,7 +134,7 @@ export function Navbar() {
                 className="w-full flex items-center justify-center gap-2 py-3 px-4 min-h-[44px] rounded-full text-xs font-semibold uppercase tracking-wider bg-[#2D4A3E] text-white hover:bg-[#1E332A] shadow-xs"
               >
                 <PhoneCall className="w-4 h-4" />
-                <span>Call: {siteConfig.phoneDisplay}</span>
+                <span>Direct Phone Call</span>
               </a>
             </div>
           </div>

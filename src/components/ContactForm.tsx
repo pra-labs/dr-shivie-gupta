@@ -4,7 +4,6 @@ import { useActionState, useMemo, useState } from "react";
 import { useSearchParams } from "next/navigation";
 import { submitContactInquiry, type ContactFormState } from "@/app/actions/contact";
 import { Send, CheckCircle2, AlertCircle, Loader2, PhoneCall, ShieldCheck, Clock } from "lucide-react";
-import { siteConfig } from "@/config/site";
 
 const initialState: ContactFormState = {
   success: false,
@@ -55,10 +54,7 @@ export function ContactForm() {
         </h2>
       </div>
       <p className="text-xs text-[#52635A] mb-6">
-        All sessions are conducted strictly over audio/phone call for full privacy. Fill out this form or call/WhatsApp directly at{" "}
-        <a href={siteConfig.whatsappUrl} className="text-[#2D4A3E] font-semibold underline">
-          {siteConfig.phoneDisplay}
-        </a>.
+        All sessions are conducted strictly over audio/phone call for full privacy. Fill out this form to coordinate a consultation, or reach out directly during practice hours via WhatsApp.
       </p>
 
       {state.success ? (

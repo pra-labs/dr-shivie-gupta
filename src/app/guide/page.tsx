@@ -1,6 +1,5 @@
 import type { Metadata } from "next";
 import { FaqAccordion } from "@/components/FaqAccordion";
-import { siteConfig } from "@/config/site";
 
 export const metadata: Metadata = {
   title: "Client Guide & FAQs | Mrs. Shivie Gupta | Agra, India",
@@ -30,7 +29,7 @@ export default function GuidePage() {
             <span className="text-xs font-bold text-[#9E4A2A] uppercase tracking-wider">Step 1</span>
             <h3 className="font-serif text-lg font-bold text-[#1F2924]">Request Your Slot</h3>
             <p className="text-xs text-[#52635A] leading-relaxed">
-              Submit your preferred time slot online or call/WhatsApp at <strong>{siteConfig.phoneDisplay}</strong>.
+              Submit your preferred time slot on the session form or send a message via WhatsApp during practice hours.
             </p>
           </div>
 
@@ -49,6 +48,21 @@ export default function GuidePage() {
               Speak openly and vulnerably with Mrs. Shivie Gupta (~35 years experience) with complete confidentiality.
             </p>
           </div>
+        </div>
+
+        {/* What to Expect Subsection */}
+        <div className="mt-8 p-6 sm:p-8 rounded-3xl bg-[#FAF8F5] border border-[#E8E0D2] space-y-3">
+          <div className="flex items-center gap-2">
+            <span className="text-[11px] font-semibold uppercase tracking-wider text-[#9E4A2A] bg-[#F2EDE4] px-2.5 py-1 rounded-full border border-[#E8E0D2]">
+              First-Time Callers
+            </span>
+            <h3 className="font-serif text-xl font-bold text-[#1F2924]">
+              What to Expect on Your First Call
+            </h3>
+          </div>
+          <p className="text-xs sm:text-sm text-[#52635A] leading-relaxed">
+            There is no need to prepare formal notes or rehearse your concerns. Mrs. Shivie Gupta guides the conversation with patient, non-judgmental listening. No video cameras are ever used, and whatever you share remains strictly between you and Mrs. Gupta.
+          </p>
         </div>
       </section>
 
