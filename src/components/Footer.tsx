@@ -114,7 +114,11 @@ export function Footer() {
         {/* Disclaimer & Bottom Bar */}
         <div className="pt-8 text-center md:flex md:justify-between items-center text-xs text-[#FAF8F5]/60 space-y-4 md:space-y-0">
           <p className="max-w-2xl text-left">
-            <span className="font-semibold text-[#FAF8F5]/80">Non-Emergency Notice:</span> This counselling practice provides emotional and relationship guidance via phone call. It does not provide emergency crisis response, medical diagnosis, or psychiatric prescriptions. If experiencing acute distress, call Tele-MANAS (14416).
+            <span className="font-semibold text-[#FAF8F5]/80">Non-Emergency Notice:</span> This counselling practice provides emotional and relationship guidance via phone call. It does not provide emergency crisis response, medical diagnosis, or psychiatric prescriptions. If experiencing acute distress, call Tele-MANAS (
+            <a href="tel:14416" className="underline hover:text-white font-medium">
+              14416
+            </a>
+            ).
           </p>
           <div className="flex items-center justify-center gap-1">
             <span>© 2026 {siteConfig.name}. All rights reserved.</span>

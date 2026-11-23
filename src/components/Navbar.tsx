@@ -35,8 +35,9 @@ export function Navbar() {
               <span className="font-serif text-2xl font-bold tracking-tight text-[#2D4A3E] block leading-none">
                 {siteConfig.name}
               </span>
-              <span className="text-[11px] font-medium tracking-wider uppercase text-[#9E4A2A]">
-                Counselling &amp; Healing (~35 Yrs Exp)
+              <span className="text-[11px] font-medium tracking-wider uppercase text-[#9E4A2A] block whitespace-nowrap">
+                <span className="sm:hidden">Counselling &amp; Healing</span>
+                <span className="hidden sm:inline">Counselling &amp; Healing (~35 Yrs Exp)</span>
               </span>
             </div>
           </Link>

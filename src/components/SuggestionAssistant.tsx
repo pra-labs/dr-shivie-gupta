@@ -197,11 +197,14 @@ export function SuggestionAssistant() {
         {!isOpen && (
           <button
             onClick={() => setIsOpen(true)}
-            className="flex items-center gap-2 p-3 sm:px-4 sm:py-3 min-w-[48px] min-h-[48px] rounded-full bg-[#2D4A3E] text-white shadow-xl hover:bg-[#1E332A] transition-all hover:scale-105 active:scale-95 cursor-pointer border border-white/20 group"
+            className="flex items-center gap-2 px-3.5 py-2.5 sm:px-4 sm:py-3 min-h-[44px] sm:min-h-[48px] rounded-full bg-[#2D4A3E] text-white shadow-xl hover:bg-[#1E332A] transition-all hover:scale-105 active:scale-95 cursor-pointer border border-white/20 group"
             aria-label="Open Session Guidance Assistant"
           >
-            <Sparkles className="w-5 h-5 sm:w-4 sm:h-4 text-[#C5A059] animate-pulse shrink-0" />
-            <span className="hidden sm:inline text-xs font-semibold tracking-wider">Session Guidance AI</span>
+            <Sparkles className="w-4 h-4 text-[#C5A059] animate-pulse shrink-0" />
+            <span className="text-xs font-semibold tracking-wider">
+              <span className="sm:hidden">Guidance AI</span>
+              <span className="hidden sm:inline">Session Guidance AI</span>
+            </span>
           </button>
         )}
       </div>

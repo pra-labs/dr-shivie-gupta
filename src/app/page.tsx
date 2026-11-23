@@ -4,9 +4,9 @@ import { siteConfig } from "@/config/site";
 
 export default function HomePage() {
   return (
-    <div className="space-y-16 sm:space-y-24 lg:space-y-28 pb-20">
+    <div className="space-y-12 sm:space-y-20 lg:space-y-24 pb-20">
       {/* 1. Hero Section - Refined Full-Width Editorial Layout (No Image Card) */}
-      <section className="relative overflow-hidden pt-8 sm:pt-14 lg:pt-18">
+      <section className="relative overflow-hidden pt-6 sm:pt-12 lg:pt-16 pb-4 sm:pb-6">
         <div className="absolute top-1/4 left-1/2 -translate-x-1/2 -translate-y-1/2 w-[600px] h-[600px] bg-[#C5A059]/10 rounded-full blur-3xl pointer-events-none -z-10" />
         <div className="absolute top-1/2 right-10 w-[400px] h-[400px] bg-[#2D4A3E]/5 rounded-full blur-2xl pointer-events-none -z-10" />
 
@@ -65,8 +65,9 @@ export default function HomePage() {
                 </div>
               </div>
               <div className="p-2.5 sm:p-4 rounded-2xl bg-white/70 border border-[#E8E0D2] shadow-2xs flex flex-col justify-center min-h-[76px] sm:min-h-0">
-                <div className="text-[13px] sm:text-2xl font-serif font-bold text-[#2D4A3E] whitespace-nowrap">
-                  ₹1,000 – ₹2,200
+                <div className="text-base sm:text-2xl font-serif font-bold text-[#2D4A3E] whitespace-nowrap">
+                  <span className="sm:hidden">₹1k – ₹2.2k</span>
+                  <span className="hidden sm:inline">₹1,000 – ₹2,200</span>
                 </div>
                 <div className="text-[10px] sm:text-xs text-[#52635A] mt-0.5 leading-tight">
                   Session Pricing
