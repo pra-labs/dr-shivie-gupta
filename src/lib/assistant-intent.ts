@@ -85,7 +85,7 @@ export function routeIntent(userInput: string): AssistantResponse {
       matchedIntent: "crisis",
       reply: `If you are in distress, feeling overwhelmed, or having thoughts of self-harm, please know that you are not alone and professional crisis help is immediately available.
 
-**Important:** Phone counselling with Mrs. Shivie Gupta is an emotional support and personal guidance practice—it is **NOT an emergency crisis hotline** or psychiatric hospital service.
+**Important:** Phone counselling with Dr. Shivie Gupta is an emotional support and personal guidance practice—it is **NOT an emergency crisis hotline** or psychiatric hospital service.
 
 Please contact certified 24x7 emergency helplines right away:
 - **Tele-MANAS (Government of India):** Call **14416** or **1800 891 4416** (Toll-Free, 24x7)
@@ -108,9 +108,9 @@ Please reach out to one of these dedicated crisis resources immediately.`,
   if (GREETING_PATTERNS.some((pattern) => pattern.test(text))) {
     return {
       matchedIntent: "greeting",
-      reply: `Namaste and welcome. I am Mrs. Shivie Gupta's practice assistant.
+      reply: `Namaste and welcome. I am Dr. Shivie Gupta's practice assistant.
 
-Mrs. Shivie Gupta brings **~35 years of experience** offering confidential, voice-only phone consultations from Dayalbagh, Agra. All consultations take place strictly over telephone or WhatsApp audio call for complete personal comfort and privacy.
+Dr. Shivie Gupta brings **~35 years of experience** offering confidential, voice-only phone consultations from Dayalbagh, Agra. All consultations take place strictly over telephone or WhatsApp audio call for complete personal comfort and privacy.
 
 **Session Options & Transparent Fees:**
 - **Individual Voice Counselling:** ₹1,200 (50 mins) — for overthinking, personal stress, anxiety, or emotional crossroads.
@@ -134,18 +134,18 @@ What would you like to explore today? You can view all options on [Services & Pr
   if (HOW_IT_WORKS_PATTERNS.some((pattern) => pattern.test(text))) {
     return {
       matchedIntent: "how_it_works",
-      reply: `Here is how consultations work with Mrs. Shivie Gupta:
+      reply: `Here is how consultations work with Dr. Shivie Gupta:
 
 **1. Strictly Voice-Only (Phone / Audio Call):**
 There are no webcams, Zoom screens, or video camera requirements. Speaking over audio eliminates camera anxiety, letting you focus entirely on your thoughts and feelings from your private room.
 
 **2. Complete Confidentiality:**
-All discussions are held in strict confidence between you and Mrs. Gupta. You do not need to visit a clinic or sit in waiting rooms.
+All discussions are held in strict confidence between you and Dr. Gupta. You do not need to visit a clinic or sit in waiting rooms.
 
 **3. What to Expect During the First Call:**
-Mrs. Gupta listens actively to your current situation without judgment, helps untangle the emotional knots, and offers practical reflective tools.
+Dr. Gupta listens actively to your current situation without judgment, helps untangle the emotional knots, and offers practical reflective tools.
 
-Learn more on our [About Mrs. Shivie Gupta](/about) page, read answers on [Client FAQs](/faqs), or submit your preferred timing on [Request a Voice Session](/connect).`,
+Learn more on our [About Dr. Shivie Gupta](/about) page, read answers on [Client FAQs](/faqs), or submit your preferred timing on [Request a Voice Session](/connect).`,
       suggestedAction: {
         label: "Read Client FAQs",
         href: "/faqs",
@@ -164,7 +164,7 @@ Learn more on our [About Mrs. Shivie Gupta](/about) page, read answers on [Clien
       matchedIntent: "couple",
       reply: `For marital tension, relationship friction, or communication difficulties, **Couple & Relationship Counselling (Voice Call • 60 mins • ₹1,800)** provides a safe, mediated space.
 
-Mrs. Shivie Gupta offers an empathetic, balanced perspective where both partners can speak openly without interruption or camera self-consciousness.
+Dr. Shivie Gupta offers an empathetic, balanced perspective where both partners can speak openly without interruption or camera self-consciousness.
 
 **Helpful questions to bring to your phone call:**
 1. What recurring trigger or misunderstanding tends to turn everyday conversations into arguments or silence?
@@ -178,7 +178,7 @@ Sessions are held strictly via telephone/WhatsApp audio. You can reserve a slot 
       },
       secondaryAction: {
         label: "WhatsApp +91 98378 91692",
-        href: "https://wa.me/919837891692?text=Hello%20Mrs.%20Shivie%20Gupta,%20I%20would%20like%20to%20inquire%20about%20a%20couple%20counselling%20session.",
+        href: "https://wa.me/919837891692?text=Hello%20Dr.%20Shivie%20Gupta,%20I%20would%20like%20to%20inquire%20about%20a%20couple%20counselling%20session.",
       },
     };
   }
@@ -189,7 +189,7 @@ Sessions are held strictly via telephone/WhatsApp audio. You can reserve a slot 
       matchedIntent: "family",
       reply: `For household disputes, parent-teen communication gaps, or in-law friction, **Family Counselling (Voice Call • 60 mins • ₹2,200)** offers neutral, patient guidance.
 
-With ~35 years of practice in Dayalbagh, Agra, Mrs. Gupta helps families untangle complex domestic dynamics while preserving dignity and mutual respect for all members.
+With ~35 years of practice in Dayalbagh, Agra, Dr. Gupta helps families untangle complex domestic dynamics while preserving dignity and mutual respect for all members.
 
 **Helpful themes to explore during your consultation:**
 1. Where do generational perspectives or differing expectations clash most frequently?
@@ -212,7 +212,7 @@ To coordinate a suitable time for your family phone session, visit [Request a Vo
   if (REIKI_PATTERNS.some((pattern) => pattern.test(text))) {
     return {
       matchedIntent: "reiki",
-      reply: `**Reiki Energy Balancing (45 mins • ₹1,000)** is offered by Mrs. Shivie Gupta strictly as an **optional secondary wellness complement** upon client request.
+      reply: `**Reiki Energy Balancing (45 mins • ₹1,000)** is offered by Dr. Shivie Gupta strictly as an **optional secondary wellness complement** upon client request.
 
 Traditional Usui Reiki biofield balancing supports parasympathetic nervous system calm, somatic tension release, and restful sleep.
 
@@ -228,7 +228,7 @@ For details, view [Services & Pricing](/services), read common questions on [Cli
       },
       secondaryAction: {
         label: "WhatsApp +91 98378 91692",
-        href: "https://wa.me/919837891692?text=Hello%20Mrs.%20Shivie%20Gupta,%20I%20would%20like%20to%20inquire%20about%20an%20optional%20Reiki%20session.",
+        href: "https://wa.me/919837891692?text=Hello%20Dr.%20Shivie%20Gupta,%20I%20would%20like%20to%20inquire%20about%20an%20optional%20Reiki%20session.",
       },
     };
   }
@@ -268,7 +268,7 @@ All sessions are held strictly over telephone or WhatsApp audio calls. Speaking 
   if (OFF_TOPIC_PATTERNS.some((pattern) => pattern.test(text))) {
     return {
       matchedIntent: "off_topic",
-      reply: `I am specialized in helping visitors understand Mrs. Shivie Gupta's voice counselling practice and session options. I cannot assist with technical, legal, financial, or medical prescription queries.
+      reply: `I am specialized in helping visitors understand Dr. Shivie Gupta's voice counselling practice and session options. I cannot assist with technical, legal, financial, or medical prescription queries.
 
 If you have questions regarding:
 - **Individual Voice Counselling** (₹1,200 / 50 mins)
@@ -294,7 +294,7 @@ Please feel free to ask, review [Services & Pricing](/services), read [Client FA
       matchedIntent: "individual",
       reply: `For personal stress, overthinking, anxiety loops, or low emotional energy, **Individual Voice Counselling (Voice Call • 50 mins • ₹1,200)** is the recommended path.
 
-Mrs. Shivie Gupta brings ~35 years of dedicated active listening to help you disentangle mental knots and build grounded self-worth in complete confidence.
+Dr. Shivie Gupta brings ~35 years of dedicated active listening to help you disentangle mental knots and build grounded self-worth in complete confidence.
 
 **Helpful questions to bring to your telephone call:**
 1. What recurring thought, doubt, or pressure drains your energy the most during your day?
@@ -318,7 +318,7 @@ All sessions are held over telephone call—no video camera pressure or clinic t
     matchedIntent: "individual",
     reply: `Based on what you've shared, **Individual Voice Counselling (Voice Call • 50 mins • ₹1,200)** is an ideal starting place for confidential guidance.
 
-Mrs. Shivie Gupta offers a calm, non-judgmental space over phone to help unpack whatever is weighing on your mind.
+Dr. Shivie Gupta offers a calm, non-judgmental space over phone to help unpack whatever is weighing on your mind.
 
 You can view all session types on [Services & Pricing](/services), read answers on [Client FAQs](/faqs), or submit a convenient time on [Request a Voice Session](/connect). Direct calling and WhatsApp are also available at **+91 98378 91692**.`,
     suggestedAction: {

@@ -22,7 +22,7 @@ export function AdminLoginForm() {
           Practice Admin Access
         </h1>
         <p className="text-xs text-[#52635A]">
-          Administrative workspace for Mrs. Shivie Gupta — Session inquiries, pricing management, and client FAQs.
+          Administrative workspace for Dr. Shivie Gupta — Session inquiries, pricing management, and client FAQs.
         </p>
       </div>
 

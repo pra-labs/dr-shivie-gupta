@@ -6,8 +6,8 @@ import { AdminLoginForm } from "@/components/admin/AdminLoginForm";
 import { AdminDashboardClient } from "@/components/admin/AdminDashboardClient";
 
 export const metadata: Metadata = {
-  title: "Practice Admin Workspace | Mrs. Shivie Gupta",
-  description: "Administrative management panel for Mrs. Shivie Gupta's counselling practice.",
+  title: "Practice Admin Workspace | Dr. Shivie Gupta",
+  description: "Administrative management panel for Dr. Shivie Gupta's counselling practice.",
   robots: {
     index: false,
     follow: false,

@@ -85,9 +85,9 @@ function renderFormattedContent(text: string) {
   });
 }
 
-const INITIAL_GREETING = `Namaste and welcome. I am Mrs. Shivie Gupta's practice assistant.
+const INITIAL_GREETING = `Namaste and welcome. I am Dr. Shivie Gupta's practice assistant.
 
-Mrs. Shivie Gupta brings **~35 years of experience** offering confidential, voice-only telephone consultations from Dayalbagh, Agra.
+Dr. Shivie Gupta brings **~35 years of experience** offering confidential, voice-only telephone consultations from Dayalbagh, Agra.
 
 **How can I assist you today?**
 - **Individual Voice Counselling** (₹1,200 / 50m) — personal stress, anxiety, emotional clarity
@@ -183,7 +183,7 @@ export function SuggestionAssistant() {
         {
           role: "assistant",
           content:
-            "Thank you. Mrs. Shivie Gupta offers confidential phone counselling for Individual (₹1,200), Couple (₹1,800), and Family (₹2,200) guidance, plus optional Reiki (₹1,000). You can reach out directly via call/WhatsApp at **+91 98378 91692** or submit an inquiry on [Request a Voice Session](/connect).",
+            "Thank you. Dr. Shivie Gupta offers confidential phone counselling for Individual (₹1,200), Couple (₹1,800), and Family (₹2,200) guidance, plus optional Reiki (₹1,000). You can reach out directly via call/WhatsApp at **+91 98378 91692** or submit an inquiry on [Request a Voice Session](/connect).",
           suggestedAction: {
             label: "Request a Voice Session",
             href: "/connect",

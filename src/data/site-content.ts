@@ -135,7 +135,7 @@ export const faqsData: FAQ[] = [
     category: "Voice Sessions",
     question: "Why are all counselling sessions conducted exclusively over voice/phone call?",
     answer:
-      "Over ~35 years of practice, Mrs. Shivie Gupta has found voice-only phone calls to offer the highest emotional safety, complete privacy, and zero video camera self-consciousness. Clients speak with genuine vulnerability from their personal sanctuary without traveling, clinic waiting rooms, or technical video fatigue.",
+      "Over ~35 years of practice, Dr. Shivie Gupta has found voice-only phone calls to offer the highest emotional safety, complete privacy, and zero video camera self-consciousness. Clients speak with genuine vulnerability from their personal sanctuary without traveling, clinic waiting rooms, or technical video fatigue.",
   },
   {
     category: "Voice Sessions",
@@ -145,9 +145,9 @@ export const faqsData: FAQ[] = [
   },
   {
     category: "Counselling",
-    question: "What is the background and experience of Mrs. Shivie Gupta?",
+    question: "What is the background and experience of Dr. Shivie Gupta?",
     answer:
-      "Mrs. Shivie Gupta brings approximately 35 years of dedicated experience in emotional counselling, relationship guidance, and family harmony. Her practice is grounded in empathetic active listening, practical cognitive tools, and gentle biofield awareness in Dayalbagh, Agra.",
+      "Dr. Shivie Gupta brings approximately 35 years of dedicated experience in emotional counselling, relationship guidance, and family harmony. Her practice is grounded in empathetic active listening, practical cognitive tools, and gentle biofield awareness in Dayalbagh, Agra.",
   },
   {
     category: "Counselling",
@@ -159,19 +159,19 @@ export const faqsData: FAQ[] = [
     category: "Reiki (Optional)",
     question: "Is Reiki compulsory or is it a separate offering?",
     answer:
-      "Reiki is completely optional and secondary. Mrs. Shivie Gupta's primary practice is voice-only counselling. Traditional Usui Reiki is available exclusively for clients who specifically express interest in subtle energy balancing and deep relaxation.",
+      "Reiki is completely optional and secondary. Dr. Shivie Gupta's primary practice is voice-only counselling. Traditional Usui Reiki is available exclusively for clients who specifically express interest in subtle energy balancing and deep relaxation.",
   },
   {
     category: "Counselling",
     question: "Is counselling suitable for emergency mental health crises?",
     answer:
-      "No. Voice counselling with Mrs. Shivie Gupta is an emotional support and personal guidance practice. It is not an emergency crisis intervention hotline or psychiatric emergency service. Individuals experiencing severe acute distress or crisis should contact national helplines (such as Tele-MANAS at 14416 in India) or visit a local hospital immediately.",
+      "No. Voice counselling with Dr. Shivie Gupta is an emotional support and personal guidance practice. It is not an emergency crisis intervention hotline or psychiatric emergency service. Individuals experiencing severe acute distress or crisis should contact national helplines (such as Tele-MANAS at 14416 in India) or visit a local hospital immediately.",
   },
   {
     category: "Hindi & Local",
     question: "Kya phone call par counselling utni hi asardar hoti hai?",
     answer:
-      "Haan, bilkul. Phone call par baat karne se aap bina kisi jhijhak, camera ki chinta, ya clinic aane-jane ke bina apne ghar ki shanti me khulkar baat kar sakte hain. Lagbhag 35 saal ke anubhav ke saath, Mrs. Shivie Gupta poori confidentiality aur dhyan ke saath sunti hain.",
+      "Haan, bilkul. Phone call par baat karne se aap bina kisi jhijhak, camera ki chinta, ya clinic aane-jane ke bina apne ghar ki shanti me khulkar baat kar sakte hain. Lagbhag 35 saal ke anubhav ke saath, Dr. Shivie Gupta poori confidentiality aur dhyan ke saath sunti hain.",
   },
   {
     category: "Hindi & Local",

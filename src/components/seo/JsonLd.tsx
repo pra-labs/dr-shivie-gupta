@@ -19,7 +19,7 @@ export function ComprehensiveJsonLd() {
         "inLanguage": "en-IN",
       },
 
-      // 2. Person Entity (Mrs. Shivie Gupta)
+      // 2. Person Entity (Dr. Shivie Gupta)
       {
         "@type": "Person",
         "@id": `${siteConfig.url}/#practitioner`,

@@ -17,7 +17,7 @@ export async function loginAdmin(formData: FormData): Promise<{ success: boolean
   const success = await setAdminSession(password);
   if (success) {
     revalidatePath("/admin");
-    return { success: true, message: "Welcome back, Mrs. Shivie Gupta." };
+    return { success: true, message: "Welcome back, Dr. Shivie Gupta." };
   }
   return { success: false, message: "Invalid administrative passcode." };
 }

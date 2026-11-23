@@ -4,8 +4,8 @@ import { Award, PhoneCall, ShieldCheck, ArrowRight, Clock, Sparkles } from "luci
 import { siteConfig } from "@/config/site";
 
 export const metadata: Metadata = {
-  title: "About Mrs. Shivie Gupta | Counsellor & Reiki Practitioner (~35 Years Experience)",
-  description: "Learn about Mrs. Shivie Gupta's ~35 years of dedicated experience in voice-only counselling, relationship guidance, and complementary Reiki healing in Agra.",
+  title: "About Dr. Shivie Gupta | Counsellor & Reiki Practitioner (~35 Years Experience)",
+  description: "Learn about Dr. Shivie Gupta's ~35 years of dedicated experience in voice-only counselling, relationship guidance, and complementary Reiki healing in Agra.",
 };
 
 export default function AboutPage() {
@@ -19,18 +19,18 @@ export default function AboutPage() {
         </div>
 
         <h1 className="font-serif text-3xl sm:text-5xl lg:text-6xl text-[#1F2924] leading-[1.15] text-balance">
-          About Mrs. Shivie Gupta
+          About Dr. Shivie Gupta
         </h1>
 
         <div className="prose prose-stone text-xs sm:text-sm lg:text-base text-[#52635A] leading-relaxed space-y-4">
           <p>
-            With approximately <strong>35 years of dedicated counselling experience</strong>, Mrs. Shivie Gupta has walked alongside hundreds of individuals, couples, and families navigating emotional turmoil, relational strain, life transitions, and self-doubt.
+            With approximately <strong>35 years of dedicated counselling experience</strong>, Dr. Shivie Gupta has walked alongside hundreds of individuals, couples, and families navigating emotional turmoil, relational strain, life transitions, and self-doubt.
           </p>
           <p>
-            Her therapeutic philosophy is anchored in deep, patient active listening and confidential guidance. Recognizing that facing a therapist in a formal clinic or over high-stress video calls can heighten vulnerability and self-consciousness, Mrs. Gupta conducts all counselling sessions <strong>exclusively via telephone/voice call</strong>—allowing clients to speak from their personal sanctuary in total safety and comfort.
+            Her therapeutic philosophy is anchored in deep, patient active listening and confidential guidance. Recognizing that facing a therapist in a formal clinic or over high-stress video calls can heighten vulnerability and self-consciousness, Dr. Gupta conducts all counselling sessions <strong>exclusively via telephone/voice call</strong>—allowing clients to speak from their personal sanctuary in total safety and comfort.
           </p>
           <p>
-            As a secondary wellness complement, Mrs. Gupta also offers traditional Usui Reiki biofield balancing strictly upon request for clients who wish to cultivate somatic calm and relaxation alongside their emotional journey.
+            As a secondary wellness complement, Dr. Gupta also offers traditional Usui Reiki biofield balancing strictly upon request for clients who wish to cultivate somatic calm and relaxation alongside their emotional journey.
           </p>
         </div>
 
@@ -107,7 +107,7 @@ export default function AboutPage() {
             <span>Practice Boundaries &amp; Non-Emergency Disclaimer</span>
           </div>
           <p className="text-xs sm:text-sm text-[#52635A] leading-relaxed">
-            Mrs. Shivie Gupta’s voice counselling is an emotional support, relationship mediation, and personal clarity practice. It is <strong>not an emergency crisis intervention line</strong>, psychiatric diagnostic clinic, or hospital psychiatric facility.
+            Dr. Shivie Gupta’s voice counselling is an emotional support, relationship mediation, and personal clarity practice. It is <strong>not an emergency crisis intervention line</strong>, psychiatric diagnostic clinic, or hospital psychiatric facility.
           </p>
           <p className="text-xs sm:text-sm text-[#52635A] leading-relaxed">
             If you or a loved one is experiencing severe clinical distress, self-harm thoughts, or acute psychiatric crises, please immediately reach out to professional emergency resources such as the <strong>Tele-MANAS helpline (

@@ -2,8 +2,8 @@ import type { Metadata } from "next";
 import { FaqAccordion } from "@/components/FaqAccordion";
 
 export const metadata: Metadata = {
-  title: "Client Guide & FAQs | Mrs. Shivie Gupta | Agra, India",
-  description: "Frequently asked questions regarding voice-only phone counselling, session confidentiality, fees, duration, and optional Reiki with Mrs. Shivie Gupta.",
+  title: "Client Guide & FAQs | Dr. Shivie Gupta | Agra, India",
+  description: "Frequently asked questions regarding voice-only phone counselling, session confidentiality, fees, duration, and optional Reiki with Dr. Shivie Gupta.",
 };
 
 export default function GuidePage() {
@@ -18,7 +18,7 @@ export default function GuidePage() {
           Frequently Asked Questions
         </h1>
         <p className="text-xs sm:text-sm lg:text-base text-[#52635A] leading-relaxed max-w-2xl mx-auto text-balance">
-          Learn how voice-only telephone counselling sessions operate, what to expect regarding confidentiality, pricing, and how Mrs. Shivie Gupta supports your personal journey.
+          Learn how voice-only telephone counselling sessions operate, what to expect regarding confidentiality, pricing, and how Dr. Shivie Gupta supports your personal journey.
         </p>
       </section>
 
@@ -45,7 +45,7 @@ export default function GuidePage() {
             <span className="text-xs font-bold text-[#C5A059] uppercase tracking-wider">Step 3</span>
             <h3 className="font-serif text-lg font-bold text-[#1F2924]">Confidential Phone Call</h3>
             <p className="text-xs text-[#52635A] leading-relaxed">
-              Speak openly and vulnerably with Mrs. Shivie Gupta (~35 years experience) with complete confidentiality.
+              Speak openly and vulnerably with Dr. Shivie Gupta (~35 years experience) with complete confidentiality.
             </p>
           </div>
         </div>
@@ -61,7 +61,7 @@ export default function GuidePage() {
             </h3>
           </div>
           <p className="text-xs sm:text-sm text-[#52635A] leading-relaxed">
-            There is no need to prepare formal notes or rehearse your concerns. Mrs. Shivie Gupta guides the conversation with patient, non-judgmental listening. No video cameras are ever used, and whatever you share remains strictly between you and Mrs. Gupta.
+            There is no need to prepare formal notes or rehearse your concerns. Dr. Shivie Gupta guides the conversation with patient, non-judgmental listening. No video cameras are ever used, and whatever you share remains strictly between you and Dr. Gupta.
           </p>
         </div>
       </section>

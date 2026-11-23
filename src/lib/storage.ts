@@ -60,10 +60,10 @@ const DATA_DIR = path.join(process.cwd(), "data");
 const DB_FILE = path.join(DATA_DIR, "app-store.json");
 
 const DEFAULT_SETTINGS: SiteSettings = {
-  practitionerName: "Mrs. Shivie Gupta",
+  practitionerName: "Dr. Shivie Gupta",
   experienceYears: 35,
   phone: "+91 9837891692",
-  whatsappUrl: "https://wa.me/919837891692?text=Hello%20Mrs.%20Shivie%20Gupta,%20I%20would%20like%20to%20inquire%20about%20a%20voice%20counselling%20session.",
+  whatsappUrl: "https://wa.me/919837891692?text=Hello%20Dr.%20Shivie%20Gupta,%20I%20would%20like%20to%20inquire%20about%20a%20voice%20counselling%20session.",
   email: "contact@drshiviegupta.com",
   locality: "Dayalbagh",
   city: "Agra",

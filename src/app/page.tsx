@@ -26,7 +26,7 @@ export default function HomePage() {
 
           {/* Subheading */}
           <p className="text-base sm:text-lg lg:text-xl text-[#52635A] max-w-2xl mx-auto leading-relaxed font-normal text-balance">
-            Empathetic, private telephone sessions by <strong>Mrs. Shivie Gupta</strong>. Thoughtful guidance for personal anxiety, couple relationships, and family harmony—conducted strictly over phone call with optional Reiki healing on request.
+            Empathetic, private telephone sessions by <strong>Dr. Shivie Gupta</strong>. Thoughtful guidance for personal anxiety, couple relationships, and family harmony—conducted strictly over phone call with optional Reiki healing on request.
           </p>
 
           {/* Action CTAs */}
@@ -227,7 +227,7 @@ export default function HomePage() {
 
           <div className="p-8 rounded-3xl bg-[#F2EDE4] border border-[#E8E0D2] space-y-4 text-center sm:text-left">
             <h3 className="font-serif text-xl font-bold text-[#2D4A3E]">
-              Connect Directly with Mrs. Shivie Gupta
+              Connect Directly with Dr. Shivie Gupta
             </h3>
             <p className="text-xs text-[#52635A] leading-relaxed">
               Call or send a WhatsApp message to coordinate your preferred day and time. Calling hours are Monday to Saturday, 10:00 AM – 7:00 PM IST.

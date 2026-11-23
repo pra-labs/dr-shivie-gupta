@@ -97,6 +97,6 @@ export async function submitContactInquiry(
 
   return {
     success: true,
-    message: "Thank you for reaching out. Mrs. Shivie Gupta will review your inquiry and connect with you directly via call or WhatsApp at your provided number.",
+    message: "Thank you for reaching out. Dr. Shivie Gupta will review your inquiry and connect with you directly via call or WhatsApp at your provided number.",
   };
 }

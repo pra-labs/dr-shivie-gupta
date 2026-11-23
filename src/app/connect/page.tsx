@@ -5,8 +5,8 @@ import { siteConfig } from "@/config/site";
 import { ContactForm } from "@/components/ContactForm";
 
 export const metadata: Metadata = {
-  title: "Request a Voice Session | Mrs. Shivie Gupta | Agra, India",
-  description: "Request a confidential voice-only phone counselling session or optional Reiki consultation with Mrs. Shivie Gupta (~35 years experience).",
+  title: "Request a Voice Session | Dr. Shivie Gupta | Agra, India",
+  description: "Request a confidential voice-only phone counselling session or optional Reiki consultation with Dr. Shivie Gupta (~35 years experience).",
 };
 
 export default function ConnectPage() {
@@ -21,7 +21,7 @@ export default function ConnectPage() {
           Request a Voice Counselling Session
         </h1>
         <p className="text-xs sm:text-sm lg:text-base text-[#52635A] leading-relaxed max-w-2xl mx-auto text-balance">
-          Every consultation with Mrs. Shivie Gupta is held strictly over audio/phone call for your privacy and peace of mind. Use this form to request your preferred day and time, or reach out directly by phone.
+          Every consultation with Dr. Shivie Gupta is held strictly over audio/phone call for your privacy and peace of mind. Use this form to request your preferred day and time, or reach out directly by phone.
         </p>
       </section>
 
@@ -103,7 +103,7 @@ export default function ConnectPage() {
 
               <div className="pt-4 border-t border-[#E8E0D2] text-[11px] text-[#52635A] leading-relaxed">
                 <p>
-                  <strong>Confidentiality Notice:</strong> All discussions remain private between you and Mrs. Shivie Gupta. Voice sessions eliminate video recordings, webcam exposure, or clinic waiting room visibility.
+                  <strong>Confidentiality Notice:</strong> All discussions remain private between you and Dr. Shivie Gupta. Voice sessions eliminate video recordings, webcam exposure, or clinic waiting room visibility.
                 </p>
               </div>
             </div>

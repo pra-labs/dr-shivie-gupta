@@ -15,7 +15,7 @@ export async function POST(request: Request) {
     return NextResponse.json(
       {
         reply:
-          "Namaste. Mrs. Shivie Gupta offers confidential phone counselling for Individual (₹1,200), Couple (₹1,800), and Family (₹2,200) guidance, plus optional Reiki (₹1,000). You may also call or WhatsApp directly at **+91 98378 91692**.",
+          "Namaste. Dr. Shivie Gupta offers confidential phone counselling for Individual (₹1,200), Couple (₹1,800), and Family (₹2,200) guidance, plus optional Reiki (₹1,000). You may also call or WhatsApp directly at **+91 98378 91692**.",
         matchedIntent: "greeting",
       },
       { status: 200 }

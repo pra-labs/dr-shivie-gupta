@@ -181,7 +181,7 @@ export function AdminDashboardClient({ initialDb }: AdminDashboardClientProps) {
             <span>Practice Administration Workspace</span>
           </div>
           <h1 className="font-serif text-2xl sm:text-3xl font-bold text-[#1F2924]">
-            Mrs. Shivie Gupta — Practice Management
+            Dr. Shivie Gupta — Practice Management
           </h1>
           <p className="text-xs text-[#52635A]">
             Manage voice session inquiries, service durations &amp; INR prices, client FAQs, and practice contact details.
@@ -434,7 +434,7 @@ export function AdminDashboardClient({ initialDb }: AdminDashboardClientProps) {
                     <a
                       href={`https://wa.me/${inq.phone.replace(/[^0-9]/g, "")}?text=Namaste%20${encodeURIComponent(
                         inq.name
-                      )},%20this%20is%20Mrs.%20Shivie%20Gupta%20regarding%20your%20voice%20counselling%20inquiry.`}
+                      )},%20this%20is%20Dr.%20Shivie%20Gupta%20regarding%20your%20voice%20counselling%20inquiry.`}
                       target="_blank"
                       rel="noopener noreferrer"
                       className="px-3 py-1.5 rounded-full bg-emerald-600 text-white text-xs font-semibold hover:bg-emerald-700 shrink-0"

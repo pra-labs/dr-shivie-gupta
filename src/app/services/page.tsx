@@ -3,9 +3,9 @@ import Link from "next/link";
 import { siteConfig } from "@/config/site";
 
 export const metadata: Metadata = {
-  title: "Voice Counselling & Reiki Services | Mrs. Shivie Gupta | Agra, India",
+  title: "Voice Counselling & Reiki Services | Dr. Shivie Gupta | Agra, India",
   description:
-    "Explore confidential voice-only phone counselling services (Individual, Couple, Family) and optional traditional Reiki healing by Mrs. Shivie Gupta (~35 years experience).",
+    "Explore confidential voice-only phone counselling services (Individual, Couple, Family) and optional traditional Reiki healing by Dr. Shivie Gupta (~35 years experience).",
 };
 
 export default function ServicesPage() {
@@ -20,7 +20,7 @@ export default function ServicesPage() {
           Voice-Only Counselling &amp; Healing Services
         </h1>
         <p className="text-xs sm:text-sm lg:text-base text-[#52635A] leading-relaxed max-w-2xl mx-auto text-balance">
-          All counselling sessions are conducted strictly over phone/audio calls for complete personal privacy and comfort. With ~35 years of therapeutic experience, Mrs. Shivie Gupta provides compassionate, non-judgmental guidance for individuals, couples, and families across India.
+          All counselling sessions are conducted strictly over phone/audio calls for complete personal privacy and comfort. With ~35 years of therapeutic experience, Dr. Shivie Gupta provides compassionate, non-judgmental guidance for individuals, couples, and families across India.
         </p>
       </section>
 
@@ -199,7 +199,7 @@ export default function ServicesPage() {
             Prefer Direct Booking via Phone or WhatsApp?
           </h3>
           <p className="text-xs sm:text-sm text-[#52635A] max-w-xl mx-auto leading-relaxed">
-            You can connect directly with Mrs. Shivie Gupta to discuss your preferred timing or clarify any question before confirming your voice session.
+            You can connect directly with Dr. Shivie Gupta to discuss your preferred timing or clarify any question before confirming your voice session.
           </p>
           <div className="pt-2 flex flex-col sm:flex-row items-center justify-center gap-4">
             <a
