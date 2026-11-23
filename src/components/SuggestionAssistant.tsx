@@ -18,7 +18,7 @@ interface ChatMessage {
   };
 }
 
-// Lightweight Markdown renderer for bold (**text**), bullet items, and markdown links ([text](url))
+// Lightweight Markdown renderer for bold (**text**), italics (*text*), bullet items, and markdown links ([text](url))
 function renderFormattedContent(text: string) {
   const lines = text.split("\n");
 
@@ -27,7 +27,8 @@ function renderFormattedContent(text: string) {
     const cleanLine = isBullet ? line.trim().replace(/^[-•]\s+/, "") : line;
 
     const parts: (string | React.ReactNode)[] = [];
-    const regex = /(\[.*?\]\(.*?\)|\*\*.*?\*\*)/g;
+    // Important: Match links and **bold** first, then *italic* so tokens never collide
+    const regex = /(\[.*?\]\(.*?\)|\*\*.*?\*\*|\*[^*\n]+?\*)/g;
     let lastIndex = 0;
     let match;
 
@@ -54,6 +55,12 @@ function renderFormattedContent(text: string) {
           <strong key={`bold-${lineIdx}-${match.index}`} className="font-semibold text-[#1F2924]">
             {token.substring(2, token.length - 2)}
           </strong>
+        );
+      } else if (token.startsWith("*") && token.endsWith("*") && token.length > 2) {
+        parts.push(
+          <em key={`italic-${lineIdx}-${match.index}`} className="italic text-[#1F2924]">
+            {token.substring(1, token.length - 1)}
+          </em>
         );
       }
 
@@ -130,9 +137,34 @@ export function SuggestionAssistant() {
       setIsOpen(true);
     };
 
+    const handleKeyDown = (e: KeyboardEvent) => {
+      if (e.key === "Escape") {
+        setIsOpen(false);
+      }
+    };
+
     window.addEventListener("open-session-assistant", handleCustomOpen);
-    return () => window.removeEventListener("open-session-assistant", handleCustomOpen);
+    window.addEventListener("keydown", handleKeyDown);
+
+    return () => {
+      window.removeEventListener("open-session-assistant", handleCustomOpen);
+      window.removeEventListener("keydown", handleKeyDown);
+    };
   }, []);
+
+  // Lock body scroll on small screens when assistant sheet is open
+  useEffect(() => {
+    if (isOpen && typeof window !== "undefined") {
+      const isMobile = window.innerWidth < 640;
+      if (isMobile) {
+        const originalOverflow = document.body.style.overflow;
+        document.body.style.overflow = "hidden";
+        return () => {
+          document.body.style.overflow = originalOverflow;
+        };
+      }
+    }
+  }, [isOpen]);
 
   const handleReset = () => {
     setMessages([
@@ -225,7 +257,12 @@ export function SuggestionAssistant() {
             aria-hidden="true"
           />
 
-          <div className="fixed inset-x-0 bottom-0 sm:inset-x-auto sm:bottom-5 sm:right-5 z-50 w-full sm:w-[420px] h-[85vh] sm:h-[550px] max-h-[90vh] sm:max-h-[85vh] bg-white rounded-t-3xl sm:rounded-3xl border border-[#E8E0D2] shadow-2xl flex flex-col overflow-hidden animate-in fade-in slide-in-from-bottom-4 duration-300">
+          <div
+            role="dialog"
+            aria-modal="true"
+            aria-labelledby="session-assistant-title"
+            className="fixed inset-x-0 bottom-0 sm:inset-x-auto sm:bottom-5 sm:right-5 z-50 w-full sm:w-[420px] h-[85vh] sm:h-[550px] max-h-[90vh] sm:max-h-[85vh] bg-white rounded-t-3xl sm:rounded-3xl border border-[#E8E0D2] shadow-2xl flex flex-col overflow-hidden animate-in fade-in slide-in-from-bottom-4 duration-300"
+          >
             {/* Header with Clear Button */}
             <div className="p-4 bg-[#2D4A3E] text-white flex items-center justify-between shrink-0">
               <div className="flex items-center gap-2.5">
@@ -233,7 +270,7 @@ export function SuggestionAssistant() {
                   <Sparkles className="w-4 h-4" />
                 </div>
                 <div>
-                  <h3 className="font-serif text-sm font-bold leading-tight">
+                  <h3 id="session-assistant-title" className="font-serif text-sm font-bold leading-tight">
                     Session Guidance Assistant
                   </h3>
                   <span className="text-[10px] text-[#C5A059] block">

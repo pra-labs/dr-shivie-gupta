@@ -5,11 +5,15 @@ export function middleware(request: NextRequest) {
   const { pathname } = request.nextUrl;
   const host = request.headers.get("host") || "";
   const adminSubdomain = process.env.ADMIN_SUBDOMAIN || "admin";
+  const siteDomain = process.env.SITE_DOMAIN || process.env.NEXT_PUBLIC_SITE_DOMAIN || "";
 
-  // Check if current host is the admin subdomain (e.g., admin.drshiviegupta.com or admin.localhost:3000)
+  // Strictly check whether current host is an authorized admin subdomain host
+  // e.g., admin.localhost, admin.localhost:3000, or admin.<SITE_DOMAIN>
+  const hostWithoutPort = host.split(":")[0];
   const isHostAdminSubdomain =
-    host.startsWith(`${adminSubdomain}.`) ||
-    host === adminSubdomain ||
+    hostWithoutPort === `${adminSubdomain}.localhost` ||
+    hostWithoutPort === adminSubdomain ||
+    (siteDomain && hostWithoutPort === `${adminSubdomain}.${siteDomain.split(":")[0]}`) ||
     (process.env.NODE_ENV !== "production" && request.headers.get("x-admin-host") === "true");
 
   // If visiting /admin on the primary domain, restrict access unless ADMIN_ALLOW_DIRECT_PATH is enabled

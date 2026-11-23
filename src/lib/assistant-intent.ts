@@ -25,6 +25,8 @@ const CRISIS_PATTERNS = [
   /\b(suicide|suicidal|kill\s*myself|end\s*my\s*life|want\s*to\s*die|self[-\s]*harm|hurt\s*myself)\b/i,
   /\b(hopeless|no\s*reason\s*to\s*live|can'?t\s*go\s*on|emergency|abuse|danger|severe\s*panic)\b/i,
   /\b(mar\s*jana|jaan\s*dena|khudkushi|aatmhatya)\b/i,
+  /\b(end\s*it|killing\s*myself|end\s*everything|give\s*up\s*on\s*life)\b/i,
+  /\b(marne\s*ka\s*man|mar\s*jaun|zeher|jeena\s*nahi\s*hai|jeena\s*nahi\s*chahta|khatam\s*karna\s*hai)\b/i,
 ];
 
 // 2. Greeting Patterns
@@ -39,16 +41,18 @@ const HOW_IT_WORKS_PATTERNS = [
   /\b(confidential|confidentiality|privacy|secret|safe|gupt|webcam|camera|video|zoom|in[- ]*person|clinic)\b/i,
 ];
 
-// 4. Couple & Relationship Inquiries (Checked BEFORE family to resolve collisions)
+// 4. Family, Household & In-Laws Inquiries
+// Evaluated before couple counselling to catch "husband's family / in-laws" and "ghar ka jhagda" cleanly
+const FAMILY_PATTERNS = [
+  /\b(family|parent|parents|teen|teenager|adolescent|child|children|son|daughter)\b/i,
+  /\b(in[- ]*laws?|mother[- ]*in[- ]*law|father[- ]*in[- ]*law|sasural|saas|sasur|bahu|damad)\b/i,
+  /\b(parivar|ghar\s*ke\s*log|ghar\s*ka\s*jhagda|ghar\s*me\s*jhagda|bache|maa|baap|mummy|papa|intergenerational|joint\s*family)\b/i,
+];
+
+// 5. Couple & Relationship Inquiries
 const COUPLE_PATTERNS = [
   /\b(couple|marriage|marital|husband|wife|spouse|partner|relationship|dating|breakup|divorce|intimacy)\b/i,
   /\b(shaadi|pati|patni|rishte|sambandh|jhagda|ladai|arguments|communication\s*gap)\b/i,
-];
-
-// 5. Family & Intergenerational Inquiries
-const FAMILY_PATTERNS = [
-  /\b(family|parent|parents|teen|teenager|adolescent|child|children|son|daughter|in[- ]*laws)\b/i,
-  /\b(parivar|ghar|bache|maa|baap|mummy|papa|sasural|intergenerational)\b/i,
 ];
 
 // 6. Optional Reiki & Biofield Inquiries
@@ -73,7 +77,7 @@ const INDIVIDUAL_PATTERNS = [
 
 // 9. Explicit Off-Topic Patterns
 const OFF_TOPIC_PATTERNS = [
-  /\b(code|python|javascript|react|crypto|bitcoin|stock\s*market|invest|tax|legal|court|lawyer|recipe|weather|medicine|dawa|tablets)\b/i,
+  /\b(code|coding|python|javascript|react|crypto|bitcoin|stocks?|shares?|trading|mutual\s*funds?|invest|tax|legal|court|lawyer|recipe|weather|medicine|dawa|tablets)\b/i,
 ];
 
 export function routeIntent(userInput: string): AssistantResponse {
@@ -118,7 +122,7 @@ Dr. Shivie Gupta brings **~35 years of experience** offering confidential, voice
 - **Family Counselling:** ₹2,200 (60 mins) — for intergenerational misunderstandings and household harmony.
 - **Optional Reiki Healing:** ₹1,000 (45 mins) — traditional Usui biofield relaxation (strictly on request).
 
-What would you like to explore today? You can view all options on [Services & Pricing](/services), read client questions on [Client FAQs](/faqs), or [Request a Voice Session](/connect).`,
+What would you like to explore today? You can view all options on [Services & Pricing](/services), read client questions on [Client Guide](/guide), or [Request a Voice Session](/connect).`,
       suggestedAction: {
         label: "View Services & Pricing",
         href: "/services",
@@ -145,10 +149,10 @@ All discussions are held in strict confidence between you and Dr. Gupta. You do 
 **3. What to Expect During the First Call:**
 Dr. Gupta listens actively to your current situation without judgment, helps untangle the emotional knots, and offers practical reflective tools.
 
-Learn more on our [About Dr. Shivie Gupta](/about) page, read answers on [Client FAQs](/faqs), or submit your preferred timing on [Request a Voice Session](/connect).`,
+Learn more on our [About Dr. Shivie Gupta](/about) page, read answers on [Client Guide](/guide), or submit your preferred timing on [Request a Voice Session](/connect).`,
       suggestedAction: {
-        label: "Read Client FAQs",
-        href: "/faqs",
+        label: "Read Client Guide",
+        href: "/guide",
       },
       secondaryAction: {
         label: "Request a Voice Session",
@@ -157,8 +161,33 @@ Learn more on our [About Dr. Shivie Gupta](/about) page, read answers on [Client
     };
   }
 
-  // 4. COUPLE & RELATIONSHIP COUNSELLING
-  // Checked BEFORE family so phrases like "starting a family / marriage communication" route accurately
+  // 4. FAMILY, HOUSEHOLD & IN-LAWS COUNSELLING
+  // Checked BEFORE couple so phrases like "husband's family / in-laws" route accurately
+  if (FAMILY_PATTERNS.some((pattern) => pattern.test(text))) {
+    return {
+      matchedIntent: "family",
+      reply: `For household disputes, parent-teen communication gaps, or in-law friction, **Family Counselling (Voice Call • 60 mins • ₹2,200)** offers neutral, patient guidance.
+
+With ~35 years of practice in Dayalbagh, Agra, Dr. Gupta helps families untangle complex domestic dynamics while preserving dignity and mutual respect for all members.
+
+**Helpful themes to explore during your consultation:**
+1. Where do generational perspectives or differing expectations clash most frequently?
+2. How can family members set healthy personal boundaries without hostility?
+3. What shared routines can help restore peace and warmth at home?
+
+To coordinate a suitable time for your family phone session, visit [Request a Voice Session](/connect), read our [Client Guide](/guide), or call directly at **+91 98378 91692**.`,
+      suggestedAction: {
+        label: "Request Family Session",
+        href: "/connect?service=family",
+      },
+      secondaryAction: {
+        label: "Call +91 98378 91692",
+        href: "tel:+919837891692",
+      },
+    };
+  }
+
+  // 5. COUPLE & RELATIONSHIP COUNSELLING
   if (COUPLE_PATTERNS.some((pattern) => pattern.test(text))) {
     return {
       matchedIntent: "couple",
@@ -183,31 +212,6 @@ Sessions are held strictly via telephone/WhatsApp audio. You can reserve a slot 
     };
   }
 
-  // 5. FAMILY & INTERGENERATIONAL COUNSELLING
-  if (FAMILY_PATTERNS.some((pattern) => pattern.test(text))) {
-    return {
-      matchedIntent: "family",
-      reply: `For household disputes, parent-teen communication gaps, or in-law friction, **Family Counselling (Voice Call • 60 mins • ₹2,200)** offers neutral, patient guidance.
-
-With ~35 years of practice in Dayalbagh, Agra, Dr. Gupta helps families untangle complex domestic dynamics while preserving dignity and mutual respect for all members.
-
-**Helpful themes to explore during your consultation:**
-1. Where do generational perspectives or differing expectations clash most frequently?
-2. How can family members set healthy personal boundaries without hostility?
-3. What shared routines can help restore peace and warmth at home?
-
-To coordinate a suitable time for your family phone session, visit [Request a Voice Session](/connect), read our [Client FAQs](/faqs), or call directly at **+91 98378 91692**.`,
-      suggestedAction: {
-        label: "Request Family Session",
-        href: "/connect?service=family",
-      },
-      secondaryAction: {
-        label: "Call +91 98378 91692",
-        href: "tel:+919837891692",
-      },
-    };
-  }
-
   // 6. OPTIONAL REIKI HEALING
   if (REIKI_PATTERNS.some((pattern) => pattern.test(text))) {
     return {
@@ -221,7 +225,7 @@ Traditional Usui Reiki biofield balancing supports parasympathetic nervous syste
 - It is a gentle contemplative energy practice, not a medical or psychiatric treatment.
 - You can request it on its own or alongside voice counselling.
 
-For details, view [Services & Pricing](/services), read common questions on [Client FAQs](/faqs), or inquire via [Request a Voice Session](/connect).`,
+For details, view [Services & Pricing](/services), read common questions on [Client Guide](/guide), or inquire via [Request a Voice Session](/connect).`,
       suggestedAction: {
         label: "Inquire for Reiki Balancing",
         href: "/connect?service=reiki",
@@ -252,7 +256,7 @@ All sessions are held strictly over telephone or WhatsApp audio calls. Speaking 
 - **Calling Hours:** Monday to Saturday, 10:00 AM – 7:00 PM IST
 - **Direct Phone / WhatsApp:** **+91 98378 91692**
 - **Online Form:** [Request a Voice Session](/connect)
-- **Full Scope:** [Services & Pricing](/services) and [Client FAQs](/faqs)`,
+- **Full Scope:** [Services & Pricing](/services) and [Client Guide](/guide)`,
       suggestedAction: {
         label: "Request a Voice Session",
         href: "/connect",
@@ -276,7 +280,7 @@ If you have questions regarding:
 - **Family Counselling** (₹2,200 / 60 mins)
 - **Optional Reiki Healing** (₹1,000 / 45 mins)
 
-Please feel free to ask, review [Services & Pricing](/services), read [Client FAQs](/faqs), or submit an inquiry on [Request a Voice Session](/connect).`,
+Please feel free to ask, review [Services & Pricing](/services), read [Client Guide](/guide), or submit an inquiry on [Request a Voice Session](/connect).`,
       suggestedAction: {
         label: "View Services & Pricing",
         href: "/services",
@@ -320,7 +324,7 @@ All sessions are held over telephone call—no video camera pressure or clinic t
 
 Dr. Shivie Gupta offers a calm, non-judgmental space over phone to help unpack whatever is weighing on your mind.
 
-You can view all session types on [Services & Pricing](/services), read answers on [Client FAQs](/faqs), or submit a convenient time on [Request a Voice Session](/connect). Direct calling and WhatsApp are also available at **+91 98378 91692**.`,
+You can view all session types on [Services & Pricing](/services), read answers on [Client Guide](/guide), or submit a convenient time on [Request a Voice Session](/connect). Direct calling and WhatsApp are also available at **+91 98378 91692**.`,
     suggestedAction: {
       label: "Request a Voice Session",
       href: "/connect",

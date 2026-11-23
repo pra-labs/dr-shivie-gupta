@@ -74,7 +74,7 @@ export function ContactForm() {
       ) : (
         <form action={formAction} className="space-y-4 sm:space-y-5">
           {state.message && !state.success && (
-            <div className="p-4 rounded-xl bg-red-50 border border-red-200 text-red-700 text-xs flex items-center gap-2">
+            <div className="p-4 rounded-xl bg-[#FAF8F5] border border-[#9E4A2A]/30 text-[#9E4A2A] text-xs flex items-center gap-2">
               <AlertCircle className="w-4 h-4 shrink-0" />
               <span>{state.message}</span>
             </div>
@@ -101,7 +101,7 @@ export function ContactForm() {
                 className="w-full min-h-[48px] px-4 py-3 rounded-xl border border-[#E8E0D2] bg-[#FAF8F5] text-base sm:text-sm text-[#1F2924] placeholder:text-sm focus:outline-none focus:ring-2 focus:ring-[#2D4A3E] focus:bg-white transition-all shadow-2xs"
               />
               {state.errors?.name && (
-                <p className="text-[11px] text-red-600 mt-1">{state.errors.name[0]}</p>
+                <p className="text-[11px] text-[#9E4A2A] mt-1">{state.errors.name[0]}</p>
               )}
             </div>
 
@@ -120,7 +120,7 @@ export function ContactForm() {
                 className="w-full min-h-[48px] px-4 py-3 rounded-xl border border-[#E8E0D2] bg-[#FAF8F5] text-base sm:text-sm text-[#1F2924] placeholder:text-sm focus:outline-none focus:ring-2 focus:ring-[#2D4A3E] focus:bg-white transition-all shadow-2xs"
               />
               {state.errors?.phone && (
-                <p className="text-[11px] text-red-600 mt-1">{state.errors.phone[0]}</p>
+                <p className="text-[11px] text-[#9E4A2A] mt-1">{state.errors.phone[0]}</p>
               )}
             </div>
           </div>

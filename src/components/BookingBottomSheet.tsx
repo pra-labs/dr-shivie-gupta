@@ -37,9 +37,31 @@ export function BookingBottomSheet() {
       setIsOpen(true);
     };
 
+    const handleKeyDown = (e: KeyboardEvent) => {
+      if (e.key === "Escape") {
+        setIsOpen(false);
+      }
+    };
+
     window.addEventListener("open-booking-modal", handleOpen);
-    return () => window.removeEventListener("open-booking-modal", handleOpen);
+    window.addEventListener("keydown", handleKeyDown);
+
+    return () => {
+      window.removeEventListener("open-booking-modal", handleOpen);
+      window.removeEventListener("keydown", handleKeyDown);
+    };
   }, []);
+
+  // Lock body scroll when booking modal is open
+  useEffect(() => {
+    if (isOpen && typeof window !== "undefined") {
+      const originalOverflow = document.body.style.overflow;
+      document.body.style.overflow = "hidden";
+      return () => {
+        document.body.style.overflow = originalOverflow;
+      };
+    }
+  }, [isOpen]);
 
   const handleClose = () => {
     setIsOpen(false);
@@ -95,7 +117,12 @@ export function BookingBottomSheet() {
       />
 
       {/* Sheet Container */}
-      <div className="fixed inset-x-0 bottom-0 z-50 bg-white rounded-t-3xl border-t border-[#E8E0D2] shadow-2xl max-h-[92vh] flex flex-col overflow-hidden animate-in slide-in-from-bottom duration-300">
+      <div
+        role="dialog"
+        aria-modal="true"
+        aria-labelledby="booking-bottom-sheet-title"
+        className="fixed inset-x-0 bottom-0 z-50 bg-white rounded-t-3xl border-t border-[#E8E0D2] shadow-2xl max-h-[92vh] flex flex-col overflow-hidden animate-in slide-in-from-bottom duration-300"
+      >
         {/* Grab Handle */}
         <div className="pt-3 pb-2 flex justify-center shrink-0">
           <div className="w-12 h-1.5 rounded-full bg-[#E8E0D2]" />
@@ -104,7 +131,7 @@ export function BookingBottomSheet() {
         {/* Sheet Header */}
         <div className="px-5 pb-3 border-b border-[#E8E0D2] flex items-center justify-between shrink-0">
           <div>
-            <h3 className="font-serif text-lg font-bold text-[#1F2924]">
+            <h3 id="booking-bottom-sheet-title" className="font-serif text-lg font-bold text-[#1F2924]">
               Request a Voice Session
             </h3>
             <p className="text-[11px] text-[#52635A]">
@@ -143,7 +170,7 @@ export function BookingBottomSheet() {
           ) : (
             <form onSubmit={handleSubmit} className="space-y-4">
               {formState?.message && !formState.success && (
-                <div className="p-3 rounded-xl bg-red-50 border border-red-200 text-red-700 text-xs">
+                <div className="p-3 rounded-xl bg-[#FAF8F5] border border-[#9E4A2A]/30 text-[#9E4A2A] text-xs">
                   {formState.message}
                 </div>
               )}

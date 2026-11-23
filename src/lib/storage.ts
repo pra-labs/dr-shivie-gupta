@@ -34,7 +34,7 @@ export interface SiteSettings {
 
 export interface AnalyticsEvent {
   id: string;
-  type: "pageview" | "faq_search" | "service_click" | "faq_click";
+  type: "pageview" | "faq_search" | "service_click" | "faq_click" | "cta_click" | "session_guide_open" | "service_card_swipe" | "booking_flow_start";
   path?: string;
   query?: string;
   target?: string;
@@ -164,18 +164,47 @@ export function getDatabase(): AppDatabase {
 
     return parsed;
   } catch (error) {
-    console.error("Error reading database:", error);
+    console.error("Error reading database primary file:", error);
+    // If primary file failed to parse, attempt recovery from backup before giving up
+    if (fs.existsSync(BACKUP_FILE)) {
+      try {
+        console.warn("Attempting recovery from backup database file:", BACKUP_FILE);
+        const backupRaw = fs.readFileSync(BACKUP_FILE, "utf-8");
+        return JSON.parse(backupRaw);
+      } catch (backupError) {
+        console.error("Backup recovery also failed:", backupError);
+      }
+    }
+    // Only return initial defaults if file truly does not exist or both reads failed, but log loudly
     return getInitialDatabase();
   }
 }
+
+const BACKUP_FILE = path.join(DATA_DIR, "app-store.json.bak");
 
 export function saveDatabase(db: AppDatabase): void {
   try {
     if (!fs.existsSync(DATA_DIR)) {
       fs.mkdirSync(DATA_DIR, { recursive: true });
     }
-    fs.writeFileSync(DB_FILE, JSON.stringify(db, null, 2), "utf-8");
+    const payload = JSON.stringify(db, null, 2);
+    const tempFile = path.join(DATA_DIR, `app-store.tmp.${Date.now()}.${Math.random().toString(36).slice(2, 8)}`);
+
+    // 1. Write to temporary file first
+    fs.writeFileSync(tempFile, payload, "utf-8");
+
+    // 2. Backup existing primary file if it exists
+    if (fs.existsSync(DB_FILE)) {
+      try {
+        fs.copyFileSync(DB_FILE, BACKUP_FILE);
+      } catch {
+        // Continue even if backup copy fails
+      }
+    }
+
+    // 3. Atomic rename temp file to primary file
+    fs.renameSync(tempFile, DB_FILE);
   } catch (error) {
-    console.error("Error writing database:", error);
+    console.error("Error writing database atomically:", error);
   }
 }

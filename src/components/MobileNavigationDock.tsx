@@ -64,7 +64,7 @@ export function MobileNavigationDock() {
         <div className="flex items-center justify-center px-0.5">
           <button
             onClick={handleOpenBooking}
-            className="flex items-center justify-center gap-1.5 w-full min-h-[42px] py-2 px-2.5 rounded-full bg-[#2D4A3E] text-white shadow-sm font-semibold text-xs tracking-wider transition-all active:scale-[0.95] cursor-pointer"
+            className="flex items-center justify-center gap-1.5 w-full min-h-[44px] py-2 px-3 rounded-full bg-[#2D4A3E] text-white shadow-sm font-semibold text-xs tracking-wider transition-all active:scale-[0.95] cursor-pointer"
             aria-label="Book a voice session"
           >
             <CalendarCheck className="w-3.5 h-3.5 text-[#C5A059]" />

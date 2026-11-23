@@ -67,15 +67,15 @@ export function Navbar() {
 
         {/* Mobile Top Header: Compact Availability & WhatsApp */}
         <div className="md:hidden flex items-center gap-2">
-          <div className="flex items-center gap-1.5 px-2.5 py-1 rounded-full bg-emerald-50 border border-emerald-200/60 text-emerald-800 text-[10px] font-medium">
-            <span className="w-1.5 h-1.5 rounded-full bg-emerald-500 animate-pulse" />
+          <div className="flex items-center gap-1.5 px-2.5 py-1 rounded-full bg-[#2D4A3E]/10 border border-[#2D4A3E]/20 text-[#2D4A3E] text-[10px] font-medium">
+            <span className="w-1.5 h-1.5 rounded-full bg-[#2D4A3E] animate-pulse" />
             <span>Available</span>
           </div>
           <a
             href={siteConfig.whatsappUrl}
             target="_blank"
             rel="noopener noreferrer"
-            className="p-2 min-w-[38px] min-h-[38px] rounded-full bg-emerald-600 text-white flex items-center justify-center hover:bg-emerald-700 transition-colors shadow-xs active:scale-95"
+            className="p-2 min-w-[44px] min-h-[44px] rounded-full bg-[#2D4A3E] text-white flex items-center justify-center hover:bg-[#1E332A] transition-colors shadow-xs active:scale-95"
             aria-label="Direct WhatsApp Message"
           >
             <MessageCircle className="w-4 h-4" />
