@@ -48,30 +48,30 @@ export default function HomePage() {
 
           {/* 3-Column Key Guarantees Strip */}
           <div className="pt-6 sm:pt-8 border-t border-[#E8E0D2]/80 max-w-2xl mx-auto">
-            <div className="grid grid-cols-3 gap-2 sm:gap-6 text-center">
-              <div className="p-2.5 sm:p-4 rounded-2xl bg-white/70 border border-[#E8E0D2] shadow-2xs flex flex-col justify-center min-h-[76px] sm:min-h-0">
-                <div className="text-base sm:text-2xl font-serif font-bold text-[#2D4A3E] whitespace-nowrap">
+            <div className="grid grid-cols-3 gap-1.5 sm:gap-6 text-center">
+              <div className="px-1.5 py-2.5 sm:p-4 rounded-2xl bg-white/70 border border-[#E8E0D2] shadow-2xs flex flex-col justify-center min-h-[72px] sm:min-h-0">
+                <div className="text-[13px] sm:text-2xl font-serif font-bold text-[#2D4A3E] whitespace-nowrap">
                   ~35 Years
                 </div>
-                <div className="text-[10px] sm:text-xs text-[#52635A] mt-0.5 leading-tight">
-                  Counselling Practice
+                <div className="text-[9px] sm:text-xs text-[#52635A] mt-0.5 leading-tight">
+                  Counselling
                 </div>
               </div>
-              <div className="p-2.5 sm:p-4 rounded-2xl bg-white/70 border border-[#E8E0D2] shadow-2xs flex flex-col justify-center min-h-[76px] sm:min-h-0">
-                <div className="text-base sm:text-2xl font-serif font-bold text-[#2D4A3E] whitespace-nowrap">
+              <div className="px-1.5 py-2.5 sm:p-4 rounded-2xl bg-white/70 border border-[#E8E0D2] shadow-2xs flex flex-col justify-center min-h-[72px] sm:min-h-0">
+                <div className="text-[13px] sm:text-2xl font-serif font-bold text-[#2D4A3E] whitespace-nowrap">
                   Audio Calls
                 </div>
-                <div className="text-[10px] sm:text-xs text-[#52635A] mt-0.5 leading-tight">
-                  No Video Required
+                <div className="text-[9px] sm:text-xs text-[#52635A] mt-0.5 leading-tight">
+                  No Video
                 </div>
               </div>
-              <div className="p-2.5 sm:p-4 rounded-2xl bg-white/70 border border-[#E8E0D2] shadow-2xs flex flex-col justify-center min-h-[76px] sm:min-h-0">
-                <div className="text-base sm:text-2xl font-serif font-bold text-[#2D4A3E] whitespace-nowrap">
+              <div className="px-1.5 py-2.5 sm:p-4 rounded-2xl bg-white/70 border border-[#E8E0D2] shadow-2xs flex flex-col justify-center min-h-[72px] sm:min-h-0">
+                <div className="text-[13px] sm:text-2xl font-serif font-bold text-[#2D4A3E] whitespace-nowrap">
                   <span className="sm:hidden">₹1k – ₹2.2k</span>
                   <span className="hidden sm:inline">₹1,000 – ₹2,200</span>
                 </div>
-                <div className="text-[10px] sm:text-xs text-[#52635A] mt-0.5 leading-tight">
-                  Session Pricing
+                <div className="text-[9px] sm:text-xs text-[#52635A] mt-0.5 leading-tight">
+                  Session Fees
                 </div>
               </div>
             </div>
