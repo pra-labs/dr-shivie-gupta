@@ -1,6 +1,7 @@
 import Link from "next/link";
 import { PhoneCall, Clock, CheckCircle2, Sparkles, MessageCircle, ArrowRight } from "lucide-react";
 import { siteConfig } from "@/config/site";
+import { SessionCardsCarousel } from "@/components/SessionCardsCarousel";
 
 export default function HomePage() {
   return (
@@ -93,84 +94,7 @@ export default function HomePage() {
             </p>
           </div>
 
-          <div className="grid grid-cols-1 md:grid-cols-3 gap-6">
-            {/* Card 1: Individual */}
-            <div className="p-6 sm:p-8 rounded-3xl bg-white border border-[#E8E0D2] shadow-sm flex flex-col justify-between space-y-4">
-              <div className="space-y-3">
-                <span className="text-[10px] font-bold uppercase tracking-wider text-[#9E4A2A] bg-[#FAF8F5] px-2.5 py-1 rounded-full border border-[#E8E0D2]">
-                  Voice Call • 50 mins
-                </span>
-                <h3 className="font-serif text-xl sm:text-2xl font-bold text-[#1F2924]">
-                  Individual Counselling
-                </h3>
-                <div className="text-2xl font-serif font-bold text-[#2D4A3E]">
-                  ₹1,200 <span className="text-xs font-sans font-normal text-[#52635A]">/ session</span>
-                </div>
-                <p className="text-xs sm:text-sm text-[#52635A] leading-relaxed">
-                  A confidential telephone space to reflect on personal anxiety, life transitions, emotional fatigue, and unhelpful thought loops.
-                </p>
-              </div>
-              <Link
-                href="/connect?service=individual"
-                className="w-full text-center py-2.5 rounded-full bg-[#2D4A3E] text-white text-xs font-semibold uppercase tracking-wider hover:bg-[#1E332A] transition-colors"
-              >
-                Request Session
-              </Link>
-            </div>
-
-            {/* Card 2: Couple */}
-            <div className="p-6 sm:p-8 rounded-3xl bg-white border border-[#2D4A3E]/30 shadow-sm flex flex-col justify-between space-y-4 relative">
-              <div className="space-y-3">
-                <div className="flex items-center justify-between">
-                  <span className="text-[10px] font-bold uppercase tracking-wider text-[#2D4A3E] bg-[#FAF8F5] px-2.5 py-1 rounded-full border border-[#2D4A3E]/30">
-                    Voice Call • 60 mins
-                  </span>
-                  <span className="text-[10px] font-medium text-[#52635A]">
-                    Both Partners
-                  </span>
-                </div>
-                <h3 className="font-serif text-xl sm:text-2xl font-bold text-[#1F2924]">
-                  Couple Counselling
-                </h3>
-                <div className="text-2xl font-serif font-bold text-[#2D4A3E]">
-                  ₹1,800 <span className="text-xs font-sans font-normal text-[#52635A]">/ session</span>
-                </div>
-                <p className="text-xs sm:text-sm text-[#52635A] leading-relaxed">
-                  Mediated telephone sessions to understand recurring misunderstandings, communicate with patience, and nurture relationship clarity.
-                </p>
-              </div>
-              <Link
-                href="/connect?service=couple"
-                className="w-full text-center py-2.5 rounded-full bg-[#2D4A3E] text-white text-xs font-semibold uppercase tracking-wider hover:bg-[#1E332A] transition-colors"
-              >
-                Request Session
-              </Link>
-            </div>
-
-            {/* Card 3: Family */}
-            <div className="p-6 sm:p-8 rounded-3xl bg-white border border-[#E8E0D2] shadow-sm flex flex-col justify-between space-y-4">
-              <div className="space-y-3">
-                <span className="text-[10px] font-bold uppercase tracking-wider text-[#9E4A2A] bg-[#FAF8F5] px-2.5 py-1 rounded-full border border-[#E8E0D2]">
-                  Voice Call • 60 mins
-                </span>
-                <h3 className="font-serif text-xl sm:text-2xl font-bold text-[#1F2924]">
-                  Family Counselling
-                </h3>
-                <div className="text-2xl font-serif font-bold text-[#2D4A3E]">
-                  ₹2,200 <span className="text-xs font-sans font-normal text-[#52635A]">/ session</span>
-                </div>
-                <p className="text-xs sm:text-sm text-[#52635A] leading-relaxed">
-                  Balanced telephone dialogue to navigate intergenerational friction, parent-youth misunderstandings, and household communication.
-                </p>
-              </div>
-              <Link
-                href="/connect?service=family"
-                className="w-full text-center py-2.5 rounded-full bg-[#2D4A3E] text-white text-xs font-semibold uppercase tracking-wider hover:bg-[#1E332A] transition-colors"
-              >
-                Request Session
-              </Link>
-            </div>
-          </div>
+          <SessionCardsCarousel />
 
           {/* Secondary Reiki Callout */}
           <div className="p-6 sm:p-8 rounded-3xl bg-white border border-[#E8E0D2] flex flex-col sm:flex-row sm:items-center justify-between gap-4 shadow-2xs">

@@ -6,6 +6,8 @@ import { Navbar } from "@/components/Navbar";
 import { Footer } from "@/components/Footer";
 import { ComprehensiveJsonLd } from "@/components/seo/JsonLd";
 import { SuggestionAssistant } from "@/components/SuggestionAssistant";
+import { MobileNavigationDock } from "@/components/MobileNavigationDock";
+import { BookingBottomSheet } from "@/components/BookingBottomSheet";
 
 const cormorant = Cormorant_Garamond({
   variable: "--font-cormorant",
@@ -88,12 +90,14 @@ export default function RootLayout({
       lang="en"
       className={`${cormorant.variable} ${jakarta.variable} scroll-smooth antialiased`}
     >
-      <body className="min-h-screen flex flex-col bg-[#FAF8F5] text-[#1F2924] selection:bg-[#2D4A3E] selection:text-white pb-16 md:pb-0">
+      <body className="min-h-screen flex flex-col bg-[#FAF8F5] text-[#1F2924] selection:bg-[#2D4A3E] selection:text-white pb-20 md:pb-0">
         <ComprehensiveJsonLd />
         <Navbar />
         <main className="flex-1">{children}</main>
         <Footer />
         <SuggestionAssistant />
+        <MobileNavigationDock />
+        <BookingBottomSheet />
       </body>
     </html>
   );
