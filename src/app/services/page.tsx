@@ -61,7 +61,7 @@ export default function ServicesPage() {
 
             <div className="pt-4">
               <Link
-                href={`/connect?service=${encodeURIComponent("Individual Counselling (Voice Call)")}`}
+                href="/connect?service=individual"
                 className="w-full inline-flex items-center justify-center py-3 px-6 rounded-full bg-[#2D4A3E] text-white text-xs font-semibold uppercase tracking-wider hover:bg-[#1E332A] transition-colors shadow-xs"
               >
                 Request Individual Session
@@ -104,7 +104,7 @@ export default function ServicesPage() {
 
             <div className="pt-4">
               <Link
-                href={`/connect?service=${encodeURIComponent("Couple Counselling (Voice Call)")}`}
+                href="/connect?service=couple"
                 className="w-full inline-flex items-center justify-center py-3 px-6 rounded-full bg-[#2D4A3E] text-white text-xs font-semibold uppercase tracking-wider hover:bg-[#1E332A] transition-colors shadow-xs"
               >
                 Request Couple Session
@@ -147,7 +147,7 @@ export default function ServicesPage() {
 
             <div className="pt-4">
               <Link
-                href={`/connect?service=${encodeURIComponent("Family Counselling (Voice Call)")}`}
+                href="/connect?service=family"
                 className="w-full inline-flex items-center justify-center py-3 px-6 rounded-full bg-[#2D4A3E] text-white text-xs font-semibold uppercase tracking-wider hover:bg-[#1E332A] transition-colors shadow-xs"
               >
                 Request Family Session
@@ -188,7 +188,7 @@ export default function ServicesPage() {
 
             <div className="pt-4">
               <Link
-                href={`/connect?service=${encodeURIComponent("Reiki Healing (Optional)")}`}
+                href="/connect?service=reiki"
                 className="w-full inline-flex items-center justify-center py-3 px-6 rounded-full border-2 border-[#2D4A3E] text-[#2D4A3E] text-xs font-semibold uppercase tracking-wider hover:bg-[#2D4A3E] hover:text-white transition-colors shadow-xs"
               >
                 Inquire for Reiki Balancing

@@ -174,7 +174,7 @@ Mrs. Shivie Gupta offers an empathetic, balanced perspective where both partners
 Sessions are held strictly via telephone/WhatsApp audio. You can reserve a slot on the [Request a Voice Session](/connect) page, review full details on [Services & Pricing](/services), or call directly at **+91 98378 91692**.`,
       suggestedAction: {
         label: "Request Couple Session",
-        href: "/connect?service=Couple%20Counselling%20(Voice%20Call)",
+        href: "/connect?service=couple",
       },
       secondaryAction: {
         label: "WhatsApp +91 98378 91692",
@@ -199,7 +199,7 @@ With ~35 years of practice in Dayalbagh, Agra, Mrs. Gupta helps families untangl
 To coordinate a suitable time for your family phone session, visit [Request a Voice Session](/connect), read our [Client FAQs](/faqs), or call directly at **+91 98378 91692**.`,
       suggestedAction: {
         label: "Request Family Session",
-        href: "/connect?service=Family%20Counselling%20(Voice%20Call)",
+        href: "/connect?service=family",
       },
       secondaryAction: {
         label: "Call +91 98378 91692",
@@ -224,7 +224,7 @@ Traditional Usui Reiki biofield balancing supports parasympathetic nervous syste
 For details, view [Services & Pricing](/services), read common questions on [Client FAQs](/faqs), or inquire via [Request a Voice Session](/connect).`,
       suggestedAction: {
         label: "Inquire for Reiki Balancing",
-        href: "/connect?service=Reiki%20Healing%20(Optional)",
+        href: "/connect?service=reiki",
       },
       secondaryAction: {
         label: "WhatsApp +91 98378 91692",
@@ -304,7 +304,7 @@ Mrs. Shivie Gupta brings ~35 years of dedicated active listening to help you dis
 All sessions are held over telephone call—no video camera pressure or clinic travel. You can submit your preferred time on [Request a Voice Session](/connect), review details on [Services & Pricing](/services), or call directly at **+91 98378 91692**.`,
       suggestedAction: {
         label: "Request Individual Session",
-        href: "/connect?service=Individual%20Counselling%20(Voice%20Call)",
+        href: "/connect?service=individual",
       },
       secondaryAction: {
         label: "Call +91 98378 91692",

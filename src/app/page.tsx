@@ -110,7 +110,7 @@ export default function HomePage() {
                 </p>
               </div>
               <Link
-                href="/connect?service=Individual%20Counselling%20(Voice%20Call)"
+                href="/connect?service=individual"
                 className="w-full text-center py-2.5 rounded-full bg-[#2D4A3E] text-white text-xs font-semibold uppercase tracking-wider hover:bg-[#1E332A] transition-colors"
               >
                 Request Session
@@ -139,7 +139,7 @@ export default function HomePage() {
                 </p>
               </div>
               <Link
-                href="/connect?service=Couple%20Counselling%20(Voice%20Call)"
+                href="/connect?service=couple"
                 className="w-full text-center py-2.5 rounded-full bg-[#2D4A3E] text-white text-xs font-semibold uppercase tracking-wider hover:bg-[#1E332A] transition-colors"
               >
                 Request Session
@@ -163,7 +163,7 @@ export default function HomePage() {
                 </p>
               </div>
               <Link
-                href="/connect?service=Family%20Counselling%20(Voice%20Call)"
+                href="/connect?service=family"
                 className="w-full text-center py-2.5 rounded-full bg-[#2D4A3E] text-white text-xs font-semibold uppercase tracking-wider hover:bg-[#1E332A] transition-colors"
               >
                 Request Session
