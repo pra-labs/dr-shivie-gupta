@@ -88,7 +88,7 @@ export default function RootLayout({
       lang="en"
       className={`${cormorant.variable} ${jakarta.variable} scroll-smooth antialiased`}
     >
-      <body className="min-h-screen flex flex-col bg-[#FAF8F5] text-[#1F2924] selection:bg-[#2D4A3E] selection:text-white">
+      <body className="min-h-screen flex flex-col bg-[#FAF8F5] text-[#1F2924] selection:bg-[#2D4A3E] selection:text-white pb-16 md:pb-0">
         <ComprehensiveJsonLd />
         <Navbar />
         <main className="flex-1">{children}</main>

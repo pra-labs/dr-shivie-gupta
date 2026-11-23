@@ -92,12 +92,13 @@ export function FaqAccordion() {
           value={searchQuery}
           onChange={(e) => handleSearchChange(e.target.value)}
           placeholder="Search topics (e.g. phone, confidentiality, fees, rishte, reiki)..."
-          className="w-full pl-10 pr-4 py-2.5 rounded-full border border-[#E8E0D2] bg-white text-xs sm:text-sm text-[#1F2924] placeholder:text-[#52635A]/60 focus:outline-none focus:ring-2 focus:ring-[#2D4A3E] focus:border-transparent transition-all shadow-xs"
+          className="w-full pl-10 pr-12 py-2.5 min-h-[44px] rounded-full border border-[#E8E0D2] bg-white text-base sm:text-sm text-[#1F2924] placeholder:text-xs sm:placeholder:text-sm placeholder:text-[#52635A]/60 focus:outline-none focus:ring-2 focus:ring-[#2D4A3E] focus:border-transparent transition-all shadow-xs"
         />
         {searchQuery && (
           <button
             onClick={() => handleSearchChange("")}
-            className="absolute right-3.5 top-1/2 -translate-y-1/2 text-xs text-[#52635A] hover:text-[#1F2924] cursor-pointer"
+            className="absolute right-2 top-1/2 -translate-y-1/2 min-w-[44px] min-h-[44px] flex items-center justify-center text-xs font-semibold text-[#52635A] hover:text-[#1F2924] cursor-pointer"
+            aria-label="Clear search query"
           >
             Clear
           </button>
@@ -105,7 +106,7 @@ export function FaqAccordion() {
       </div>
 
       {/* Category Pills */}
-      <div className="flex items-center gap-2 overflow-x-auto pb-2 pt-1 no-scrollbar -mx-2 px-2 touch-pan-x">
+      <div className="flex items-center gap-2 overflow-x-auto pb-2 pt-1 no-scrollbar -mx-2 px-2 touch-pan-x overscroll-contain">
         {categories.map((cat) => {
           const isSelected = selectedCategory === cat;
           const isVoice = cat === "Voice Sessions";
@@ -117,7 +118,7 @@ export function FaqAccordion() {
                 setSelectedCategory(cat);
                 setOpenIndex(0);
               }}
-              className={`shrink-0 px-3.5 py-1.5 min-h-[38px] rounded-full text-xs font-medium transition-all flex items-center gap-1.5 whitespace-nowrap cursor-pointer active:scale-95 ${
+              className={`shrink-0 px-3.5 py-1.5 min-h-[44px] rounded-full text-xs font-medium transition-all flex items-center gap-1.5 whitespace-nowrap cursor-pointer active:scale-95 ${
                 isSelected
                   ? "bg-[#2D4A3E] text-white shadow-xs font-semibold"
                   : isVoice

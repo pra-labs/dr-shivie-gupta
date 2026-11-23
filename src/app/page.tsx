@@ -12,9 +12,9 @@ export default function HomePage() {
 
         <div className="max-w-4xl mx-auto px-4 sm:px-6 lg:px-8 text-center space-y-6 sm:space-y-8">
           {/* Eyebrow badge */}
-          <div className="inline-flex items-center gap-2 px-4 py-1.5 rounded-full bg-[#F2EDE4] border border-[#E8E0D2] text-[#2D4A3E] text-xs font-semibold tracking-wide uppercase shadow-2xs">
+          <div className="inline-flex items-center gap-1.5 sm:gap-2 px-3.5 sm:px-4 py-1.5 rounded-full bg-[#F2EDE4] border border-[#E8E0D2] text-[#2D4A3E] text-[11px] sm:text-xs font-semibold tracking-wide uppercase shadow-2xs whitespace-normal sm:whitespace-nowrap">
             <Clock className="w-3.5 h-3.5 text-[#C5A059] shrink-0" />
-            <span>~35 Years Counselling Experience • Dayalbagh, Agra</span>
+            <span>~35 Years Experience • Dayalbagh, Agra</span>
           </div>
 
           {/* Editorial Headline */}
@@ -47,29 +47,29 @@ export default function HomePage() {
 
           {/* 3-Column Key Guarantees Strip */}
           <div className="pt-6 sm:pt-8 border-t border-[#E8E0D2]/80 max-w-2xl mx-auto">
-            <div className="grid grid-cols-3 gap-3 sm:gap-6 text-center">
-              <div className="p-3 sm:p-4 rounded-2xl bg-white/70 border border-[#E8E0D2] shadow-2xs">
-                <div className="text-xl sm:text-2xl font-serif font-bold text-[#2D4A3E]">
+            <div className="grid grid-cols-3 gap-2 sm:gap-6 text-center">
+              <div className="p-2.5 sm:p-4 rounded-2xl bg-white/70 border border-[#E8E0D2] shadow-2xs flex flex-col justify-center min-h-[76px] sm:min-h-0">
+                <div className="text-base sm:text-2xl font-serif font-bold text-[#2D4A3E] whitespace-nowrap">
                   ~35 Years
                 </div>
-                <div className="text-[11px] sm:text-xs text-[#52635A] mt-0.5">
+                <div className="text-[10px] sm:text-xs text-[#52635A] mt-0.5 leading-tight">
                   Counselling Practice
                 </div>
               </div>
-              <div className="p-3 sm:p-4 rounded-2xl bg-white/70 border border-[#E8E0D2] shadow-2xs">
-                <div className="text-xl sm:text-2xl font-serif font-bold text-[#2D4A3E]">
+              <div className="p-2.5 sm:p-4 rounded-2xl bg-white/70 border border-[#E8E0D2] shadow-2xs flex flex-col justify-center min-h-[76px] sm:min-h-0">
+                <div className="text-base sm:text-2xl font-serif font-bold text-[#2D4A3E] whitespace-nowrap">
                   Voice-Only
                 </div>
-                <div className="text-[11px] sm:text-xs text-[#52635A] mt-0.5">
+                <div className="text-[10px] sm:text-xs text-[#52635A] mt-0.5 leading-tight">
                   Zero Camera Anxiety
                 </div>
               </div>
-              <div className="p-3 sm:p-4 rounded-2xl bg-white/70 border border-[#E8E0D2] shadow-2xs">
-                <div className="text-xl sm:text-2xl font-serif font-bold text-[#2D4A3E]">
+              <div className="p-2.5 sm:p-4 rounded-2xl bg-white/70 border border-[#E8E0D2] shadow-2xs flex flex-col justify-center min-h-[76px] sm:min-h-0">
+                <div className="text-[13px] sm:text-2xl font-serif font-bold text-[#2D4A3E] whitespace-nowrap">
                   ₹1,000 – ₹2,200
                 </div>
-                <div className="text-[11px] sm:text-xs text-[#52635A] mt-0.5">
-                  Transparent Session Fees
+                <div className="text-[10px] sm:text-xs text-[#52635A] mt-0.5 leading-tight">
+                  Session Pricing
                 </div>
               </div>
             </div>

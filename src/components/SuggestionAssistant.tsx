@@ -193,56 +193,64 @@ export function SuggestionAssistant() {
   return (
     <>
       {/* Floating Trigger Button */}
-      <div className="fixed bottom-5 right-5 z-40">
+      <div className="fixed bottom-4 right-4 sm:bottom-5 sm:right-5 z-40">
         {!isOpen && (
           <button
             onClick={() => setIsOpen(true)}
-            className="flex items-center gap-2 px-4 py-3 rounded-full bg-[#2D4A3E] text-white shadow-xl hover:bg-[#1E332A] transition-all hover:scale-105 active:scale-95 cursor-pointer border border-white/20 group"
+            className="flex items-center gap-2 p-3 sm:px-4 sm:py-3 min-w-[48px] min-h-[48px] rounded-full bg-[#2D4A3E] text-white shadow-xl hover:bg-[#1E332A] transition-all hover:scale-105 active:scale-95 cursor-pointer border border-white/20 group"
             aria-label="Open Session Guidance Assistant"
           >
-            <Sparkles className="w-4 h-4 text-[#C5A059] animate-pulse" />
-            <span className="text-xs font-semibold tracking-wider">Session Guidance AI</span>
+            <Sparkles className="w-5 h-5 sm:w-4 sm:h-4 text-[#C5A059] animate-pulse shrink-0" />
+            <span className="hidden sm:inline text-xs font-semibold tracking-wider">Session Guidance AI</span>
           </button>
         )}
       </div>
 
-      {/* Slide-over Assistant Drawer */}
+      {/* Slide-over Assistant Drawer / Mobile Bottom Sheet */}
       {isOpen && (
-        <div className="fixed bottom-5 right-5 z-50 w-[92vw] sm:w-[420px] h-[550px] max-h-[85vh] bg-white rounded-3xl border border-[#E8E0D2] shadow-2xl flex flex-col overflow-hidden animate-in fade-in slide-in-from-bottom-4 duration-300">
-          {/* Header with Clear Button */}
-          <div className="p-4 bg-[#2D4A3E] text-white flex items-center justify-between">
-            <div className="flex items-center gap-2.5">
-              <div className="w-8 h-8 rounded-full bg-white/10 flex items-center justify-center text-[#C5A059]">
-                <Sparkles className="w-4 h-4" />
-              </div>
-              <div>
-                <h3 className="font-serif text-sm font-bold leading-tight">
-                  Session Guidance Assistant
-                </h3>
-                <span className="text-[10px] text-[#C5A059] block">
-                  Confidential Guidance • Voice-Only Format
-                </span>
-              </div>
-            </div>
+        <>
+          {/* Mobile backdrop */}
+          <div
+            onClick={() => setIsOpen(false)}
+            className="fixed inset-0 z-40 bg-black/40 backdrop-blur-xs sm:hidden animate-in fade-in duration-200"
+            aria-hidden="true"
+          />
 
-            <div className="flex items-center gap-1">
-              <button
-                onClick={handleReset}
-                className="flex items-center gap-1 px-2 py-1 rounded-lg text-[10px] text-white/80 hover:text-white hover:bg-white/10 transition-colors cursor-pointer"
-                title="Reset conversation"
-              >
-                <RotateCcw className="w-3 h-3" />
-                <span>Clear</span>
-              </button>
-              <button
-                onClick={() => setIsOpen(false)}
-                className="p-1.5 rounded-full hover:bg-white/10 text-white/80 hover:text-white transition-colors cursor-pointer"
-                aria-label="Close Assistant"
-              >
-                <X className="w-4 h-4" />
-              </button>
+          <div className="fixed inset-x-0 bottom-0 sm:inset-x-auto sm:bottom-5 sm:right-5 z-50 w-full sm:w-[420px] h-[85vh] sm:h-[550px] max-h-[90vh] sm:max-h-[85vh] bg-white rounded-t-3xl sm:rounded-3xl border border-[#E8E0D2] shadow-2xl flex flex-col overflow-hidden animate-in fade-in slide-in-from-bottom-4 duration-300">
+            {/* Header with Clear Button */}
+            <div className="p-4 bg-[#2D4A3E] text-white flex items-center justify-between shrink-0">
+              <div className="flex items-center gap-2.5">
+                <div className="w-8 h-8 rounded-full bg-white/10 flex items-center justify-center text-[#C5A059]">
+                  <Sparkles className="w-4 h-4" />
+                </div>
+                <div>
+                  <h3 className="font-serif text-sm font-bold leading-tight">
+                    Session Guidance Assistant
+                  </h3>
+                  <span className="text-[10px] text-[#C5A059] block">
+                    Confidential Guidance • Voice-Only Format
+                  </span>
+                </div>
+              </div>
+
+              <div className="flex items-center gap-1">
+                <button
+                  onClick={handleReset}
+                  className="flex items-center gap-1 px-2.5 py-1.5 min-h-[36px] rounded-lg text-xs text-white/80 hover:text-white hover:bg-white/10 transition-colors cursor-pointer"
+                  title="Reset conversation"
+                >
+                  <RotateCcw className="w-3.5 h-3.5" />
+                  <span>Clear</span>
+                </button>
+                <button
+                  onClick={() => setIsOpen(false)}
+                  className="p-2 min-w-[44px] min-h-[44px] rounded-full hover:bg-white/10 text-white/80 hover:text-white transition-colors cursor-pointer flex items-center justify-center"
+                  aria-label="Close Assistant"
+                >
+                  <X className="w-5 h-5" />
+                </button>
+              </div>
             </div>
-          </div>
 
           {/* Quick Reply Filter Chips */}
           <div className="px-3 py-2 bg-[#FAF8F5] border-b border-[#E8E0D2] flex flex-wrap items-center gap-1.5 text-[11px]">
@@ -349,25 +357,26 @@ export function SuggestionAssistant() {
               e.preventDefault();
               handleSend();
             }}
-            className="p-2.5 bg-white border-t border-[#E8E0D2] flex items-center gap-2"
+            className="p-2.5 sm:p-3 bg-white border-t border-[#E8E0D2] flex items-center gap-2 shrink-0 pb-safe"
           >
             <input
               type="text"
               value={input}
               onChange={(e) => setInput(e.target.value)}
               placeholder="Ask about stress, marriage, family, fees, or Reiki..."
-              className="flex-1 px-3.5 py-2.5 rounded-full border border-[#E8E0D2] bg-[#FAF8F5] text-xs text-[#1F2924] focus:outline-none focus:ring-2 focus:ring-[#2D4A3E]"
+              className="flex-1 min-h-[44px] px-4 py-2.5 rounded-full border border-[#E8E0D2] bg-[#FAF8F5] text-base sm:text-xs text-[#1F2924] placeholder:text-xs focus:outline-none focus:ring-2 focus:ring-[#2D4A3E]"
             />
             <button
               type="submit"
               disabled={loading || !input.trim()}
-              className="p-2.5 rounded-full bg-[#2D4A3E] text-white disabled:opacity-40 hover:bg-[#1E332A] transition-colors cursor-pointer shrink-0"
+              className="p-3 min-w-[44px] min-h-[44px] rounded-full bg-[#2D4A3E] text-white disabled:opacity-40 hover:bg-[#1E332A] transition-colors cursor-pointer shrink-0 flex items-center justify-center shadow-xs"
               aria-label="Send message"
             >
               <Send className="w-4 h-4" />
             </button>
           </form>
         </div>
+        </>
       )}
     </>
   );

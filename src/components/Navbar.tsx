@@ -3,7 +3,7 @@
 import Link from "next/link";
 import { usePathname } from "next/navigation";
 import { useState } from "react";
-import { Menu, X, PhoneCall, Sparkles } from "lucide-react";
+import { Menu, X, PhoneCall, Sparkles, MessageCircle } from "lucide-react";
 import { siteConfig } from "@/config/site";
 
 export function Navbar() {
@@ -68,18 +68,27 @@ export function Navbar() {
             </a>
           </nav>
 
-          {/* Mobile Hamburger */}
+          {/* Mobile Quick Action and Hamburger */}
           <div className="md:hidden flex items-center gap-2">
             <a
+              href={siteConfig.whatsappUrl}
+              target="_blank"
+              rel="noopener noreferrer"
+              className="p-2.5 min-w-[44px] min-h-[44px] rounded-full bg-emerald-600 text-white flex items-center justify-center hover:bg-emerald-700 transition-colors shadow-xs"
+              aria-label="Direct WhatsApp Message"
+            >
+              <MessageCircle className="w-4 h-4" />
+            </a>
+            <a
               href={`tel:${siteConfig.phone}`}
-              className="p-2.5 rounded-full bg-[#2D4A3E] text-white flex items-center justify-center"
+              className="p-2.5 min-w-[44px] min-h-[44px] rounded-full bg-[#2D4A3E] text-white flex items-center justify-center hover:bg-[#1E332A] transition-colors shadow-xs"
               aria-label="Direct Phone Call"
             >
               <PhoneCall className="w-4 h-4" />
             </a>
             <button
               onClick={() => setIsOpen(!isOpen)}
-              className="p-3 min-w-[44px] min-h-[44px] rounded-xl text-[#1F2924] hover:bg-[#F2EDE4] transition-colors flex items-center justify-center"
+              className="p-2.5 min-w-[44px] min-h-[44px] rounded-xl text-[#1F2924] hover:bg-[#F2EDE4] transition-colors flex items-center justify-center"
               aria-label="Toggle navigation menu"
               aria-expanded={isOpen}
             >
@@ -112,8 +121,17 @@ export function Navbar() {
             </nav>
             <div className="pt-2 border-t border-[#E8E0D2] flex flex-col gap-2">
               <a
+                href={siteConfig.whatsappUrl}
+                target="_blank"
+                rel="noopener noreferrer"
+                className="w-full flex items-center justify-center gap-2 py-3 px-4 min-h-[44px] rounded-full text-xs font-semibold uppercase tracking-wider bg-emerald-600 text-white hover:bg-emerald-700 shadow-xs"
+              >
+                <MessageCircle className="w-4 h-4" />
+                <span>Message on WhatsApp</span>
+              </a>
+              <a
                 href={`tel:${siteConfig.phone}`}
-                className="w-full flex items-center justify-center gap-2 py-3 px-4 rounded-full text-xs font-semibold uppercase tracking-wider bg-[#2D4A3E] text-white hover:bg-[#1E332A] shadow-xs"
+                className="w-full flex items-center justify-center gap-2 py-3 px-4 min-h-[44px] rounded-full text-xs font-semibold uppercase tracking-wider bg-[#2D4A3E] text-white hover:bg-[#1E332A] shadow-xs"
               >
                 <PhoneCall className="w-4 h-4" />
                 <span>Call: {siteConfig.phoneDisplay}</span>

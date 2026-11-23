@@ -1,6 +1,7 @@
 "use client";
 
-import { useActionState } from "react";
+import { useActionState, useMemo, useState } from "react";
+import { useSearchParams } from "next/navigation";
 import { submitContactInquiry, type ContactFormState } from "@/app/actions/contact";
 import { Send, CheckCircle2, AlertCircle, Loader2, PhoneCall, ShieldCheck, Clock } from "lucide-react";
 import { siteConfig } from "@/config/site";
@@ -10,8 +11,40 @@ const initialState: ContactFormState = {
   message: "",
 };
 
+const SERVICE_OPTIONS = [
+  { value: "Individual Counselling (Voice Call)", label: "Individual Counselling (Voice Call - 50m)" },
+  { value: "Couple Counselling (Voice Call)", label: "Couple & Relationship Counselling (Voice Call - 60m)" },
+  { value: "Family Counselling (Voice Call)", label: "Family Counselling (Voice Call - 60m)" },
+  { value: "Reiki Healing (Optional)", label: "Reiki Energy Balancing (Optional / On Request - 45m)" },
+  { value: "General Consultation Question", label: "General Inquiries & Availability" },
+];
+
+function resolveInitialService(serviceParam?: string | null): string {
+  if (!serviceParam) return "Individual Counselling (Voice Call)";
+  const param = serviceParam.toLowerCase();
+  if (param.includes("couple") || param.includes("relationship")) {
+    return "Couple Counselling (Voice Call)";
+  }
+  if (param.includes("family") || param.includes("intergenerational")) {
+    return "Family Counselling (Voice Call)";
+  }
+  if (param.includes("reiki") || param.includes("healing")) {
+    return "Reiki Healing (Optional)";
+  }
+  if (param.includes("general")) {
+    return "General Consultation Question";
+  }
+  return "Individual Counselling (Voice Call)";
+}
+
 export function ContactForm() {
   const [state, formAction, isPending] = useActionState(submitContactInquiry, initialState);
+  const searchParams = useSearchParams();
+  const serviceQuery = searchParams.get("service");
+  const computedDefault = useMemo(() => resolveInitialService(serviceQuery), [serviceQuery]);
+  const [userSelectedService, setUserSelectedService] = useState<string | null>(null);
+
+  const activeService = userSelectedService ?? computedDefault;
 
   return (
     <div className="bg-white p-6 sm:p-10 rounded-3xl border border-[#E8E0D2] shadow-sm">
@@ -69,7 +102,7 @@ export function ContactForm() {
                 required
                 autoComplete="name"
                 placeholder="e.g. Aarti Saxena"
-                className="w-full px-4 py-3 rounded-xl border border-[#E8E0D2] bg-[#FAF8F5] text-sm text-[#1F2924] focus:outline-none focus:ring-2 focus:ring-[#2D4A3E] focus:bg-white transition-all shadow-2xs"
+                className="w-full min-h-[48px] px-4 py-3 rounded-xl border border-[#E8E0D2] bg-[#FAF8F5] text-base sm:text-sm text-[#1F2924] placeholder:text-sm focus:outline-none focus:ring-2 focus:ring-[#2D4A3E] focus:bg-white transition-all shadow-2xs"
               />
               {state.errors?.name && (
                 <p className="text-[11px] text-red-600 mt-1">{state.errors.name[0]}</p>
@@ -85,9 +118,10 @@ export function ContactForm() {
                 id="phone"
                 name="phone"
                 required
+                inputMode="tel"
                 autoComplete="tel"
                 placeholder="e.g. +91 98378 12345"
-                className="w-full px-4 py-3 rounded-xl border border-[#E8E0D2] bg-[#FAF8F5] text-sm text-[#1F2924] focus:outline-none focus:ring-2 focus:ring-[#2D4A3E] focus:bg-white transition-all shadow-2xs"
+                className="w-full min-h-[48px] px-4 py-3 rounded-xl border border-[#E8E0D2] bg-[#FAF8F5] text-base sm:text-sm text-[#1F2924] placeholder:text-sm focus:outline-none focus:ring-2 focus:ring-[#2D4A3E] focus:bg-white transition-all shadow-2xs"
               />
               {state.errors?.phone && (
                 <p className="text-[11px] text-red-600 mt-1">{state.errors.phone[0]}</p>
@@ -103,14 +137,15 @@ export function ContactForm() {
               <select
                 id="serviceType"
                 name="serviceType"
-                defaultValue="Individual Counselling (Voice Call)"
-                className="w-full px-4 py-3 rounded-xl border border-[#E8E0D2] bg-[#FAF8F5] text-sm text-[#1F2924] focus:outline-none focus:ring-2 focus:ring-[#2D4A3E] focus:bg-white transition-all shadow-2xs"
+                value={activeService}
+                onChange={(e) => setUserSelectedService(e.target.value)}
+                className="w-full min-h-[48px] px-4 py-3 rounded-xl border border-[#E8E0D2] bg-[#FAF8F5] text-base sm:text-sm text-[#1F2924] focus:outline-none focus:ring-2 focus:ring-[#2D4A3E] focus:bg-white transition-all shadow-2xs"
               >
-                <option value="Individual Counselling (Voice Call)">Individual Counselling (Voice Call - 50m)</option>
-                <option value="Couple Counselling (Voice Call)">Couple &amp; Relationship Counselling (Voice Call - 60m)</option>
-                <option value="Family Counselling (Voice Call)">Family Counselling (Voice Call - 60m)</option>
-                <option value="Reiki Healing (Optional)">Reiki Energy Balancing (Optional / On Request - 45m)</option>
-                <option value="General Consultation Question">General Inquiries &amp; Availability</option>
+                {SERVICE_OPTIONS.map((opt) => (
+                  <option key={opt.value} value={opt.value}>
+                    {opt.label}
+                  </option>
+                ))}
               </select>
             </div>
 
@@ -122,7 +157,7 @@ export function ContactForm() {
                 id="preferredTime"
                 name="preferredTime"
                 defaultValue="Morning (10 AM - 1 PM)"
-                className="w-full px-4 py-3 rounded-xl border border-[#E8E0D2] bg-[#FAF8F5] text-sm text-[#1F2924] focus:outline-none focus:ring-2 focus:ring-[#2D4A3E] focus:bg-white transition-all shadow-2xs"
+                className="w-full min-h-[48px] px-4 py-3 rounded-xl border border-[#E8E0D2] bg-[#FAF8F5] text-base sm:text-sm text-[#1F2924] focus:outline-none focus:ring-2 focus:ring-[#2D4A3E] focus:bg-white transition-all shadow-2xs"
               >
                 <option value="Morning (10 AM - 1 PM)">Morning (10:00 AM – 1:00 PM IST)</option>
                 <option value="Afternoon (1 PM - 4 PM)">Afternoon (1:00 PM – 4:00 PM IST)</option>
@@ -142,7 +177,7 @@ export function ContactForm() {
               name="email"
               autoComplete="email"
               placeholder="your.email@example.com (optional)"
-              className="w-full px-4 py-3 rounded-xl border border-[#E8E0D2] bg-[#FAF8F5] text-sm text-[#1F2924] focus:outline-none focus:ring-2 focus:ring-[#2D4A3E] focus:bg-white transition-all shadow-2xs"
+              className="w-full min-h-[48px] px-4 py-3 rounded-xl border border-[#E8E0D2] bg-[#FAF8F5] text-base sm:text-sm text-[#1F2924] placeholder:text-sm focus:outline-none focus:ring-2 focus:ring-[#2D4A3E] focus:bg-white transition-all shadow-2xs"
             />
           </div>
 
@@ -155,7 +190,7 @@ export function ContactForm() {
               name="message"
               rows={3}
               placeholder="A brief sentence on what you wish to discuss (stress, marriage communication, low mood, etc.)..."
-              className="w-full px-4 py-3 rounded-xl border border-[#E8E0D2] bg-[#FAF8F5] text-sm text-[#1F2924] focus:outline-none focus:ring-2 focus:ring-[#2D4A3E] focus:bg-white transition-all shadow-2xs"
+              className="w-full px-4 py-3 rounded-xl border border-[#E8E0D2] bg-[#FAF8F5] text-base sm:text-sm text-[#1F2924] placeholder:text-sm focus:outline-none focus:ring-2 focus:ring-[#2D4A3E] focus:bg-white transition-all shadow-2xs"
             />
           </div>
 

@@ -1,4 +1,5 @@
 import type { Metadata } from "next";
+import Link from "next/link";
 import { siteConfig } from "@/config/site";
 
 export const metadata: Metadata = {
@@ -59,12 +60,12 @@ export default function ServicesPage() {
             </div>
 
             <div className="pt-4">
-              <a
+              <Link
                 href={`/connect?service=${encodeURIComponent("Individual Counselling (Voice Call)")}`}
                 className="w-full inline-flex items-center justify-center py-3 px-6 rounded-full bg-[#2D4A3E] text-white text-xs font-semibold uppercase tracking-wider hover:bg-[#1E332A] transition-colors shadow-xs"
               >
                 Request Individual Session
-              </a>
+              </Link>
             </div>
           </div>
 
@@ -102,12 +103,12 @@ export default function ServicesPage() {
             </div>
 
             <div className="pt-4">
-              <a
+              <Link
                 href={`/connect?service=${encodeURIComponent("Couple Counselling (Voice Call)")}`}
                 className="w-full inline-flex items-center justify-center py-3 px-6 rounded-full bg-[#2D4A3E] text-white text-xs font-semibold uppercase tracking-wider hover:bg-[#1E332A] transition-colors shadow-xs"
               >
                 Request Couple Session
-              </a>
+              </Link>
             </div>
           </div>
 
@@ -145,12 +146,12 @@ export default function ServicesPage() {
             </div>
 
             <div className="pt-4">
-              <a
+              <Link
                 href={`/connect?service=${encodeURIComponent("Family Counselling (Voice Call)")}`}
                 className="w-full inline-flex items-center justify-center py-3 px-6 rounded-full bg-[#2D4A3E] text-white text-xs font-semibold uppercase tracking-wider hover:bg-[#1E332A] transition-colors shadow-xs"
               >
                 Request Family Session
-              </a>
+              </Link>
             </div>
           </div>
 
@@ -186,12 +187,12 @@ export default function ServicesPage() {
             </div>
 
             <div className="pt-4">
-              <a
+              <Link
                 href={`/connect?service=${encodeURIComponent("Reiki Healing (Optional)")}`}
                 className="w-full inline-flex items-center justify-center py-3 px-6 rounded-full border-2 border-[#2D4A3E] text-[#2D4A3E] text-xs font-semibold uppercase tracking-wider hover:bg-[#2D4A3E] hover:text-white transition-colors shadow-xs"
               >
                 Inquire for Reiki Balancing
-              </a>
+              </Link>
             </div>
           </div>
         </div>

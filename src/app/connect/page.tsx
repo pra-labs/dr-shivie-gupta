@@ -1,4 +1,5 @@
 import type { Metadata } from "next";
+import { Suspense } from "react";
 import { Mail, PhoneCall, MapPin, Clock, MessageCircle, ShieldCheck } from "lucide-react";
 import { siteConfig } from "@/config/site";
 import { ContactForm } from "@/components/ContactForm";
@@ -29,7 +30,9 @@ export default function ConnectPage() {
         <div className="grid grid-cols-1 lg:grid-cols-12 gap-8 lg:gap-12 items-start">
           {/* Form Column */}
           <div className="order-1 lg:order-2 lg:col-span-7">
-            <ContactForm />
+            <Suspense fallback={<div className="p-8 text-center text-xs text-[#52635A] bg-white rounded-3xl border border-[#E8E0D2]">Loading session request form...</div>}>
+              <ContactForm />
+            </Suspense>
           </div>
 
           {/* Contact Details Column */}
