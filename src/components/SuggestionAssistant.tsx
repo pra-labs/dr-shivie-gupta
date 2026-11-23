@@ -299,40 +299,46 @@ export function SuggestionAssistant() {
             </div>
 
           {/* Quick Reply Filter Chips */}
-          <div className="px-3 py-2 bg-[#FAF8F5] border-b border-[#E8E0D2] flex flex-wrap items-center gap-1.5 text-[11px]">
+          <div className="px-3 py-2 bg-[#FAF8F5] border-b border-[#E8E0D2] flex flex-nowrap overflow-x-auto no-scrollbar items-center gap-2 text-[11px] shrink-0">
             <button
+              type="button"
               onClick={() => handleSend("Individual call")}
-              className="px-2.5 py-1 rounded-full bg-white border border-[#E8E0D2] text-[#52635A] hover:bg-[#F2EDE4] hover:text-[#1F2924] cursor-pointer shadow-2xs"
+              className="inline-flex items-center min-h-[40px] px-3 py-1.5 rounded-full bg-white border border-[#E8E0D2] text-[#52635A] hover:bg-[#F2EDE4] hover:text-[#1F2924] cursor-pointer shadow-2xs whitespace-nowrap shrink-0 transition-colors"
             >
               Individual call
             </button>
             <button
+              type="button"
               onClick={() => handleSend("Couple guidance")}
-              className="px-2.5 py-1 rounded-full bg-white border border-[#E8E0D2] text-[#52635A] hover:bg-[#F2EDE4] hover:text-[#1F2924] cursor-pointer shadow-2xs"
+              className="inline-flex items-center min-h-[40px] px-3 py-1.5 rounded-full bg-white border border-[#E8E0D2] text-[#52635A] hover:bg-[#F2EDE4] hover:text-[#1F2924] cursor-pointer shadow-2xs whitespace-nowrap shrink-0 transition-colors"
             >
               Couple guidance
             </button>
             <button
+              type="button"
               onClick={() => handleSend("Family call")}
-              className="px-2.5 py-1 rounded-full bg-white border border-[#E8E0D2] text-[#52635A] hover:bg-[#F2EDE4] hover:text-[#1F2924] cursor-pointer shadow-2xs"
+              className="inline-flex items-center min-h-[40px] px-3 py-1.5 rounded-full bg-white border border-[#E8E0D2] text-[#52635A] hover:bg-[#F2EDE4] hover:text-[#1F2924] cursor-pointer shadow-2xs whitespace-nowrap shrink-0 transition-colors"
             >
               Family call
             </button>
             <button
+              type="button"
               onClick={() => handleSend("How a voice call works & privacy")}
-              className="px-2.5 py-1 rounded-full bg-white border border-[#E8E0D2] text-[#52635A] hover:bg-[#F2EDE4] hover:text-[#1F2924] cursor-pointer shadow-2xs"
+              className="inline-flex items-center min-h-[40px] px-3 py-1.5 rounded-full bg-white border border-[#E8E0D2] text-[#52635A] hover:bg-[#F2EDE4] hover:text-[#1F2924] cursor-pointer shadow-2xs whitespace-nowrap shrink-0 transition-colors"
             >
               How it works
             </button>
             <button
+              type="button"
               onClick={() => handleSend("Optional Reiki")}
-              className="px-2.5 py-1 rounded-full bg-white border border-[#E8E0D2] text-[#52635A] hover:bg-[#F2EDE4] hover:text-[#1F2924] cursor-pointer shadow-2xs"
+              className="inline-flex items-center min-h-[40px] px-3 py-1.5 rounded-full bg-white border border-[#E8E0D2] text-[#52635A] hover:bg-[#F2EDE4] hover:text-[#1F2924] cursor-pointer shadow-2xs whitespace-nowrap shrink-0 transition-colors"
             >
               Optional Reiki
             </button>
             <button
+              type="button"
               onClick={() => handleSend("Fees & timing")}
-              className="px-2.5 py-1 rounded-full bg-white border border-[#E8E0D2] text-[#52635A] hover:bg-[#F2EDE4] hover:text-[#1F2924] cursor-pointer shadow-2xs"
+              className="inline-flex items-center min-h-[40px] px-3 py-1.5 rounded-full bg-white border border-[#E8E0D2] text-[#52635A] hover:bg-[#F2EDE4] hover:text-[#1F2924] cursor-pointer shadow-2xs whitespace-nowrap shrink-0 transition-colors"
             >
               Fees &amp; timing
             </button>
@@ -359,10 +365,10 @@ export function SuggestionAssistant() {
                       <Link
                         href={m.suggestedAction.href}
                         onClick={() => setIsOpen(false)}
-                        className="inline-flex items-center gap-1.5 text-[11px] font-semibold text-[#2D4A3E] bg-white px-3 py-1.5 rounded-full border border-[#E8E0D2] shadow-2xs hover:bg-[#F2EDE4] transition-colors"
+                        className="inline-flex items-center gap-1.5 min-h-[40px] text-[11px] font-semibold text-[#2D4A3E] bg-white px-3 py-1.5 rounded-full border border-[#E8E0D2] shadow-2xs hover:bg-[#F2EDE4] transition-colors whitespace-nowrap shrink-0"
                       >
-                        <span>{m.suggestedAction.label}</span>
-                        <ArrowRight className="w-3 h-3 text-[#9E4A2A]" />
+                        <span className="whitespace-nowrap">{m.suggestedAction.label}</span>
+                        <ArrowRight className="w-3 h-3 text-[#9E4A2A] shrink-0" />
                       </Link>
 
                       {m.secondaryAction && (
@@ -370,9 +376,9 @@ export function SuggestionAssistant() {
                           href={m.secondaryAction.href}
                           target={m.secondaryAction.href.startsWith("http") ? "_blank" : undefined}
                           rel={m.secondaryAction.href.startsWith("http") ? "noopener noreferrer" : undefined}
-                          className="inline-flex items-center gap-1.5 text-[11px] font-semibold text-[#52635A] bg-[#F2EDE4] px-2.5 py-1.5 rounded-full border border-[#E8E0D2] hover:text-[#1F2924] transition-colors"
+                          className="inline-flex items-center gap-1.5 min-h-[40px] text-[11px] font-semibold text-[#52635A] bg-[#F2EDE4] px-3 py-1.5 rounded-full border border-[#E8E0D2] hover:text-[#1F2924] transition-colors whitespace-nowrap shrink-0"
                         >
-                          <span>{m.secondaryAction.label}</span>
+                          <span className="whitespace-nowrap">{m.secondaryAction.label}</span>
                         </a>
                       )}
                     </div>

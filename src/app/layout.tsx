@@ -38,7 +38,7 @@ export const metadata: Metadata = {
   description: siteConfig.description,
   keywords: [
     "Voice counselling India",
-    "Dr Shivie Gupta",
+    "Dr. Shivie Gupta",
     "Audio phone counselling",
     "Individual counselling phone call",
     "Couple counselling Agra",

@@ -97,9 +97,7 @@ export function Footer() {
               </div>
               <div className="flex items-start gap-2">
                 <MapPin className="w-4 h-4 text-[#B86B4B] shrink-0 mt-0.5" />
-                <span>
-                  {siteConfig.location.locality}, {siteConfig.location.city}, {siteConfig.location.state}
-                </span>
+                <span>{`${siteConfig.location.locality}, ${siteConfig.location.city}, ${siteConfig.location.state}`}</span>
               </div>
               <div className="flex items-center gap-2">
                 <Mail className="w-4 h-4 text-[#C5A059] shrink-0" />
@@ -121,7 +119,7 @@ export function Footer() {
             ).
           </p>
           <div className="flex items-center justify-center gap-1">
-            <span>© 2026 {siteConfig.name}. All rights reserved.</span>
+            <span>{`© 2026 ${siteConfig.name}. All rights reserved.`}</span>
           </div>
         </div>
       </div>

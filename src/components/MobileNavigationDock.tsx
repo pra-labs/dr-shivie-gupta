@@ -21,6 +21,7 @@ export function MobileNavigationDock() {
 
   const isHome = pathname === "/";
   const isServices = pathname.startsWith("/services");
+  const isConnect = pathname.startsWith("/connect");
 
   return (
     <nav
@@ -62,14 +63,21 @@ export function MobileNavigationDock() {
 
         {/* 4. Primary Book Action */}
         <div className="flex items-center justify-center px-0.5">
-          <button
-            onClick={handleOpenBooking}
-            className="flex items-center justify-center gap-1.5 w-full min-h-[44px] py-2 px-3 rounded-full bg-[#2D4A3E] text-white shadow-sm font-semibold text-xs tracking-wider transition-all active:scale-[0.95] cursor-pointer"
+          <Link
+            href="/connect"
+            onClick={(e) => {
+              // If already on /connect, open the bottom sheet modal for direct in-page booking
+              if (isConnect) {
+                e.preventDefault();
+                handleOpenBooking();
+              }
+            }}
+            className="flex items-center justify-center gap-1.5 w-full min-h-[44px] py-2 px-3 rounded-full bg-[#2D4A3E] text-white shadow-sm font-semibold text-xs tracking-wider transition-all active:scale-[0.95]"
             aria-label="Book a voice session"
           >
             <CalendarCheck className="w-3.5 h-3.5 text-[#C5A059]" />
             <span>Book</span>
-          </button>
+          </Link>
         </div>
       </div>
     </nav>
