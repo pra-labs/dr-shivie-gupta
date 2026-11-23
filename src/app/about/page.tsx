@@ -110,7 +110,19 @@ export default function AboutPage() {
             Mrs. Shivie Gupta’s voice counselling is an emotional support, relationship mediation, and personal clarity practice. It is <strong>not an emergency crisis intervention line</strong>, psychiatric diagnostic clinic, or hospital psychiatric facility.
           </p>
           <p className="text-xs sm:text-sm text-[#52635A] leading-relaxed">
-            If you or a loved one is experiencing severe clinical distress, self-harm thoughts, or acute psychiatric crises, please immediately reach out to professional emergency resources such as the <strong>Tele-MANAS helpline (14416 / 1800 891 4416)</strong>, <strong>Vandrevala Foundation (9999 666 555)</strong>, or visit your nearest hospital emergency department.
+            If you or a loved one is experiencing severe clinical distress, self-harm thoughts, or acute psychiatric crises, please immediately reach out to professional emergency resources such as the <strong>Tele-MANAS helpline (
+            <a href="tel:14416" className="underline hover:text-[#2D4A3E]">
+              14416
+            </a>
+            {" "}/{" "}
+            <a href="tel:18008914416" className="underline hover:text-[#2D4A3E]">
+              1800 891 4416
+            </a>
+            )</strong>, <strong>Vandrevala Foundation (
+            <a href="tel:9999666555" className="underline hover:text-[#2D4A3E]">
+              9999 666 555
+            </a>
+            )</strong>, or visit your nearest hospital emergency department.
           </p>
         </div>
       </section>
