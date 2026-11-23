@@ -1,114 +1,75 @@
 import Link from "next/link";
-import Image from "next/image";
-import { Sparkles, ArrowRight, BookOpen, Sun, MapPin, Feather, Layers, Compass } from "lucide-react";
-import { practicesData, reflectionsData } from "@/data/site-content";
-import { DisciplineCarousel } from "@/components/DisciplineCarousel";
-import { GokaiReflectionWidget } from "@/components/GokaiReflectionWidget";
+import { PhoneCall, Clock, CheckCircle2, Sparkles, MessageCircle, ArrowRight } from "lucide-react";
+import { siteConfig } from "@/config/site";
 
 export default function HomePage() {
   return (
-    <div className="space-y-16 sm:space-y-24 lg:space-y-32 pb-20">
-      {/* 1. Hero Section - Optimized for Mobile Above-the-Fold Rhythm */}
-      <section className="relative overflow-hidden pt-6 sm:pt-14 lg:pt-20">
-        {/* Soft Ambient Background Elements */}
-        <div className="absolute top-1/4 left-1/2 -translate-x-1/2 -translate-y-1/2 w-[500px] h-[500px] bg-[#C5A059]/10 rounded-full blur-3xl pointer-events-none -z-10" />
-        <div className="absolute top-1/2 right-10 w-[350px] h-[350px] bg-[#2D4A3E]/5 rounded-full blur-2xl pointer-events-none -z-10" />
+    <div className="space-y-16 sm:space-y-24 lg:space-y-28 pb-20">
+      {/* 1. Hero Section - Refined Full-Width Editorial Layout (No Image Card) */}
+      <section className="relative overflow-hidden pt-8 sm:pt-14 lg:pt-18">
+        <div className="absolute top-1/4 left-1/2 -translate-x-1/2 -translate-y-1/2 w-[600px] h-[600px] bg-[#C5A059]/10 rounded-full blur-3xl pointer-events-none -z-10" />
+        <div className="absolute top-1/2 right-10 w-[400px] h-[400px] bg-[#2D4A3E]/5 rounded-full blur-2xl pointer-events-none -z-10" />
 
-        <div className="max-w-6xl mx-auto px-4 sm:px-6 lg:px-8">
-          <div className="grid grid-cols-1 lg:grid-cols-12 gap-8 lg:gap-8 items-center">
-            {/* Left Content */}
-            <div className="lg:col-span-7 space-y-4 sm:space-y-5 text-center lg:text-left">
-              {/* Eyebrow Pill with Responsive Text Sizing & No Awkward Wrap */}
-              <div className="inline-flex items-center gap-1.5 sm:gap-2 px-3 py-1 sm:px-3.5 sm:py-1.5 rounded-full bg-[#F2EDE4] border border-[#E8E0D2] text-[#2D4A3E] text-[10px] sm:text-xs font-semibold tracking-wide uppercase max-w-full">
-                <Sparkles className="w-3 h-3 sm:w-3.5 sm:h-3.5 text-[#C5A059] shrink-0" />
-                <span className="sm:hidden">Wellness Resource • Dayalbagh, Agra</span>
-                <span className="hidden sm:inline">Educational Wellness Resource • Dayalbagh, Agra</span>
-              </div>
+        <div className="max-w-4xl mx-auto px-4 sm:px-6 lg:px-8 text-center space-y-6 sm:space-y-8">
+          {/* Eyebrow badge */}
+          <div className="inline-flex items-center gap-2 px-4 py-1.5 rounded-full bg-[#F2EDE4] border border-[#E8E0D2] text-[#2D4A3E] text-xs font-semibold tracking-wide uppercase shadow-2xs">
+            <Clock className="w-3.5 h-3.5 text-[#C5A059] shrink-0" />
+            <span>~35 Years Counselling Experience • Dayalbagh, Agra</span>
+          </div>
 
-              {/* Title with text-balance and balanced line wraps */}
-              <h1 className="font-serif text-3xl sm:text-5xl lg:text-6xl font-normal leading-[1.15] text-[#1F2924] text-balance">
-                Understanding Subtle Energy &amp;{" "}
-                <span className="italic font-serif text-[#2D4A3E] font-medium">Reiki Traditions</span> for{" "}
-                <span className="italic font-serif text-[#9E4A2A]">Inner Stillness</span>
-              </h1>
+          {/* Editorial Headline */}
+          <h1 className="font-serif text-4xl sm:text-6xl lg:text-7xl font-normal leading-[1.12] text-[#1F2924] text-balance">
+            Confidential <span className="italic font-serif text-[#2D4A3E] font-medium">Voice Counselling</span> for{" "}
+            <span className="italic font-serif text-[#9E4A2A]">Inner Peace &amp; Clarity</span>
+          </h1>
 
-              {/* Tightened Declarative Opening Summary (2-3 lines max) */}
-              <p className="text-sm sm:text-base lg:text-lg text-[#52635A] max-w-xl mx-auto lg:mx-0 leading-relaxed font-normal text-balance">
-                An open educational initiative by Dr. Shivie Gupta in Dayalbagh, Agra—exploring traditional Usui Reiki, somatic relaxation, and biofield balance without commercial sales or dogma.
-              </p>
+          {/* Subheading */}
+          <p className="text-base sm:text-lg lg:text-xl text-[#52635A] max-w-2xl mx-auto leading-relaxed font-normal text-balance">
+            Empathetic, private telephone sessions by <strong>Mrs. Shivie Gupta</strong>. Thoughtful guidance for personal anxiety, couple relationships, and family harmony—conducted strictly over phone call with optional Reiki healing on request.
+          </p>
 
-              {/* Action Buttons - Clear CTA Hierarchy: Primary Button + Under-link */}
-              <div className="flex flex-col sm:flex-row items-center justify-center lg:justify-start gap-3 sm:gap-6 pt-1 sm:pt-2">
-                <Link
-                  href="/guide"
-                  className="w-full sm:w-auto inline-flex items-center justify-center gap-2 px-7 py-3.5 sm:px-8 rounded-full bg-[#2D4A3E] text-white font-medium text-xs sm:text-sm shadow-md hover:bg-[#1E332A] hover:shadow-lg transition-all"
-                >
-                  <span>Start the Beginner&apos;s Guide</span>
-                  <ArrowRight className="w-4 h-4" />
-                </Link>
-                <Link
-                  href="/practices"
-                  className="inline-flex items-center gap-1.5 text-xs sm:text-sm font-semibold text-[#2D4A3E] hover:text-[#1E332A] py-1 transition-colors group"
-                >
-                  <span className="underline underline-offset-4 decoration-[#2D4A3E]/30 group-hover:decoration-[#2D4A3E]">
-                    Explore Reiki Practices
-                  </span>
-                  <ArrowRight className="w-4 h-4 group-hover:translate-x-0.5 transition-transform" />
-                </Link>
-              </div>
+          {/* Action CTAs */}
+          <div className="flex flex-col sm:flex-row items-center justify-center gap-3.5 pt-2">
+            <Link
+              href="/connect"
+              className="w-full sm:w-auto inline-flex items-center justify-center gap-2 px-8 py-3.5 rounded-full bg-[#2D4A3E] text-white font-medium text-xs sm:text-sm shadow-md hover:bg-[#1E332A] transition-all cursor-pointer"
+            >
+              <PhoneCall className="w-4 h-4" />
+              <span>Request a Voice Session</span>
+            </Link>
+            <a
+              href={`tel:${siteConfig.phone}`}
+              className="w-full sm:w-auto inline-flex items-center justify-center gap-2 px-7 py-3.5 rounded-full bg-white border border-[#2D4A3E]/30 text-[#2D4A3E] font-medium text-xs sm:text-sm hover:bg-[#FAF8F5] transition-all"
+            >
+              <span>Direct Call: {siteConfig.phoneDisplay}</span>
+            </a>
+          </div>
 
-              {/* Responsive Metrics: Single Horizontal 3-Column Strip with Tabular & Lining Numerals */}
-              <div className="pt-3.5 sm:pt-5 border-t border-[#E8E0D2]/80 max-w-lg mx-auto lg:mx-0">
-                <div className="grid grid-cols-3 gap-1.5 sm:gap-4 text-center sm:text-left">
-                  <div className="px-1.5 py-2 sm:p-0 rounded-xl bg-white/60 sm:bg-transparent border border-[#E8E0D2]/50 sm:border-0">
-                    <div className="text-base sm:text-xl font-serif font-bold text-[#2D4A3E] [font-variant-numeric:lining-nums] tabular-nums">
-                      100%
-                    </div>
-                    <div className="text-[10px] sm:text-[11px] text-[#52635A] whitespace-nowrap overflow-hidden text-ellipsis">
-                      Open &amp; Free
-                    </div>
-                  </div>
-                  <div className="px-1.5 py-2 sm:p-0 rounded-xl bg-white/60 sm:bg-transparent border border-[#E8E0D2]/50 sm:border-0">
-                    <div className="text-base sm:text-xl font-serif font-bold text-[#2D4A3E] [font-variant-numeric:lining-nums] tabular-nums">
-                      Usui &amp; Karuna
-                    </div>
-                    <div className="text-[10px] sm:text-[11px] text-[#52635A] whitespace-nowrap overflow-hidden text-ellipsis">
-                      Traditional Lineages
-                    </div>
-                  </div>
-                  <div className="px-1.5 py-2 sm:p-0 rounded-xl bg-white/60 sm:bg-transparent border border-[#E8E0D2]/50 sm:border-0">
-                    <div className="text-base sm:text-xl font-serif font-bold text-[#2D4A3E] [font-variant-numeric:lining-nums] tabular-nums">
-                      Dayalbagh, Agra
-                    </div>
-                    <div className="text-[10px] sm:text-[11px] text-[#52635A] whitespace-nowrap overflow-hidden text-ellipsis">
-                      Contemplative Roots
-                    </div>
-                  </div>
+          {/* 3-Column Key Guarantees Strip */}
+          <div className="pt-6 sm:pt-8 border-t border-[#E8E0D2]/80 max-w-2xl mx-auto">
+            <div className="grid grid-cols-3 gap-3 sm:gap-6 text-center">
+              <div className="p-3 sm:p-4 rounded-2xl bg-white/70 border border-[#E8E0D2] shadow-2xs">
+                <div className="text-xl sm:text-2xl font-serif font-bold text-[#2D4A3E]">
+                  ~35 Years
+                </div>
+                <div className="text-[11px] sm:text-xs text-[#52635A] mt-0.5">
+                  Counselling Practice
                 </div>
               </div>
-            </div>
-
-            {/* Right Visual / Portrait - Naturally Framed for Above the Fold */}
-            <div className="lg:col-span-5 flex justify-center pt-2 sm:pt-0">
-              <div className="relative w-full max-w-[260px] sm:max-w-sm aspect-[5/6] sm:aspect-[6/7] rounded-3xl overflow-hidden shadow-xl border-4 border-white bg-[#F2EDE4] group">
-                <Image
-                  src="/images/dr-shivie-portrait.svg"
-                  alt="Dr. Shivie Gupta, Reiki Master & Contemplative Educator in Agra"
-                  fill
-                  className="object-cover object-top group-hover:scale-105 transition-transform duration-500"
-                  priority
-                />
-                <div className="absolute inset-x-2.5 bottom-2.5 sm:inset-x-4 sm:bottom-4 p-2.5 sm:p-4 rounded-2xl bg-white/95 backdrop-blur shadow-md border border-[#E8E0D2]/70 text-left">
-                  <div className="font-serif text-sm sm:text-lg font-bold text-[#2D4A3E]">
-                    Dr. Shivie Gupta, PhD
-                  </div>
-                  <div className="text-[10px] sm:text-xs text-[#52635A]">
-                    Usui &amp; Karuna Reiki Master • Educator
-                  </div>
-                  <div className="mt-0.5 sm:mt-1 flex items-center gap-1.5 text-[9px] sm:text-[11px] text-[#9E4A2A] font-medium">
-                    <MapPin className="w-3 h-3" />
-                    <span>Dayalbagh, Agra (UP)</span>
-                  </div>
+              <div className="p-3 sm:p-4 rounded-2xl bg-white/70 border border-[#E8E0D2] shadow-2xs">
+                <div className="text-xl sm:text-2xl font-serif font-bold text-[#2D4A3E]">
+                  Voice-Only
+                </div>
+                <div className="text-[11px] sm:text-xs text-[#52635A] mt-0.5">
+                  Zero Camera Anxiety
+                </div>
+              </div>
+              <div className="p-3 sm:p-4 rounded-2xl bg-white/70 border border-[#E8E0D2] shadow-2xs">
+                <div className="text-xl sm:text-2xl font-serif font-bold text-[#2D4A3E]">
+                  ₹1,000 – ₹2,200
+                </div>
+                <div className="text-[11px] sm:text-xs text-[#52635A] mt-0.5">
+                  Transparent Session Fees
                 </div>
               </div>
             </div>
@@ -116,167 +77,179 @@ export default function HomePage() {
         </div>
       </section>
 
-      {/* 2. Philosophy & Framework */}
+      {/* 2. Core Voice Counselling Offerings & Pricing */}
       <section className="bg-[#F2EDE4]/60 py-14 sm:py-20 border-y border-[#E8E0D2]/80">
-        <div className="max-w-6xl mx-auto px-4 sm:px-6 lg:px-8">
-          <div className="max-w-3xl mx-auto text-center space-y-3 sm:space-y-4">
-            <span className="text-[10px] sm:text-xs font-semibold uppercase tracking-wider text-[#9E4A2A]">
-              Contemplative Synthesis
+        <div className="max-w-6xl mx-auto px-4 sm:px-6 lg:px-8 space-y-12">
+          <div className="text-center max-w-2xl mx-auto space-y-2">
+            <span className="text-xs font-semibold uppercase tracking-wider text-[#9E4A2A]">
+              Transparent Pricing &amp; Scope
             </span>
-            <h2 className="font-serif text-2xl sm:text-3xl lg:text-4xl text-[#1F2924] text-balance">
-              Bridging Biofield Awareness &amp; Emotional Stillness
+            <h2 className="font-serif text-3xl sm:text-4xl text-[#1F2924]">
+              Primary Counselling Services
             </h2>
-            <p className="text-xs sm:text-sm lg:text-base text-[#52635A] leading-relaxed">
-              Energy traditions are often misunderstood as esoteric or supernatural. We explore Reiki as an intentional practice of quiet presence, somatic relaxation, and ethical mindfulness.
+            <p className="text-xs sm:text-sm text-[#52635A] leading-relaxed">
+              All sessions take place strictly over audio/phone call. No webcam requirements, clinic travel, or waiting rooms.
             </p>
           </div>
 
-          <div className="mt-10 sm:mt-16 grid grid-cols-1 md:grid-cols-3 gap-6 sm:gap-8">
-            <div className="p-6 sm:p-8 rounded-2xl bg-white border border-[#E8E0D2] shadow-sm hover:shadow-md transition-shadow space-y-3 sm:space-y-4">
-              <div className="w-10 h-10 sm:w-12 sm:h-12 rounded-xl bg-[#FAF8F5] text-[#2D4A3E] flex items-center justify-center border border-[#E8E0D2]">
-                <Layers className="w-5 h-5 sm:w-6 sm:h-6 text-[#2D4A3E]" />
+          <div className="grid grid-cols-1 md:grid-cols-3 gap-6">
+            {/* Card 1: Individual */}
+            <div className="p-6 sm:p-8 rounded-3xl bg-white border border-[#E8E0D2] shadow-sm flex flex-col justify-between space-y-4">
+              <div className="space-y-3">
+                <span className="text-[10px] font-bold uppercase tracking-wider text-[#9E4A2A] bg-[#FAF8F5] px-2.5 py-1 rounded-full border border-[#E8E0D2]">
+                  Voice Call • 50 mins
+                </span>
+                <h3 className="font-serif text-xl sm:text-2xl font-bold text-[#1F2924]">
+                  Individual Counselling
+                </h3>
+                <div className="text-2xl font-serif font-bold text-[#2D4A3E]">
+                  ₹1,200 <span className="text-xs font-sans font-normal text-[#52635A]">/ session</span>
+                </div>
+                <p className="text-xs sm:text-sm text-[#52635A] leading-relaxed">
+                  Confidential phone space for overcoming overthinking, stress, depressive moods, and restoring personal self-worth.
+                </p>
               </div>
-              <h3 className="font-serif text-lg sm:text-xl font-bold text-[#1F2924]">
-                1. Beyond Mere Intellect
-              </h3>
-              <p className="text-xs sm:text-sm text-[#52635A] leading-relaxed">
-                Analyzing stress through thoughts alone can sometimes reinforce mental looping. Biofield awareness gently attends to where tension lives in the breath and body.
-              </p>
-            </div>
-
-            <div className="p-6 sm:p-8 rounded-2xl bg-white border border-[#E8E0D2] shadow-sm hover:shadow-md transition-shadow space-y-3 sm:space-y-4">
-              <div className="w-10 h-10 sm:w-12 sm:h-12 rounded-xl bg-[#FAF8F5] text-[#9E4A2A] flex items-center justify-center border border-[#E8E0D2]">
-                <Feather className="w-5 h-5 sm:w-6 sm:h-6 text-[#9E4A2A]" />
-              </div>
-              <h3 className="font-serif text-lg sm:text-xl font-bold text-[#1F2924]">
-                2. Secular &amp; Non-Dogmatic
-              </h3>
-              <p className="text-xs sm:text-sm text-[#52635A] leading-relaxed">
-                Zero fortune telling, astrology, or superstitious promises. Our discussions honor psychological dignity, scientific physiology, and traditional Japanese principles.
-              </p>
-            </div>
-
-            <div className="p-6 sm:p-8 rounded-2xl bg-white border border-[#E8E0D2] shadow-sm hover:shadow-md transition-shadow space-y-3 sm:space-y-4">
-              <div className="w-10 h-10 sm:w-12 sm:h-12 rounded-xl bg-[#FAF8F5] text-[#C5A059] flex items-center justify-center border border-[#E8E0D2]">
-                <Sun className="w-5 h-5 sm:w-6 sm:h-6 text-[#C5A059]" />
-              </div>
-              <h3 className="font-serif text-lg sm:text-xl font-bold text-[#1F2924]">
-                3. Gentle Daily Integration
-              </h3>
-              <p className="text-xs sm:text-sm text-[#52635A] leading-relaxed">
-                Learn how the five historical Gokai precepts can transform ordinary moments of frustration, anxiety, and hurry into quiet opportunities for self-compassion.
-              </p>
-            </div>
-          </div>
-
-          {/* Gokai Daily Reflection Widget */}
-          <GokaiReflectionWidget />
-        </div>
-      </section>
-
-      {/* 3. Core Practices Overview */}
-      <section className="max-w-6xl mx-auto px-4 sm:px-6 lg:px-8">
-        <div className="flex flex-col md:flex-row md:items-end justify-between gap-4 sm:gap-6 mb-8 sm:mb-12">
-          <div>
-            <span className="text-[10px] sm:text-xs font-semibold uppercase tracking-wider text-[#9E4A2A]">
-              Educational Topics
-            </span>
-            <h2 className="font-serif text-2xl sm:text-3xl lg:text-4xl text-[#1F2924] mt-1">
-              Core Energy Disciplines
-            </h2>
-          </div>
-          <Link
-            href="/practices"
-            className="inline-flex items-center gap-1.5 text-xs sm:text-sm font-semibold text-[#2D4A3E] hover:text-[#1E332A]"
-          >
-            <span>Read in-depth practice guides</span>
-            <ArrowRight className="w-4 h-4" />
-          </Link>
-        </div>
-
-        <DisciplineCarousel practices={practicesData} />
-      </section>
-
-      {/* 4. Agra Roots & Reflection Space */}
-      <section className="max-w-6xl mx-auto px-4 sm:px-6 lg:px-8">
-        <div className="p-6 sm:p-10 lg:p-12 rounded-3xl bg-[#F2EDE4] border border-[#E8E0D2] grid grid-cols-1 lg:grid-cols-2 gap-8 items-center">
-          <div className="space-y-4 sm:space-y-6">
-            <span className="text-[10px] sm:text-xs font-semibold uppercase tracking-wider text-[#9E4A2A]">
-              Personal Roots
-            </span>
-            <h2 className="font-serif text-2xl sm:text-3xl lg:text-4xl text-[#1F2924]">
-              A Grounded Perspective from Agra
-            </h2>
-            <p className="text-xs sm:text-sm lg:text-base text-[#52635A] leading-relaxed">
-              Dr. Shivie Gupta resides and reflects in Dayalbagh, Agra—a peaceful community steeped in rich cultural heritage and quiet nature. This educational portal shares insights gathered over years of contemplative inquiry, offering readers practical pathways to reduce inner turmoil.
-            </p>
-            <div className="space-y-2.5 text-xs sm:text-sm text-[#1F2924]">
-              <div className="flex items-center gap-2.5">
-                <BookOpen className="w-4 h-4 sm:w-5 sm:h-5 text-[#2D4A3E] shrink-0" />
-                <span>Freely shared articles, self-care routines, and guides</span>
-              </div>
-              <div className="flex items-center gap-2.5">
-                <Compass className="w-4 h-4 sm:w-5 sm:h-5 text-[#2D4A3E] shrink-0" />
-                <span>Grounded bridge between traditional lineages and modern research</span>
-              </div>
-            </div>
-
-            <div className="pt-2">
               <Link
-                href="/about"
-                className="inline-flex items-center gap-1.5 text-xs sm:text-sm font-semibold text-[#2D4A3E] hover:underline"
+                href="/connect?service=Individual%20Counselling%20(Voice%20Call)"
+                className="w-full text-center py-2.5 rounded-full bg-[#2D4A3E] text-white text-xs font-semibold uppercase tracking-wider hover:bg-[#1E332A] transition-colors"
               >
-                <span>Read Dr. Shivie&apos;s academic background &amp; lineage</span>
-                <ArrowRight className="w-4 h-4" />
+                Request Session
+              </Link>
+            </div>
+
+            {/* Card 2: Couple */}
+            <div className="p-6 sm:p-8 rounded-3xl bg-white border-2 border-[#2D4A3E]/40 shadow-sm flex flex-col justify-between space-y-4 relative">
+              <div className="space-y-3">
+                <div className="flex items-center justify-between">
+                  <span className="text-[10px] font-bold uppercase tracking-wider text-[#2D4A3E] bg-[#FAF8F5] px-2.5 py-1 rounded-full border border-[#2D4A3E]/30">
+                    Voice Call • 60 mins
+                  </span>
+                  <span className="text-[9px] uppercase font-bold text-[#2D4A3E] bg-[#F2EDE4] px-2 py-0.5 rounded">
+                    Popular
+                  </span>
+                </div>
+                <h3 className="font-serif text-xl sm:text-2xl font-bold text-[#1F2924]">
+                  Couple Counselling
+                </h3>
+                <div className="text-2xl font-serif font-bold text-[#2D4A3E]">
+                  ₹1,800 <span className="text-xs font-sans font-normal text-[#52635A]">/ session</span>
+                </div>
+                <p className="text-xs sm:text-sm text-[#52635A] leading-relaxed">
+                  Mediated phone discussions to bridge communication gaps, defuse recurring arguments, and rebuild marital intimacy.
+                </p>
+              </div>
+              <Link
+                href="/connect?service=Couple%20Counselling%20(Voice%20Call)"
+                className="w-full text-center py-2.5 rounded-full bg-[#2D4A3E] text-white text-xs font-semibold uppercase tracking-wider hover:bg-[#1E332A] transition-colors"
+              >
+                Request Session
+              </Link>
+            </div>
+
+            {/* Card 3: Family */}
+            <div className="p-6 sm:p-8 rounded-3xl bg-white border border-[#E8E0D2] shadow-sm flex flex-col justify-between space-y-4">
+              <div className="space-y-3">
+                <span className="text-[10px] font-bold uppercase tracking-wider text-[#9E4A2A] bg-[#FAF8F5] px-2.5 py-1 rounded-full border border-[#E8E0D2]">
+                  Voice Call • 60 mins
+                </span>
+                <h3 className="font-serif text-xl sm:text-2xl font-bold text-[#1F2924]">
+                  Family Counselling
+                </h3>
+                <div className="text-2xl font-serif font-bold text-[#2D4A3E]">
+                  ₹2,200 <span className="text-xs font-sans font-normal text-[#52635A]">/ session</span>
+                </div>
+                <p className="text-xs sm:text-sm text-[#52635A] leading-relaxed">
+                  Support for intergenerational friction, parent-teen misunderstandings, and restoring overall household peace.
+                </p>
+              </div>
+              <Link
+                href="/connect?service=Family%20Counselling%20(Voice%20Call)"
+                className="w-full text-center py-2.5 rounded-full bg-[#2D4A3E] text-white text-xs font-semibold uppercase tracking-wider hover:bg-[#1E332A] transition-colors"
+              >
+                Request Session
               </Link>
             </div>
           </div>
 
-          <div className="relative aspect-[4/3] rounded-2xl overflow-hidden border-2 border-white shadow-md">
-            <Image
-              src="/images/clinic-sanctuary.svg"
-              alt="Contemplative Sanctuary Dayalbagh Agra"
-              fill
-              className="object-cover"
-            />
+          {/* Secondary Reiki Callout */}
+          <div className="p-6 sm:p-8 rounded-3xl bg-white border border-[#E8E0D2] flex flex-col sm:flex-row sm:items-center justify-between gap-4 shadow-2xs">
+            <div className="space-y-1">
+              <div className="flex items-center gap-2">
+                <Sparkles className="w-4 h-4 text-[#C5A059]" />
+                <h4 className="font-serif text-base sm:text-lg font-bold text-[#1F2924]">
+                  Reiki Energy Balancing — Optional on Request (₹1,000 / 45 mins)
+                </h4>
+              </div>
+              <p className="text-xs sm:text-sm text-[#52635A]">
+                Traditional Usui biofield relaxation offered as a secondary wellness complement for bodily stillness and sleep support.
+              </p>
+            </div>
+            <Link
+              href="/services"
+              className="inline-flex items-center gap-1.5 text-xs font-semibold text-[#2D4A3E] hover:underline shrink-0"
+            >
+              <span>View all service details</span>
+              <ArrowRight className="w-3.5 h-3.5" />
+            </Link>
           </div>
         </div>
       </section>
 
-      {/* 5. Reader Reflections */}
+      {/* 3. Why Voice-Only Phone Calls */}
       <section className="max-w-6xl mx-auto px-4 sm:px-6 lg:px-8">
-        <div className="text-center max-w-2xl mx-auto space-y-2 sm:space-y-3 mb-8 sm:mb-12">
-          <span className="text-[10px] sm:text-xs font-semibold uppercase tracking-wider text-[#9E4A2A]">
-            Reader Notes
-          </span>
-          <h2 className="font-serif text-2xl sm:text-3xl text-[#1F2924]">
-            Reflections &amp; Insights
-          </h2>
-          <p className="text-xs sm:text-sm text-[#52635A]">
-            Thoughts from seekers and learners engaging with these educational resources.
-          </p>
-        </div>
+        <div className="grid grid-cols-1 lg:grid-cols-2 gap-8 lg:gap-12 items-center">
+          <div className="space-y-4">
+            <span className="text-xs font-semibold uppercase tracking-wider text-[#9E4A2A]">
+              Privacy &amp; Dignity
+            </span>
+            <h2 className="font-serif text-3xl sm:text-4xl text-[#1F2924]">
+              Why Audio / Phone Sessions?
+            </h2>
+            <p className="text-xs sm:text-sm text-[#52635A] leading-relaxed">
+              When people are experiencing emotional hurt or marital stress, appearing on camera often creates unwanted performance anxiety. Audio calls provide a sacred layer of confidentiality where you can focus entirely on your words and feelings.
+            </p>
+            <ul className="space-y-2.5 text-xs sm:text-sm text-[#1F2924]">
+              <li className="flex items-center gap-2">
+                <CheckCircle2 className="w-4 h-4 text-[#2D4A3E] shrink-0" />
+                <span>Zero video camera pressure or webcam fatigue</span>
+              </li>
+              <li className="flex items-center gap-2">
+                <CheckCircle2 className="w-4 h-4 text-[#2D4A3E] shrink-0" />
+                <span>Speak from your comfortable bedroom, balcony, or quiet corner</span>
+              </li>
+              <li className="flex items-center gap-2">
+                <CheckCircle2 className="w-4 h-4 text-[#2D4A3E] shrink-0" />
+                <span>Accessible directly anywhere across India with simple phone calling</span>
+              </li>
+            </ul>
+          </div>
 
-        <div className="grid grid-cols-1 md:grid-cols-3 gap-6 sm:gap-8">
-          {reflectionsData.map((item, idx) => (
-            <div
-              key={idx}
-              className="p-6 sm:p-8 rounded-3xl bg-white border border-[#E8E0D2] shadow-sm flex flex-col justify-between"
-            >
-              <p className="text-xs sm:text-sm text-[#52635A] italic leading-relaxed">
-                &ldquo;{item.note}&rdquo;
-              </p>
-              <div className="pt-4 sm:pt-6 mt-4 sm:mt-6 border-t border-[#E8E0D2]">
-                <div className="font-serif text-sm sm:text-base font-bold text-[#1F2924]">
-                  {item.name}
-                </div>
-                <div className="text-[11px] sm:text-xs text-[#52635A]">{item.location}</div>
-                <div className="text-[10px] sm:text-[11px] font-semibold text-[#C5A059] mt-0.5">
-                  Topic: {item.topic}
-                </div>
-              </div>
+          <div className="p-8 rounded-3xl bg-[#F2EDE4] border border-[#E8E0D2] space-y-4 text-center sm:text-left">
+            <h3 className="font-serif text-xl font-bold text-[#2D4A3E]">
+              Connect Directly with Mrs. Shivie Gupta
+            </h3>
+            <p className="text-xs text-[#52635A] leading-relaxed">
+              Call or send a WhatsApp message to coordinate your preferred day and time. Calling hours are Monday to Saturday, 10:00 AM – 7:00 PM IST.
+            </p>
+            <div className="pt-2 flex flex-col sm:flex-row gap-3">
+              <a
+                href={`tel:${siteConfig.phone}`}
+                className="inline-flex items-center justify-center gap-2 px-6 py-3 rounded-full bg-[#2D4A3E] text-white text-xs font-semibold uppercase tracking-wider hover:bg-[#1E332A] shadow-sm"
+              >
+                <PhoneCall className="w-4 h-4" />
+                <span>{siteConfig.phoneDisplay}</span>
+              </a>
+              <a
+                href={siteConfig.whatsappUrl}
+                target="_blank"
+                rel="noopener noreferrer"
+                className="inline-flex items-center justify-center gap-2 px-6 py-3 rounded-full bg-white border border-[#2D4A3E]/30 text-[#2D4A3E] text-xs font-semibold uppercase tracking-wider hover:bg-[#FAF8F5]"
+              >
+                <MessageCircle className="w-4 h-4 text-emerald-600" />
+                <span>WhatsApp</span>
+              </a>
             </div>
-          ))}
+          </div>
         </div>
       </section>
     </div>

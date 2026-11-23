@@ -1,68 +1,114 @@
 "use client";
 
 import { useState, useMemo } from "react";
-import { ChevronDown, HelpCircle, Search, Languages } from "lucide-react";
+import { ChevronDown, HelpCircle, Search, Languages, PhoneCall } from "lucide-react";
 import { faqsData } from "@/data/site-content";
+import { expandSearchQuery } from "@/lib/search-synonyms";
 
 export function FaqAccordion() {
   const [openIndex, setOpenIndex] = useState<number | null>(0);
   const [selectedCategory, setSelectedCategory] = useState<string>("All");
   const [searchQuery, setSearchQuery] = useState<string>("");
 
-  // Re-ordered categories to prioritize Hindi/Hinglish directly after General
   const categories = [
     "All",
-    "General",
+    "Voice Sessions",
+    "Counselling",
     "Hindi & Local",
-    "Practice Understanding",
-    "Mindfulness & Science",
+    "Reiki (Optional)",
   ];
 
   const filteredFaqs = useMemo(() => {
+    const cleanQuery = searchQuery.trim().toLowerCase();
+    const expandedTerms = expandSearchQuery(cleanQuery);
+
     return faqsData.filter((faq) => {
       const matchesCategory =
         selectedCategory === "All" || faq.category === selectedCategory;
-      const matchesSearch =
-        searchQuery.trim() === "" ||
-        faq.question.toLowerCase().includes(searchQuery.toLowerCase()) ||
-        faq.answer.toLowerCase().includes(searchQuery.toLowerCase());
-      return matchesCategory && matchesSearch;
+
+      if (!cleanQuery) return matchesCategory;
+
+      const qText = faq.question.toLowerCase();
+      const aText = faq.answer.toLowerCase();
+
+      const directMatch = qText.includes(cleanQuery) || aText.includes(cleanQuery);
+      if (directMatch) return matchesCategory;
+
+      const synonymMatch = expandedTerms.some(
+        (term) => qText.includes(term) || aText.includes(term)
+      );
+
+      return matchesCategory && synonymMatch;
     });
   }, [selectedCategory, searchQuery]);
 
   const toggle = (idx: number) => {
-    setOpenIndex(openIndex === idx ? null : idx);
+    const newIdx = openIndex === idx ? null : idx;
+    setOpenIndex(newIdx);
+
+    if (newIdx !== null && filteredFaqs[newIdx]) {
+      try {
+        fetch("/api/analytics", {
+          method: "POST",
+          headers: { "Content-Type": "application/json" },
+          body: JSON.stringify({
+            type: "faq_click",
+            target: filteredFaqs[newIdx].question,
+          }),
+        }).catch(() => {});
+      } catch {
+        // Non-blocking
+      }
+    }
+  };
+
+  const handleSearchChange = (val: string) => {
+    setSearchQuery(val);
+    setOpenIndex(0);
+
+    if (val.trim().length >= 3) {
+      try {
+        fetch("/api/analytics", {
+          method: "POST",
+          headers: { "Content-Type": "application/json" },
+          body: JSON.stringify({
+            type: "faq_search",
+            query: val.trim().toLowerCase(),
+          }),
+        }).catch(() => {});
+      } catch {
+        // Non-blocking
+      }
+    }
   };
 
   return (
     <div className="space-y-5">
-      {/* Quick Search Input */}
+      {/* Search Input */}
       <div className="relative max-w-md mx-auto">
         <Search className="absolute left-3.5 top-1/2 -translate-y-1/2 w-4 h-4 text-[#52635A]" />
         <input
           type="text"
           value={searchQuery}
-          onChange={(e) => {
-            setSearchQuery(e.target.value);
-            setOpenIndex(0);
-          }}
-          placeholder="Search questions (e.g. stress, sleep, religion)..."
+          onChange={(e) => handleSearchChange(e.target.value)}
+          placeholder="Search topics (e.g. phone, confidentiality, fees, rishte, reiki)..."
           className="w-full pl-10 pr-4 py-2.5 rounded-full border border-[#E8E0D2] bg-white text-xs sm:text-sm text-[#1F2924] placeholder:text-[#52635A]/60 focus:outline-none focus:ring-2 focus:ring-[#2D4A3E] focus:border-transparent transition-all shadow-xs"
         />
         {searchQuery && (
           <button
-            onClick={() => setSearchQuery("")}
-            className="absolute right-3.5 top-1/2 -translate-y-1/2 text-xs text-[#52635A] hover:text-[#1F2924]"
+            onClick={() => handleSearchChange("")}
+            className="absolute right-3.5 top-1/2 -translate-y-1/2 text-xs text-[#52635A] hover:text-[#1F2924] cursor-pointer"
           >
             Clear
           </button>
         )}
       </div>
 
-      {/* Horizontal Swipeable Category Filter Bar */}
+      {/* Category Pills */}
       <div className="flex items-center gap-2 overflow-x-auto pb-2 pt-1 no-scrollbar -mx-2 px-2 touch-pan-x">
         {categories.map((cat) => {
           const isSelected = selectedCategory === cat;
+          const isVoice = cat === "Voice Sessions";
           const isHindi = cat === "Hindi & Local";
           return (
             <button
@@ -74,11 +120,14 @@ export function FaqAccordion() {
               className={`shrink-0 px-3.5 py-1.5 min-h-[38px] rounded-full text-xs font-medium transition-all flex items-center gap-1.5 whitespace-nowrap cursor-pointer active:scale-95 ${
                 isSelected
                   ? "bg-[#2D4A3E] text-white shadow-xs font-semibold"
+                  : isVoice
+                  ? "bg-[#FAF8F5] text-[#2D4A3E] border border-[#2D4A3E]/30 hover:bg-[#F2EDE4]"
                   : isHindi
                   ? "bg-[#FAF8F5] text-[#9E4A2A] border border-[#9E4A2A]/40 hover:bg-[#F2EDE4]"
                   : "bg-white border border-[#E8E0D2] text-[#52635A] hover:bg-[#F2EDE4] hover:text-[#1F2924]"
               }`}
             >
+              {isVoice && <PhoneCall className="w-3.5 h-3.5" />}
               {isHindi && <Languages className="w-3.5 h-3.5" />}
               <span>{cat}</span>
             </button>
@@ -90,7 +139,7 @@ export function FaqAccordion() {
       <div className="space-y-3 pt-1">
         {filteredFaqs.length === 0 ? (
           <div className="p-8 text-center rounded-2xl bg-white border border-[#E8E0D2] text-xs text-[#52635A]">
-            No matching questions found for &ldquo;{searchQuery}&rdquo;. Try another term.
+            No matching answers found for &ldquo;{searchQuery}&rdquo;. Try another term (e.g. <em>voice</em>, <em>phone</em>, <em>rishte</em>, <em>fees</em>).
           </div>
         ) : (
           filteredFaqs.map((faq, idx) => {

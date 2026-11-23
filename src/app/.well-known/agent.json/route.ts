@@ -1,41 +1,47 @@
 import { NextResponse } from "next/server";
 import { siteConfig } from "@/config/site";
-import { practicesData } from "@/data/site-content";
 
 export async function GET() {
-  const manifest = {
-    $schema: "https://agentic.org/schemas/agent-manifest.json",
-    name: siteConfig.name,
-    version: "2.0.0",
-    description: "Educational Agent Manifest for Dr. Shivie Gupta, Reiki Master & Wellness Educator in Agra, India.",
-    nature: "Educational and Informational (Non-Commercial)",
+  const agentMetadata = {
+    schema_version: "1.0",
+    name: "Mrs. Shivie Gupta — Voice Counselling Practice",
+    description: "Voice-only counselling for individuals, couples, and families across India with ~35 years experience, plus optional Reiki.",
     practitioner: {
       name: siteConfig.name,
       credentials: siteConfig.credentials,
-      type: "EducatorAndResearcher",
+      experience_years: siteConfig.yearsOfExperience,
+      phone: siteConfig.phone,
+      consultation_mode: "Voice / Telephone Call Only",
       location: siteConfig.location,
-      languages: ["English", "Hindi"],
     },
-    educationalTopics: practicesData.map((p) => ({
-      id: p.id,
-      title: p.title,
-      tradition: p.tradition,
-      learnMoreUrl: `${siteConfig.url}/practices#${p.slug}`,
-    })),
-    endpoints: {
-      email: siteConfig.email,
-      webCanonical: siteConfig.url,
-      guideUrl: `${siteConfig.url}/guide`,
-      llmsTxt: `${siteConfig.url}/llms.txt`,
-      llmsFullTxt: `${siteConfig.url}/llms-full.txt`,
-    },
+    services: [
+      {
+        name: "Individual Counselling (Voice Call)",
+        duration: "50 mins",
+        price_inr: 1200,
+        type: "primary",
+      },
+      {
+        name: "Couple Counselling (Voice Call)",
+        duration: "60 mins",
+        price_inr: 1800,
+        type: "primary",
+      },
+      {
+        name: "Family Counselling (Voice Call)",
+        duration: "60 mins",
+        price_inr: 2200,
+        type: "primary",
+      },
+      {
+        name: "Reiki Energy Balancing (Optional)",
+        duration: "45 mins",
+        price_inr: 1000,
+        type: "optional_secondary",
+      },
+    ],
+    url: siteConfig.url,
   };
 
-  return NextResponse.json(manifest, {
-    status: 200,
-    headers: {
-      "Content-Type": "application/json; charset=utf-8",
-      "Cache-Control": "public, max-age=3600, s-maxage=86400",
-    },
-  });
+  return NextResponse.json(agentMetadata);
 }

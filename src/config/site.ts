@@ -1,10 +1,13 @@
 export const siteConfig = {
-  name: "Dr. Shivie Gupta",
-  credentials: "PhD, Usui & Karuna Reiki Master, Researcher & Wellness Educator",
-  title: "Dr. Shivie Gupta | Usui Reiki & Mindfulness Education • Agra, India",
-  description: "An educational and personal wellness resource on Usui and Karuna Reiki traditions, biofield harmony, mindfulness, and emotional balance by Dr. Shivie Gupta based in Dayalbagh, Agra.",
+  name: "Mrs. Shivie Gupta",
+  credentials: "Counsellor & Reiki Practitioner (~35 Years Experience)",
+  title: "Mrs. Shivie Gupta | Voice-Only Counselling & Reiki Healing • Agra, India",
+  description: "Confidential voice-only counselling for individuals, couples, and families, plus optional Reiki healing with ~35 years of experience by Mrs. Shivie Gupta based in Dayalbagh, Agra.",
   url: "https://dr-shivie-gupta.vercel.app",
   ogImage: "/images/og-image.png",
+  phone: "+91 9837891692",
+  phoneDisplay: "+91 98378 91692",
+  whatsappUrl: "https://wa.me/919837891692?text=Hello%20Mrs.%20Shivie%20Gupta,%20I%20would%20like%20to%20inquire%20about%20a%20voice%20counselling%20session.",
   email: "contact@drshiviegupta.com",
   location: {
     city: "Agra",
@@ -12,8 +15,6 @@ export const siteConfig = {
     country: "India",
     locality: "Dayalbagh",
   },
-  social: {
-    instagram: "https://instagram.com/drshiviegupta",
-    facebook: "https://facebook.com/drshivieguptareiki",
-  },
+  yearsOfExperience: 35,
+  consultationMode: "Voice-Only (Phone / Audio Calls)",
 };

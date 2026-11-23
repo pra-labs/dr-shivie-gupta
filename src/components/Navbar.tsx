@@ -3,27 +3,19 @@
 import Link from "next/link";
 import { usePathname } from "next/navigation";
 import { useState } from "react";
-import { Menu, X, Sparkles } from "lucide-react";
+import { Menu, X, PhoneCall, Sparkles } from "lucide-react";
 import { siteConfig } from "@/config/site";
 
 export function Navbar() {
   const [isOpen, setIsOpen] = useState(false);
   const pathname = usePathname();
 
-  // Desktop navigation links - Guide is handled exclusively by the prominent CTA pill
-  const desktopNavLinks = [
+  const navLinks = [
     { name: "Home", href: "/" },
     { name: "About", href: "/about" },
-    { name: "Practices", href: "/practices" },
-    { name: "Connect", href: "/connect" },
-  ];
-
-  // Mobile drawer links
-  const mobileNavLinks = [
-    { name: "Home", href: "/" },
-    { name: "About", href: "/about" },
-    { name: "Practices", href: "/practices" },
-    { name: "Connect", href: "/connect" },
+    { name: "Services & Pricing", href: "/services" },
+    { name: "FAQs", href: "/guide" },
+    { name: "Request Session", href: "/connect" },
   ];
 
   const isActive = (href: string) => {
@@ -44,22 +36,22 @@ export function Navbar() {
                 {siteConfig.name}
               </span>
               <span className="text-[11px] font-medium tracking-wider uppercase text-[#9E4A2A]">
-                Reiki &amp; Wellness Education
+                Counselling &amp; Healing (~35 Yrs Exp)
               </span>
             </div>
           </Link>
 
           {/* Desktop Navigation */}
-          <nav className="hidden md:flex items-center gap-8">
-            {desktopNavLinks.map((link) => {
+          <nav className="hidden md:flex items-center gap-7">
+            {navLinks.map((link) => {
               const active = isActive(link.href);
               return (
                 <Link
                   key={link.name}
                   href={link.href}
-                  className={`text-sm font-medium transition-colors relative py-1 ${
+                  className={`text-xs font-semibold uppercase tracking-wider transition-colors relative py-1 ${
                     active
-                      ? "text-[#2D4A3E] font-semibold after:absolute after:bottom-0 after:left-0 after:w-full after:h-0.5 after:bg-[#2D4A3E]"
+                      ? "text-[#2D4A3E] after:absolute after:bottom-0 after:left-0 after:w-full after:h-0.5 after:bg-[#2D4A3E]"
                       : "text-[#52635A] hover:text-[#2D4A3E] after:absolute after:bottom-0 after:left-0 after:w-0 after:h-0.5 after:bg-[#2D4A3E] hover:after:w-full after:transition-all"
                   }`}
                 >
@@ -67,20 +59,24 @@ export function Navbar() {
                 </Link>
               );
             })}
-            <Link
-              href="/guide"
-              className={`inline-flex items-center justify-center px-4 py-2 rounded-full text-xs font-semibold uppercase tracking-wider transition-all shadow-xs ${
-                pathname === "/guide"
-                  ? "bg-[#2D4A3E] text-white"
-                  : "border border-[#2D4A3E] text-[#2D4A3E] hover:bg-[#2D4A3E] hover:text-white"
-              }`}
+            <a
+              href={`tel:${siteConfig.phone}`}
+              className="inline-flex items-center gap-1.5 px-4 py-2 rounded-full bg-[#2D4A3E] text-white text-xs font-semibold tracking-wider hover:bg-[#1E332A] transition-all shadow-xs"
             >
-              Start Guide
-            </Link>
+              <PhoneCall className="w-3.5 h-3.5" />
+              <span>{siteConfig.phoneDisplay}</span>
+            </a>
           </nav>
 
           {/* Mobile Hamburger */}
-          <div className="md:hidden flex items-center">
+          <div className="md:hidden flex items-center gap-2">
+            <a
+              href={`tel:${siteConfig.phone}`}
+              className="p-2.5 rounded-full bg-[#2D4A3E] text-white flex items-center justify-center"
+              aria-label="Direct Phone Call"
+            >
+              <PhoneCall className="w-4 h-4" />
+            </a>
             <button
               onClick={() => setIsOpen(!isOpen)}
               className="p-3 min-w-[44px] min-h-[44px] rounded-xl text-[#1F2924] hover:bg-[#F2EDE4] transition-colors flex items-center justify-center"
@@ -96,14 +92,14 @@ export function Navbar() {
         {isOpen && (
           <div className="md:hidden relative z-50 bg-[#FAF8F5] border-b border-[#E8E0D2] px-6 py-5 space-y-3 shadow-xl animate-in fade-in slide-in-from-top-2 duration-200">
             <nav className="flex flex-col space-y-1.5">
-              {mobileNavLinks.map((link) => {
+              {navLinks.map((link) => {
                 const active = isActive(link.href);
                 return (
                   <Link
                     key={link.name}
                     href={link.href}
                     onClick={() => setIsOpen(false)}
-                    className={`text-base rounded-xl px-4 py-2.5 min-h-[44px] flex items-center transition-colors ${
+                    className={`text-sm rounded-xl px-4 py-2.5 min-h-[44px] flex items-center transition-colors ${
                       active
                         ? "text-[#2D4A3E] font-bold bg-[#F2EDE4]"
                         : "font-semibold text-[#1F2924] hover:text-[#2D4A3E] hover:bg-[#F2EDE4]"
@@ -114,20 +110,19 @@ export function Navbar() {
                 );
               })}
             </nav>
-            <div className="pt-2 border-t border-[#E8E0D2]">
-              <Link
-                href="/guide"
-                onClick={() => setIsOpen(false)}
-                className="w-full flex items-center justify-center py-3 px-4 min-h-[46px] rounded-full text-xs font-semibold uppercase tracking-wider border-2 border-[#2D4A3E] bg-[#2D4A3E] text-white hover:bg-[#1E332A] transition-colors shadow-xs"
+            <div className="pt-2 border-t border-[#E8E0D2] flex flex-col gap-2">
+              <a
+                href={`tel:${siteConfig.phone}`}
+                className="w-full flex items-center justify-center gap-2 py-3 px-4 rounded-full text-xs font-semibold uppercase tracking-wider bg-[#2D4A3E] text-white hover:bg-[#1E332A] shadow-xs"
               >
-                Start Beginner&apos;s Guide
-              </Link>
+                <PhoneCall className="w-4 h-4" />
+                <span>Call: {siteConfig.phoneDisplay}</span>
+              </a>
             </div>
           </div>
         )}
       </header>
 
-      {/* Backdrop Dimming when Mobile Drawer is Open */}
       {isOpen && (
         <div
           onClick={() => setIsOpen(false)}

@@ -1,198 +1,188 @@
-export interface Practice {
+export interface ServiceOffering {
   id: string;
   title: string;
   slug: string;
+  category: "counselling" | "reiki";
   tagline: string;
-  tradition: string;
-  keyThemes: string[];
-  principles: string[];
-  selfCareTakeaways: string[];
+  durationMinutes: number;
+  priceINR: number;
+  format: "Voice / Phone Call Only" | "Remote / On Request";
+  badge: "Primary Service" | "Optional Secondary Service";
+  overview: string;
+  keyAreas: string[];
+  clientOutcomes: string[];
+  isPopular?: boolean;
 }
 
 export interface FAQ {
+  id?: string;
   question: string;
   answer: string;
-  category: "General" | "Practice Understanding" | "Mindfulness & Science" | "Hindi & Local";
+  category: "Counselling" | "Voice Sessions" | "Hindi & Local" | "Reiki (Optional)";
 }
 
-export interface Reflection {
-  name: string;
+export interface ClientNote {
+  id: string;
+  clientName: string;
   location: string;
   note: string;
-  topic: string;
+  serviceType: string;
+  isPublished: boolean;
 }
 
-export const practicesData: Practice[] = [
+export const servicesData: ServiceOffering[] = [
   {
-    id: "usui-reiki-ryoho",
-    title: "Usui Reiki Ryoho Foundations",
-    slug: "usui-reiki-ryoho",
-    tagline: "The traditional Japanese art of channeling subtle life force energy for systemic calm.",
-    tradition: "Mikao Usui Lineage (Japan, 1920s)",
-    keyThemes: [
-      "Parasympathetic nervous system restoration",
-      "Somatic stress dissipation and emotional stillness",
-      "Cultivating meditative daily presence (Gokai principles)",
-      "Unblocking stagnant biofield meridians",
+    id: "individual-counselling",
+    title: "Individual Counselling (Voice Call)",
+    slug: "individual-counselling",
+    category: "counselling",
+    tagline: "Confidential phone guidance for personal clarity, stress reduction, and inner emotional balance.",
+    durationMinutes: 50,
+    priceINR: 1200,
+    format: "Voice / Phone Call Only",
+    badge: "Primary Service",
+    isPopular: true,
+    overview:
+      "A compassionate, non-judgmental space over phone to unpack persistent emotional roadblocks, life crossroads, and anxiety without video camera fatigue or travel pressure.",
+    keyAreas: [
+      "Persistent stress, anxiety loops, and overthinking",
+      "Low self-confidence, emotional fatigue, and mood lows",
+      "Navigating grief, transitions, and life crossroads",
+      "Personal boundary setting and self-acceptance",
     ],
-    principles: [
-      "Just for today, do not be angry (Kyo dake wa Okoru-na)",
-      "Just for today, do not worry (Shinpai suna)",
-      "Be grateful (Kansha shite)",
-      "Do your duties with diligence (Gyo o hage-me)",
-      "Be kind to every living being (Hito ni shinsetsu ni)",
-    ],
-    selfCareTakeaways: [
-      "Daily self-treatment hand placements over the heart, belly, and head",
-      "Conscious diaphragmatic breathwork paired with palm warmth",
-      "Setting non-reactive emotional intentions each morning",
+    clientOutcomes: [
+      "Calm parasympathetic nervous system release during confidential dialogue",
+      "Structured somatic and cognitive coping tools tailored to your daily routine",
+      "Absolute voice-only privacy from the comfort of your own home",
     ],
   },
   {
-    id: "chakra-biofield-awareness",
-    title: "Chakra & Biofield Energy Alignment",
-    slug: "chakra-biofield-awareness",
-    tagline: "Understanding the seven vital energetic centers and their somatic correlations.",
-    tradition: "Vedic & Subtle Energy Studies",
-    keyThemes: [
-      "Mapping physical tension to emotional centers",
-      "Releasing lingering emotional cords and empathetic fatigue",
-      "Cultivating energetic boundaries and vitality",
-      "Grounding exercises for high-stress living",
+    id: "couple-counselling",
+    title: "Couple & Relationship Counselling (Voice Call)",
+    slug: "couple-counselling",
+    category: "counselling",
+    tagline: "Bridging communication gaps, resolving recurring conflicts, and restoring emotional warmth.",
+    durationMinutes: 60,
+    priceINR: 1800,
+    format: "Voice / Phone Call Only",
+    badge: "Primary Service",
+    overview:
+      "A balanced, respectful audio consultation for partners seeking to understand unmet expectations, dissolve resentment, and communicate with empathy.",
+    keyAreas: [
+      "Communication shutdowns and escalating arguments",
+      "Navigating marital expectations and in-law dynamics",
+      "Rebuilding trust, intimacy, and shared emotional safety",
+      "Healthy boundary setting within relationship spaces",
     ],
-    principles: [
-      "Energy follows intention and mindful awareness",
-      "Balanced chakras foster emotional resilience and cognitive clarity",
-      "Releasing external psychological weight preserves personal sovereignty",
-    ],
-    selfCareTakeaways: [
-      "Visualizing grounding roots connecting into the earth beneath your feet",
-      "Observing breath resonance across the chest, solar plexus, and throat",
-      "Mindful water hydration to support biofield conductivity",
-    ],
-  },
-  {
-    id: "integrative-emotional-inquiry",
-    title: "Integrative Mindfulness & Emotional Harmony",
-    slug: "integrative-emotional-inquiry",
-    tagline: "Bridging cognitive self-reflection with somatic biofield awareness.",
-    tradition: "Contemplative Psychology & Energy Synergy",
-    keyThemes: [
-      "Observing emotional loops without immediate self-judgment",
-      "Somatic check-ins mapping emotions inside the body",
-      "Developing self-compassion during life crossroads and grief",
-      "Freedom from rigid mental dogmas and superstition",
-    ],
-    principles: [
-      "Cognitive understanding paired with somatic ease creates enduring peace",
-      "Emotions are physiological energies that desire gentle acknowledgement",
-      "Mental stillness begins by honoring the physical body's signals",
-    ],
-    selfCareTakeaways: [
-      "Ten-minute evening silent reflection without digital screens",
-      "Gentle journal prompts exploring emotional crossroads",
-      "Loving-kindness meditation for personal and collective well-being",
+    clientOutcomes: [
+      "Equal, mediated speaking time to express heartfelt needs without interruption",
+      "Practical daily conversational protocols for de-escalating friction",
+      "Deeper mutual understanding grounded in 35 years of therapeutic experience",
     ],
   },
   {
-    id: "distance-reiki-concepts",
-    title: "Non-Local Healing & Distance Energy Concepts",
-    slug: "distance-reiki-concepts",
-    tagline: "Exploring quantum biofield resonance and intentional connection across space.",
-    tradition: "Usui Hon Sha Ze Sho Nen Principle",
-    keyThemes: [
-      "Non-local physics analogies and conscious interconnectedness",
-      "Focused intention and meditative presence across distance",
-      "Supporting loved ones and inner peace from afar",
-      "Overcoming spatial limitations in contemplative energy work",
+    id: "family-counselling",
+    title: "Family Counselling (Voice Call)",
+    slug: "family-counselling",
+    category: "counselling",
+    tagline: "Harmonizing intergenerational relationships, parenting stresses, and household peace.",
+    durationMinutes: 60,
+    priceINR: 2200,
+    format: "Voice / Phone Call Only",
+    badge: "Primary Service",
+    overview:
+      "Dedicated phone sessions to untangle family friction, parent-teen communication gaps, and elder-care misunderstandings with patience and sensitivity.",
+    keyAreas: [
+      "Intergenerational communication gaps and differing cultural values",
+      "Parenting dilemmas, adolescent anxiety, and academic stress",
+      "Sibling conflicts and household emotional tension",
+      "Preserving mutual respect during family transitions",
     ],
-    principles: [
-      "Consciousness and subtle energetic fields transcend Euclidean boundaries",
-      "Ethical stewardship: healing intention always respects recipient willingness",
-      "Quiet personal meditation deepens universal empathy",
+    clientOutcomes: [
+      "Neutral, mature guidance that honors all family members with dignity",
+      "Clarified roles, mutual responsibilities, and healthier communication",
+      "A calmer, more supportive household atmosphere",
     ],
-    selfCareTakeaways: [
-      "Quietly holding a peaceful, loving intention for family and community",
-      "Cultivating unified consciousness through regular silent stillness",
+  },
+  {
+    id: "reiki-healing",
+    title: "Reiki Energy Balancing (Optional / On Request)",
+    slug: "reiki-healing",
+    category: "reiki",
+    tagline: "Traditional Usui biofield relaxation offered as a complementary wellness support.",
+    durationMinutes: 45,
+    priceINR: 1000,
+    format: "Remote / On Request",
+    badge: "Optional Secondary Service",
+    overview:
+      "Offered strictly upon client request as a complementary self-care support. Traditional Usui Reiki biofield balancing facilitates parasympathetic ease and meditative calm.",
+    keyAreas: [
+      "Subtle energy meridian balancing and autonomic nervous system calm",
+      "Dissipating stagnant somatic tension and emotional heaviness",
+      "Evening grounding rituals paired with conscious breathwork",
+      "Completely optional; never replaces or required for counselling",
+    ],
+    clientOutcomes: [
+      "Deep physical stillness and relief from somatic muscle tension",
+      "Restful sleep rhythm restoration and mindful inner alignment",
+      "Integration of the five traditional Gokai precepts for daily living",
     ],
   },
 ];
 
 export const faqsData: FAQ[] = [
   {
-    category: "General",
-    question: "What is Reiki and what is the purpose of this website?",
-    answer: "This platform is an independent, non-commercial educational resource curated by Dr. Shivie Gupta. Its purpose is to demystify traditional Usui and Karuna Reiki, clarify subtle biofield concepts, and share practical mindfulness techniques for emotional harmony without commercial sales or paid appointments.",
+    category: "Voice Sessions",
+    question: "Why are all counselling sessions conducted exclusively over voice/phone call?",
+    answer:
+      "Over ~35 years of practice, Mrs. Shivie Gupta has found voice-only phone calls to offer the highest emotional safety, complete privacy, and zero video camera self-consciousness. Clients speak with genuine vulnerability from their personal sanctuary without traveling, clinic waiting rooms, or technical video fatigue.",
   },
   {
-    category: "General",
-    question: "Does Dr. Shivie Gupta offer paid therapy or commercial clinic appointments here?",
-    answer: "No. This website is purely informational and educational. Dr. Shivie Gupta does not sell sessions, commercial packages, or clinic slots here. The content exists to foster awareness, self-care practices, and academic inquiry into energy modalities.",
+    category: "Voice Sessions",
+    question: "Do I need to turn on my camera or install special video software?",
+    answer:
+      "No. All consultations take place via standard telephone voice call or WhatsApp audio call. You do not need any special software, webcam, or video setup—just a quiet, comfortable space where you can speak freely.",
   },
   {
-    category: "General",
-    question: "How does Reiki differ from fortune-telling, tarot, or astrology?",
-    answer: "Reiki is an evidence-informed contemplative biofield practice centered on relaxation, autonomic regulation, and emotional awareness. It has no connection to future prediction, horoscope readings, psychic phenomena, or supernatural fortune-telling.",
+    category: "Counselling",
+    question: "What is the background and experience of Mrs. Shivie Gupta?",
+    answer:
+      "Mrs. Shivie Gupta brings approximately 35 years of dedicated experience in emotional counselling, relationship guidance, and family harmony. Her practice is grounded in empathetic active listening, practical cognitive tools, and gentle biofield awareness in Dayalbagh, Agra.",
   },
   {
-    category: "Practice Understanding",
-    question: "What do people typically experience during a Reiki session?",
-    answer: "Recipients commonly experience soothing warmth from the practitioner's hands, gentle tingling, rhythmic muscle relaxation, stomach gurgling signaling parasympathetic vagal activation, and a deeply peaceful meditative state between wakefulness and sleep.",
+    category: "Counselling",
+    question: "What are the session charges and how do I schedule an appointment?",
+    answer:
+      "Sessions range from ₹1,000 to ₹2,200 depending on whether it is an Individual, Couple, Family, or Reiki session. You can request a session using the online inquiry form or connect directly via call or WhatsApp at +91 9837891692.",
   },
   {
-    category: "Practice Understanding",
-    question: "Do you have to undress or change clothes for Reiki?",
-    answer: "Never. Reiki is practiced fully clothed. Comfortable, loose-fitting cotton or linen attire that allows natural, unconstrained breathing is recommended for all personal relaxation and energy exercises.",
+    category: "Reiki (Optional)",
+    question: "Is Reiki compulsory or is it a separate offering?",
+    answer:
+      "Reiki is completely optional and secondary. Mrs. Shivie Gupta's primary practice is voice-only counselling. Traditional Usui Reiki is available exclusively for clients who specifically express interest in subtle energy balancing and deep relaxation.",
   },
   {
-    category: "Mindfulness & Science",
-    question: "Can Reiki replace medical or psychiatric treatment?",
-    answer: "Never. Reiki is an integrative, complementary wellness practice. It is designed to support relaxation and emotional well-being, and should never be viewed as a substitute for licensed medical care, psychiatric diagnosis, or prescribed therapies.",
-  },
-  {
-    category: "Mindfulness & Science",
-    question: "Is Reiki associated with any specific religion or creed?",
-    answer: "No. Reiki is universally secular and non-dogmatic. It requires no religious belief, faith conversion, or philosophical adherence, welcoming practitioners and researchers of all cultures, faiths, and scientific backgrounds.",
-  },
-  {
-    category: "Practice Understanding",
-    question: "How does distance energy work conceptually?",
-    answer: "Distance Reiki is framed around non-local quantum biofield principles, wherein focused conscious intention bridges spatial separation. In Usui traditions, it represents a meditative state connecting individuals to universal peace regardless of geographic boundaries.",
+    category: "Counselling",
+    question: "Is counselling suitable for emergency mental health crises?",
+    answer:
+      "No. Voice counselling with Mrs. Shivie Gupta is an emotional support and personal guidance practice. It is not an emergency crisis intervention hotline or psychiatric emergency service. Individuals experiencing severe acute distress or crisis should contact national helplines (such as Tele-MANAS at 14416 in India) or visit a local hospital immediately.",
   },
   {
     category: "Hindi & Local",
-    question: "Kya Reiki se overthinking aur mental stress kam hota hai?",
-    answer: "Haan, Reiki dhyan aur biofield relaxation ke madhyam se autonomic nervous system ko shant karti hai, jisse dimag me chal rahi anavashyak chinta aur overthinking natural tareeqe se shant hoti hai.",
+    question: "Kya phone call par counselling utni hi asardar hoti hai?",
+    answer:
+      "Haan, bilkul. Phone call par baat karne se aap bina kisi jhijhak, camera ki chinta, ya clinic aane-jane ke bina apne ghar ki shanti me khulkar baat kar sakte hain. Lagbhag 35 saal ke anubhav ke saath, Mrs. Shivie Gupta poori confidentiality aur dhyan ke saath sunti hain.",
   },
   {
     category: "Hindi & Local",
-    question: "Kya is website par koi paid appointment ya fees lagti hai?",
-    answer: "Nahi, yeh website ek poori tarah se non-commercial aur educational resource hai. Yahan koi paid session, fees ya clinic booking nahi hoti; yeh keval Reiki aur mental peace ki jankari ke liye banayi gayi hai.",
+    question: "Session book karne ke liye kya karna hoga?",
+    answer:
+      "Aap is website ke 'Session Request' form ke zariye apna naam, phone number aur suvidhajanak samay bhej sakte hain, ya seedhe +91 9837891692 par Call ya WhatsApp message bhejkar apna session schedule kar sakte hain.",
   },
   {
     category: "Hindi & Local",
-    question: "Kya Reiki kisi dharam ya pooja-path se judi hui hai?",
-    answer: "Bilkul nahi. Reiki kisi bhi dharam ya dharmik kriya se nahi judi hai. Yeh ek secular aur universal energy-balancing vidhi hai jise koi bhi vyakti apna sakta hai.",
-  },
-];
-
-export const reflectionsData: Reflection[] = [
-  {
-    name: "A. Sharma",
-    location: "Agra, Uttar Pradesh",
-    note: "Reading Dr. Shivie's reflections on the Gokai principles brought a profound calm to my daily routine. A wonderfully grounded perspective on subtle energy.",
-    topic: "Gokai Mindfulness",
-  },
-  {
-    name: "P. Mehta",
-    location: "New Delhi",
-    note: "Finally, an explanation of Reiki and biofields stripped of commercial hype and superstition. The scientific and emotional harmony here is rare.",
-    topic: "Integrative Biofields",
-  },
-  {
-    name: "R. Sen",
-    location: "Bengaluru",
-    note: "The self-care takeaways and beginner guide have become part of my evening grounding ritual. Grateful for this open educational resource.",
-    topic: "Self-Care Meditation",
+    question: "Kya rishton aur parivaarik tanav me voice counselling se madad milti hai?",
+    answer:
+      "Haan. Couple aur Family counselling me dono pakshon ko shanti se sunkar gusse, communication gap, aur aapsi galatfehmiyon ko suljhane ke vyavharik raste nikaale jaate hain.",
   },
 ];

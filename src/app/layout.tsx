@@ -5,6 +5,7 @@ import { siteConfig } from "@/config/site";
 import { Navbar } from "@/components/Navbar";
 import { Footer } from "@/components/Footer";
 import { ComprehensiveJsonLd } from "@/components/seo/JsonLd";
+import { SuggestionAssistant } from "@/components/SuggestionAssistant";
 
 const cormorant = Cormorant_Garamond({
   variable: "--font-cormorant",
@@ -34,14 +35,15 @@ export const metadata: Metadata = {
   },
   description: siteConfig.description,
   keywords: [
-    "Reiki education Agra",
-    "Usui Reiki traditions",
-    "Dr Shivie Gupta",
-    "Mindfulness Agra",
-    "Chakra awareness Dayalbagh",
-    "Biofield energy education",
-    "Gokai principles",
-    "Non-commercial Reiki guide India"
+    "Voice counselling India",
+    "Mrs Shivie Gupta",
+    "Audio phone counselling",
+    "Individual counselling phone call",
+    "Couple counselling Agra",
+    "Relationship counselling phone call",
+    "Family guidance India",
+    "Reiki healing Agra",
+    "Confidential voice therapy"
   ],
   authors: [{ name: siteConfig.name, url: siteConfig.url }],
   creator: siteConfig.name,
@@ -91,6 +93,7 @@ export default function RootLayout({
         <Navbar />
         <main className="flex-1">{children}</main>
         <Footer />
+        <SuggestionAssistant />
       </body>
     </html>
   );

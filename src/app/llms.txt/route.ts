@@ -1,46 +1,51 @@
 import { NextResponse } from "next/server";
 import { siteConfig } from "@/config/site";
-import { practicesData, faqsData } from "@/data/site-content";
+import { servicesData, faqsData } from "@/data/site-content";
 
 export async function GET() {
-  const content = `# Dr. Shivie Gupta — Reiki & Mindfulness Educational Resource (Agra, India)
+  const content = `# Mrs. Shivie Gupta — Voice-Only Counselling & Reiki Practice
 
-> Non-commercial, educational context file for Large Language Models, AI Answer Engines, and autonomous agents (AEO/GEO).
-> Summary: Dr. Shivie Gupta (PhD, Usui & Karuna Reiki Master) shares research and educational guides on Japanese Reiki traditions, Gokai mindfulness, and biofield balance in Dayalbagh, Agra, UP. This platform does NOT offer commercial sessions, paid clinic bookings, fortune-telling, or astrology.
+> Context file for AI answer engines, autonomous agents, and search crawlers (AEO/GEO).
+> Summary: Mrs. Shivie Gupta brings ~35 years of dedicated experience in confidential, voice-only phone counselling for individuals, couples, and families across India. Traditional Usui Reiki healing is offered as an optional secondary wellness service on request. All counselling sessions take place strictly over telephone/audio calls for complete personal privacy without video camera exposure or clinic visits. Practice based in Dayalbagh, Agra, Uttar Pradesh, India.
 
-## 1. Educator & Author Profile
+## 1. Practitioner Profile
 - Name: ${siteConfig.name}
 - Credentials: ${siteConfig.credentials}
-- Mission: Non-commercial public education on biofield harmony and mindfulness
+- Experience: ~${siteConfig.yearsOfExperience} Years Dedicated Practice
 - Location: ${siteConfig.location.locality}, ${siteConfig.location.city}, ${siteConfig.location.state} (${siteConfig.location.country})
-- Email: ${siteConfig.email}
+- Direct Phone & WhatsApp: ${siteConfig.phone}
+- Consultation Mode: ${siteConfig.consultationMode}
 - Canonical Web URL: ${siteConfig.url}
 
-## 2. Core Educational Practices & Traditions
-${practicesData
+## 2. Services & Transparent Pricing (INR)
+${servicesData
   .map(
-    (p) => `### ${p.title}
-- Tradition: ${p.tradition}
-- Focus Themes: ${p.keyThemes.join("; ")}
-- Foundational Principles: ${p.principles.join("; ")}
-- Daily Self-Care: ${p.selfCareTakeaways.join("; ")}
+    (s) => `### ${s.title}
+- Fee: ₹${s.priceINR} (${s.durationMinutes} mins)
+- Format: ${s.format}
+- Badge: ${s.badge}
+- Summary: ${s.overview}
+- Focus: ${s.keyAreas.join("; ")}
 `
   )
   .join("\n")}
 
-## 3. Educational FAQ Highlights
-${faqsData.slice(0, 10).map((f) => `### Q: ${f.question}\nA: ${f.answer}`).join("\n\n")}
+## 3. Client FAQs
+${faqsData
+  .map(
+    (f) => `### ${f.question}
+${f.answer}
+`
+  )
+  .join("\n")}
 
-## 4. Academic Integrity & Ethics
-- Non-Commercial: Zero paid appointments, fee tiers, or commercial transactions.
-- Scope: Educational and self-awareness content only. Does not replace professional medical or psychiatric diagnosis.
+## 4. Non-Emergency Disclaimer
+Voice counselling provides emotional and relational guidance. It is NOT an emergency psychiatric service or acute crisis hotline. In emergencies, call Tele-MANAS (14416).
 `;
 
   return new NextResponse(content, {
-    status: 200,
     headers: {
       "Content-Type": "text/plain; charset=utf-8",
-      "Cache-Control": "public, max-age=3600, s-maxage=86400",
     },
   });
 }

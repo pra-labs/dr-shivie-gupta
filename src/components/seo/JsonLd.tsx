@@ -1,12 +1,12 @@
 import React from "react";
 import { siteConfig } from "@/config/site";
-import { practicesData, faqsData } from "@/data/site-content";
+import { servicesData, faqsData } from "@/data/site-content";
 
 export function ComprehensiveJsonLd() {
   const schemaGraph = {
     "@context": "https://schema.org",
     "@graph": [
-      // 1. WebSite Entity (Educational & Informational)
+      // 1. WebSite Entity
       {
         "@type": "WebSite",
         "@id": `${siteConfig.url}/#website`,
@@ -19,22 +19,22 @@ export function ComprehensiveJsonLd() {
         "inLanguage": "en-IN",
       },
 
-      // 2. Person Entity (Dr. Shivie Gupta)
+      // 2. Person Entity (Mrs. Shivie Gupta)
       {
         "@type": "Person",
         "@id": `${siteConfig.url}/#practitioner`,
-        "name": "Dr. Shivie Gupta",
-        "jobTitle": "Reiki Master, Contemplative Researcher & Wellness Educator",
-        "description": "Educator and researcher sharing knowledge on Usui and Karuna Reiki traditions, biofield harmony, and emotional equilibrium based in Dayalbagh, Agra.",
+        "name": siteConfig.name,
+        "jobTitle": "Counsellor & Reiki Practitioner",
+        "description": `Counsellor with ~${siteConfig.yearsOfExperience} years of experience offering voice-only counselling for individuals, couples, and families, plus optional Reiki healing in Dayalbagh, Agra.`,
         "url": siteConfig.url,
+        "telephone": siteConfig.phone,
+        "email": siteConfig.email,
         "knowsAbout": [
-          "Usui Reiki Ryoho",
-          "Karuna Reiki",
-          "Subtle Biofield Energy",
-          "Contemplative Mindfulness",
-          "Gokai Precepts",
-          "Chakra Awareness",
-          "Somatic Relaxation",
+          "Individual Voice Counselling",
+          "Couple & Relationship Guidance",
+          "Family & Intergenerational Counselling",
+          "Stress & Anxiety Management",
+          "Traditional Usui Reiki Healing",
         ],
         "address": {
           "@type": "PostalAddress",
@@ -42,23 +42,23 @@ export function ComprehensiveJsonLd() {
           "addressRegion": siteConfig.location.state,
           "addressCountry": siteConfig.location.country,
         },
-        "sameAs": [
-          siteConfig.social.instagram,
-          siteConfig.social.facebook,
-        ],
       },
 
-      // 3. Educational Articles / CreativeWorks for Practices
-      ...practicesData.map((practice) => ({
-        "@type": "CreativeWork",
-        "@id": `${siteConfig.url}/practices#${practice.slug}`,
-        "name": practice.title,
-        "headline": practice.tagline,
-        "author": {
+      // 3. Service Offerings
+      ...servicesData.map((svc) => ({
+        "@type": "Service",
+        "@id": `${siteConfig.url}/services#${svc.slug}`,
+        "name": svc.title,
+        "description": svc.overview,
+        "provider": {
           "@id": `${siteConfig.url}/#practitioner`,
         },
-        "about": practice.tradition,
-        "keywords": practice.keyThemes.join(", "),
+        "offers": {
+          "@type": "Offer",
+          "price": svc.priceINR,
+          "priceCurrency": "INR",
+          "availability": "https://schema.org/InStock",
+        },
       })),
 
       // 4. FAQPage Schema
