@@ -2,7 +2,7 @@
 
 import { useState, useRef, useEffect } from "react";
 import Link from "next/link";
-import { Sparkles, X, Send, ShieldCheck, Loader2, ArrowRight } from "lucide-react";
+import { Sparkles, X, Send, ShieldCheck, Loader2, ArrowRight, RotateCcw } from "lucide-react";
 import { routeIntent, type AssistantResponse } from "@/lib/assistant-intent";
 
 interface ChatMessage {
@@ -105,6 +105,10 @@ export function SuggestionAssistant() {
         label: "View Services & Pricing",
         href: "/services",
       },
+      secondaryAction: {
+        label: "Request a Voice Session",
+        href: "/connect",
+      },
     },
   ]);
   const [input, setInput] = useState("");
@@ -121,6 +125,24 @@ export function SuggestionAssistant() {
     }
   }, [messages, isOpen]);
 
+  const handleReset = () => {
+    setMessages([
+      {
+        role: "assistant",
+        content: INITIAL_GREETING,
+        suggestedAction: {
+          label: "View Services & Pricing",
+          href: "/services",
+        },
+        secondaryAction: {
+          label: "Request a Voice Session",
+          href: "/connect",
+        },
+      },
+    ]);
+    setInput("");
+  };
+
   const handleSend = async (textToSend?: string) => {
     const userText = (textToSend || input).trim();
     if (!userText || loading) return;
@@ -134,11 +156,8 @@ export function SuggestionAssistant() {
     setLoading(true);
 
     try {
-      // Deterministic client-side routing with fallback to server route
       const result: AssistantResponse = routeIntent(userText);
-
-      // Brief simulated thought latency for natural rhythm
-      await new Promise((resolve) => setTimeout(resolve, 300));
+      await new Promise((resolve) => setTimeout(resolve, 250));
 
       setMessages([
         ...updatedMessages,
@@ -146,6 +165,7 @@ export function SuggestionAssistant() {
           role: "assistant",
           content: result.reply,
           suggestedAction: result.suggestedAction,
+          secondaryAction: result.secondaryAction,
         },
       ]);
     } catch {
@@ -154,10 +174,14 @@ export function SuggestionAssistant() {
         {
           role: "assistant",
           content:
-            "Thank you. Mrs. Shivie Gupta offers confidential phone counselling for Individual (₹1,200), Couple (₹1,800), and Family (₹2,200) guidance, plus optional Reiki (₹1,000). You can reach out directly via call/WhatsApp at **+91 98378 91692** or submit an inquiry on [Request a Session](/connect).",
+            "Thank you. Mrs. Shivie Gupta offers confidential phone counselling for Individual (₹1,200), Couple (₹1,800), and Family (₹2,200) guidance, plus optional Reiki (₹1,000). You can reach out directly via call/WhatsApp at **+91 98378 91692** or submit an inquiry on [Request a Voice Session](/connect).",
           suggestedAction: {
             label: "Request a Voice Session",
             href: "/connect",
+          },
+          secondaryAction: {
+            label: "Call +91 98378 91692",
+            href: "tel:+919837891692",
           },
         },
       ]);
@@ -185,7 +209,7 @@ export function SuggestionAssistant() {
       {/* Slide-over Assistant Drawer */}
       {isOpen && (
         <div className="fixed bottom-5 right-5 z-50 w-[92vw] sm:w-[420px] h-[550px] max-h-[85vh] bg-white rounded-3xl border border-[#E8E0D2] shadow-2xl flex flex-col overflow-hidden animate-in fade-in slide-in-from-bottom-4 duration-300">
-          {/* Header */}
+          {/* Header with Clear Button */}
           <div className="p-4 bg-[#2D4A3E] text-white flex items-center justify-between">
             <div className="flex items-center gap-2.5">
               <div className="w-8 h-8 rounded-full bg-white/10 flex items-center justify-center text-[#C5A059]">
@@ -200,16 +224,27 @@ export function SuggestionAssistant() {
                 </span>
               </div>
             </div>
-            <button
-              onClick={() => setIsOpen(false)}
-              className="p-1.5 rounded-full hover:bg-white/10 text-white/80 hover:text-white transition-colors cursor-pointer"
-              aria-label="Close Assistant"
-            >
-              <X className="w-5 h-5" />
-            </button>
+
+            <div className="flex items-center gap-1">
+              <button
+                onClick={handleReset}
+                className="flex items-center gap-1 px-2 py-1 rounded-lg text-[10px] text-white/80 hover:text-white hover:bg-white/10 transition-colors cursor-pointer"
+                title="Reset conversation"
+              >
+                <RotateCcw className="w-3 h-3" />
+                <span>Clear</span>
+              </button>
+              <button
+                onClick={() => setIsOpen(false)}
+                className="p-1.5 rounded-full hover:bg-white/10 text-white/80 hover:text-white transition-colors cursor-pointer"
+                aria-label="Close Assistant"
+              >
+                <X className="w-4 h-4" />
+              </button>
+            </div>
           </div>
 
-          {/* Quick Reply Filter Chips - Flex wrap with clean mobile touch padding */}
+          {/* Quick Reply Filter Chips */}
           <div className="px-3 py-2 bg-[#FAF8F5] border-b border-[#E8E0D2] flex flex-wrap items-center gap-1.5 text-[11px]">
             <button
               onClick={() => handleSend("Individual call")}
@@ -228,6 +263,12 @@ export function SuggestionAssistant() {
               className="px-2.5 py-1 rounded-full bg-white border border-[#E8E0D2] text-[#52635A] hover:bg-[#F2EDE4] hover:text-[#1F2924] cursor-pointer shadow-2xs"
             >
               Family call
+            </button>
+            <button
+              onClick={() => handleSend("How a voice call works & privacy")}
+              className="px-2.5 py-1 rounded-full bg-white border border-[#E8E0D2] text-[#52635A] hover:bg-[#F2EDE4] hover:text-[#1F2924] cursor-pointer shadow-2xs"
+            >
+              How it works
             </button>
             <button
               onClick={() => handleSend("Optional Reiki")}
