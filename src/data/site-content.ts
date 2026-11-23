@@ -132,6 +132,30 @@ export const servicesData: ServiceOffering[] = [
 
 export const faqsData: FAQ[] = [
   {
+    category: "Counselling",
+    question: "Why speak directly with a senior practitioner (~35 years experience) instead of a therapy app?",
+    answer:
+      "Unlike marketplace aggregator apps that rotate callers across junior associates or algorithmic matching queues, you speak directly with Dr. Shivie Gupta on every single session. With ~35 years of clinical wisdom, Dr. Gupta provides steady, nuanced emotional guidance for complex family dynamics, marital crossroads, and anxiety—at transparent, predictable per-session fees (₹1,200 to ₹2,200) without forced multi-session packages or subscription locks.",
+  },
+  {
+    category: "Voice Sessions",
+    question: "How does a voice-only call work if I live in a joint family or shared home with limited privacy?",
+    answer:
+      "In many Indian households, privacy is hard to find and locking a bedroom door can draw unwanted questions. Because sessions are conducted strictly over standard telephone or WhatsApp audio call, there is zero need for a laptop, video camera, or conspicuous app notifications. You can comfortably take your session from a quiet balcony, terrace, private corner, or parked car—allowing you to speak freely without family or in-laws overhearing.",
+  },
+  {
+    category: "Hindi & Local",
+    question: "Ghar ke mahol ya sasural ke pressure ke baare mein voice call par kaise baat karein?",
+    answer:
+      "Aap poori azaadi aur sahajta se Hindi ya English me baat kar sakte hain. Ghar ka mahol, sasural ka pressure, parivaarik taane, ya aapsi khich-khich jaisi baaton ko bina kisi judge hone ke darr ke Dr. Shivie Gupta ke saath saajha kiya ja sakta hai. Yahan koi formal tayyari nahi chahiye—sirf ek shant jagah aur aapki apni aawaz hi kaafi hai.",
+  },
+  {
+    category: "Reiki (Optional)",
+    question: "Is Reiki mandatory during counselling, or is it purely optional?",
+    answer:
+      "Reiki is 100% optional and offered strictly upon client request as a secondary wellness complement (₹1,000 / 45 mins). Voice-only counselling for individuals, couples, and families is Dr. Shivie Gupta's core primary practice. Traditional Usui Reiki is available exclusively for clients who specifically desire calm somatic relaxation, nervous system down-regulation, or meditative stillness alongside or apart from talk sessions.",
+  },
+  {
     category: "Voice Sessions",
     question: "Why are all counselling sessions conducted exclusively over voice/phone call?",
     answer:

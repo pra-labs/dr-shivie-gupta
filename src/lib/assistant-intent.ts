@@ -26,7 +26,7 @@ const CRISIS_PATTERNS = [
   /\b(hopeless|no\s*reason\s*to\s*live|can'?t\s*go\s*on|emergency|abuse|danger|severe\s*panic)\b/i,
   /\b(mar\s*jana|jaan\s*dena|khudkushi|aatmhatya)\b/i,
   /\b(end\s*it|killing\s*myself|end\s*everything|give\s*up\s*on\s*life)\b/i,
-  /\b(marne\s*ka\s*man|mar\s*jaun|zeher|jeena\s*nahi\s*hai|jeena\s*nahi\s*chahta|khatam\s*karna\s*hai)\b/i,
+  /\b(marne\s*ka\s*man|mar\s*jaun|zeher|jeena\s*nahi\s*hai|jeena\s*nahi\s*chahta|khatam\s*karna\s*hai|bheetar\s*se\s*sab\s*khatam)\b/i,
 ];
 
 // 2. Greeting Patterns
@@ -38,7 +38,7 @@ const GREETING_PATTERNS = [
 // 3. How a Voice Call Works & Privacy
 const HOW_IT_WORKS_PATTERNS = [
   /\b(how\s*it\s*works|how\s*does\s*it\s*work|first\s*call|first\s*session|pehli\s*baar|what\s*happens)\b/i,
-  /\b(confidential|confidentiality|privacy|secret|safe|gupt|webcam|camera|video|zoom|in[- ]*person|clinic)\b/i,
+  /\b(confidential|confidentiality|privacy|secret|safe|gupt|webcam|camera|video|zoom|in[- ]*person|clinic|audio\s*only|overhearing)\b/i,
 ];
 
 // 4. Family, Household & In-Laws Inquiries
@@ -46,19 +46,19 @@ const HOW_IT_WORKS_PATTERNS = [
 const FAMILY_PATTERNS = [
   /\b(family|parent|parents|teen|teenager|adolescent|child|children|son|daughter)\b/i,
   /\b(in[- ]*laws?|mother[- ]*in[- ]*law|father[- ]*in[- ]*law|sasural|saas|sasur|bahu|damad)\b/i,
-  /\b(parivar|ghar\s*ke\s*log|ghar\s*ka\s*jhagda|ghar\s*me\s*jhagda|bache|maa|baap|mummy|papa|intergenerational|joint\s*family)\b/i,
+  /\b(parivar|ghar\s*ke\s*log|ghar\s*ka\s*jhagda|ghar\s*me\s*jhagda|ghar\s*ka\s*mahol|sasural\s*ka\s*pressure|bache|maa|baap|mummy|papa|intergenerational|joint\s*family)\b/i,
 ];
 
 // 5. Couple & Relationship Inquiries
 const COUPLE_PATTERNS = [
   /\b(couple|marriage|marital|husband|wife|spouse|partner|relationship|dating|breakup|divorce|intimacy)\b/i,
-  /\b(shaadi|pati|patni|rishte|sambandh|jhagda|ladai|arguments|communication\s*gap)\b/i,
+  /\b(shaadi|pati|patni|rishte|sambandh|jhagda|ladai|arguments|communication\s*gap|khich[-\s]*khich)\b/i,
 ];
 
 // 6. Optional Reiki & Biofield Inquiries
 const REIKI_PATTERNS = [
   /\b(reiki|energy|biofield|chakra|healing|vibration|relaxation|somatic|stillness|body|usui)\b/i,
-  /\b(urja|dhyan|shakti|spiritual\s*healing)\b/i,
+  /\b(urja|dhyan|shakti|spiritual\s*healing|body\s*tight|somatic\s*grounding)\b/i,
 ];
 
 // 7. Pricing, Timing & Contact Inquiries
@@ -72,7 +72,7 @@ const PRICING_FORMAT_PATTERNS = [
 const INDIVIDUAL_PATTERNS = [
   /\b(stress|anxiety|depress|depression|mood|sad|alone|lonely|overthinking|worry|fear|phobia)\b/i,
   /\b(confidence|self[-\s]*worth|grief|crossroads|career\s*stress|burnout|restless|insomnia|sleep|neend)\b/i,
-  /\b(tanav|tanaav|chinta|fakar|fikr|dimag|man|sukoon|shanti|udaas|pareshan|sochna|ghabrahat)\b/i,
+  /\b(tanav|tanaav|chinta|fakar|fikr|dimag|man|sukoon|shanti|udaas|pareshan|sochna|ghabrahat|dam\s*ghut|dimag\s*shant|overthinking\s*ho\s*rahi)\b/i,
 ];
 
 // 9. Explicit Off-Topic Patterns

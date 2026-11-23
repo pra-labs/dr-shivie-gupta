@@ -60,7 +60,7 @@ export function Footer() {
               Session Offerings
             </h4>
             <ul className="space-y-2 text-xs text-[#FAF8F5]/80">
-              <li>Individual Counselling (Voice - 50m)</li>
+              <li>Individual Counselling (Voice • 50m)</li>
               <li>Couple &amp; Relationship Counselling (60m)</li>
               <li>Family &amp; Intergenerational (60m)</li>
               <li>Traditional Reiki Balancing (Optional)</li>

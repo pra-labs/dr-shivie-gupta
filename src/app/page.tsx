@@ -183,7 +183,7 @@ export default function HomePage() {
               What to Expect on Your First Call
             </span>
             <p className="text-xs text-[#52635A] leading-relaxed">
-              No preparation or formal notes needed. You speak from your own sanctuary without camera pressure, and discussions remain strictly confidential.
+              No preparation or formal notes needed. Voice calls work comfortably from any quiet space at home—whether a private bedroom, balcony, or parked car—with zero webcam pressure, app alerts, or domestic eavesdropping.
             </p>
           </div>
           <Link

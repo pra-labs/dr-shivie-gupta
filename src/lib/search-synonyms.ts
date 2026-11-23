@@ -11,20 +11,24 @@ export const HINGLISH_SYNONYMS: Record<string, string[]> = {
   overthinking: ["sochna", "vichar", "tanav", "chinta", "stress", "dimag"],
 
   // Relationships & Family
-  rishte: ["relationship", "couple", "marriage", "shaadi", "pati", "patni", "partner", "love"],
-  relationship: ["rishte", "sambandh", "couple", "marital", "conflict", "breakdown"],
-  couple: ["rishte", "marriage", "husband", "wife", "partner", "marital"],
-  ghar: ["family", "home", "parivar", "makan", "household"],
-  family: ["ghar", "parivar", "intergenerational", "parents", "children", "bache"],
-  parivar: ["family", "ghar", "sambandh", "rishte"],
+  rishte: ["relationship", "couple", "marriage", "shaadi", "pati", "patni", "partner", "love", "sasural", "in-laws", "inlaws", "mahol"],
+  relationship: ["rishte", "sambandh", "couple", "marital", "conflict", "breakdown", "khich-khich", "in-laws"],
+  couple: ["rishte", "marriage", "husband", "wife", "partner", "marital", "shaadi", "khich-khich"],
+  ghar: ["family", "home", "parivar", "makan", "household", "mahol", "joint family"],
+  family: ["ghar", "parivar", "intergenerational", "parents", "children", "bache", "in-laws", "sasural", "joint family", "mahol"],
+  parivar: ["family", "ghar", "sambandh", "rishte", "mahol", "sasural"],
+  sasural: ["in-laws", "inlaws", "family", "parivar", "rishte", "pressure", "ghar ka mahol"],
+  mahol: ["ghar", "family", "atmosphere", "parivar", "sasural", "tension"],
 
   // Voice sessions / Phone / Confidentiality
-  phone: ["call", "audio", "awaaz", "number", "voice", "mobile", "calling"],
-  voice: ["phone", "audio", "call", "baat", "awaaz"],
-  audio: ["voice", "phone", "call", "no camera"],
-  video: ["camera", "zoom", "screen", "no video", "face"],
-  confidentiality: ["privacy", "gupt", "safe", "secret", "bharosa", "trust"],
-  privacy: ["confidentiality", "gupt", "safe", "private"],
+  phone: ["call", "audio", "awaaz", "number", "voice", "mobile", "calling", "car", "balcony", "parked car", "privacy"],
+  voice: ["phone", "audio", "call", "baat", "awaaz", "audio-only", "no video", "no camera"],
+  audio: ["voice", "phone", "call", "no camera", "audio-only", "balcony", "discreet"],
+  video: ["camera", "zoom", "screen", "no video", "face", "optional"],
+  confidentiality: ["privacy", "gupt", "safe", "secret", "bharosa", "trust", "joint family", "overhearing"],
+  privacy: ["confidentiality", "gupt", "safe", "private", "joint family", "car", "balcony", "overhearing"],
+  senior: ["experience", "35 years", "practitioner", "counsellor", "app", "aggregator", "direct"],
+  app: ["aggregator", "senior", "direct", "practitioner", "experience"],
 
   // Sleep & Rest
   sleep: ["neend", "nind", "aram", "rest", "insomnia", "soona"],
