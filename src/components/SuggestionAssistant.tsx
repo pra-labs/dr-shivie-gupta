@@ -209,35 +209,35 @@ export function SuggestionAssistant() {
             </button>
           </div>
 
-          {/* Quick Reply Filter Chips */}
-          <div className="px-3 py-2 bg-[#FAF8F5] border-b border-[#E8E0D2] flex items-center gap-1.5 overflow-x-auto no-scrollbar text-[11px]">
+          {/* Quick Reply Filter Chips - Flex wrap with clean mobile touch padding */}
+          <div className="px-3 py-2 bg-[#FAF8F5] border-b border-[#E8E0D2] flex flex-wrap items-center gap-1.5 text-[11px]">
             <button
               onClick={() => handleSend("Individual call")}
-              className="shrink-0 px-2.5 py-1 rounded-full bg-white border border-[#E8E0D2] text-[#52635A] hover:bg-[#F2EDE4] hover:text-[#1F2924] cursor-pointer"
+              className="px-2.5 py-1 rounded-full bg-white border border-[#E8E0D2] text-[#52635A] hover:bg-[#F2EDE4] hover:text-[#1F2924] cursor-pointer shadow-2xs"
             >
               Individual call
             </button>
             <button
               onClick={() => handleSend("Couple guidance")}
-              className="shrink-0 px-2.5 py-1 rounded-full bg-white border border-[#E8E0D2] text-[#52635A] hover:bg-[#F2EDE4] hover:text-[#1F2924] cursor-pointer"
+              className="px-2.5 py-1 rounded-full bg-white border border-[#E8E0D2] text-[#52635A] hover:bg-[#F2EDE4] hover:text-[#1F2924] cursor-pointer shadow-2xs"
             >
               Couple guidance
             </button>
             <button
               onClick={() => handleSend("Family call")}
-              className="shrink-0 px-2.5 py-1 rounded-full bg-white border border-[#E8E0D2] text-[#52635A] hover:bg-[#F2EDE4] hover:text-[#1F2924] cursor-pointer"
+              className="px-2.5 py-1 rounded-full bg-white border border-[#E8E0D2] text-[#52635A] hover:bg-[#F2EDE4] hover:text-[#1F2924] cursor-pointer shadow-2xs"
             >
               Family call
             </button>
             <button
               onClick={() => handleSend("Optional Reiki")}
-              className="shrink-0 px-2.5 py-1 rounded-full bg-white border border-[#E8E0D2] text-[#52635A] hover:bg-[#F2EDE4] hover:text-[#1F2924] cursor-pointer"
+              className="px-2.5 py-1 rounded-full bg-white border border-[#E8E0D2] text-[#52635A] hover:bg-[#F2EDE4] hover:text-[#1F2924] cursor-pointer shadow-2xs"
             >
               Optional Reiki
             </button>
             <button
               onClick={() => handleSend("Fees & timing")}
-              className="shrink-0 px-2.5 py-1 rounded-full bg-white border border-[#E8E0D2] text-[#52635A] hover:bg-[#F2EDE4] hover:text-[#1F2924] cursor-pointer"
+              className="px-2.5 py-1 rounded-full bg-white border border-[#E8E0D2] text-[#52635A] hover:bg-[#F2EDE4] hover:text-[#1F2924] cursor-pointer shadow-2xs"
             >
               Fees &amp; timing
             </button>
