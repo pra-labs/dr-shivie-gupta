@@ -53,8 +53,8 @@ export function ContactForm() {
           Request a Voice Counselling Session
         </h2>
       </div>
-      <p className="text-xs text-[#52635A] mb-6">
-        All sessions are conducted strictly over audio/phone call for full privacy. Fill out this form to coordinate a consultation, or reach out directly during practice hours via WhatsApp.
+      <p className="text-xs sm:text-sm text-[#52635A] mb-6 leading-relaxed">
+        All sessions are conducted strictly over audio or phone call for your full privacy and peace of mind. Please take your time—you don&apos;t need to have every detail figured out before reaching out.
       </p>
 
       {state.success ? (
@@ -88,8 +88,8 @@ export function ContactForm() {
 
           <div className="grid grid-cols-1 sm:grid-cols-2 gap-4">
             <div>
-              <label htmlFor="name" className="block text-xs font-semibold text-[#1F2924] uppercase tracking-wider mb-1.5">
-                Your Name *
+              <label htmlFor="name" className="block text-xs font-medium text-[#1F2924] mb-1.5">
+                Your preferred name *
               </label>
               <input
                 type="text"
@@ -97,8 +97,8 @@ export function ContactForm() {
                 name="name"
                 required
                 autoComplete="name"
-                placeholder="e.g. Aarti Saxena"
-                className="w-full min-h-[48px] px-4 py-3 rounded-xl border border-[#E8E0D2] bg-[#FAF8F5] text-base sm:text-sm text-[#1F2924] placeholder:text-sm focus:outline-none focus:ring-2 focus:ring-[#2D4A3E] focus:bg-white transition-all shadow-2xs"
+                placeholder="How you would like to be addressed"
+                className="w-full min-h-[48px] px-4 py-3 rounded-xl border border-[#E8E0D2] bg-[#FAF8F5] text-base sm:text-sm text-[#1F2924] placeholder:text-sm placeholder:text-[#52635A]/60 focus:outline-none focus:ring-2 focus:ring-[#2D4A3E] focus:bg-white transition-all shadow-2xs"
               />
               {state.errors?.name && (
                 <p className="text-[11px] text-[#9E4A2A] mt-1">{state.errors.name[0]}</p>
@@ -106,8 +106,8 @@ export function ContactForm() {
             </div>
 
             <div>
-              <label htmlFor="phone" className="block text-xs font-semibold text-[#1F2924] uppercase tracking-wider mb-1.5">
-                Phone Number (for Audio Call) *
+              <label htmlFor="phone" className="block text-xs font-medium text-[#1F2924] mb-1.5">
+                Phone number for audio call *
               </label>
               <input
                 type="tel"
@@ -117,7 +117,7 @@ export function ContactForm() {
                 inputMode="tel"
                 autoComplete="tel"
                 placeholder="e.g. +91 98378 12345"
-                className="w-full min-h-[48px] px-4 py-3 rounded-xl border border-[#E8E0D2] bg-[#FAF8F5] text-base sm:text-sm text-[#1F2924] placeholder:text-sm focus:outline-none focus:ring-2 focus:ring-[#2D4A3E] focus:bg-white transition-all shadow-2xs"
+                className="w-full min-h-[48px] px-4 py-3 rounded-xl border border-[#E8E0D2] bg-[#FAF8F5] text-base sm:text-sm text-[#1F2924] placeholder:text-sm placeholder:text-[#52635A]/60 focus:outline-none focus:ring-2 focus:ring-[#2D4A3E] focus:bg-white transition-all shadow-2xs"
               />
               {state.errors?.phone && (
                 <p className="text-[11px] text-[#9E4A2A] mt-1">{state.errors.phone[0]}</p>
@@ -127,8 +127,8 @@ export function ContactForm() {
 
           <div className="grid grid-cols-1 sm:grid-cols-2 gap-4">
             <div>
-              <label htmlFor="serviceType" className="block text-xs font-semibold text-[#1F2924] uppercase tracking-wider mb-1.5">
-                Service Requested
+              <label htmlFor="serviceType" className="block text-xs font-medium text-[#1F2924] mb-1.5">
+                Session type
               </label>
               <select
                 id="serviceType"
@@ -146,8 +146,8 @@ export function ContactForm() {
             </div>
 
             <div>
-              <label htmlFor="preferredTime" className="block text-xs font-semibold text-[#1F2924] uppercase tracking-wider mb-1.5">
-                Preferred Call Timing
+              <label htmlFor="preferredTime" className="block text-xs font-medium text-[#1F2924] mb-1.5">
+                Preferred call window
               </label>
               <select
                 id="preferredTime"
@@ -164,41 +164,44 @@ export function ContactForm() {
           </div>
 
           <div>
-            <label htmlFor="email" className="block text-xs font-semibold text-[#1F2924] uppercase tracking-wider mb-1.5">
-              Email Address (Optional)
+            <label htmlFor="email" className="block text-xs font-medium text-[#1F2924] mb-1.5">
+              Email address (optional)
             </label>
             <input
               type="email"
               id="email"
               name="email"
               autoComplete="email"
-              placeholder="your.email@example.com (optional)"
-              className="w-full min-h-[48px] px-4 py-3 rounded-xl border border-[#E8E0D2] bg-[#FAF8F5] text-base sm:text-sm text-[#1F2924] placeholder:text-sm focus:outline-none focus:ring-2 focus:ring-[#2D4A3E] focus:bg-white transition-all shadow-2xs"
+              placeholder="Only if you prefer written confirmations"
+              className="w-full min-h-[48px] px-4 py-3 rounded-xl border border-[#E8E0D2] bg-[#FAF8F5] text-base sm:text-sm text-[#1F2924] placeholder:text-sm placeholder:text-[#52635A]/60 focus:outline-none focus:ring-2 focus:ring-[#2D4A3E] focus:bg-white transition-all shadow-2xs"
             />
           </div>
 
           <div>
-            <label htmlFor="message" className="block text-xs font-semibold text-[#1F2924] uppercase tracking-wider mb-1.5">
-              Brief Context or Reason for Calling
-            </label>
+            <div className="flex items-center justify-between mb-1.5">
+              <label htmlFor="message" className="block text-xs font-medium text-[#1F2924]">
+                What feels heavy or what would you like to explore? (Optional)
+              </label>
+              <span className="text-[11px] text-[#52635A]/70">No pressure to explain fully</span>
+            </div>
             <textarea
               id="message"
               name="message"
               rows={3}
-              placeholder="A brief sentence on what you wish to discuss (stress, marriage communication, low mood, etc.)..."
-              className="w-full px-4 py-3 rounded-xl border border-[#E8E0D2] bg-[#FAF8F5] text-base sm:text-sm text-[#1F2924] placeholder:text-sm focus:outline-none focus:ring-2 focus:ring-[#2D4A3E] focus:bg-white transition-all shadow-2xs"
+              placeholder="Even a few words are enough (e.g. stress at home, feeling stuck, or just wanting a calm space to talk)..."
+              className="w-full px-4 py-3 rounded-xl border border-[#E8E0D2] bg-[#FAF8F5] text-base sm:text-sm text-[#1F2924] placeholder:text-sm placeholder:text-[#52635A]/60 focus:outline-none focus:ring-2 focus:ring-[#2D4A3E] focus:bg-white transition-all shadow-2xs"
             />
           </div>
 
-          <div className="p-3 rounded-xl bg-[#FAF8F5] border border-[#E8E0D2]/70 text-[11px] text-[#52635A] flex items-center gap-2">
+          <div className="p-3.5 rounded-xl bg-[#FAF8F5] border border-[#E8E0D2]/70 text-[11px] text-[#52635A] flex items-center gap-2">
             <Clock className="w-4 h-4 text-[#9E4A2A] shrink-0" />
-            <span>Regular calling hours: Monday to Saturday, 10:00 AM – 7:00 PM IST.</span>
+            <span>Regular consultation hours: Monday to Saturday, 10:00 AM – 7:00 PM IST.</span>
           </div>
 
           <button
             type="submit"
             disabled={isPending}
-            className="w-full h-12 py-3 px-6 rounded-full bg-[#2D4A3E] text-white font-medium text-xs sm:text-sm uppercase tracking-wider hover:bg-[#1E332A] transition-colors disabled:opacity-50 flex items-center justify-center gap-2 shadow-sm cursor-pointer active:scale-98"
+            className="w-full h-12 py-3 px-6 rounded-full bg-[#2D4A3E] text-white font-medium text-xs sm:text-sm hover:bg-[#1E332A] transition-colors disabled:opacity-50 flex items-center justify-center gap-2 shadow-sm cursor-pointer active:scale-98"
           >
             {isPending ? (
               <>

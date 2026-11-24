@@ -14,14 +14,14 @@ export default function ConnectPage() {
     <div className="py-10 sm:py-16 lg:py-20 space-y-10 sm:space-y-16">
       {/* Header */}
       <section className="max-w-4xl mx-auto px-4 sm:px-6 lg:px-8 text-center space-y-3 pb-2 sm:pb-4">
-        <span className="text-[10px] sm:text-xs font-semibold uppercase tracking-wider text-[#9E4A2A]">
+        <span className="text-[11px] sm:text-xs font-medium uppercase tracking-wider text-[#9E4A2A]">
           Direct Telephone &amp; WhatsApp Inquiries
         </span>
         <h1 className="font-serif text-3xl sm:text-4xl lg:text-5xl text-[#1F2924] text-balance">
           Request a Voice Counselling Session
         </h1>
         <p className="text-xs sm:text-sm lg:text-base text-[#52635A] leading-relaxed max-w-2xl mx-auto text-balance">
-          Every consultation with Dr. Shivie Gupta is held strictly over audio/phone call for your privacy and peace of mind. Use this form to request your preferred day and time, or reach out directly by phone.
+          Every consultation with Dr. Shivie Gupta is held strictly over audio or phone call for your privacy and peace of mind. Please take your time—you don&apos;t need to have everything figured out before reaching out.
         </p>
       </section>
 

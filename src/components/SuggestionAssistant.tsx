@@ -27,7 +27,7 @@ function renderFormattedContent(text: string) {
     const cleanLine = isBullet ? line.trim().replace(/^[-•]\s+/, "") : line;
 
     const parts: (string | React.ReactNode)[] = [];
-    // Important: Match links and **bold** first, then *italic* so tokens never collide
+    // Match links and **bold** first, then *italic* so tokens never collide
     const regex = /(\[.*?\]\(.*?\)|\*\*.*?\*\*|\*[^*\n]+?\*)/g;
     let lastIndex = 0;
     let match;
@@ -45,7 +45,7 @@ function renderFormattedContent(text: string) {
           <Link
             key={`link-${lineIdx}-${match.index}`}
             href={linkHref}
-            className="text-[#2D4A3E] font-semibold underline underline-offset-2 hover:text-[#1E332A]"
+            className="text-[#2D4A3E] font-medium underline underline-offset-2 hover:text-[#9E4A2A] transition-colors"
           >
             {linkText}
           </Link>
@@ -58,7 +58,7 @@ function renderFormattedContent(text: string) {
         );
       } else if (token.startsWith("*") && token.endsWith("*") && token.length > 2) {
         parts.push(
-          <em key={`italic-${lineIdx}-${match.index}`} className="italic text-[#1F2924]">
+          <em key={`italic-${lineIdx}-${match.index}`} className="italic text-[#37473F]">
             {token.substring(1, token.length - 1)}
           </em>
         );
@@ -74,7 +74,7 @@ function renderFormattedContent(text: string) {
     if (isBullet) {
       return (
         <div key={lineIdx} className="flex items-start gap-1.5 pl-1 my-0.5">
-          <span className="text-[#2D4A3E] font-bold shrink-0">•</span>
+          <span className="text-[#C5A059] font-bold shrink-0">•</span>
           <span>{parts}</span>
         </div>
       );
@@ -92,15 +92,13 @@ function renderFormattedContent(text: string) {
   });
 }
 
-const INITIAL_GREETING = `Namaste and welcome. I am Dr. Shivie Gupta's practice assistant.
+const INITIAL_GREETING = `Namaste and welcome. I am here to offer a calm, unhurried space for your thoughts.
 
-Dr. Shivie Gupta brings **~35 years of experience** offering confidential, voice-only telephone consultations from Dayalbagh, Agra.
+Dr. Shivie Gupta brings **over 35 years** of compassionate listening from Dayalbagh, Agra. All consultations take place strictly via confidential telephone or WhatsApp audio call, so there is never any video pressure.
 
-**How can I assist you today?**
-- **Individual Voice Counselling** (₹1,200 / 50m) — personal stress, anxiety, emotional clarity
-- **Couple & Relationship Counselling** (₹1,800 / 60m) — communication gaps, marital harmony
-- **Family Counselling** (₹2,200 / 60m) — household dynamics, parenting, generational respect
-- **Optional Reiki Healing** (₹1,000 / 45m) — traditional biofield relaxation (on request)`;
+*Take your time. What is feeling heavy or in need of gentle care today?*
+
+Whenever you are ready, you can explore the sanctuary of options on [Services & Pricing](/services) or read our gentle [Client Guide](/guide).`;
 
 export function SuggestionAssistant() {
   const [isOpen, setIsOpen] = useState(false);
@@ -109,12 +107,12 @@ export function SuggestionAssistant() {
       role: "assistant",
       content: INITIAL_GREETING,
       suggestedAction: {
-        label: "View Services & Pricing",
+        label: "Explore Session Ways",
         href: "/services",
       },
       secondaryAction: {
-        label: "Request a Voice Session",
-        href: "/connect",
+        label: "Read Client Guide",
+        href: "/guide",
       },
     },
   ]);
@@ -172,12 +170,12 @@ export function SuggestionAssistant() {
         role: "assistant",
         content: INITIAL_GREETING,
         suggestedAction: {
-          label: "View Services & Pricing",
+          label: "Explore Session Ways",
           href: "/services",
         },
         secondaryAction: {
-          label: "Request a Voice Session",
-          href: "/connect",
+          label: "Read Client Guide",
+          href: "/guide",
         },
       },
     ]);
@@ -215,13 +213,13 @@ export function SuggestionAssistant() {
         {
           role: "assistant",
           content:
-            "Thank you. Dr. Shivie Gupta offers confidential phone counselling for Individual (₹1,200), Couple (₹1,800), and Family (₹2,200) guidance, plus optional Reiki (₹1,000). You can reach out directly via call/WhatsApp at **+91 98378 91692** or submit an inquiry on [Request a Voice Session](/connect).",
+            "Thank you for sharing. Dr. Shivie Gupta offers compassionate, confidential phone consultations for personal wellbeing, relationship communication, and family harmony. Whenever you feel ready, you can explore [Services & Pricing](/services) or leave a quiet note on [Request a Voice Session](/connect).",
           suggestedAction: {
-            label: "Request a Voice Session",
-            href: "/connect",
+            label: "Explore Services",
+            href: "/services",
           },
           secondaryAction: {
-            label: "Call +91 98378 91692",
+            label: "Gentle Inquiries (+91 98378 91692)",
             href: "tel:+919837891692",
           },
         },
@@ -238,11 +236,15 @@ export function SuggestionAssistant() {
         {!isOpen && (
           <button
             onClick={() => setIsOpen(true)}
-            className="flex items-center gap-2 px-4 py-3 min-h-[48px] rounded-full bg-[#2D4A3E] text-white shadow-xl hover:bg-[#1E332A] transition-all hover:scale-105 active:scale-95 cursor-pointer border border-white/20 group"
-            aria-label="Open Session Guidance Assistant"
+            className="flex items-center gap-2.5 px-4 py-3 min-h-[48px] rounded-full bg-[#FAF8F5] text-[#2D4A3E] shadow-lg hover:shadow-xl hover:bg-[#F2EDE4] transition-all hover:scale-105 active:scale-95 cursor-pointer border border-[#E8E0D2] group"
+            aria-label="Open Session Companion"
           >
-            <Sparkles className="w-4 h-4 text-[#C5A059] animate-pulse shrink-0" />
-            <span className="text-xs font-semibold tracking-wider">Session Guidance AI</span>
+            <div className="w-6 h-6 rounded-full bg-[#F2EDE4] flex items-center justify-center text-[#9E4A2A] group-hover:text-[#C5A059] transition-colors">
+              <Sparkles className="w-3.5 h-3.5" />
+            </div>
+            <span className="text-xs font-serif font-medium tracking-wide text-[#2D4A3E]">
+              Session Companion
+            </span>
           </button>
         )}
       </div>
@@ -253,7 +255,7 @@ export function SuggestionAssistant() {
           {/* Mobile backdrop */}
           <div
             onClick={() => setIsOpen(false)}
-            className="fixed inset-0 z-40 bg-black/40 backdrop-blur-xs sm:hidden animate-in fade-in duration-200"
+            className="fixed inset-0 z-40 bg-black/30 backdrop-blur-xs sm:hidden animate-in fade-in duration-200"
             aria-hidden="true"
           />
 
@@ -261,20 +263,20 @@ export function SuggestionAssistant() {
             role="dialog"
             aria-modal="true"
             aria-labelledby="session-assistant-title"
-            className="fixed inset-x-0 bottom-0 sm:inset-x-auto sm:bottom-5 sm:right-5 z-50 w-full sm:w-[420px] h-[85vh] sm:h-[550px] max-h-[90vh] sm:max-h-[85vh] bg-white rounded-t-3xl sm:rounded-3xl border border-[#E8E0D2] shadow-2xl flex flex-col overflow-hidden animate-in fade-in slide-in-from-bottom-4 duration-300"
+            className="fixed inset-x-0 bottom-0 sm:inset-x-auto sm:bottom-5 sm:right-5 z-50 w-full sm:w-[420px] h-[85vh] sm:h-[550px] max-h-[90vh] sm:max-h-[85vh] bg-[#FAF8F5] rounded-t-3xl sm:rounded-3xl border border-[#E8E0D2] shadow-2xl flex flex-col overflow-hidden animate-in fade-in slide-in-from-bottom-4 duration-300"
           >
-            {/* Header with Clear Button */}
-            <div className="p-4 bg-[#2D4A3E] text-white flex items-center justify-between shrink-0">
+            {/* Header: Soft sanctuary aesthetic (warm sand/sage, delicate border, terracotta & gold accents) */}
+            <div className="p-4 bg-[#F2EDE4] text-[#1F2924] border-b border-[#E8E0D2] flex items-center justify-between shrink-0">
               <div className="flex items-center gap-2.5">
-                <div className="w-8 h-8 rounded-full bg-white/10 flex items-center justify-center text-[#C5A059]">
-                  <Sparkles className="w-4 h-4" />
+                <div className="w-8 h-8 rounded-full bg-[#FAF8F5] border border-[#E8E0D2] flex items-center justify-center text-[#9E4A2A]">
+                  <Sparkles className="w-4 h-4 text-[#C5A059]" />
                 </div>
                 <div>
-                  <h3 id="session-assistant-title" className="font-serif text-sm font-bold leading-tight">
-                    Session Guidance Assistant
+                  <h3 id="session-assistant-title" className="font-serif text-sm font-semibold text-[#1F2924] leading-tight">
+                    Session Companion
                   </h3>
-                  <span className="text-[10px] text-[#C5A059] block">
-                    Confidential Guidance • Voice-Only Format
+                  <span className="text-[10px] text-[#52635A] block font-sans">
+                    Gentle reflection • Confidential voice space
                   </span>
                 </div>
               </div>
@@ -282,15 +284,15 @@ export function SuggestionAssistant() {
               <div className="flex items-center gap-1">
                 <button
                   onClick={handleReset}
-                  className="flex items-center gap-1 px-2.5 py-1.5 min-h-[36px] rounded-lg text-xs text-white/80 hover:text-white hover:bg-white/10 transition-colors cursor-pointer"
+                  className="flex items-center gap-1 px-2.5 py-1.5 min-h-[36px] rounded-lg text-xs text-[#52635A] hover:text-[#1F2924] hover:bg-white/60 transition-colors cursor-pointer"
                   title="Reset conversation"
                 >
-                  <RotateCcw className="w-3.5 h-3.5" />
+                  <RotateCcw className="w-3.5 h-3.5 text-[#9E4A2A]" />
                   <span>Clear</span>
                 </button>
                 <button
                   onClick={() => setIsOpen(false)}
-                  className="p-2 min-w-[44px] min-h-[44px] rounded-full hover:bg-white/10 text-white/80 hover:text-white transition-colors cursor-pointer flex items-center justify-center"
+                  className="p-2 min-w-[44px] min-h-[44px] rounded-full hover:bg-white/60 text-[#52635A] hover:text-[#1F2924] transition-colors cursor-pointer flex items-center justify-center"
                   aria-label="Close Assistant"
                 >
                   <X className="w-5 h-5" />
@@ -298,136 +300,138 @@ export function SuggestionAssistant() {
               </div>
             </div>
 
-          {/* Quick Reply Filter Chips */}
-          <div className="px-3 py-2 bg-[#FAF8F5] border-b border-[#E8E0D2] flex flex-nowrap overflow-x-auto no-scrollbar items-center gap-2 text-[11px] shrink-0">
-            <button
-              type="button"
-              onClick={() => handleSend("Individual call")}
-              className="inline-flex items-center min-h-[40px] px-3 py-1.5 rounded-full bg-white border border-[#E8E0D2] text-[#52635A] hover:bg-[#F2EDE4] hover:text-[#1F2924] cursor-pointer shadow-2xs whitespace-nowrap shrink-0 transition-colors"
-            >
-              Individual call
-            </button>
-            <button
-              type="button"
-              onClick={() => handleSend("Couple guidance")}
-              className="inline-flex items-center min-h-[40px] px-3 py-1.5 rounded-full bg-white border border-[#E8E0D2] text-[#52635A] hover:bg-[#F2EDE4] hover:text-[#1F2924] cursor-pointer shadow-2xs whitespace-nowrap shrink-0 transition-colors"
-            >
-              Couple guidance
-            </button>
-            <button
-              type="button"
-              onClick={() => handleSend("Family call")}
-              className="inline-flex items-center min-h-[40px] px-3 py-1.5 rounded-full bg-white border border-[#E8E0D2] text-[#52635A] hover:bg-[#F2EDE4] hover:text-[#1F2924] cursor-pointer shadow-2xs whitespace-nowrap shrink-0 transition-colors"
-            >
-              Family call
-            </button>
-            <button
-              type="button"
-              onClick={() => handleSend("How a voice call works & privacy")}
-              className="inline-flex items-center min-h-[40px] px-3 py-1.5 rounded-full bg-white border border-[#E8E0D2] text-[#52635A] hover:bg-[#F2EDE4] hover:text-[#1F2924] cursor-pointer shadow-2xs whitespace-nowrap shrink-0 transition-colors"
-            >
-              How it works
-            </button>
-            <button
-              type="button"
-              onClick={() => handleSend("Optional Reiki")}
-              className="inline-flex items-center min-h-[40px] px-3 py-1.5 rounded-full bg-white border border-[#E8E0D2] text-[#52635A] hover:bg-[#F2EDE4] hover:text-[#1F2924] cursor-pointer shadow-2xs whitespace-nowrap shrink-0 transition-colors"
-            >
-              Optional Reiki
-            </button>
-            <button
-              type="button"
-              onClick={() => handleSend("Fees & timing")}
-              className="inline-flex items-center min-h-[40px] px-3 py-1.5 rounded-full bg-white border border-[#E8E0D2] text-[#52635A] hover:bg-[#F2EDE4] hover:text-[#1F2924] cursor-pointer shadow-2xs whitespace-nowrap shrink-0 transition-colors"
-            >
-              Fees &amp; timing
-            </button>
-          </div>
-
-          {/* Message History */}
-          <div className="flex-1 p-4 overflow-y-auto space-y-3.5 text-xs leading-relaxed">
-            {messages.map((m, idx) => (
-              <div
-                key={idx}
-                className={`flex ${m.role === "user" ? "justify-end" : "justify-start"}`}
+            {/* Quick Human-Centered Reflection Chips */}
+            <div className="px-3 py-2 bg-[#FAF8F5] border-b border-[#E8E0D2] flex flex-nowrap overflow-x-auto no-scrollbar items-center gap-2 text-[11px] shrink-0">
+              <button
+                type="button"
+                onClick={() => handleSend("Feeling overwhelmed lately")}
+                className="inline-flex items-center min-h-[40px] px-3.5 py-1.5 rounded-full bg-white border border-[#E8E0D2] text-[#52635A] hover:border-[#C5A059] hover:bg-[#F2EDE4] hover:text-[#1F2924] cursor-pointer shadow-2xs whitespace-nowrap shrink-0 transition-colors font-medium"
               >
+                Feeling overwhelmed lately
+              </button>
+              <button
+                type="button"
+                onClick={() => handleSend("Tension in relationships")}
+                className="inline-flex items-center min-h-[40px] px-3.5 py-1.5 rounded-full bg-white border border-[#E8E0D2] text-[#52635A] hover:border-[#C5A059] hover:bg-[#F2EDE4] hover:text-[#1F2924] cursor-pointer shadow-2xs whitespace-nowrap shrink-0 transition-colors font-medium"
+              >
+                Tension in relationships
+              </button>
+              <button
+                type="button"
+                onClick={() => handleSend("Living with family / privacy")}
+                className="inline-flex items-center min-h-[40px] px-3.5 py-1.5 rounded-full bg-white border border-[#E8E0D2] text-[#52635A] hover:border-[#C5A059] hover:bg-[#F2EDE4] hover:text-[#1F2924] cursor-pointer shadow-2xs whitespace-nowrap shrink-0 transition-colors font-medium"
+              >
+                Living with family / privacy
+              </button>
+              <button
+                type="button"
+                onClick={() => handleSend("Nervous about starting")}
+                className="inline-flex items-center min-h-[40px] px-3.5 py-1.5 rounded-full bg-white border border-[#E8E0D2] text-[#52635A] hover:border-[#C5A059] hover:bg-[#F2EDE4] hover:text-[#1F2924] cursor-pointer shadow-2xs whitespace-nowrap shrink-0 transition-colors font-medium"
+              >
+                Nervous about starting
+              </button>
+              <button
+                type="button"
+                onClick={() => handleSend("How voice calls work")}
+                className="inline-flex items-center min-h-[40px] px-3.5 py-1.5 rounded-full bg-white border border-[#E8E0D2] text-[#52635A] hover:border-[#C5A059] hover:bg-[#F2EDE4] hover:text-[#1F2924] cursor-pointer shadow-2xs whitespace-nowrap shrink-0 transition-colors font-medium"
+              >
+                How voice calls work
+              </button>
+              <button
+                type="button"
+                onClick={() => handleSend("Optional Reiki support")}
+                className="inline-flex items-center min-h-[40px] px-3.5 py-1.5 rounded-full bg-white border border-[#E8E0D2] text-[#52635A] hover:border-[#C5A059] hover:bg-[#F2EDE4] hover:text-[#1F2924] cursor-pointer shadow-2xs whitespace-nowrap shrink-0 transition-colors font-medium"
+              >
+                Optional Reiki support
+              </button>
+            </div>
+
+            {/* Message History */}
+            <div className="flex-1 p-4 overflow-y-auto space-y-3.5 text-xs leading-relaxed bg-[#FAF8F5]">
+              {messages.map((m, idx) => (
                 <div
-                  className={`max-w-[88%] p-3.5 rounded-2xl ${
-                    m.role === "user"
-                      ? "bg-[#2D4A3E] text-white rounded-br-xs whitespace-pre-line"
-                      : "bg-[#FAF8F5] text-[#52635A] border border-[#E8E0D2] rounded-bl-xs"
-                  }`}
+                  key={idx}
+                  className={`flex ${m.role === "user" ? "justify-end" : "justify-start"}`}
                 >
-                  {m.role === "user" ? m.content : renderFormattedContent(m.content)}
+                  <div
+                    className={`max-w-[88%] p-3.5 rounded-2xl ${
+                      m.role === "user"
+                        ? "bg-[#2D4A3E] text-[#FAF8F5] rounded-br-xs whitespace-pre-line shadow-xs"
+                        : "bg-white text-[#37473F] border border-[#E8E0D2] rounded-bl-xs shadow-2xs"
+                    }`}
+                  >
+                    {m.role === "user" ? m.content : renderFormattedContent(m.content)}
 
-                  {m.suggestedAction && (
-                    <div className="mt-2.5 pt-2 border-t border-[#E8E0D2]/60 flex items-center gap-2 flex-wrap">
-                      <Link
-                        href={m.suggestedAction.href}
-                        onClick={() => setIsOpen(false)}
-                        className="inline-flex items-center gap-1.5 min-h-[40px] text-[11px] font-semibold text-[#2D4A3E] bg-white px-3 py-1.5 rounded-full border border-[#E8E0D2] shadow-2xs hover:bg-[#F2EDE4] transition-colors whitespace-nowrap shrink-0"
-                      >
-                        <span className="whitespace-nowrap">{m.suggestedAction.label}</span>
-                        <ArrowRight className="w-3 h-3 text-[#9E4A2A] shrink-0" />
-                      </Link>
-
-                      {m.secondaryAction && (
-                        <a
-                          href={m.secondaryAction.href}
-                          target={m.secondaryAction.href.startsWith("http") ? "_blank" : undefined}
-                          rel={m.secondaryAction.href.startsWith("http") ? "noopener noreferrer" : undefined}
-                          className="inline-flex items-center gap-1.5 min-h-[40px] text-[11px] font-semibold text-[#52635A] bg-[#F2EDE4] px-3 py-1.5 rounded-full border border-[#E8E0D2] hover:text-[#1F2924] transition-colors whitespace-nowrap shrink-0"
+                    {m.suggestedAction && (
+                      <div className="mt-2.5 pt-2 border-t border-[#E8E0D2]/70 flex items-center gap-2 flex-wrap">
+                        <Link
+                          href={m.suggestedAction.href}
+                          onClick={() => setIsOpen(false)}
+                          className="inline-flex items-center gap-1.5 min-h-[40px] text-[11px] font-medium text-[#2D4A3E] bg-[#FAF8F5] px-3.5 py-1.5 rounded-full border border-[#E8E0D2] shadow-2xs hover:bg-[#F2EDE4] hover:border-[#C5A059] transition-colors whitespace-nowrap shrink-0"
                         >
-                          <span className="whitespace-nowrap">{m.secondaryAction.label}</span>
-                        </a>
-                      )}
-                    </div>
-                  )}
-                </div>
-              </div>
-            ))}
-            {loading && (
-              <div className="flex justify-start">
-                <div className="p-3 rounded-2xl bg-[#FAF8F5] border border-[#E8E0D2] text-[#52635A] flex items-center gap-2">
-                  <Loader2 className="w-3.5 h-3.5 animate-spin text-[#2D4A3E]" />
-                  <span>Preparing guidance...</span>
-                </div>
-              </div>
-            )}
-            <div ref={messagesEndRef} />
-          </div>
+                          <span className="whitespace-nowrap">{m.suggestedAction.label}</span>
+                          <ArrowRight className="w-3 h-3 text-[#9E4A2A] shrink-0" />
+                        </Link>
 
-          {/* Bottom Crisis Boundary Notice */}
-          <div className="px-4 py-1.5 bg-[#F2EDE4]/60 border-t border-[#E8E0D2] text-[10px] text-[#52635A] flex items-center gap-1.5">
-            <ShieldCheck className="w-3.5 h-3.5 text-[#2D4A3E] shrink-0" />
-            <span className="truncate">Voice calls only. For mental health emergencies, call Tele-MANAS (14416).</span>
-          </div>
+                        {m.secondaryAction && (
+                          <a
+                            href={m.secondaryAction.href}
+                            target={m.secondaryAction.href.startsWith("http") ? "_blank" : undefined}
+                            rel={m.secondaryAction.href.startsWith("http") ? "noopener noreferrer" : undefined}
+                            className="inline-flex items-center gap-1.5 min-h-[40px] text-[11px] font-medium text-[#52635A] bg-white px-3.5 py-1.5 rounded-full border border-[#E8E0D2] hover:text-[#1F2924] hover:bg-[#F2EDE4] transition-colors whitespace-nowrap shrink-0"
+                          >
+                            <span className="whitespace-nowrap">{m.secondaryAction.label}</span>
+                          </a>
+                        )}
+                      </div>
+                    )}
+                  </div>
+                </div>
+              ))}
+              {loading && (
+                <div className="flex justify-start">
+                  <div className="p-3 rounded-2xl bg-white border border-[#E8E0D2] text-[#52635A] flex items-center gap-2 shadow-2xs">
+                    <Loader2 className="w-3.5 h-3.5 animate-spin text-[#9E4A2A]" />
+                    <span className="font-serif italic">Reflecting with care...</span>
+                  </div>
+                </div>
+              )}
+              <div ref={messagesEndRef} />
+            </div>
 
-          {/* Input Form */}
-          <form
-            onSubmit={(e) => {
-              e.preventDefault();
-              handleSend();
-            }}
-            className="p-2.5 sm:p-3 bg-white border-t border-[#E8E0D2] flex items-center gap-2 shrink-0 pb-safe"
-          >
-            <input
-              type="text"
-              value={input}
-              onChange={(e) => setInput(e.target.value)}
-              placeholder="Ask about stress, marriage, family, fees, or Reiki..."
-              className="flex-1 min-h-[44px] px-4 py-2.5 rounded-full border border-[#E8E0D2] bg-[#FAF8F5] text-base sm:text-xs text-[#1F2924] placeholder:text-xs focus:outline-none focus:ring-2 focus:ring-[#2D4A3E]"
-            />
-            <button
-              type="submit"
-              disabled={loading || !input.trim()}
-              className="p-3 min-w-[44px] min-h-[44px] rounded-full bg-[#2D4A3E] text-white disabled:opacity-40 hover:bg-[#1E332A] transition-colors cursor-pointer shrink-0 flex items-center justify-center shadow-xs"
-              aria-label="Send message"
+            {/* Bottom Crisis Boundary Notice */}
+            <div className="px-4 py-2 bg-[#F2EDE4]/80 border-t border-[#E8E0D2] text-[10px] text-[#52635A] flex items-center gap-2 shrink-0">
+              <ShieldCheck className="w-3.5 h-3.5 text-[#2D4A3E] shrink-0" />
+              <span className="truncate">
+                Gentle voice consultations. For acute distress or crises, please call Tele-MANAS (14416).
+              </span>
+            </div>
+
+            {/* Input Form */}
+            <form
+              onSubmit={(e) => {
+                e.preventDefault();
+                handleSend();
+              }}
+              className="p-2.5 sm:p-3 bg-white border-t border-[#E8E0D2] flex items-center gap-2 shrink-0 pb-safe"
             >
-              <Send className="w-4 h-4" />
-            </button>
-          </form>
-        </div>
+              <input
+                type="text"
+                value={input}
+                onChange={(e) => setInput(e.target.value)}
+                placeholder="Share whatever is on your mind..."
+                className="flex-1 min-h-[44px] px-4 py-2.5 rounded-full border border-[#E8E0D2] bg-[#FAF8F5] text-base sm:text-xs text-[#1F2924] placeholder:text-[#52635A]/70 placeholder:text-xs focus:outline-none focus:ring-2 focus:ring-[#C5A059] focus:border-transparent transition-all"
+              />
+              <button
+                type="submit"
+                disabled={loading || !input.trim()}
+                className="p-3 min-w-[44px] min-h-[44px] rounded-full bg-[#2D4A3E] text-white disabled:opacity-40 hover:bg-[#1E332A] transition-colors cursor-pointer shrink-0 flex items-center justify-center shadow-xs"
+                aria-label="Send message"
+              >
+                <Send className="w-4 h-4 text-[#FAF8F5]" />
+              </button>
+            </form>
+          </div>
         </>
       )}
     </>

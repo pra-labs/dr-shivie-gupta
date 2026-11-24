@@ -2,31 +2,42 @@ import Link from "next/link";
 import { PhoneCall, Clock, CheckCircle2, Sparkles, MessageCircle, ArrowRight } from "lucide-react";
 import { siteConfig } from "@/config/site";
 import { SessionCardsCarousel } from "@/components/SessionCardsCarousel";
+import { BreathingGuide } from "@/components/wellness/BreathingGuide";
+import { ThoughtUnloader } from "@/components/wellness/ThoughtUnloader";
+import { BotanicalLeafMotif, CalmWavesMotif, RelationshipArcsMotif } from "@/components/motifs/SanctuaryMotifs";
 
 export default function HomePage() {
   return (
     <div className="space-y-12 sm:space-y-20 lg:space-y-24 pb-20">
-      {/* 1. Hero Section - Refined Full-Width Editorial Layout (No Image Card) */}
+      {/* 1. Hero Section - Refined Full-Width Editorial Layout with Soft Botanical Motifs */}
       <section className="relative overflow-hidden pt-6 sm:pt-12 lg:pt-16 pb-4 sm:pb-6">
         <div className="absolute top-1/4 left-1/2 -translate-x-1/2 -translate-y-1/2 w-[600px] h-[600px] bg-[#C5A059]/10 rounded-full blur-3xl pointer-events-none -z-10" />
         <div className="absolute top-1/2 right-10 w-[400px] h-[400px] bg-[#2D4A3E]/5 rounded-full blur-2xl pointer-events-none -z-10" />
 
+        {/* Decorative subtle botanical motifs */}
+        <div className="absolute -top-6 -left-8 text-[#2D4A3E] opacity-20 hidden md:block">
+          <BotanicalLeafMotif size={130} />
+        </div>
+        <div className="absolute top-12 -right-8 text-[#9E4A2A] opacity-15 hidden md:block rotate-45">
+          <RelationshipArcsMotif size={140} />
+        </div>
+
         <div className="max-w-4xl mx-auto px-4 sm:px-6 lg:px-8 text-center space-y-6 sm:space-y-8">
           {/* Eyebrow badge */}
-          <div className="inline-flex items-center gap-1.5 sm:gap-2 px-3.5 sm:px-4 py-1.5 rounded-full bg-[#F2EDE4] border border-[#E8E0D2] text-[#2D4A3E] text-[11px] sm:text-xs font-semibold tracking-wide uppercase shadow-2xs whitespace-normal sm:whitespace-nowrap">
+          <div className="inline-flex items-center gap-1.5 sm:gap-2 px-3.5 sm:px-4 py-1.5 rounded-full bg-[#F2EDE4] border border-[#E8E0D2] text-[#2D4A3E] text-[11px] sm:text-xs font-medium tracking-wide shadow-2xs whitespace-normal sm:whitespace-nowrap">
             <Clock className="w-3.5 h-3.5 text-[#C5A059] shrink-0" />
-            <span>~35 Years Experience • Dayalbagh, Agra</span>
+            <span>~35 years dedicated counselling • Dayalbagh, Agra</span>
           </div>
 
           {/* Editorial Headline */}
           <h1 className="font-serif text-4xl sm:text-6xl lg:text-7xl font-normal leading-[1.12] text-[#1F2924] text-balance">
-            Confidential <span className="italic font-serif text-[#2D4A3E] font-medium">Voice Counselling</span> for{" "}
-            <span className="italic font-serif text-[#9E4A2A]">Inner Peace &amp; Clarity</span>
+            Confidential <span className="italic font-serif text-[#2D4A3E] font-medium">voice counselling</span> for{" "}
+            <span className="italic font-serif text-[#9E4A2A]">inner peace &amp; clarity</span>
           </h1>
 
           {/* Subheading */}
           <p className="text-base sm:text-lg lg:text-xl text-[#52635A] max-w-2xl mx-auto leading-relaxed font-normal text-balance">
-            Empathetic, private telephone sessions by <strong>Dr. Shivie Gupta</strong>. Thoughtful guidance for personal anxiety, couple relationships, and family harmony—conducted strictly over phone call with optional Reiki healing on request.
+            Empathetic, private telephone sessions by <strong>Dr. Shivie Gupta</strong>. A quiet, unhurried space for personal anxiety, couple relationships, and family harmony—conducted strictly by phone call with optional Reiki healing on request.
           </p>
 
           {/* Action CTAs */}
@@ -36,13 +47,13 @@ export default function HomePage() {
               className="w-full sm:w-auto inline-flex items-center justify-center gap-2 px-8 py-3.5 rounded-full bg-[#2D4A3E] text-white font-medium text-xs sm:text-sm shadow-md hover:bg-[#1E332A] transition-all cursor-pointer"
             >
               <PhoneCall className="w-4 h-4" />
-              <span>Request a Voice Session</span>
+              <span>Request a voice session</span>
             </Link>
             <a
               href={`tel:${siteConfig.phone}`}
               className="w-full sm:w-auto inline-flex items-center justify-center gap-2 px-7 py-3.5 rounded-full bg-white border border-[#2D4A3E]/30 text-[#2D4A3E] font-medium text-xs sm:text-sm hover:bg-[#FAF8F5] transition-all"
             >
-              <span>Call During Practice Hours</span>
+              <span>Call during practice hours</span>
             </a>
           </div>
 
@@ -54,15 +65,15 @@ export default function HomePage() {
                   ~35 Years
                 </div>
                 <div className="text-[9px] sm:text-xs text-[#52635A] mt-0.5 leading-tight">
-                  Counselling
+                  Guidance
                 </div>
               </div>
               <div className="px-1.5 py-2.5 sm:p-4 rounded-2xl bg-white/70 border border-[#E8E0D2] shadow-2xs flex flex-col justify-center min-h-[72px] sm:min-h-0">
                 <div className="text-[13px] sm:text-2xl font-serif font-bold text-[#2D4A3E] whitespace-nowrap">
-                  Audio Calls
+                  Voice Only
                 </div>
                 <div className="text-[9px] sm:text-xs text-[#52635A] mt-0.5 leading-tight">
-                  No Video
+                  No camera
                 </div>
               </div>
               <div className="px-1.5 py-2.5 sm:p-4 rounded-2xl bg-white/70 border border-[#E8E0D2] shadow-2xs flex flex-col justify-center min-h-[72px] sm:min-h-0">
@@ -71,13 +82,18 @@ export default function HomePage() {
                   <span className="hidden sm:inline">₹1,000 – ₹2,200</span>
                 </div>
                 <div className="text-[9px] sm:text-xs text-[#52635A] mt-0.5 leading-tight">
-                  Session Fees
+                  Simple fees
                 </div>
               </div>
             </div>
           </div>
         </div>
       </section>
+
+      {/* Subtle Wave Divider */}
+      <div className="text-[#E8E0D2] -my-4 sm:-my-6 max-w-5xl mx-auto px-4 opacity-75">
+        <CalmWavesMotif />
+      </div>
 
       {/* 2. Core Voice Counselling Offerings & Pricing */}
       <section className="bg-[#F2EDE4]/60 py-14 sm:py-20 border-y border-[#E8E0D2]/80">
@@ -196,7 +212,31 @@ export default function HomePage() {
         </div>
       </section>
 
-      {/* 4. Why Voice-Only Phone Calls */}
+      {/* 4. Gentle Wellness Tools (Breathing Guide & Thought Unloader) */}
+      <section className="max-w-6xl mx-auto px-4 sm:px-6 lg:px-8 space-y-10 sm:space-y-12">
+        <div className="text-center max-w-2xl mx-auto space-y-2">
+          <span className="text-xs font-medium uppercase tracking-wider text-[#9E4A2A]">
+            A Moment for Yourself
+          </span>
+          <h2 className="font-serif text-3xl sm:text-4xl text-[#1F2924]">
+            Gentle Spaces to Breathe &amp; Reflect
+          </h2>
+          <p className="text-xs sm:text-sm text-[#52635A] leading-relaxed">
+            Take all the time you need. These quiet, optional tools are here to help you slow down, untangle what feels heavy, and regain your center.
+          </p>
+        </div>
+
+        <div className="grid grid-cols-1 lg:grid-cols-12 gap-8 items-start">
+          <div className="lg:col-span-5">
+            <BreathingGuide />
+          </div>
+          <div className="lg:col-span-7">
+            <ThoughtUnloader />
+          </div>
+        </div>
+      </section>
+
+      {/* 5. Why Voice-Only Phone Calls */}
       <section className="max-w-6xl mx-auto px-4 sm:px-6 lg:px-8">
         <div className="grid grid-cols-1 lg:grid-cols-2 gap-8 lg:gap-12 items-center">
           <div className="space-y-4">
