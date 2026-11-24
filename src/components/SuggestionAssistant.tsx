@@ -263,7 +263,7 @@ export function SuggestionAssistant() {
             role="dialog"
             aria-modal="true"
             aria-labelledby="session-assistant-title"
-            className="fixed inset-x-0 bottom-0 sm:inset-x-auto sm:bottom-5 sm:right-5 z-50 w-full sm:w-[420px] h-[85vh] sm:h-[550px] max-h-[90vh] sm:max-h-[85vh] bg-[#FAF8F5] rounded-t-3xl sm:rounded-3xl border border-[#E8E0D2] shadow-2xl flex flex-col overflow-hidden animate-in fade-in slide-in-from-bottom-4 duration-300"
+            className="fixed inset-x-0 bottom-0 sm:inset-x-auto sm:bottom-5 sm:right-5 z-50 w-full sm:w-[420px] h-[82vh] sm:h-[550px] max-h-[85vh] bg-[#FAF8F5] rounded-t-3xl sm:rounded-3xl border border-[#E8E0D2] shadow-2xl flex flex-col overflow-hidden animate-in fade-in slide-in-from-bottom-4 duration-300"
           >
             {/* Header: Soft sanctuary aesthetic (warm sand/sage, delicate border, terracotta & gold accents) */}
             <div className="p-4 bg-[#F2EDE4] text-[#1F2924] border-b border-[#E8E0D2] flex items-center justify-between shrink-0">
@@ -413,7 +413,7 @@ export function SuggestionAssistant() {
                 e.preventDefault();
                 handleSend();
               }}
-              className="p-2.5 sm:p-3 bg-white border-t border-[#E8E0D2] flex items-center gap-2 shrink-0 pb-safe"
+              className="p-2.5 sm:p-3 bg-white border-t border-[#E8E0D2] flex items-center gap-2 shrink-0 pb-[calc(0.75rem+env(safe-area-inset-bottom,0px))]"
             >
               <input
                 type="text"

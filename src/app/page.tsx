@@ -57,32 +57,32 @@ export default function HomePage() {
             </a>
           </div>
 
-          {/* 3-Column Key Guarantees Strip */}
+          {/* Reassuring Pillars Strip */}
           <div className="pt-6 sm:pt-8 border-t border-[#E8E0D2]/80 max-w-2xl mx-auto">
-            <div className="grid grid-cols-3 gap-1.5 sm:gap-6 text-center">
-              <div className="px-1.5 py-2.5 sm:p-4 rounded-2xl bg-white/70 border border-[#E8E0D2] shadow-2xs flex flex-col justify-center min-h-[72px] sm:min-h-0">
-                <div className="text-[13px] sm:text-2xl font-serif font-bold text-[#2D4A3E] whitespace-nowrap">
-                  ~35 Years
+            <div className="grid grid-cols-3 gap-2 sm:gap-6 text-center">
+              <div className="px-2 py-3 sm:p-4 rounded-2xl bg-white/60 border border-[#E8E0D2]/80 shadow-2xs flex flex-col justify-center min-h-[72px] sm:min-h-0">
+                <div className="text-xs sm:text-lg font-serif font-semibold text-[#2D4A3E] whitespace-nowrap">
+                  35+ Years
                 </div>
-                <div className="text-[9px] sm:text-xs text-[#52635A] mt-0.5 leading-tight">
-                  Guidance
-                </div>
-              </div>
-              <div className="px-1.5 py-2.5 sm:p-4 rounded-2xl bg-white/70 border border-[#E8E0D2] shadow-2xs flex flex-col justify-center min-h-[72px] sm:min-h-0">
-                <div className="text-[13px] sm:text-2xl font-serif font-bold text-[#2D4A3E] whitespace-nowrap">
-                  Voice Only
-                </div>
-                <div className="text-[9px] sm:text-xs text-[#52635A] mt-0.5 leading-tight">
-                  No camera
+                <div className="text-[10px] sm:text-xs text-[#52635A] mt-0.5 leading-tight">
+                  Experienced presence
                 </div>
               </div>
-              <div className="px-1.5 py-2.5 sm:p-4 rounded-2xl bg-white/70 border border-[#E8E0D2] shadow-2xs flex flex-col justify-center min-h-[72px] sm:min-h-0">
-                <div className="text-[13px] sm:text-2xl font-serif font-bold text-[#2D4A3E] whitespace-nowrap">
-                  <span className="sm:hidden">₹1k – ₹2.2k</span>
-                  <span className="hidden sm:inline">₹1,000 – ₹2,200</span>
+              <div className="px-2 py-3 sm:p-4 rounded-2xl bg-white/60 border border-[#E8E0D2]/80 shadow-2xs flex flex-col justify-center min-h-[72px] sm:min-h-0">
+                <div className="text-xs sm:text-lg font-serif font-semibold text-[#2D4A3E] whitespace-nowrap">
+                  Quiet Audio
                 </div>
-                <div className="text-[9px] sm:text-xs text-[#52635A] mt-0.5 leading-tight">
-                  Simple fees
+                <div className="text-[10px] sm:text-xs text-[#52635A] mt-0.5 leading-tight">
+                  Private &amp; camera-free
+                </div>
+              </div>
+              <div className="px-2 py-3 sm:p-4 rounded-2xl bg-white/60 border border-[#E8E0D2]/80 shadow-2xs flex flex-col justify-center min-h-[72px] sm:min-h-0">
+                <div className="text-xs sm:text-lg font-serif font-semibold text-[#2D4A3E] whitespace-nowrap">
+                  <span className="sm:hidden">Transparent</span>
+                  <span className="hidden sm:inline">Transparent Fees</span>
+                </div>
+                <div className="text-[10px] sm:text-xs text-[#52635A] mt-0.5 leading-tight">
+                  Per session • No locks
                 </div>
               </div>
             </div>

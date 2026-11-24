@@ -51,14 +51,14 @@ export function MobileNavigationDock() {
           <span className="text-[10px] tracking-wide">Sessions</span>
         </Link>
 
-        {/* 3. Session Guide (Triggers Guidance AI Bottom Sheet) */}
+        {/* 3. Session Companion (Triggers Guidance AI Bottom Sheet) */}
         <button
           onClick={handleOpenAssistant}
           className="flex flex-col items-center justify-center gap-1 min-h-[46px] rounded-xl text-[#52635A] hover:text-[#2D4A3E] transition-all active:scale-[0.96] cursor-pointer"
-          aria-label="Open Session Guidance AI"
+          aria-label="Open Session Companion"
         >
           <Sparkles className="w-5 h-5 text-[#C5A059]" />
-          <span className="text-[10px] tracking-wide">Guide AI</span>
+          <span className="text-[10px] tracking-wide">Companion</span>
         </button>
 
         {/* 4. Primary Book Action */}
