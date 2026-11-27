@@ -2,13 +2,14 @@
 
 import React, { useState, useEffect, useRef } from 'react';
 import { BotanicalLeafMotif } from '../motifs/SanctuaryMotifs';
+import { useLanguage } from '@/context/LanguageContext';
 
 interface BreathCyclePhase {
   name: 'inhale' | 'hold' | 'exhale';
   label: string;
-  duration: number; // in seconds
+  duration: number;
   prompt: string;
-  scale: string; // Tailwind transform scale
+  scale: string;
   opacity: string;
 }
 
@@ -19,48 +20,50 @@ interface BreathingPattern {
   phases: BreathCyclePhase[];
 }
 
-const BREATHING_PATTERNS: BreathingPattern[] = [
-  {
-    id: 'gentle',
-    title: 'Gentle',
-    subtitle: '4 · 4 · 6',
-    phases: [
-      { name: 'inhale', label: 'Inhale', duration: 4, prompt: 'Breathe in gently...', scale: 'scale-110', opacity: 'opacity-90' },
-      { name: 'hold', label: 'Soft Hold', duration: 4, prompt: 'Hold softly...', scale: 'scale-110', opacity: 'opacity-100' },
-      { name: 'exhale', label: 'Exhale', duration: 6, prompt: 'Slowly release...', scale: 'scale-75', opacity: 'opacity-50' },
-    ],
-  },
-  {
-    id: 'relaxation',
-    title: 'Deep Relaxation',
-    subtitle: '4 · 7 · 8',
-    phases: [
-      { name: 'inhale', label: 'Inhale', duration: 4, prompt: 'Breathe in gently...', scale: 'scale-115', opacity: 'opacity-90' },
-      { name: 'hold', label: 'Soft Hold', duration: 7, prompt: 'Hold softly and rest...', scale: 'scale-115', opacity: 'opacity-100' },
-      { name: 'exhale', label: 'Exhale', duration: 8, prompt: 'Slowly, softly release...', scale: 'scale-70', opacity: 'opacity-45' },
-    ],
-  },
-  {
-    id: 'equal',
-    title: 'Equal Breathing',
-    subtitle: '4 · 4',
-    phases: [
-      { name: 'inhale', label: 'Inhale', duration: 4, prompt: 'Breathe in softly...', scale: 'scale-110', opacity: 'opacity-85' },
-      { name: 'exhale', label: 'Exhale', duration: 4, prompt: 'Breathe out at ease...', scale: 'scale-80', opacity: 'opacity-55' },
-    ],
-  },
-];
-
 export const BreathingGuide: React.FC<{ className?: string }> = ({ className = '' }) => {
+  const { t } = useLanguage();
   const [selectedPatternId, setSelectedPatternId] = useState<string>('gentle');
   const [isActive, setIsActive] = useState<boolean>(false);
   const [phaseIndex, setPhaseIndex] = useState<number>(0);
   const timerRef = useRef<NodeJS.Timeout | null>(null);
 
+  const b = t.breathing;
+
+  const BREATHING_PATTERNS: BreathingPattern[] = [
+    {
+      id: 'gentle',
+      title: b.patterns.gentle.title,
+      subtitle: b.patterns.gentle.subtitle,
+      phases: [
+        { name: 'inhale', label: b.patterns.gentle.inhaleLabel, duration: 4, prompt: b.patterns.gentle.inhalePrompt, scale: 'scale-110', opacity: 'opacity-90' },
+        { name: 'hold', label: b.patterns.gentle.holdLabel, duration: 4, prompt: b.patterns.gentle.holdPrompt, scale: 'scale-110', opacity: 'opacity-100' },
+        { name: 'exhale', label: b.patterns.gentle.exhaleLabel, duration: 6, prompt: b.patterns.gentle.exhalePrompt, scale: 'scale-75', opacity: 'opacity-50' },
+      ],
+    },
+    {
+      id: 'relaxation',
+      title: b.patterns.relaxation.title,
+      subtitle: b.patterns.relaxation.subtitle,
+      phases: [
+        { name: 'inhale', label: b.patterns.relaxation.inhaleLabel, duration: 4, prompt: b.patterns.relaxation.inhalePrompt, scale: 'scale-115', opacity: 'opacity-90' },
+        { name: 'hold', label: b.patterns.relaxation.holdLabel, duration: 7, prompt: b.patterns.relaxation.holdPrompt, scale: 'scale-115', opacity: 'opacity-100' },
+        { name: 'exhale', label: b.patterns.relaxation.exhaleLabel, duration: 8, prompt: b.patterns.relaxation.exhalePrompt, scale: 'scale-70', opacity: 'opacity-45' },
+      ],
+    },
+    {
+      id: 'equal',
+      title: b.patterns.equal.title,
+      subtitle: b.patterns.equal.subtitle,
+      phases: [
+        { name: 'inhale', label: b.patterns.equal.inhaleLabel, duration: 4, prompt: b.patterns.equal.inhalePrompt, scale: 'scale-110', opacity: 'opacity-85' },
+        { name: 'exhale', label: b.patterns.equal.exhaleLabel, duration: 4, prompt: b.patterns.equal.exhalePrompt, scale: 'scale-80', opacity: 'opacity-55' },
+      ],
+    },
+  ];
+
   const pattern = BREATHING_PATTERNS.find((p) => p.id === selectedPatternId) || BREATHING_PATTERNS[0];
   const currentPhase = pattern.phases[phaseIndex] || pattern.phases[0];
 
-  // Cycle phase handler
   useEffect(() => {
     if (!isActive) {
       if (timerRef.current) clearTimeout(timerRef.current);
@@ -93,7 +96,7 @@ export const BreathingGuide: React.FC<{ className?: string }> = ({ className = '
 
   return (
     <section
-      aria-label="Calm breathing sanctuary guide"
+      aria-label={b.ariaLabel}
       className={`relative overflow-hidden rounded-2xl border border-[#2D4A3E]/10 bg-gradient-to-b from-[#FAF8F5] via-[#F5EFE6]/70 to-[#FAF8F5] p-6 sm:p-8 text-[#1F2924] shadow-xs ${className}`}
     >
       {/* Decorative Botanical Motif */}
@@ -104,20 +107,20 @@ export const BreathingGuide: React.FC<{ className?: string }> = ({ className = '
       {/* Header */}
       <div className="relative z-10 max-w-xl mx-auto text-center mb-6">
         <span className="inline-block text-xs uppercase tracking-widest font-medium text-[#9E4A2A] mb-2">
-          Sanctuary Grounding
+          {b.eyebrow}
         </span>
         <h3 className="font-serif text-2xl sm:text-3xl text-[#2D4A3E] font-normal tracking-tight">
-          A Moment to Settle In
+          {b.title}
         </h3>
         <p className="text-sm text-[#52635A] mt-2 font-normal leading-relaxed">
-          Take a quiet pause before exploring therapy or reaching out. There is nothing to achieve, count, or measure here.
+          {b.subtitle}
         </p>
       </div>
 
       {/* Rhythm Switcher (Pace selector) */}
       <div
         role="group"
-        aria-label="Choose breathing rhythm"
+        aria-label={b.groupAria}
         className="relative z-10 flex flex-wrap justify-center gap-2 max-w-md mx-auto mb-8"
       >
         {BREATHING_PATTERNS.map((p) => {
@@ -170,7 +173,7 @@ export const BreathingGuide: React.FC<{ className?: string }> = ({ className = '
             }}
           >
             <p className="font-serif text-lg sm:text-xl text-[#2D4A3E] transition-all duration-700 font-medium px-2">
-              {isActive ? currentPhase.prompt : 'Rest softly'}
+              {isActive ? currentPhase.prompt : b.restSoftly}
             </p>
             {isActive && (
               <span className="text-[11px] uppercase tracking-wider text-[#9E4A2A] font-medium mt-1">
@@ -183,9 +186,7 @@ export const BreathingGuide: React.FC<{ className?: string }> = ({ className = '
         {/* Status Prompt & Reassurance */}
         <div className="mt-4 text-center min-h-[28px]">
           <p className="text-xs text-[#52635A] font-normal italic">
-            {isActive
-              ? 'Follow the motion gently, only as it feels comfortable for your lungs.'
-              : 'Press play whenever you are ready to begin.'}
+            {isActive ? b.activeHint : b.idleHint}
           </p>
         </div>
       </div>
@@ -195,7 +196,7 @@ export const BreathingGuide: React.FC<{ className?: string }> = ({ className = '
         <button
           type="button"
           onClick={togglePlay}
-          aria-label={isActive ? 'Pause breathing rhythm' : 'Start breathing rhythm'}
+          aria-label={isActive ? b.pauseAria : b.beginAria}
           className="inline-flex items-center justify-center gap-2 px-6 py-2.5 rounded-full bg-[#2D4A3E] text-[#FAF8F5] text-sm font-medium hover:bg-[#3D6454] active:scale-98 transition-all shadow-xs focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-[#2D4A3E]"
         >
           {isActive ? (
@@ -204,14 +205,14 @@ export const BreathingGuide: React.FC<{ className?: string }> = ({ className = '
                 <rect x="6" y="4" width="4" height="16" rx="1.5" />
                 <rect x="14" y="4" width="4" height="16" rx="1.5" />
               </svg>
-              <span>Pause</span>
+              <span>{b.pauseBtn}</span>
             </>
           ) : (
             <>
               <svg className="w-4 h-4 fill-current ml-0.5" viewBox="0 0 24 24" aria-hidden="true">
                 <path d="M8 5.14v13.72a1 1 0 0 0 1.5.86l11-6.86a1 1 0 0 0 0-1.72l-11-6.86A1 1 0 0 0 8 5.14z" />
               </svg>
-              <span>Begin Breathing</span>
+              <span>{b.beginBtn}</span>
             </>
           )}
         </button>
@@ -220,10 +221,10 @@ export const BreathingGuide: React.FC<{ className?: string }> = ({ className = '
           <button
             type="button"
             onClick={resetCycle}
-            aria-label="Reset breathing exercise"
+            aria-label={b.resetAria}
             className="text-xs px-3 py-2 text-[#52635A] hover:text-[#1F2924] underline underline-offset-4 transition-colors"
           >
-            Reset
+            {b.resetBtn}
           </button>
         )}
       </div>

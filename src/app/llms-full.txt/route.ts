@@ -3,7 +3,7 @@ import { siteConfig } from "@/config/site";
 import { servicesData, faqsData } from "@/data/site-content";
 
 export async function GET() {
-  const content = `# Dr. Shivie Gupta — Full Practice Context & Clinical Boundaries
+  const content = `# SamvadUrja — Dr. Shivie Gupta | Full Practice Context & Clinical Boundaries
 
 > Comprehensive documentation for LLMs, answer engines, and autonomous search agents.
 > Practice: Confidential Voice-Only Counselling & Optional Reiki Healing

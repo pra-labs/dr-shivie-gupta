@@ -1,48 +1,37 @@
 "use client";
 
 import Link from "next/link";
-
-interface ServiceCard {
-  id: "individual" | "couple" | "family";
-  title: string;
-  duration: string;
-  price: string;
-  description: string;
-  badge?: string;
-  isPopular?: boolean;
-}
-
-const SERVICES: ServiceCard[] = [
-  {
-    id: "individual",
-    title: "Individual Counselling",
-    duration: "Voice Call • 50 mins",
-    price: "₹1,200",
-    description:
-      "A confidential telephone space to reflect on personal anxiety, life transitions, emotional fatigue, and unhelpful thought loops.",
-  },
-  {
-    id: "couple",
-    title: "Couple Counselling",
-    duration: "Voice Call • 60 mins",
-    price: "₹1,800",
-    description:
-      "Mediated telephone sessions to understand recurring misunderstandings, communicate with patience, and nurture relationship clarity.",
-    badge: "Both Partners",
-  },
-  {
-    id: "family",
-    title: "Family Counselling",
-    duration: "Voice Call • 60 mins",
-    price: "₹2,200",
-    description:
-      "Balanced telephone dialogue to navigate intergenerational friction, parent-youth misunderstandings, and household communication.",
-  },
-];
+import { useLanguage } from "@/context/LanguageContext";
 
 export function SessionCardsCarousel() {
+  const { lang, t } = useLanguage();
+
+  const SERVICES = [
+    {
+      id: "individual" as const,
+      title: t.services.cards.individual.title,
+      duration: t.services.cards.individual.duration,
+      price: t.services.cards.individual.price,
+      description: t.services.cards.individual.description,
+    },
+    {
+      id: "couple" as const,
+      title: t.services.cards.couple.title,
+      duration: t.services.cards.couple.duration,
+      price: t.services.cards.couple.price,
+      description: t.services.cards.couple.description,
+      badge: t.services.cards.couple.badge,
+    },
+    {
+      id: "family" as const,
+      title: t.services.cards.family.title,
+      duration: t.services.cards.family.duration,
+      price: t.services.cards.family.price,
+      description: t.services.cards.family.description,
+    },
+  ];
+
   const handleOpenBooking = (serviceId: string) => {
-    // If mobile bottom sheet is listening, open it directly; desktop links work naturally
     window.dispatchEvent(
       new CustomEvent("open-booking-modal", {
         detail: { service: serviceId },
@@ -76,7 +65,7 @@ export function SessionCardsCarousel() {
               <div className="text-2xl font-serif font-bold text-[#2D4A3E]">
                 {card.price}{" "}
                 <span className="text-xs font-sans font-normal text-[#52635A]">
-                  / session
+                  {t.services.perSession}
                 </span>
               </div>
               <p className="text-xs text-[#52635A] leading-relaxed">
@@ -87,10 +76,13 @@ export function SessionCardsCarousel() {
             <div className="pt-2">
               <button
                 type="button"
+                data-umami-event="session_cta_click"
+                data-umami-event-channel="form"
+                data-umami-event-lang={lang}
                 onClick={() => handleOpenBooking(card.id)}
                 className="w-full text-center py-3 rounded-full bg-[#2D4A3E] text-white text-xs font-semibold uppercase tracking-wider transition-all active:scale-[0.97] shadow-xs cursor-pointer"
               >
-                Request Session
+                {t.services.requestSessionBtn}
               </button>
             </div>
           </div>
@@ -121,7 +113,7 @@ export function SessionCardsCarousel() {
               <div className="text-2xl font-serif font-bold text-[#2D4A3E]">
                 {card.price}{" "}
                 <span className="text-xs font-sans font-normal text-[#52635A]">
-                  / session
+                  {t.services.perSession}
                 </span>
               </div>
               <p className="text-xs sm:text-sm text-[#52635A] leading-relaxed">
@@ -131,9 +123,12 @@ export function SessionCardsCarousel() {
 
             <Link
               href={`/connect?service=${card.id}`}
+              data-umami-event="session_cta_click"
+              data-umami-event-channel="form"
+              data-umami-event-lang={lang}
               className="w-full text-center py-2.5 rounded-full bg-[#2D4A3E] text-white text-xs font-semibold uppercase tracking-wider hover:bg-[#1E332A] transition-colors"
             >
-              Request Session
+              {t.services.requestSessionBtn}
             </Link>
           </div>
         ))}

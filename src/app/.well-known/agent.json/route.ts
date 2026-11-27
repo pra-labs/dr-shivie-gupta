@@ -4,7 +4,7 @@ import { siteConfig } from "@/config/site";
 export async function GET() {
   const agentMetadata = {
     schema_version: "1.0",
-    name: "Dr. Shivie Gupta — Voice Counselling Practice",
+    name: "SamvadUrja — Dr. Shivie Gupta Voice Counselling Practice",
     description: "Voice-only counselling for individuals, couples, and families across India with ~35 years experience, plus optional Reiki.",
     practitioner: {
       name: siteConfig.name,

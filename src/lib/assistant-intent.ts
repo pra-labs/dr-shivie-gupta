@@ -41,6 +41,7 @@ const HOW_IT_WORKS_PATTERNS = [
   /\b(confidential|confidentiality|privacy|secret|safe|gupt|webcam|camera|video|zoom|in[- ]*person|clinic|audio\s*only|overhearing)\b/i,
   /\b(nervous|hesitant|anxious\s*about\s*starting|scared\s*to\s*start|never\s*done\s*this|first\s*time)\b/i,
   /\b(living\s*with\s*family|joint\s*family\s*privacy|thin\s*walls|overhear|room\s*privacy)\b/i,
+  /(निजता|झिझक|फ़ोन\s*कॉल\s*सेशन\s*कैसे|शुरू\s*करने\s*में)/,
 ];
 
 // 4. Family, Household & In-Laws Inquiries
@@ -49,18 +50,21 @@ const FAMILY_PATTERNS = [
   /\b(family|parent|parents|teen|teenager|adolescent|child|children|son|daughter)\b/i,
   /\b(in[- ]*laws?|mother[- ]*in[- ]*law|father[- ]*in[- ]*law|sasural|saas|sasur|bahu|damad)\b/i,
   /\b(parivar|ghar\s*ke\s*log|ghar\s*ka\s*jhagda|ghar\s*me\s*jhagda|ghar\s*ka\s*mahol|sasural\s*ka\s*pressure|bache|maa|baap|mummy|papa|intergenerational|joint\s*family)\b/i,
+  /(परिवार|ससुराल|घर\s*का\s*माहौल)/,
 ];
 
 // 5. Couple & Relationship Inquiries
 const COUPLE_PATTERNS = [
   /\b(couple|marriage|marital|husband|wife|spouse|partner|relationship|relationships|dating|breakup|divorce|intimacy)\b/i,
   /\b(shaadi|pati|patni|rishte|sambandh|jhagda|ladai|arguments|communication\s*gap|khich[-\s]*khich|tension\s*in\s*relationship|tension\s*in\s*relationships)\b/i,
+  /(रिश्तों|शादी|पति|पत्नी)/,
 ];
 
 // 6. Optional Reiki & Biofield Inquiries
 const REIKI_PATTERNS = [
   /\b(reiki|energy|biofield|chakra|healing|vibration|relaxation|somatic|stillness|body|usui)\b/i,
   /\b(urja|dhyan|shakti|spiritual\s*healing|body\s*tight|somatic\s*grounding)\b/i,
+  /(रेकी|ऊर्जा|ध्यान)/,
 ];
 
 // 7. Pricing, Timing & Contact Inquiries
@@ -82,14 +86,17 @@ const OFF_TOPIC_PATTERNS = [
   /\b(code|coding|python|javascript|react|crypto|bitcoin|stocks?|shares?|trading|mutual\s*funds?|invest|tax|legal|court|lawyer|recipe|weather|medicine|dawa|tablets)\b/i,
 ];
 
-export function routeIntent(userInput: string): AssistantResponse {
+export function routeIntent(userInput: string, lang: "en" | "hi" = "en"): AssistantResponse {
   const text = userInput.trim();
+  const isHi = lang === "hi";
 
   // 1. SAFETY FIRST: Crisis & Acute Distress Guardrail (Strict priority)
   if (CRISIS_PATTERNS.some((pattern) => pattern.test(text))) {
     return {
       matchedIntent: "crisis",
-      reply: `Please know that you do not have to carry this overwhelming weight alone right now. Your safety and your life matter deeply.
+      reply: isHi
+        ? `कृपया जान लें कि इस भारी वक्त में आप अकेले नहीं हैं। आपकी सुरक्षा और आपका जीवन बहुत कीमती है।\n\nडॉ. शिवी गुप्ता के साथ फ़ोन पर बातचीत भावनात्मक सहारे और मार्गदर्शन के लिए है—यह **कोई आपातकालीन क्राइसिस हेल्पलाइन** या अस्पताल नहीं है।\n\nयदि आप बहुत अधिक तकलीफ़ में हैं या मन में हार मानने के विचार आ रहे हैं, तो कृपया अभी 24/7 उपलब्ध प्रमाणित हेल्पलाइन से बात करें:\n- **Tele-MANAS (भारत सरकार):** **14416** या **1800 891 4416** पर कॉल करें (निःशुल्क, 24x7)\n- **Vandrevala Foundation:** **9999 666 555** पर कॉल या WhatsApp करें (गोपनीय, 24x7)\n- **राष्ट्रीय आपातकालीन सेवा:** **112** पर कॉल करें या किसी विश्वसनीय व्यक्ति/नजदीकी अस्पताल से संपर्क करें।\n\nकृपया एक गहरी सांस लें और अभी इनमें से किसी हेल्पलाइन पर कॉल करें।`
+        : `Please know that you do not have to carry this overwhelming weight alone right now. Your safety and your life matter deeply.
 
 Phone consultations with Dr. Shivie Gupta offer personal emotional guidance and reflective dialogue—it is **NOT an emergency crisis hotline** or hospital psychiatric facility.
 
@@ -100,7 +107,7 @@ If you are hurting or having thoughts of giving up, compassionate, certified cri
 
 Please take a gentle breath and reach out to one of these free helplines right now. They are ready to be with you.`,
       suggestedAction: {
-        label: "Call Tele-MANAS (14416)",
+        label: isHi ? "Tele-MANAS पर कॉल करें (14416)" : "Call Tele-MANAS (14416)",
         href: "tel:14416",
       },
       secondaryAction: {

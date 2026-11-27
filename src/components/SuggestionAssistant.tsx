@@ -4,10 +4,12 @@ import { useState, useRef, useEffect } from "react";
 import Link from "next/link";
 import { Sparkles, X, Send, ShieldCheck, Loader2, ArrowRight, RotateCcw } from "lucide-react";
 import { routeIntent, type AssistantResponse } from "@/lib/assistant-intent";
+import { useLanguage } from "@/context/LanguageContext";
 
 interface ChatMessage {
   role: "user" | "assistant";
   content: string;
+  isInitial?: boolean;
   suggestedAction?: {
     label: string;
     href: string;
@@ -18,7 +20,6 @@ interface ChatMessage {
   };
 }
 
-// Lightweight Markdown renderer for bold (**text**), italics (*text*), bullet items, and markdown links ([text](url))
 function renderFormattedContent(text: string) {
   const lines = text.split("\n");
 
@@ -27,7 +28,6 @@ function renderFormattedContent(text: string) {
     const cleanLine = isBullet ? line.trim().replace(/^[-•]\s+/, "") : line;
 
     const parts: (string | React.ReactNode)[] = [];
-    // Match links and **bold** first, then *italic* so tokens never collide
     const regex = /(\[.*?\]\(.*?\)|\*\*.*?\*\*|\*[^*\n]+?\*)/g;
     let lastIndex = 0;
     let match;
@@ -92,26 +92,22 @@ function renderFormattedContent(text: string) {
   });
 }
 
-const INITIAL_GREETING = `Namaste and welcome. I am here to offer a calm, unhurried space for your thoughts.
-
-Dr. Shivie Gupta brings **over 35 years** of compassionate listening from Dayalbagh, Agra. All consultations take place strictly via confidential telephone or WhatsApp audio call, so there is never any video pressure.
-
-*Take your time. What is feeling heavy or in need of gentle care today?*
-
-Whenever you are ready, you can explore the sanctuary of options on [Services & Pricing](/services) or read our gentle [Client Guide](/guide).`;
-
 export function SuggestionAssistant() {
+  const { lang, t } = useLanguage();
+  const a = t.assistant;
+
   const [isOpen, setIsOpen] = useState(false);
   const [messages, setMessages] = useState<ChatMessage[]>([
     {
       role: "assistant",
-      content: INITIAL_GREETING,
+      isInitial: true,
+      content: a.initialGreeting,
       suggestedAction: {
-        label: "Explore Session Ways",
+        label: a.initialAction1,
         href: "/services",
       },
       secondaryAction: {
-        label: "Read Client Guide",
+        label: a.initialAction2,
         href: "/guide",
       },
     },
@@ -168,13 +164,14 @@ export function SuggestionAssistant() {
     setMessages([
       {
         role: "assistant",
-        content: INITIAL_GREETING,
+        isInitial: true,
+        content: a.initialGreeting,
         suggestedAction: {
-          label: "Explore Session Ways",
+          label: a.initialAction1,
           href: "/services",
         },
         secondaryAction: {
-          label: "Read Client Guide",
+          label: a.initialAction2,
           href: "/guide",
         },
       },
@@ -195,7 +192,7 @@ export function SuggestionAssistant() {
     setLoading(true);
 
     try {
-      const result: AssistantResponse = routeIntent(userText);
+      const result: AssistantResponse = routeIntent(userText, lang);
       await new Promise((resolve) => setTimeout(resolve, 250));
 
       setMessages([
@@ -212,14 +209,13 @@ export function SuggestionAssistant() {
         ...updatedMessages,
         {
           role: "assistant",
-          content:
-            "Thank you for sharing. Dr. Shivie Gupta offers compassionate, confidential phone consultations for personal wellbeing, relationship communication, and family harmony. Whenever you feel ready, you can explore [Services & Pricing](/services) or leave a quiet note on [Request a Voice Session](/connect).",
+          content: a.fallbackReply,
           suggestedAction: {
-            label: "Explore Services",
+            label: a.fallbackAction1,
             href: "/services",
           },
           secondaryAction: {
-            label: "Gentle Inquiries (+91 98378 91692)",
+            label: a.fallbackAction2,
             href: "tel:+919837891692",
           },
         },
@@ -231,19 +227,19 @@ export function SuggestionAssistant() {
 
   return (
     <>
-      {/* Floating Trigger Button (Desktop Only: hidden on mobile to avoid colliding with navigation dock) */}
+      {/* Floating Trigger Button (Desktop Only) */}
       <div className="hidden md:block fixed bottom-5 right-5 z-40">
         {!isOpen && (
           <button
             onClick={() => setIsOpen(true)}
             className="flex items-center gap-2.5 px-4 py-3 min-h-[48px] rounded-full bg-[#FAF8F5] text-[#2D4A3E] shadow-lg hover:shadow-xl hover:bg-[#F2EDE4] transition-all hover:scale-105 active:scale-95 cursor-pointer border border-[#E8E0D2] group"
-            aria-label="Open Session Companion"
+            aria-label={a.triggerAria}
           >
             <div className="w-6 h-6 rounded-full bg-[#F2EDE4] flex items-center justify-center text-[#9E4A2A] group-hover:text-[#C5A059] transition-colors">
               <Sparkles className="w-3.5 h-3.5" />
             </div>
             <span className="text-xs font-serif font-medium tracking-wide text-[#2D4A3E]">
-              Session Companion
+              {a.triggerLabel}
             </span>
           </button>
         )}
@@ -252,7 +248,6 @@ export function SuggestionAssistant() {
       {/* Slide-over Assistant Drawer / Mobile Bottom Sheet */}
       {isOpen && (
         <>
-          {/* Mobile backdrop */}
           <div
             onClick={() => setIsOpen(false)}
             className="fixed inset-0 z-40 bg-black/30 backdrop-blur-xs sm:hidden animate-in fade-in duration-200"
@@ -265,7 +260,7 @@ export function SuggestionAssistant() {
             aria-labelledby="session-assistant-title"
             className="fixed inset-x-0 bottom-0 sm:inset-x-auto sm:bottom-5 sm:right-5 z-50 w-full sm:w-[420px] h-[82vh] sm:h-[550px] max-h-[85vh] bg-[#FAF8F5] rounded-t-3xl sm:rounded-3xl border border-[#E8E0D2] shadow-2xl flex flex-col overflow-hidden animate-in fade-in slide-in-from-bottom-4 duration-300"
           >
-            {/* Header: Soft sanctuary aesthetic (warm sand/sage, delicate border, terracotta & gold accents) */}
+            {/* Header */}
             <div className="p-4 bg-[#F2EDE4] text-[#1F2924] border-b border-[#E8E0D2] flex items-center justify-between shrink-0">
               <div className="flex items-center gap-2.5">
                 <div className="w-8 h-8 rounded-full bg-[#FAF8F5] border border-[#E8E0D2] flex items-center justify-center text-[#9E4A2A]">
@@ -273,10 +268,10 @@ export function SuggestionAssistant() {
                 </div>
                 <div>
                   <h3 id="session-assistant-title" className="font-serif text-sm font-semibold text-[#1F2924] leading-tight">
-                    Session Companion
+                    {a.title}
                   </h3>
                   <span className="text-[10px] text-[#52635A] block font-sans">
-                    Gentle reflection • Confidential voice space
+                    {a.subtitle}
                   </span>
                 </div>
               </div>
@@ -285,15 +280,15 @@ export function SuggestionAssistant() {
                 <button
                   onClick={handleReset}
                   className="flex items-center gap-1 px-2.5 py-1.5 min-h-[36px] rounded-lg text-xs text-[#52635A] hover:text-[#1F2924] hover:bg-white/60 transition-colors cursor-pointer"
-                  title="Reset conversation"
+                  title={a.resetTitle}
                 >
                   <RotateCcw className="w-3.5 h-3.5 text-[#9E4A2A]" />
-                  <span>Clear</span>
+                  <span>{a.clearBtn}</span>
                 </button>
                 <button
                   onClick={() => setIsOpen(false)}
                   className="p-2 min-w-[44px] min-h-[44px] rounded-full hover:bg-white/60 text-[#52635A] hover:text-[#1F2924] transition-colors cursor-pointer flex items-center justify-center"
-                  aria-label="Close Assistant"
+                  aria-label={a.closeAria}
                 >
                   <X className="w-5 h-5" />
                 </button>
@@ -302,97 +297,75 @@ export function SuggestionAssistant() {
 
             {/* Quick Human-Centered Reflection Chips */}
             <div className="px-3 py-2 bg-[#FAF8F5] border-b border-[#E8E0D2] flex flex-nowrap overflow-x-auto no-scrollbar items-center gap-2 text-[11px] shrink-0">
-              <button
-                type="button"
-                onClick={() => handleSend("Feeling overwhelmed lately")}
-                className="inline-flex items-center min-h-[40px] px-3.5 py-1.5 rounded-full bg-white border border-[#E8E0D2] text-[#52635A] hover:border-[#C5A059] hover:bg-[#F2EDE4] hover:text-[#1F2924] cursor-pointer shadow-2xs whitespace-nowrap shrink-0 transition-colors font-medium"
-              >
-                Feeling overwhelmed lately
-              </button>
-              <button
-                type="button"
-                onClick={() => handleSend("Tension in relationships")}
-                className="inline-flex items-center min-h-[40px] px-3.5 py-1.5 rounded-full bg-white border border-[#E8E0D2] text-[#52635A] hover:border-[#C5A059] hover:bg-[#F2EDE4] hover:text-[#1F2924] cursor-pointer shadow-2xs whitespace-nowrap shrink-0 transition-colors font-medium"
-              >
-                Tension in relationships
-              </button>
-              <button
-                type="button"
-                onClick={() => handleSend("Living with family / privacy")}
-                className="inline-flex items-center min-h-[40px] px-3.5 py-1.5 rounded-full bg-white border border-[#E8E0D2] text-[#52635A] hover:border-[#C5A059] hover:bg-[#F2EDE4] hover:text-[#1F2924] cursor-pointer shadow-2xs whitespace-nowrap shrink-0 transition-colors font-medium"
-              >
-                Living with family / privacy
-              </button>
-              <button
-                type="button"
-                onClick={() => handleSend("Nervous about starting")}
-                className="inline-flex items-center min-h-[40px] px-3.5 py-1.5 rounded-full bg-white border border-[#E8E0D2] text-[#52635A] hover:border-[#C5A059] hover:bg-[#F2EDE4] hover:text-[#1F2924] cursor-pointer shadow-2xs whitespace-nowrap shrink-0 transition-colors font-medium"
-              >
-                Nervous about starting
-              </button>
-              <button
-                type="button"
-                onClick={() => handleSend("How voice calls work")}
-                className="inline-flex items-center min-h-[40px] px-3.5 py-1.5 rounded-full bg-white border border-[#E8E0D2] text-[#52635A] hover:border-[#C5A059] hover:bg-[#F2EDE4] hover:text-[#1F2924] cursor-pointer shadow-2xs whitespace-nowrap shrink-0 transition-colors font-medium"
-              >
-                How voice calls work
-              </button>
-              <button
-                type="button"
-                onClick={() => handleSend("Optional Reiki support")}
-                className="inline-flex items-center min-h-[40px] px-3.5 py-1.5 rounded-full bg-white border border-[#E8E0D2] text-[#52635A] hover:border-[#C5A059] hover:bg-[#F2EDE4] hover:text-[#1F2924] cursor-pointer shadow-2xs whitespace-nowrap shrink-0 transition-colors font-medium"
-              >
-                Optional Reiki support
-              </button>
+              {a.quickChips.map((chip) => (
+                <button
+                  key={chip}
+                  type="button"
+                  onClick={() => handleSend(chip)}
+                  className="inline-flex items-center min-h-[40px] px-3.5 py-1.5 rounded-full bg-white border border-[#E8E0D2] text-[#52635A] hover:border-[#C5A059] hover:bg-[#F2EDE4] hover:text-[#1F2924] cursor-pointer shadow-2xs whitespace-nowrap shrink-0 transition-colors font-medium"
+                >
+                  {chip}
+                </button>
+              ))}
             </div>
 
             {/* Message History */}
             <div className="flex-1 p-4 overflow-y-auto space-y-3.5 text-xs leading-relaxed bg-[#FAF8F5]">
-              {messages.map((m, idx) => (
-                <div
-                  key={idx}
-                  className={`flex ${m.role === "user" ? "justify-end" : "justify-start"}`}
-                >
+              {messages.map((m, idx) => {
+                const displayContent = m.isInitial ? a.initialGreeting : m.content;
+                const action1 = m.isInitial
+                  ? { label: a.initialAction1, href: "/services" }
+                  : m.suggestedAction;
+                const action2 = m.isInitial
+                  ? { label: a.initialAction2, href: "/guide" }
+                  : m.secondaryAction;
+
+                return (
                   <div
-                    className={`max-w-[88%] p-3.5 rounded-2xl ${
-                      m.role === "user"
-                        ? "bg-[#2D4A3E] text-[#FAF8F5] rounded-br-xs whitespace-pre-line shadow-xs"
-                        : "bg-white text-[#37473F] border border-[#E8E0D2] rounded-bl-xs shadow-2xs"
-                    }`}
+                    key={idx}
+                    className={`flex ${m.role === "user" ? "justify-end" : "justify-start"}`}
                   >
-                    {m.role === "user" ? m.content : renderFormattedContent(m.content)}
+                    <div
+                      className={`max-w-[88%] p-3.5 rounded-2xl ${
+                        m.role === "user"
+                          ? "bg-[#2D4A3E] text-[#FAF8F5] rounded-br-xs whitespace-pre-line shadow-xs"
+                          : "bg-white text-[#37473F] border border-[#E8E0D2] rounded-bl-xs shadow-2xs"
+                      }`}
+                    >
+                      {m.role === "user" ? displayContent : renderFormattedContent(displayContent)}
 
-                    {m.suggestedAction && (
-                      <div className="mt-2.5 pt-2 border-t border-[#E8E0D2]/70 flex items-center gap-2 flex-wrap">
-                        <Link
-                          href={m.suggestedAction.href}
-                          onClick={() => setIsOpen(false)}
-                          className="inline-flex items-center gap-1.5 min-h-[40px] text-[11px] font-medium text-[#2D4A3E] bg-[#FAF8F5] px-3.5 py-1.5 rounded-full border border-[#E8E0D2] shadow-2xs hover:bg-[#F2EDE4] hover:border-[#C5A059] transition-colors whitespace-nowrap shrink-0"
-                        >
-                          <span className="whitespace-nowrap">{m.suggestedAction.label}</span>
-                          <ArrowRight className="w-3 h-3 text-[#9E4A2A] shrink-0" />
-                        </Link>
-
-                        {m.secondaryAction && (
-                          <a
-                            href={m.secondaryAction.href}
-                            target={m.secondaryAction.href.startsWith("http") ? "_blank" : undefined}
-                            rel={m.secondaryAction.href.startsWith("http") ? "noopener noreferrer" : undefined}
-                            className="inline-flex items-center gap-1.5 min-h-[40px] text-[11px] font-medium text-[#52635A] bg-white px-3.5 py-1.5 rounded-full border border-[#E8E0D2] hover:text-[#1F2924] hover:bg-[#F2EDE4] transition-colors whitespace-nowrap shrink-0"
+                      {action1 && (
+                        <div className="mt-2.5 pt-2 border-t border-[#E8E0D2]/70 flex items-center gap-2 flex-wrap">
+                          <Link
+                            href={action1.href}
+                            onClick={() => setIsOpen(false)}
+                            className="inline-flex items-center gap-1.5 min-h-[40px] text-[11px] font-medium text-[#2D4A3E] bg-[#FAF8F5] px-3.5 py-1.5 rounded-full border border-[#E8E0D2] shadow-2xs hover:bg-[#F2EDE4] hover:border-[#C5A059] transition-colors whitespace-nowrap shrink-0"
                           >
-                            <span className="whitespace-nowrap">{m.secondaryAction.label}</span>
-                          </a>
-                        )}
-                      </div>
-                    )}
+                            <span className="whitespace-nowrap">{action1.label}</span>
+                            <ArrowRight className="w-3 h-3 text-[#9E4A2A] shrink-0" />
+                          </Link>
+
+                          {action2 && (
+                            <a
+                              href={action2.href}
+                              target={action2.href.startsWith("http") ? "_blank" : undefined}
+                              rel={action2.href.startsWith("http") ? "noopener noreferrer" : undefined}
+                              className="inline-flex items-center gap-1.5 min-h-[40px] text-[11px] font-medium text-[#52635A] bg-white px-3.5 py-1.5 rounded-full border border-[#E8E0D2] hover:text-[#1F2924] hover:bg-[#F2EDE4] transition-colors whitespace-nowrap shrink-0"
+                            >
+                              <span className="whitespace-nowrap">{action2.label}</span>
+                            </a>
+                          )}
+                        </div>
+                      )}
+                    </div>
                   </div>
-                </div>
-              ))}
+                );
+              })}
               {loading && (
                 <div className="flex justify-start">
                   <div className="p-3 rounded-2xl bg-white border border-[#E8E0D2] text-[#52635A] flex items-center gap-2 shadow-2xs">
                     <Loader2 className="w-3.5 h-3.5 animate-spin text-[#9E4A2A]" />
-                    <span className="font-serif italic">Reflecting with care...</span>
+                    <span className="font-serif italic">{a.thinking}</span>
                   </div>
                 </div>
               )}
@@ -402,9 +375,7 @@ export function SuggestionAssistant() {
             {/* Bottom Crisis Boundary Notice */}
             <div className="px-4 py-2 bg-[#F2EDE4]/80 border-t border-[#E8E0D2] text-[10px] text-[#52635A] flex items-center gap-2 shrink-0">
               <ShieldCheck className="w-3.5 h-3.5 text-[#2D4A3E] shrink-0" />
-              <span className="truncate">
-                Gentle voice consultations. For acute distress or crises, please call Tele-MANAS (14416).
-              </span>
+              <span className="truncate">{a.crisisNotice}</span>
             </div>
 
             {/* Input Form */}
@@ -419,14 +390,14 @@ export function SuggestionAssistant() {
                 type="text"
                 value={input}
                 onChange={(e) => setInput(e.target.value)}
-                placeholder="Share whatever is on your mind..."
+                placeholder={a.placeholder}
                 className="flex-1 min-h-[44px] px-4 py-2.5 rounded-full border border-[#E8E0D2] bg-[#FAF8F5] text-base sm:text-xs text-[#1F2924] placeholder:text-[#52635A]/70 placeholder:text-xs focus:outline-none focus:ring-2 focus:ring-[#C5A059] focus:border-transparent transition-all"
               />
               <button
                 type="submit"
                 disabled={loading || !input.trim()}
                 className="p-3 min-w-[44px] min-h-[44px] rounded-full bg-[#2D4A3E] text-white disabled:opacity-40 hover:bg-[#1E332A] transition-colors cursor-pointer shrink-0 flex items-center justify-center shadow-xs"
-                aria-label="Send message"
+                aria-label={a.sendAria}
               >
                 <Send className="w-4 h-4 text-[#FAF8F5]" />
               </button>

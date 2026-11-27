@@ -8,6 +8,7 @@ import { ComprehensiveJsonLd } from "@/components/seo/JsonLd";
 import { SuggestionAssistant } from "@/components/SuggestionAssistant";
 import { MobileNavigationDock } from "@/components/MobileNavigationDock";
 import { BookingBottomSheet } from "@/components/BookingBottomSheet";
+import { LanguageProvider } from "@/context/LanguageContext";
 
 const cormorant = Cormorant_Garamond({
   variable: "--font-cormorant",
@@ -33,10 +34,13 @@ export const metadata: Metadata = {
   metadataBase: new URL(siteConfig.url),
   title: {
     default: siteConfig.title,
-    template: `%s`,
+    template: "%s | SamvadUrja — Dr. Shivie Gupta",
   },
   description: siteConfig.description,
   keywords: [
+    "SamvadUrja",
+    "Samvad Urja",
+    "संवाद ऊर्जा",
     "Voice counselling India",
     "Dr. Shivie Gupta",
     "Audio phone counselling",
@@ -47,15 +51,15 @@ export const metadata: Metadata = {
     "Reiki healing Agra",
     "Confidential voice therapy"
   ],
-  authors: [{ name: siteConfig.name, url: siteConfig.url }],
-  creator: siteConfig.name,
+  authors: [{ name: siteConfig.practitionerName, url: siteConfig.url }],
+  creator: siteConfig.brandName,
   openGraph: {
     type: "website",
     locale: "en_IN",
     url: siteConfig.url,
     title: siteConfig.title,
     description: siteConfig.description,
-    siteName: siteConfig.name,
+    siteName: "SamvadUrja — Dr. Shivie Gupta",
     images: [
       {
         url: siteConfig.ogImage,
@@ -88,16 +92,19 @@ export default function RootLayout({
   return (
     <html
       lang="en"
+      suppressHydrationWarning
       className={`${cormorant.variable} ${jakarta.variable} scroll-smooth antialiased`}
     >
       <body className="min-h-screen flex flex-col bg-[#FAF8F5] text-[#1F2924] selection:bg-[#2D4A3E] selection:text-white pb-20 md:pb-0">
-        <ComprehensiveJsonLd />
-        <Navbar />
-        <main className="flex-1">{children}</main>
-        <Footer />
-        <SuggestionAssistant />
-        <MobileNavigationDock />
-        <BookingBottomSheet />
+        <LanguageProvider>
+          <ComprehensiveJsonLd />
+          <Navbar />
+          <main className="flex-1">{children}</main>
+          <Footer />
+          <SuggestionAssistant />
+          <MobileNavigationDock />
+          <BookingBottomSheet />
+        </LanguageProvider>
       </body>
     </html>
   );

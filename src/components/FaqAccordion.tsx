@@ -2,27 +2,30 @@
 
 import { useState, useMemo } from "react";
 import { ChevronDown, HelpCircle, Search, Languages, PhoneCall } from "lucide-react";
-import { faqsData } from "@/data/site-content";
 import { expandSearchQuery } from "@/lib/search-synonyms";
+import { useLanguage } from "@/context/LanguageContext";
+
+const CATEGORY_KEYS = [
+  "All",
+  "Voice Sessions",
+  "Counselling",
+  "Hindi & Local",
+  "Reiki (Optional)",
+] as const;
+
+type CategoryKey = (typeof CATEGORY_KEYS)[number];
 
 export function FaqAccordion() {
+  const { t } = useLanguage();
   const [openIndex, setOpenIndex] = useState<number | null>(0);
-  const [selectedCategory, setSelectedCategory] = useState<string>("All");
+  const [selectedCategory, setSelectedCategory] = useState<CategoryKey>("All");
   const [searchQuery, setSearchQuery] = useState<string>("");
-
-  const categories = [
-    "All",
-    "Voice Sessions",
-    "Counselling",
-    "Hindi & Local",
-    "Reiki (Optional)",
-  ];
 
   const filteredFaqs = useMemo(() => {
     const cleanQuery = searchQuery.trim().toLowerCase();
     const expandedTerms = expandSearchQuery(cleanQuery);
 
-    return faqsData.filter((faq) => {
+    return t.guide.faqs.filter((faq) => {
       const matchesCategory =
         selectedCategory === "All" || faq.category === selectedCategory;
 
@@ -40,7 +43,7 @@ export function FaqAccordion() {
 
       return matchesCategory && synonymMatch;
     });
-  }, [selectedCategory, searchQuery]);
+  }, [selectedCategory, searchQuery, t.guide.faqs]);
 
   const toggle = (idx: number) => {
     const newIdx = openIndex === idx ? null : idx;
@@ -91,26 +94,27 @@ export function FaqAccordion() {
           type="text"
           value={searchQuery}
           onChange={(e) => handleSearchChange(e.target.value)}
-          placeholder="Search topics (e.g. phone, confidentiality, fees, rishte, reiki)..."
-          className="w-full pl-10 pr-12 py-2.5 min-h-[44px] rounded-full border border-[#E8E0D2] bg-white text-base sm:text-sm text-[#1F2924] placeholder:text-xs sm:placeholder:text-sm placeholder:text-[#52635A]/60 focus:outline-none focus:ring-2 focus:ring-[#2D4A3E] focus:border-transparent transition-all shadow-xs"
+          placeholder={t.guide.searchPlaceholder}
+          className="w-full pl-10 pr-16 py-2.5 min-h-[44px] rounded-full border border-[#E8E0D2] bg-white text-base sm:text-sm text-[#1F2924] placeholder:text-xs sm:placeholder:text-sm placeholder:text-[#52635A]/60 focus:outline-none focus:ring-2 focus:ring-[#2D4A3E] focus:border-transparent transition-all shadow-xs"
         />
         {searchQuery && (
           <button
             onClick={() => handleSearchChange("")}
             className="absolute right-2 top-1/2 -translate-y-1/2 min-w-[44px] min-h-[44px] flex items-center justify-center text-xs font-semibold text-[#52635A] hover:text-[#1F2924] cursor-pointer"
-            aria-label="Clear search query"
+            aria-label={t.guide.clearAria}
           >
-            Clear
+            {t.guide.clearBtn}
           </button>
         )}
       </div>
 
       {/* Category Pills */}
       <div className="flex items-center gap-2 overflow-x-auto pb-2 pt-1 no-scrollbar -mx-2 px-2 touch-pan-x overscroll-contain">
-        {categories.map((cat) => {
+        {CATEGORY_KEYS.map((cat) => {
           const isSelected = selectedCategory === cat;
           const isVoice = cat === "Voice Sessions";
           const isHindi = cat === "Hindi & Local";
+          const label = t.guide.categories[cat];
           return (
             <button
               key={cat}
@@ -130,7 +134,7 @@ export function FaqAccordion() {
             >
               {isVoice && <PhoneCall className="w-3.5 h-3.5" />}
               {isHindi && <Languages className="w-3.5 h-3.5" />}
-              <span>{cat}</span>
+              <span>{label}</span>
             </button>
           );
         })}
@@ -140,11 +144,13 @@ export function FaqAccordion() {
       <div className="space-y-3 pt-1">
         {filteredFaqs.length === 0 ? (
           <div className="p-8 text-center rounded-2xl bg-white border border-[#E8E0D2] text-xs text-[#52635A]">
-            No matching answers found for &ldquo;{searchQuery}&rdquo;. Try another term (e.g. <em>voice</em>, <em>phone</em>, <em>rishte</em>, <em>fees</em>).
+            {t.guide.noResultsBefore} &ldquo;{searchQuery}&rdquo;. {t.guide.noResultsAfter}
           </div>
         ) : (
           filteredFaqs.map((faq, idx) => {
             const isOpen = openIndex === idx;
+            const catLabel =
+              t.guide.categories[faq.category as CategoryKey] || faq.category;
             return (
               <div
                 key={idx}
@@ -171,7 +177,7 @@ export function FaqAccordion() {
                   <div className="px-4 sm:px-5 pb-5 pt-1 text-xs sm:text-sm text-[#52635A] leading-relaxed border-t border-[#E8E0D2]/50 animate-in fade-in duration-200">
                     <div className="mb-2">
                       <span className="inline-block px-2 py-0.5 rounded text-[10px] uppercase font-bold tracking-wider bg-[#F2EDE4] text-[#9E4A2A]">
-                        {faq.category}
+                        {catLabel}
                       </span>
                     </div>
                     {faq.answer}

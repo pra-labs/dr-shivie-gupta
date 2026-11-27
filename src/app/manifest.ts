@@ -2,10 +2,10 @@ import type { MetadataRoute } from "next";
 
 export default function manifest(): MetadataRoute.Manifest {
   return {
-    name: "Dr. Shivie Gupta | Voice-Only Counselling & Reiki",
-    short_name: "Shivie Gupta",
+    name: "SamvadUrja — Dr. Shivie Gupta | Voice-Only Counselling & Reiki",
+    short_name: "SamvadUrja",
     description:
-      "Confidential voice-only counselling and optional Reiki healing by Dr. Shivie Gupta (~35 years experience, Dayalbagh, Agra).",
+      "SamvadUrja: Confidential voice-only counselling and optional Reiki healing by Dr. Shivie Gupta (~35 years experience, Dayalbagh, Agra).",
     start_url: "/",
     display: "standalone",
     background_color: "#FAF8F5",

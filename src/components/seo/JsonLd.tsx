@@ -11,21 +11,46 @@ export function ComprehensiveJsonLd() {
         "@type": "WebSite",
         "@id": `${siteConfig.url}/#website`,
         "url": siteConfig.url,
-        "name": siteConfig.name,
+        "name": siteConfig.brandName,
+        "alternateName": siteConfig.brandNameHi,
         "description": siteConfig.description,
         "publisher": {
-          "@id": `${siteConfig.url}/#practitioner`,
+          "@id": `${siteConfig.url}/#organization`,
         },
-        "inLanguage": "en-IN",
+        "inLanguage": ["en-IN", "hi-IN"],
       },
 
-      // 2. Person Entity (Dr. Shivie Gupta)
+      // 2. ProfessionalService Entity (SamvadUrja)
+      {
+        "@type": "ProfessionalService",
+        "@id": `${siteConfig.url}/#organization`,
+        "name": siteConfig.brandName,
+        "alternateName": siteConfig.brandNameHi,
+        "url": siteConfig.url,
+        "description": siteConfig.description,
+        "telephone": siteConfig.phone,
+        "email": siteConfig.email,
+        "founder": {
+          "@id": `${siteConfig.url}/#practitioner`,
+        },
+        "address": {
+          "@type": "PostalAddress",
+          "addressLocality": siteConfig.location.locality,
+          "addressRegion": siteConfig.location.state,
+          "addressCountry": siteConfig.location.country,
+        },
+      },
+
+      // 3. Person Entity (Dr. Shivie Gupta)
       {
         "@type": "Person",
         "@id": `${siteConfig.url}/#practitioner`,
-        "name": siteConfig.name,
-        "jobTitle": "Counsellor & Reiki Practitioner",
-        "description": `Counsellor with ~${siteConfig.yearsOfExperience} years of experience offering voice-only counselling for individuals, couples, and families, plus optional Reiki healing in Dayalbagh, Agra.`,
+        "name": siteConfig.practitionerName,
+        "jobTitle": "Founder, Counsellor & Reiki Practitioner",
+        "worksFor": {
+          "@id": `${siteConfig.url}/#organization`,
+        },
+        "description": `Founder of SamvadUrja with ~${siteConfig.yearsOfExperience} years of experience offering voice-only counselling for individuals, couples, and families, plus optional Reiki healing in Dayalbagh, Agra.`,
         "url": siteConfig.url,
         "telephone": siteConfig.phone,
         "email": siteConfig.email,
@@ -44,14 +69,14 @@ export function ComprehensiveJsonLd() {
         },
       },
 
-      // 3. Service Offerings
+      // 4. Service Offerings
       ...servicesData.map((svc) => ({
         "@type": "Service",
         "@id": `${siteConfig.url}/services#${svc.slug}`,
         "name": svc.title,
         "description": svc.overview,
         "provider": {
-          "@id": `${siteConfig.url}/#practitioner`,
+          "@id": `${siteConfig.url}/#organization`,
         },
         "offers": {
           "@type": "Offer",
@@ -61,7 +86,7 @@ export function ComprehensiveJsonLd() {
         },
       })),
 
-      // 4. FAQPage Schema
+      // 5. FAQPage Schema
       {
         "@type": "FAQPage",
         "@id": `${siteConfig.url}/#faq`,

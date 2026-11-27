@@ -3,16 +3,11 @@
 import { useState, useEffect } from "react";
 import { X, Send, ShieldCheck, CheckCircle2, Loader2, Sparkles, MessageCircle } from "lucide-react";
 import { submitContactInquiry, type ContactFormState } from "@/app/actions/contact";
-import { siteConfig } from "@/config/site";
-
-const SERVICE_OPTIONS = [
-  { value: "Individual Counselling (Voice Call)", label: "Individual Voice (₹1,200 / 50m)" },
-  { value: "Couple Counselling (Voice Call)", label: "Couple Guidance (₹1,800 / 60m)" },
-  { value: "Family Counselling (Voice Call)", label: "Family Dialogue (₹2,200 / 60m)" },
-  { value: "Reiki Healing (Optional)", label: "Reiki Balancing (₹1,000 / 45m)" },
-];
+import { useLanguage } from "@/context/LanguageContext";
+import { getWhatsAppUrl, trackUmamiEvent } from "@/lib/analytics";
 
 export function BookingBottomSheet() {
+  const { lang, t } = useLanguage();
   const [isOpen, setIsOpen] = useState(false);
   const [service, setService] = useState("Individual Counselling (Voice Call)");
   const [includeReiki, setIncludeReiki] = useState(false);
@@ -72,6 +67,11 @@ export function BookingBottomSheet() {
     setIsPending(true);
     setFormState(null);
 
+    trackUmamiEvent("session_cta_click", {
+      channel: "form",
+      lang,
+    });
+
     const formData = new FormData();
     formData.append("name", name);
     formData.append("phone", phone);
@@ -98,7 +98,7 @@ export function BookingBottomSheet() {
     } catch {
       setFormState({
         success: false,
-        message: "An error occurred while submitting your request. Please try WhatsApp.",
+        message: t.bookingSheet.errorFallback,
       });
     } finally {
       setIsPending(false);
@@ -132,16 +132,16 @@ export function BookingBottomSheet() {
         <div className="px-5 pb-3 border-b border-[#E8E0D2] flex items-center justify-between shrink-0">
           <div>
             <h3 id="booking-bottom-sheet-title" className="font-serif text-lg font-bold text-[#1F2924]">
-              Request a Voice Session
+              {t.bookingSheet.title}
             </h3>
             <p className="text-[11px] text-[#52635A]">
-              Audio / Phone Call Only • Complete Confidentiality
+              {t.bookingSheet.subtitle}
             </p>
           </div>
           <button
             onClick={handleClose}
             className="p-2 min-w-[44px] min-h-[44px] rounded-full text-[#52635A] hover:bg-[#FAF8F5] flex items-center justify-center transition-colors active:scale-95"
-            aria-label="Close booking sheet"
+            aria-label={t.bookingSheet.closeAria}
           >
             <X className="w-5 h-5" />
           </button>
@@ -153,18 +153,18 @@ export function BookingBottomSheet() {
             <div className="p-5 rounded-2xl bg-[#F2EDE4] border border-[#2D4A3E]/20 text-[#2D4A3E] space-y-3">
               <div className="flex items-center gap-2 font-serif text-base font-bold">
                 <CheckCircle2 className="w-5 h-5 text-[#2D4A3E]" />
-                <span>Inquiry Received</span>
+                <span>{t.bookingSheet.successTitle}</span>
               </div>
               <p className="text-xs leading-relaxed">{formState.message}</p>
               <div className="pt-2 text-[11px] text-[#52635A] flex items-center gap-1.5 border-t border-[#E8E0D2]/50">
                 <ShieldCheck className="w-4 h-4 text-[#2D4A3E]" />
-                <span>Your details remain completely private.</span>
+                <span>{t.bookingSheet.successPrivacy}</span>
               </div>
               <button
                 onClick={handleClose}
                 className="w-full mt-2 py-2.5 rounded-full bg-[#2D4A3E] text-white text-xs font-semibold uppercase tracking-wider"
               >
-                Close
+                {t.bookingSheet.closeBtn}
               </button>
             </div>
           ) : (
@@ -178,10 +178,10 @@ export function BookingBottomSheet() {
               {/* Service Selection */}
               <div>
                 <label className="block text-xs font-semibold uppercase tracking-wider text-[#1F2924] mb-1.5">
-                  Select Session Type
+                  {t.bookingSheet.selectServiceLabel}
                 </label>
                 <div className="grid grid-cols-2 gap-2">
-                  {SERVICE_OPTIONS.map((opt) => (
+                  {t.bookingSheet.serviceOptions.map((opt) => (
                     <button
                       key={opt.value}
                       type="button"
@@ -212,10 +212,10 @@ export function BookingBottomSheet() {
                     <Sparkles className="w-4 h-4 text-[#C5A059]" />
                     <div>
                       <span className="text-xs font-semibold block">
-                        Include Reiki Balancing Add-on?
+                        {t.bookingSheet.reikiToggleTitle}
                       </span>
                       <span className="text-[10px] text-[#52635A]">
-                        +₹1,000 • Traditional Usui biofield relaxation
+                        {t.bookingSheet.reikiToggleSub}
                       </span>
                     </div>
                   </div>
@@ -231,21 +231,21 @@ export function BookingBottomSheet() {
               {/* Contact Inputs (16px to prevent iOS auto-zoom) */}
               <div>
                 <label className="block text-xs font-semibold uppercase tracking-wider text-[#1F2924] mb-1">
-                  Your Name *
+                  {t.bookingSheet.nameLabel}
                 </label>
                 <input
                   type="text"
                   required
                   value={name}
                   onChange={(e) => setName(e.target.value)}
-                  placeholder="e.g. Meera Sharma"
+                  placeholder={t.bookingSheet.namePlaceholder}
                   className="w-full min-h-[48px] px-4 py-2.5 rounded-xl border border-[#E8E0D2] bg-[#FAF8F5] text-base text-[#1F2924] focus:outline-none focus:ring-2 focus:ring-[#2D4A3E]"
                 />
               </div>
 
               <div>
                 <label className="block text-xs font-semibold uppercase tracking-wider text-[#1F2924] mb-1">
-                  Phone Number (for Audio Call) *
+                  {t.bookingSheet.phoneLabel}
                 </label>
                 <input
                   type="tel"
@@ -253,36 +253,37 @@ export function BookingBottomSheet() {
                   inputMode="tel"
                   value={phone}
                   onChange={(e) => setPhone(e.target.value)}
-                  placeholder="e.g. +91 98378 12345"
+                  placeholder={t.bookingSheet.phonePlaceholder}
                   className="w-full min-h-[48px] px-4 py-2.5 rounded-xl border border-[#E8E0D2] bg-[#FAF8F5] text-base text-[#1F2924] focus:outline-none focus:ring-2 focus:ring-[#2D4A3E]"
                 />
               </div>
 
               <div>
                 <label className="block text-xs font-semibold uppercase tracking-wider text-[#1F2924] mb-1">
-                  Preferred Call Timing
+                  {t.bookingSheet.timeLabel}
                 </label>
                 <select
                   value={preferredTime}
                   onChange={(e) => setPreferredTime(e.target.value)}
                   className="w-full min-h-[48px] px-4 py-2.5 rounded-xl border border-[#E8E0D2] bg-[#FAF8F5] text-base text-[#1F2924] focus:outline-none focus:ring-2 focus:ring-[#2D4A3E]"
                 >
-                  <option value="Morning (10 AM - 1 PM)">Morning (10:00 AM – 1:00 PM IST)</option>
-                  <option value="Afternoon (1 PM - 4 PM)">Afternoon (1:00 PM – 4:00 PM IST)</option>
-                  <option value="Evening (4 PM - 7 PM)">Evening (4:00 PM – 7:00 PM IST)</option>
-                  <option value="Flexible / As Available">Flexible / Any Available Time</option>
+                  {t.bookingSheet.timeOptions.map((opt) => (
+                    <option key={opt.value} value={opt.value}>
+                      {opt.label}
+                    </option>
+                  ))}
                 </select>
               </div>
 
               <div>
                 <label className="block text-xs font-semibold uppercase tracking-wider text-[#1F2924] mb-1">
-                  Brief Topic or Concern (Optional)
+                  {t.bookingSheet.notesLabel}
                 </label>
                 <textarea
                   rows={2}
                   value={notes}
                   onChange={(e) => setNotes(e.target.value)}
-                  placeholder="A sentence on what you'd like to talk through..."
+                  placeholder={t.bookingSheet.notesPlaceholder}
                   className="w-full px-4 py-2.5 rounded-xl border border-[#E8E0D2] bg-[#FAF8F5] text-base text-[#1F2924] focus:outline-none focus:ring-2 focus:ring-[#2D4A3E]"
                 />
               </div>
@@ -292,29 +293,35 @@ export function BookingBottomSheet() {
                 <button
                   type="submit"
                   disabled={isPending}
+                  data-umami-event="session_cta_click"
+                  data-umami-event-channel="form"
+                  data-umami-event-lang={lang}
                   className="w-full min-h-[48px] py-3 rounded-full bg-[#2D4A3E] text-white font-medium text-xs uppercase tracking-wider hover:bg-[#1E332A] transition-all flex items-center justify-center gap-2 shadow-sm active:scale-[0.98] disabled:opacity-50"
                 >
                   {isPending ? (
                     <>
                       <Loader2 className="w-4 h-4 animate-spin" />
-                      <span>Sending Request...</span>
+                      <span>{t.bookingSheet.submittingBtn}</span>
                     </>
                   ) : (
                     <>
                       <Send className="w-4 h-4" />
-                      <span>Submit Session Request</span>
+                      <span>{t.bookingSheet.submitBtn}</span>
                     </>
                   )}
                 </button>
 
                 <a
-                  href={siteConfig.whatsappUrl}
+                  href={getWhatsAppUrl(lang)}
                   target="_blank"
                   rel="noopener noreferrer"
+                  data-umami-event="session_cta_click"
+                  data-umami-event-channel="whatsapp"
+                  data-umami-event-lang={lang}
                   className="w-full min-h-[44px] py-2.5 rounded-full border border-emerald-600/40 text-emerald-800 bg-emerald-50 text-xs font-semibold uppercase tracking-wider flex items-center justify-center gap-2 active:scale-[0.98]"
                 >
                   <MessageCircle className="w-4 h-4 text-emerald-600" />
-                  <span>Or Schedule via WhatsApp</span>
+                  <span>{t.bookingSheet.whatsappBtn}</span>
                 </a>
               </div>
             </form>
